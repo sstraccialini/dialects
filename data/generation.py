@@ -126,6 +126,11 @@ CACHE_DIR.mkdir(exist_ok=True)
 
 USER_AGENT = "italian-dialects-research/1.0 (educational project)"
 
+# Toggle: se False, salta le chiamate API a Wikidata e MediaWiki.
+# I campi qid/topic/title_en/categories restano stringhe vuote nel meta CSV.
+# Utile quando non si vuole dipendere dalla rete o si sta debuggando la pipeline.
+ENRICH_VIA_API = False
+
 # create training dataset
 data = []
 
@@ -292,6 +297,28 @@ def _http_get_json(url, params, timeout=30):
         return json.loads(resp.read().decode('utf-8'))
 
 
+def _with_retry(fn, *args, max_attempts=5, base_wait=2.0, label="batch"):
+    """Call fn(*args); on HTTP 429 back off exponentially. Returns None on final failure."""
+    for attempt in range(max_attempts):
+        try:
+            return fn(*args)
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait = base_wait * (2 ** attempt)
+                print(f"    {label}: 429 rate-limited, sleeping {wait:.1f}s (attempt {attempt+1}/{max_attempts})")
+                time.sleep(wait)
+                continue
+            print(f"    {label}: HTTP error {e.code}: {e}")
+            return None
+        except Exception as e:
+            print(f"    {label}: error {type(e).__name__}: {e}")
+            if attempt < max_attempts - 1:
+                time.sleep(base_wait)
+                continue
+            return None
+    return None
+
+
 def fetch_wikidata_batch(batch_titles, wiki_site):
     """Given a batch of up to 50 page titles, return {title: {qid, topic, title_en}}."""
     if not batch_titles:
@@ -364,7 +391,11 @@ def _norm(t):
     return t.replace('_', ' ').strip()
 
 
-print("Enriching via Wikidata + MediaWiki (cached on disk)...")
+if ENRICH_VIA_API:
+    print("Enriching via Wikidata + MediaWiki (cached on disk)...")
+else:
+    print("Skipping API enrichment (ENRICH_VIA_API=False). "
+          "qid/topic/title_en/categories resteranno vuoti.")
 
 # Build meta DataFrame: one row per unique (label, article_id)
 meta_df = df[['label', 'article_id', 'title', 'url']].drop_duplicates(
@@ -375,7 +406,7 @@ meta_df['topic'] = ''
 meta_df['title_en'] = ''
 meta_df['categories'] = ''
 
-for folder, lbl in fold_label.items():
+for folder, lbl in (fold_label.items() if ENRICH_VIA_API else []):
     if folder not in dialects:
         continue
     sub_mask = meta_df['label'] == lbl
@@ -393,17 +424,17 @@ for folder, lbl in fold_label.items():
     if missing:
         print(f"  {folder}: {len(unique_titles)} titoli unici, {len(missing)} da recuperare da Wikidata")
         for batch in tqdm(list(_chunks(missing, 50)), desc=f"Wikidata {folder}"):
-            try:
-                result = fetch_wikidata_batch(batch, wiki_site)
-            except Exception as e:
-                print(f"    Wikidata batch error: {e}")
-                result = {}
+            result = _with_retry(fetch_wikidata_batch, batch, wiki_site, label=f"Wikidata {folder}")
+            if result is None:
+                # batch failed after retries: do NOT cache, so next run retries
+                time.sleep(1.0)
+                continue
             norm_result = {_norm(k): v for k, v in result.items()}
             for t in batch:
                 match = result.get(t) or norm_result.get(_norm(t))
                 wd_cache[t] = match if match is not None else {'qid': '', 'topic': '', 'title_en': ''}
             _save_cache(wd_cache, wd_path)
-            time.sleep(0.1)
+            time.sleep(0.3)
 
     # MediaWiki categories
     cat_path = CACHE_DIR / f"categories_{folder}.json"
@@ -412,11 +443,11 @@ for folder, lbl in fold_label.items():
     if missing:
         print(f"  {folder}: {len(missing)} da recuperare da MediaWiki (categorie)")
         for batch in tqdm(list(_chunks(missing, 50)), desc=f"Categorie {folder}"):
-            try:
-                result = fetch_categories_batch(batch, host)
-            except Exception as e:
-                print(f"    Categories batch error: {e}")
-                result = {}
+            result = _with_retry(fetch_categories_batch, batch, host, label=f"Categorie {folder}")
+            if result is None:
+                # batch failed after retries: do NOT cache, so next run retries
+                time.sleep(1.0)
+                continue
             norm_result = {_norm(k): v for k, v in result.items()}
             for t in batch:
                 match = result.get(t)
@@ -424,7 +455,7 @@ for folder, lbl in fold_label.items():
                     match = norm_result.get(_norm(t), [])
                 cat_cache[t] = match
             _save_cache(cat_cache, cat_path)
-            time.sleep(0.1)
+            time.sleep(0.3)
 
     # Apply to meta_df rows of this dialect
     def _lookup_wd(t, field):
