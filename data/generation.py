@@ -162,6 +162,9 @@ df.loc[df['label'] == 9, 'text'] = df.loc[df['label'] == 9, 'text'].apply(lambda
 df.dropna(inplace=True)
 df.drop_duplicates(subset ='text', keep = False, inplace = True) 
 
-df.to_csv("train.csv", index=None)
+for lbl, sub in df.groupby("label"):
+    fname = dial_label[int(lbl)].lower() + ".csv"
+    sub.to_csv(fname, index=None)
+    print(f"  -> {fname} ({len(sub)} righe)")
 
 print("Dataset created.")

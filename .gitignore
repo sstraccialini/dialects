@@ -1,0 +1,19 @@
+# Python virtualenvs
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# Wikipedia dump intermediates (cartelle pesanti)
+data/*_texts/
+data/*.xml.bz2
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
