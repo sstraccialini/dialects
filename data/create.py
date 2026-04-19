@@ -9,10 +9,10 @@ from pathlib import Path
 # List of (url, output_dir)
 dumps = [
     ('https://dumps.wikimedia.org/other/mediawiki_content_current/napwiki/2026-04-01/xml/bzip2/napwiki-2026-04-01-p1p66122.xml.bz2', 'nap_texts'),
-    ('https://dumps.wikimedia.org/other/mediawiki_content_current/vecwiki/2026-04-01/xml/bzip2/vecwiki-2026-04-01-p3p154496.xml.bz2', 'vec_texts'),
-    ('https://dumps.wikimedia.org/other/mediawiki_content_current/lmowiki/2026-04-01/xml/bzip2/lmowiki-2026-04-01-p1p279182.xml.bz2', 'lmo_texts'),
-    ('https://dumps.wikimedia.org/other/mediawiki_content_current/scnwiki/2026-04-01/xml/bzip2/scnwiki-2026-04-01-p1p67086.xml.bz2', 'scn_texts'),
-    ('https://dumps.wikimedia.org/other/mediawiki_content_current/scwiki/2026-04-01/xml/bzip2/scwiki-2026-04-01-p2p23475.xml.bz2', 'sc_texts'),
+   # ('https://dumps.wikimedia.org/other/mediawiki_content_current/vecwiki/2026-04-01/xml/bzip2/vecwiki-2026-04-01-p3p154496.xml.bz2', 'vec_texts'),
+    #('https://dumps.wikimedia.org/other/mediawiki_content_current/lmowiki/2026-04-01/xml/bzip2/lmowiki-2026-04-01-p1p279182.xml.bz2', 'lmo_texts'),
+    #('https://dumps.wikimedia.org/other/mediawiki_content_current/scnwiki/2026-04-01/xml/bzip2/scnwiki-2026-04-01-p1p67086.xml.bz2', 'scn_texts'),
+    #('https://dumps.wikimedia.org/other/mediawiki_content_current/scwiki/2026-04-01/xml/bzip2/scwiki-2026-04-01-p2p23475.xml.bz2', 'sc_texts'),
     #('https://dumps.wikimedia.org/other/mediawiki_content_current/itwiki/2026-04-01/xml/bzip2/itwiki-2026-04-01-p8504027p10924272.xml.bz2,', 'it_texts'),
     #('https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-04-01/xml/bzip2/eswiki-2026-04-01-p9859121p11472026.xml.bz2', 'es_texts'),
     #('https://dumps.wikimedia.org/other/mediawiki_content_current/frwiki/2026-04-01/xml/bzip2/frwiki-2026-04-01-p8575096p13577595.xml.bz2', 'fr_texts'),
