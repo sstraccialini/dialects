@@ -11,9 +11,13 @@ For this project, we used Python 3.10. To set up the environment, you can follow
 ```powershell
 py -3.10 -m venv venv
 .\venv\Scripts\Activate.ps1
+
 python -m pip install -U pip
 pip install -r requirements.txt
+python -m spacy download it_core_news_sm
+
 python .\data\create.py
+
 ```
 
 ### Data extraction
