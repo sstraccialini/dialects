@@ -6,6 +6,7 @@ from tqdm import tqdm
 import numpy as np
 import urllib.request
 import urllib.parse
+import urllib.error
 from pathlib import Path
 import time
 
@@ -27,7 +28,15 @@ fold_label = {
     'scn_texts' : 8,
     'vec_texts' : 9,
     'sc_texts' : 10,
-    'it_texts' : 11
+    'it_texts' : 11,
+    'es_texts' : 12,
+    'fr_texts' : 13,
+    'ca_texts' : 14,
+    'de_texts' : 15,
+    'el_texts' : 16,
+    'ar_texts' : 17,
+    'sl_texts' : 18,
+    'en_texts' : 19,
 }
 dial_label = {
     0 : 'EML',
@@ -41,7 +50,15 @@ dial_label = {
     8 : 'SCN',
     9 : 'VEC',
     10 : 'SC',
-    11 : 'ITA'
+    11 : 'ITA',
+    12 : 'ES',
+    13 : 'FR',
+    14 : 'CA',
+    15 : 'DE',
+    16 : 'EL',
+    17 : 'AR',
+    18 : 'SL',
+    19 : 'EN',
 }
 
 # folder -> Wikidata site id (for wbgetentities sites=...)
@@ -58,6 +75,14 @@ folder_to_wiki = {
     'vec_texts': 'vecwiki',
     'sc_texts': 'scwiki',
     'it_texts': 'itwiki',
+    'es_texts': 'eswiki',
+    'fr_texts': 'frwiki',
+    'ca_texts': 'cawiki',
+    'de_texts': 'dewiki',
+    'el_texts': 'elwiki',
+    'ar_texts': 'arwiki',
+    'sl_texts': 'slwiki',
+    'en_texts': 'enwiki',
 }
 
 # folder -> hostname for MediaWiki category API
@@ -74,6 +99,14 @@ folder_to_host = {
     'vec_texts': 'vec.wikipedia.org',
     'sc_texts': 'sc.wikipedia.org',
     'it_texts': 'it.wikipedia.org',
+    'es_texts': 'es.wikipedia.org',
+    'fr_texts': 'fr.wikipedia.org',
+    'ca_texts': 'ca.wikipedia.org',
+    'de_texts': 'de.wikipedia.org',
+    'el_texts': 'el.wikipedia.org',
+    'ar_texts': 'ar.wikipedia.org',
+    'sl_texts': 'sl.wikipedia.org',
+    'en_texts': 'en.wikipedia.org',
 }
 
 # P31 (instance of) QID -> macro topic bucket
@@ -128,49 +161,21 @@ USER_AGENT = "italian-dialects-research/1.0 (educational project)"
 
 # Toggle: se False, salta le chiamate API a Wikidata e MediaWiki.
 # I campi qid/topic/title_en/categories restano stringhe vuote nel meta CSV.
-# Utile quando non si vuole dipendere dalla rete o si sta debuggando la pipeline.
 ENRICH_VIA_API = False
 
-# create training dataset
-data = []
 
-for d in tqdm(dialects):
-    aa_dir = os.path.join(d, "AA")
-    if not os.path.isdir(aa_dir):
-        continue
-    for name in os.listdir(aa_dir):
-        f = open(os.path.join(aa_dir, name), "r")
-        lines = f.readlines()
-        for l in lines:
-            jline = json.loads(l)
-            if not jline['text']:
-                continue
-            data.append([int(jline['id']), jline['url'], jline['title'], jline['text'], fold_label[d]])
+# ===== clean() per il testo dell'articolo =====
 
-
-columns = ['id', 'url', 'title', 'text', 'label']
-df = pd.DataFrame(data, columns=columns)
-
-# (was: df = df.drop(columns=["id", "url", "title"]))
-# keep id, title, url for the meta file
-
-# clean text
 def clean(text):
     text = re.sub(r'==.*?==+', '', text)
-
     text = text.replace("\n", " ")
-
     text = text.replace('"', " ")
-
     regex = re.compile('&[^;]+;')
     text = re.sub(regex, '', text)
-
-
     regex = re.compile('(graph.*/graph|\(.*\)|\[.*\]|parentid>.*/parentid>|BR[^>]+>|bR[^>]+>|Br[^>]+>|br[^>]+>|ns>.*/ns>|timestamp>.*/timestamp>|revision>.*/revision>|contributor>.*/contributor>|model>.*/model>|format>.*/format>|comment>.*/comment>)')
     text = re.sub(regex, '', text)
     regex = re.compile('(parentid.*/parentid|ns.*/ns|timestamp.*/timestamp|revision.*/revision|contributor.*/contributor|model.*/model|format.*/format|comment.*/comment)')
     text = re.sub(regex, '', text)
-
     text = text.replace("revision>", "")
     text = text.replace("br>", "")
     text = text.replace("Br>", "")
@@ -180,95 +185,14 @@ def clean(text):
     text = text.replace("/Br>", "")
     text = text.replace("/bR>", "")
     text = text.replace("/BR>", "")
-
-    text = text.replace("&quot;","")
-
+    text = text.replace("&quot;", "")
     text = text.replace("br clear=all>", "")
-
-    if(len(text) < 50):
+    if len(text) < 50:
         text = np.nan
-
     return text
 
-# print("Saving uncleaned dataset...")
-# df.to_csv("uncleaned.csv", index=None)
 
-print("Cleaning text...")
-
-df['text'] = df['text'].apply(clean)
-
-# drop rows with nan values
-df.dropna(inplace=True)
-
-# drop duplicate entries in the samples
-df.drop_duplicates(subset='text', keep=False, inplace=True)
-
-# create sentences
-print("Splitting sentences...")
-
-import spacy
-
-nlp = spacy.load("it_core_news_sm", disable=['ner', 'lemmatizer', "textcat", "custom", "tagger"])
-
-from pandarallel import pandarallel
-pandarallel.initialize(progress_bar=True, verbose=0)
-
-df['text'] = df['text'].parallel_apply(nlp)
-
-X = df["text"].to_numpy()
-y = df["label"].to_numpy()
-ids = df["id"].to_numpy()
-titles = df["title"].to_numpy()
-urls = df["url"].to_numpy()
-
-print("Creating new data...")
-X_train, y_train, id_train, title_train, url_train = [], [], [], [], []
-for i, article in tqdm(enumerate(X), total=X.shape[0]):
-    for sentence in article.sents:
-        X_train.append(sentence)
-        y_train.append(y[i])
-        id_train.append(ids[i])
-        title_train.append(titles[i])
-        url_train.append(urls[i])
-
-X_train = np.array(X_train, dtype=object)
-y_train = np.array(y_train, dtype=object)
-id_train = np.array(id_train, dtype=object)
-title_train = np.array(title_train, dtype=object)
-url_train = np.array(url_train, dtype=object)
-
-print("Cleaning sentences...")
-df = pd.DataFrame({
-    'text': X_train,
-    'label': y_train,
-    'article_id': id_train,
-    'title': title_train,
-    'url': url_train,
-}, index=None)
-
-df["text"] = df['text'].apply(lambda x: ''.join(x.text))
-
-# pms documents have a lot of these
-df["text"] = df['text'].apply(lambda x: x.replace("http://www.sil.org/iso639-3/documentation.asp?id=", ""))
-# other minor corrections
-df['text'] = df['text'].apply(lambda x: x.replace("&lt;br clear=all&gt;", ""))
-df['text'] = df['text'].apply(lambda x: x.replace("Evulusiù demogràfica.", ""))
-df['text'] = df['text'].apply(lambda x: x.replace("&lt;br&gt;&lt;br&gt;", ""))
-df['text'] = df['text'].apply(lambda x: x.replace("ł", "l"))
-df['text'] = df['text'].apply(lambda x: x.replace("Ł", "l"))
-
-df["text"] = df['text'].apply(lambda x: np.nan if len(x)<=20 else x)
-df.dropna(inplace=True)
-
-df.loc[df['label'] == 2, 'text'] = df.loc[df['label'] == 2, 'text'].apply(lambda x: np.nan if ("grup ëd popolassion." in x or "A confin-a con " in x or "a l’é na comun-a ëd" in x or "con na densità" in x or "A së stend" in x or "As dëstend për" in x or "a l'é na comun" in x or "La lenga" in x or "Në schema" in x or "Ël sìndich a l'é" in x or "a l'é un comun" in x) else x)
-df.loc[df['label'] == 6, 'text'] = df.loc[df['label'] == 6, 'text'].apply(lambda x: np.nan if ("La Stazzion de" in x or "El cumün" in x or "a l'è una cità" in x or "El Passaport" in x or "la se tróa a 'na" in x or "a l'è 'na ferrovia" in x or "L'è taccada a stazione di" in x or "La a l'è 'na strada" in x or "L'andament del numer de abitant" in x or "L'andament del nömer dei abitàncc" in x or "l'è menziunaa la prima volta" in x or "l'è 'na stazion de la" in x or "L'andamènt del nömer dei abitàncc" in x or "La Stazion de" in x or "El Distret" in x or "El cümü" in x or "km²" in x or "Al gh’ha pressapoch abitant" in x or "l'è un cumün" in x or "El cumün de" in x or "El cunfìna coi cümü" in x or "l'è un cümü" in x or "l'è 'n cümü" in x or "e 'na densità de" in x) else x)
-df.loc[df['label'] == 9, 'text'] = df.loc[df['label'] == 9, 'text'].apply(lambda x: np.nan if ("el xe on comun de" in x or "el xe un comun" in x or "gregorian" in x) else x)
-
-df.dropna(inplace=True)
-df.drop_duplicates(subset='text', keep=False, inplace=True)
-
-
-# ====== Wikidata + MediaWiki enrichment ======
+# ===== helpers per l'enrichment via API =====
 
 def _load_cache(path):
     if path.exists():
@@ -323,8 +247,6 @@ def fetch_wikidata_batch(batch_titles, wiki_site):
     """Given a batch of up to 50 page titles, return {title: {qid, topic, title_en}}."""
     if not batch_titles:
         return {}
-    # note: 'normalize' only works for single-title calls on wbgetentities,
-    # so we do our own loose matching on underscores/spaces via _norm() below.
     params = {
         'action': 'wbgetentities',
         'sites': wiki_site,
@@ -343,7 +265,6 @@ def fetch_wikidata_batch(batch_titles, wiki_site):
         if wiki_site not in sitelinks:
             continue
         wiki_title = sitelinks[wiki_site].get('title', '')
-        # topic via P31
         topic = 'altro'
         for claim in entity.get('claims', {}).get('P31', []):
             try:
@@ -353,7 +274,6 @@ def fetch_wikidata_batch(batch_titles, wiki_site):
             if p31_qid in P31_TO_TOPIC:
                 topic = P31_TO_TOPIC[p31_qid]
                 break
-        # title_en
         title_en = entity.get('labels', {}).get('en', {}).get('value', '')
         out[wiki_title] = {'qid': qid, 'topic': topic, 'title_en': title_en}
     return out
@@ -387,46 +307,24 @@ def fetch_categories_batch(batch_titles, host):
 
 
 def _norm(t):
-    """Normalize a title for loose matching (underscores vs spaces)."""
     return t.replace('_', ' ').strip()
 
 
-if ENRICH_VIA_API:
-    print("Enriching via Wikidata + MediaWiki (cached on disk)...")
-else:
-    print("Skipping API enrichment (ENRICH_VIA_API=False). "
-          "qid/topic/title_en/categories resteranno vuoti.")
-
-# Build meta DataFrame: one row per unique (label, article_id)
-meta_df = df[['label', 'article_id', 'title', 'url']].drop_duplicates(
-    subset=['label', 'article_id']
-).reset_index(drop=True).copy()
-meta_df['qid'] = ''
-meta_df['topic'] = ''
-meta_df['title_en'] = ''
-meta_df['categories'] = ''
-
-for folder, lbl in (fold_label.items() if ENRICH_VIA_API else []):
-    if folder not in dialects:
-        continue
-    sub_mask = meta_df['label'] == lbl
-    if not sub_mask.any():
-        continue
+def _enrich_meta_inplace(meta_df, folder):
+    """Riempe in-place le colonne qid/topic/title_en/categories via API."""
     wiki_site = folder_to_wiki[folder]
     host = folder_to_host[folder]
 
-    unique_titles = meta_df.loc[sub_mask, 'title'].unique().tolist()
+    unique_titles = meta_df['title'].unique().tolist()
 
-    # Wikidata
     wd_path = CACHE_DIR / f"wikidata_{folder}.json"
     wd_cache = _load_cache(wd_path)
     missing = [t for t in unique_titles if t not in wd_cache]
     if missing:
-        print(f"  {folder}: {len(unique_titles)} titoli unici, {len(missing)} da recuperare da Wikidata")
+        print(f"  {folder}: {len(unique_titles)} titoli unici, {len(missing)} da Wikidata")
         for batch in tqdm(list(_chunks(missing, 50)), desc=f"Wikidata {folder}"):
             result = _with_retry(fetch_wikidata_batch, batch, wiki_site, label=f"Wikidata {folder}")
             if result is None:
-                # batch failed after retries: do NOT cache, so next run retries
                 time.sleep(1.0)
                 continue
             norm_result = {_norm(k): v for k, v in result.items()}
@@ -436,16 +334,14 @@ for folder, lbl in (fold_label.items() if ENRICH_VIA_API else []):
             _save_cache(wd_cache, wd_path)
             time.sleep(0.3)
 
-    # MediaWiki categories
     cat_path = CACHE_DIR / f"categories_{folder}.json"
     cat_cache = _load_cache(cat_path)
     missing = [t for t in unique_titles if t not in cat_cache]
     if missing:
-        print(f"  {folder}: {len(missing)} da recuperare da MediaWiki (categorie)")
+        print(f"  {folder}: {len(missing)} da MediaWiki (categorie)")
         for batch in tqdm(list(_chunks(missing, 50)), desc=f"Categorie {folder}"):
             result = _with_retry(fetch_categories_batch, batch, host, label=f"Categorie {folder}")
             if result is None:
-                # batch failed after retries: do NOT cache, so next run retries
                 time.sleep(1.0)
                 continue
             norm_result = {_norm(k): v for k, v in result.items()}
@@ -457,7 +353,6 @@ for folder, lbl in (fold_label.items() if ENRICH_VIA_API else []):
             _save_cache(cat_cache, cat_path)
             time.sleep(0.3)
 
-    # Apply to meta_df rows of this dialect
     def _lookup_wd(t, field):
         v = wd_cache.get(t, {})
         if isinstance(v, dict):
@@ -470,40 +365,188 @@ for folder, lbl in (fold_label.items() if ENRICH_VIA_API else []):
             return '|'.join(v)
         return ''
 
-    titles_sub = meta_df.loc[sub_mask, 'title']
-    meta_df.loc[sub_mask, 'qid'] = titles_sub.map(lambda t: _lookup_wd(t, 'qid'))
-    meta_df.loc[sub_mask, 'topic'] = titles_sub.map(lambda t: _lookup_wd(t, 'topic'))
-    meta_df.loc[sub_mask, 'title_en'] = titles_sub.map(lambda t: _lookup_wd(t, 'title_en'))
-    meta_df.loc[sub_mask, 'categories'] = titles_sub.map(_lookup_cats)
+    meta_df['qid'] = meta_df['title'].map(lambda t: _lookup_wd(t, 'qid'))
+    meta_df['topic'] = meta_df['title'].map(lambda t: _lookup_wd(t, 'topic'))
+    meta_df['title_en'] = meta_df['title'].map(lambda t: _lookup_wd(t, 'title_en'))
+    meta_df['categories'] = meta_df['title'].map(_lookup_cats)
 
 
-# n_sentences per (label, article_id) from the main df
-counts = df.groupby(['label', 'article_id']).size().reset_index(name='n_sentences')
-meta_df = meta_df.merge(counts, on=['label', 'article_id'], how='left')
-meta_df['n_sentences'] = meta_df['n_sentences'].fillna(0).astype(int)
+# ===== spaCy: carichiamo i modelli una volta sola =====
 
-# drop meta/disambigua/lista articles from BOTH files
-meta_drop = meta_df[meta_df['topic'] == 'meta'][['label', 'article_id']]
-if len(meta_drop) > 0:
-    drop_keys = set(zip(meta_drop['label'].tolist(), meta_drop['article_id'].tolist()))
-    keys_series = list(zip(df['label'].tolist(), df['article_id'].tolist()))
-    keep_mask = [k not in drop_keys for k in keys_series]
-    df = df[keep_mask].reset_index(drop=True)
-    meta_df = meta_df[meta_df['topic'] != 'meta'].reset_index(drop=True)
+import spacy
 
-# ====== Save ======
+# Strategia ibrida:
+# - label 0-10 (solo dialetti italo-romanzi): parser statistico
+#   it_core_news_sm, come nella versione originale del progetto
+# - label 11-19 (italiano standard + es/fr/ca/de/el/ar/sl/en):
+#   sentencizer rule-based. Sull'italiano standard la differenza pratica e'
+#   minima (abbreviazioni tipo "art." producono false frasi brevi che poi
+#   vengono scartate dal filtro len<=20), sulle altre lingue il parser
+#   italiano sarebbe comunque sbagliato.
+nlp_it = spacy.load("it_core_news_sm", disable=['ner', 'lemmatizer', 'textcat', 'custom', 'tagger'])
+nlp_other = spacy.blank("xx")
+nlp_other.add_pipe("sentencizer")
 
-print("Salvataggio file per dialetto...")
+DIALECT_LABELS_MAX = 10  # <=10 dialetti (parser), >10 italiano + altre lingue (sentencizer)
 
-for lbl, sub in df.groupby("label"):
-    fname = dial_label[int(lbl)].lower() + ".csv"
-    sub[['text', 'label', 'article_id']].to_csv(fname, index=None)
-    print(f"  -> {fname} ({len(sub)} frasi)")
 
-for lbl, sub in meta_df.groupby("label"):
-    fname = dial_label[int(lbl)].lower() + "_meta.csv"
-    cols = ['article_id', 'title', 'url', 'qid', 'topic', 'title_en', 'categories', 'n_sentences']
-    sub[cols].to_csv(fname, index=None)
-    print(f"  -> {fname} ({len(sub)} articoli)")
+# ===== core: process one dialect at a time, resume-friendly =====
 
-print("Dataset created.")
+def process_dialect(d):
+    """Carica, pulisce, splitta e salva i CSV per UNO dialetto. Skippa se gia' fatto."""
+    lbl = fold_label[d]
+    name = dial_label[lbl].lower()
+    out_main = Path(f"{name}.csv")
+    out_meta = Path(f"{name}_meta.csv")
+
+    if out_main.exists() and out_meta.exists():
+        print(f"[skip] {d}: {out_main.name} e {out_meta.name} esistono gia'")
+        return
+
+    print(f"\n=== {d} (label={lbl}, output={name}.csv) ===")
+
+    aa_dir = os.path.join(d, "AA")
+    if not os.path.isdir(aa_dir):
+        print(f"  [warn] {aa_dir} non esiste, skip")
+        return
+
+    # --- load articles ---
+    rows = []
+    for fname in os.listdir(aa_dir):
+        with open(os.path.join(aa_dir, fname), "r") as f:
+            for line in f:
+                jline = json.loads(line)
+                if not jline.get('text'):
+                    continue
+                rows.append([int(jline['id']), jline['url'], jline['title'], jline['text'], lbl])
+    print(f"  {len(rows)} articoli caricati")
+    if not rows:
+        return
+
+    df = pd.DataFrame(rows, columns=['id', 'url', 'title', 'text', 'label'])
+    del rows
+
+    # --- clean article text ---
+    df['text'] = df['text'].apply(clean)
+    df.dropna(subset=['text'], inplace=True)
+    df.drop_duplicates(subset='text', keep=False, inplace=True)
+    print(f"  {len(df)} articoli dopo cleaning")
+    if len(df) == 0:
+        return
+
+    # --- sentence split ---
+    if lbl <= DIALECT_LABELS_MAX:
+        nlp = nlp_it
+        batch_size = 64
+        split_desc = "Parser IT"
+    else:
+        nlp = nlp_other
+        batch_size = 512
+        split_desc = "Sentencizer"
+
+    texts = df['text'].tolist()
+    ids_list = df['id'].tolist()
+    titles_list = df['title'].tolist()
+    urls_list = df['url'].tolist()
+    del df
+
+    X, Y, AIDS, TITLES, URLS = [], [], [], [], []
+    for i, doc in enumerate(tqdm(nlp.pipe(texts, batch_size=batch_size),
+                                  total=len(texts),
+                                  desc=f"{split_desc} {d}")):
+        for sent in doc.sents:
+            X.append(sent.text)
+            Y.append(lbl)
+            AIDS.append(ids_list[i])
+            TITLES.append(titles_list[i])
+            URLS.append(urls_list[i])
+    del texts, ids_list, titles_list, urls_list
+
+    if not X:
+        print("  nessuna frase estratta, skip")
+        return
+
+    df = pd.DataFrame({
+        'text': X,
+        'label': Y,
+        'article_id': AIDS,
+        'title': TITLES,
+        'url': URLS,
+    })
+    del X, Y, AIDS, TITLES, URLS
+
+    # --- sentence-level cleaning ---
+    df['text'] = df['text'].apply(lambda x: x.replace("http://www.sil.org/iso639-3/documentation.asp?id=", ""))
+    df['text'] = df['text'].apply(lambda x: x.replace("&lt;br clear=all&gt;", ""))
+    df['text'] = df['text'].apply(lambda x: x.replace("Evulusiù demogràfica.", ""))
+    df['text'] = df['text'].apply(lambda x: x.replace("&lt;br&gt;&lt;br&gt;", ""))
+    df['text'] = df['text'].apply(lambda x: x.replace("ł", "l"))
+    df['text'] = df['text'].apply(lambda x: x.replace("Ł", "l"))
+    df['text'] = df['text'].apply(lambda x: np.nan if len(x) <= 20 else x)
+    df.dropna(subset=['text'], inplace=True)
+
+    # --- per-dialect stub filters (solo PMS/LMO/VEC) ---
+    if lbl == 2:  # PMS
+        df['text'] = df['text'].apply(lambda x: np.nan if ("grup ëd popolassion." in x or "A confin-a con " in x or "a l’é na comun-a ëd" in x or "con na densità" in x or "A së stend" in x or "As dëstend për" in x or "a l'é na comun" in x or "La lenga" in x or "Në schema" in x or "Ël sìndich a l'é" in x or "a l'é un comun" in x) else x)
+    elif lbl == 6:  # LMO
+        df['text'] = df['text'].apply(lambda x: np.nan if ("La Stazzion de" in x or "El cumün" in x or "a l'è una cità" in x or "El Passaport" in x or "la se tróa a 'na" in x or "a l'è 'na ferrovia" in x or "L'è taccada a stazione di" in x or "La a l'è 'na strada" in x or "L'andament del numer de abitant" in x or "L'andament del nömer dei abitàncc" in x or "l'è menziunaa la prima volta" in x or "l'è 'na stazion de la" in x or "L'andamènt del nömer dei abitàncc" in x or "La Stazion de" in x or "El Distret" in x or "El cümü" in x or "km²" in x or "Al gh’ha pressapoch abitant" in x or "l'è un cumün" in x or "El cumün de" in x or "El cunfìna coi cümü" in x or "l'è un cümü" in x or "l'è 'n cümü" in x or "e 'na densità de" in x) else x)
+    elif lbl == 9:  # VEC
+        df['text'] = df['text'].apply(lambda x: np.nan if ("el xe on comun de" in x or "el xe un comun" in x or "gregorian" in x) else x)
+
+    df.dropna(subset=['text'], inplace=True)
+    df.drop_duplicates(subset='text', keep=False, inplace=True)
+    print(f"  {len(df)} frasi dopo cleaning/filtri")
+    if len(df) == 0:
+        return
+
+    # --- meta ---
+    meta_df = (df[['label', 'article_id', 'title', 'url']]
+               .drop_duplicates(subset=['label', 'article_id'])
+               .reset_index(drop=True)
+               .copy())
+    meta_df['qid'] = ''
+    meta_df['topic'] = ''
+    meta_df['title_en'] = ''
+    meta_df['categories'] = ''
+
+    if ENRICH_VIA_API:
+        _enrich_meta_inplace(meta_df, d)
+
+    counts = df.groupby(['label', 'article_id']).size().reset_index(name='n_sentences')
+    meta_df = meta_df.merge(counts, on=['label', 'article_id'], how='left')
+    meta_df['n_sentences'] = meta_df['n_sentences'].fillna(0).astype(int)
+
+    # drop meta/disambigua/lista
+    if ENRICH_VIA_API and (meta_df['topic'] == 'meta').any():
+        drop_aids = set(meta_df.loc[meta_df['topic'] == 'meta', 'article_id'].tolist())
+        df = df[~df['article_id'].isin(drop_aids)].reset_index(drop=True)
+        meta_df = meta_df[meta_df['topic'] != 'meta'].reset_index(drop=True)
+
+    # --- save (scriviamo prima .tmp e poi rinominiamo, cosi' i file finali
+    #     esistono solo se il salvataggio e' completo e un crash a meta'
+    #     non lascia CSV troncati) ---
+    tmp_main = out_main.with_suffix('.csv.tmp')
+    tmp_meta = out_meta.with_suffix('.csv.tmp')
+    df[['text', 'label', 'article_id']].to_csv(tmp_main, index=False)
+    meta_df[['article_id', 'title', 'url', 'qid', 'topic', 'title_en', 'categories', 'n_sentences']].to_csv(tmp_meta, index=False)
+    tmp_main.replace(out_main)
+    tmp_meta.replace(out_meta)
+    print(f"  -> {out_main} ({len(df)} frasi)")
+    print(f"  -> {out_meta} ({len(meta_df)} articoli)")
+
+
+# ===== main =====
+
+if ENRICH_VIA_API:
+    print("Enriching via Wikidata + MediaWiki (cached on disk)...")
+else:
+    print("Skipping API enrichment (ENRICH_VIA_API=False). "
+          "qid/topic/title_en/categories resteranno vuoti.")
+
+for d in dialects:
+    if d not in fold_label:
+        print(f"[warn] cartella sconosciuta: {d}, skip")
+        continue
+    process_dialect(d)
+
+print("\nDataset created.")
