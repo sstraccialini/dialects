@@ -1,0 +1,8 @@
+Loading data using MODEL: xlm-roberta-base
+Loaded 14000 total sentences across 14 languages.
+Initializing Multi-lingual Embedder (e.g. mBERT / XLM-R)
+Loading xlm-roberta-base onto cuda...
+Extraction successful. Encoding matrix shape: (14000, 768)
+Performing cross-language structural alignment & grouping computations...
+Done generating clustering visualizations.
+Pipeline completed successfully in 92.43s.
