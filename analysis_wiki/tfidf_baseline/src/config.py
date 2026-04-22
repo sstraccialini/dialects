@@ -92,7 +92,7 @@ VARIETIES = [
     ("ar",  "semitic"),
     ("sl",  "slavic"),
     # Control
-    ("en",  "germanic"),
+    ("en",  "english"),
 ]
 
 VARIETY_CODES = [code for code, _ in VARIETIES]
@@ -125,7 +125,8 @@ GROUP_NAMES = {
     "italo_romance": "Italo-Romance",
     "italian":       "Italian (standard)",
     "romance":       "Romance (ES, FR, CA)",
-    "germanic":      "Germanic (EN, DE)",
+    "germanic":      "Germanic (German)",
+    "english":       "English",
     "greek":         "Greek",
     "semitic":       "Arabic",
     "slavic":        "Slovenian",
@@ -182,6 +183,7 @@ GROUP_COLORS = {
     "italian":       "#ff7f0e",  # orange
     "romance":       "#2ca02c",  # green
     "germanic":      "#1f77b4",  # blue
+    "english":       "#17becf",  # cyan
     "greek":         "#9467bd",  # purple
     "semitic":       "#8c564b",  # brown
     "slavic":        "#e377c2",  # pink

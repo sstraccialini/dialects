@@ -6,7 +6,7 @@ Tools:
 - sklearn.metrics.silhouette_score: cluster coherence vs external labels
 
 External labels:
-- family label: fine-grained (italo_romance, italian, romance, germanic,
+- family label: fine-grained (italo_romance, italian, romance, germanic, english,
   greek, semitic, slavic). Same as the 'group' column in config.VARIETIES.
 - romance label: binary romance vs non-romance (coarser, easier to
   interpret as a first sanity check).
@@ -175,7 +175,7 @@ def save_silhouette_report(reports: List[dict]) -> Path:
         lines.append(f"  dendrogram           = {r['dendrogram_path']}")
         lines.append("")
     lines.append("Notes:")
-    lines.append("  - family labels: italo_romance, italian, romance, germanic,")
+    lines.append("  - family labels: italo_romance, italian, romance, germanic, english,")
     lines.append("    greek, semitic, slavic (from config.VARIETIES).")
     lines.append("  - romance vs rest: binary, romance = {italo_romance, italian, romance}.")
     lines.append("  - Silhouette range: [-1, 1]. >0.2 good, >0.5 excellent, ~0 no structure.")
