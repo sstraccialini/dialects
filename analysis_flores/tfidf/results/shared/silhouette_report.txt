@@ -1,0 +1,20 @@
+Silhouette report
+============================================================
+
+Pipeline: word
+  n_varieties          = 16
+  silhouette (family)  = -0.0092
+  silhouette (romance) = +0.0148
+  dendrogram           = /Users/federicoferrari/Desktop/Language-Technology-Project/analysis_flores/tfidf/results/word/dendrogram.png
+
+Pipeline: char
+  n_varieties          = 16
+  silhouette (family)  = -0.0548
+  silhouette (romance) = +0.0970
+  dendrogram           = /Users/federicoferrari/Desktop/Language-Technology-Project/analysis_flores/tfidf/results/char/dendrogram.png
+
+Notes:
+  - family labels: italo_romance, italian, romance, germanic,
+    greek, semitic, slavic (from config.VARIETIES).
+  - romance vs rest: binary, romance = {italo_romance, italian, romance}.
+  - Silhouette range: [-1, 1]. >0.2 good, >0.5 excellent, ~0 no structure.

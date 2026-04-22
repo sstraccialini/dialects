@@ -18,9 +18,9 @@ data/*.xml.bz2
 .idea/
 *.swp
 
-# datasets folder but not the .gitkeep file
-datasets/*
-!datasets/.gitkeep
+# wiki_data folder but not the .gitkeep file
+wiki_data/*
+!wiki_data/.gitkeep
 
 word2vec/results/combined_corpus.csv
 word2vec/.venv/

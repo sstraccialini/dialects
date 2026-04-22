@@ -26,9 +26,9 @@ dumps = [
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
-BASE_DIR = PROJECT_ROOT / 'datasets'
+BASE_DIR = PROJECT_ROOT / 'wiki_data'
 
-# create datasets directory if it doesn't exist
+# create wiki_data directory if it doesn't exist
 BASE_DIR.mkdir(parents=True, exist_ok=True)
 
 for url, output_dir in dumps:
