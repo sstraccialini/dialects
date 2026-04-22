@@ -28,3 +28,6 @@ word2vec/results/combined_corpus.csv
 word2vec/results/matrices/*.npz
 word2vec/results/models/
 word2vec/results/**/*.npy
+
+# subword_fasttext models (file troppo grandi per GitHub)
+subword_fasttext/results/models/
