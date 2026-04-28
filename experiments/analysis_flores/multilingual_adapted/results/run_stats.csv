@@ -1,0 +1,17 @@
+code,n_available,n_used,sample_size_param,random_state,model_name
+veneto,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+siciliano,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+lombardo,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+sardo,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+ligure,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+friulano,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+ladino,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+italiano,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+spagnolo,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+francese,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+catalano,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+tedesco,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+inglese,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+greco,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+arabo,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
+sloveno,2009,2009,2009,42,/home/3226571/xlmr-adapted-italian-dialects
