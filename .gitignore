@@ -9,25 +9,28 @@ __pycache__/
 # macOS
 .DS_Store
 
-# Wikipedia dump intermediates (cartelle pesanti)
-data/*_texts/
-data/*.xml.bz2
-
 # Editor / IDE
 .vscode/
 .idea/
 *.swp
 
-# wiki_data folder but not the .gitkeep file
-wiki_data/*
-!wiki_data/.gitkeep
+# Per-user SLURM paths (each group member edits their own copy on HPC).
+slurm/tools/env.local.sh
 
-word2vec/results/combined_corpus.csv
-word2vec/.venv/
-word2vec/results/combined_corpus.csv
-word2vec/results/matrices/*.npz
-word2vec/results/models/
-word2vec/results/**/*.npy
+# SLURM job logs
+slurm/logs/*
+!slurm/logs/.gitkeep
 
-# subword_fasttext models (file troppo grandi per GitHub)
-subword_fasttext/results/models/
+# Wikipedia dump intermediates and bz2 archives (heavy)
+Dataset/wiki/*_texts/
+Dataset/wiki/*.xml.bz2
+
+# Method-specific binary artefacts (too large for GitHub).
+# Vectors / models live under method_outputs/; evaluation outputs are kept.
+analysis/**/method_outputs/models/
+analysis/**/method_outputs/**/*.bin
+analysis/**/method_outputs/**/*.bin.*
+analysis/**/method_outputs/**/*.safetensors
+analysis/**/method_outputs/**/*.npy
+analysis/**/method_outputs/**/sentence_vectors.npz
+analysis/**/method_outputs/**/combined_corpus.csv

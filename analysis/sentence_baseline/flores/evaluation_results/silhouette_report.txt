@@ -1,0 +1,14 @@
+Silhouette report
+============================================================
+
+Pipeline: sentence
+  n_varieties          = 16
+  silhouette (family)  = +0.2764
+  silhouette (romance) = +0.2520
+  dendrogram           = /mnt/beegfsstudents/home/3226571/experiments/analysis_flores/sentence_baseline/results/sentence/dendrogram.png
+
+Notes:
+  - family labels: italo_romance, italian, romance, germanic, english,
+    greek, semitic, slavic (from config.VARIETIES).
+  - romance vs rest: binary, romance = {italo_romance, italian, romance}.
+  - Silhouette range: [-1, 1]. >0.2 good, >0.5 excellent, ~0 no structure.

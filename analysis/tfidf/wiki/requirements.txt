@@ -1,0 +1,7 @@
+# Dipendenze aggiuntive per la baseline TF-IDF (Persona 1).
+# Il requirements.txt principale del repo copre gia' pandas/numpy.
+# Installare con:  pip install -r tfidf_baseline/requirements.txt
+scikit-learn>=1.3.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+seaborn>=0.12.0

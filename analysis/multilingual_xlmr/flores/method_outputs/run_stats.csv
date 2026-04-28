@@ -1,0 +1,17 @@
+code,n_available,n_used,sample_size_param,random_state,model_name
+veneto,2009,2009,2009,42,xlm-roberta-base
+siciliano,2009,2009,2009,42,xlm-roberta-base
+lombardo,2009,2009,2009,42,xlm-roberta-base
+sardo,2009,2009,2009,42,xlm-roberta-base
+ligure,2009,2009,2009,42,xlm-roberta-base
+friulano,2009,2009,2009,42,xlm-roberta-base
+ladino,2009,2009,2009,42,xlm-roberta-base
+italiano,2009,2009,2009,42,xlm-roberta-base
+spagnolo,2009,2009,2009,42,xlm-roberta-base
+francese,2009,2009,2009,42,xlm-roberta-base
+catalano,2009,2009,2009,42,xlm-roberta-base
+tedesco,2009,2009,2009,42,xlm-roberta-base
+inglese,2009,2009,2009,42,xlm-roberta-base
+greco,2009,2009,2009,42,xlm-roberta-base
+arabo,2009,2009,2009,42,xlm-roberta-base
+sloveno,2009,2009,2009,42,xlm-roberta-base
