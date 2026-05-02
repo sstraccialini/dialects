@@ -5,3 +5,5 @@ gensim>=4.3
 sentence-transformers>=2.6
 datasets>=2.19
 umap-learn>=0.5
+sentencepiece>=0.1.99
+matplotlib>=3.7

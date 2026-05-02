@@ -1,10 +1,20 @@
 # Python virtualenvs
 venv/
+venv_steering/
 .venv/
 env/
 __pycache__/
 *.pyc
 *.pyo
+
+# Per-user steering experiments (local-only, not committed)
+steering_local/
+
+# Analysis pipelines kept local-only (not part of the shared repo).
+analysis/zeroshot_ppl/
+analysis/steering/
+analysis/multilingual_xlmr_adapted/
+analysis/sentence_labse/
 
 # macOS
 .DS_Store

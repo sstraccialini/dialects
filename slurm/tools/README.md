@@ -10,14 +10,13 @@ Bocconi cluster, partition `stud` (qos `stud`), 1 GPU per job.
 
 ```bash
 cp slurm/tools/env.local.example.sh slurm/tools/env.local.sh
-${EDITOR:-nano} slurm/tools/env.local.sh   # set LTP_VENV / FLUX_ENV / LTP_HF_CACHE
+${EDITOR:-nano} slurm/tools/env.local.sh   # set LTP_VENV / LTP_HF_CACHE
 bash slurm/tools/setup_env.sh
 ```
 
-`setup_env.sh` creates the project's clean Python venv at `LTP_VENV`,
-optionally piggy-backs on a shared read-only `flux_env`'s site-packages
-to skip ~3 GB of duplicate downloads, and installs the rest of
-`requirements.txt`.
+`setup_env.sh` creates the project's clean Python venv at `LTP_VENV` and
+installs everything from `requirements.txt`. Each group member maintains
+their own venv — do not point `LTP_VENV` at someone else's directory.
 
 ## Files
 
@@ -25,9 +24,9 @@ to skip ~3 GB of duplicate downloads, and installs the rest of
 |---|---|
 | `env.sh` | sourced by every SLURM job; activates `LTP_VENV` and exports `PROJECT_ROOT`, `HF_HOME`, ... reads per-user paths from `env.local.sh`. |
 | `env.local.example.sh` | template — copy to `env.local.sh` and edit. |
-| `env.local.sh` | gitignored, per-user paths (`LTP_VENV`, `FLUX_ENV`, `LTP_HF_CACHE`). |
+| `env.local.sh` | gitignored, per-user paths (`LTP_VENV`, `LTP_HF_CACHE`). |
 | `setup_env.sh` | one-time bootstrap on a login node. |
-| `requirements.txt` | additional pip packages (on top of any flux_env). |
+| `requirements.txt` | pip packages installed into `LTP_VENV`. |
 
 ## Submit jobs
 
