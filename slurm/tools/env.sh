@@ -27,10 +27,15 @@ fi
 : "${LTP_VENV:=$HOME/ltp_env}"
 : "${LTP_HF_CACHE:=$HOME/ltp_hf_cache}"
 
-# Activate the project venv.
+# Activate the project venv or conda env.
 if [ -f "$LTP_VENV/bin/activate" ]; then
+    # standard venv
     # shellcheck disable=SC1091
     source "$LTP_VENV/bin/activate"
+elif [ -f "$LTP_VENV/bin/python" ]; then
+    # conda env (no bin/activate): prepend bin/ to PATH directly
+    export PATH="$LTP_VENV/bin:$PATH"
+    export CONDA_PREFIX="$LTP_VENV"
 else
     echo "[env.sh] WARNING: $LTP_VENV/bin/activate not found" >&2
     echo "         run 'bash slurm/tools/setup_env.sh' on a login node first." >&2
