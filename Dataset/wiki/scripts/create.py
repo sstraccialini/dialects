@@ -15,8 +15,12 @@ from pathlib import Path
 #   scwiki   -> sc_texts    p2p23475
 #   itwiki, eswiki, frwiki, cawiki, dewiki, elwiki, arwiki, slwiki, enwiki
 dumps = [
-    ('https://dumps.wikimedia.org/other/mediawiki_content_current/furwiki/2026-04-01/xml/bzip2/furwiki-2026-04-01-p1p14311.xml.bz2', 'fur_texts'),
-    ('https://dumps.wikimedia.org/other/mediawiki_content_current/lijwiki/2026-04-01/xml/bzip2/lijwiki-2026-04-01-p2p32679.xml.bz2', 'lij_texts'),
+    ('https://dumps.wikimedia.org/other/mediawiki_content_current/furwiki/2026-04-01/xml/bzip2/furwiki-2026-04-01-p1p14311.xml.bz2',  'fur_texts'),
+    ('https://dumps.wikimedia.org/other/mediawiki_content_current/lijwiki/2026-04-01/xml/bzip2/lijwiki-2026-04-01-p2p32679.xml.bz2',  'lij_texts'),
+    ('https://dumps.wikimedia.org/other/mediawiki_content_current/lmowiki/2026-04-01/xml/bzip2/lmowiki-2026-04-01-p1p279182.xml.bz2', 'lmo_texts'),
+    ('https://dumps.wikimedia.org/other/mediawiki_content_current/scwiki/2026-04-01/xml/bzip2/scwiki-2026-04-01-p2p23475.xml.bz2',    'sc_texts'),
+    ('https://dumps.wikimedia.org/other/mediawiki_content_current/scnwiki/2026-04-01/xml/bzip2/scnwiki-2026-04-01-p1p67086.xml.bz2',  'scn_texts'),
+    ('https://dumps.wikimedia.org/other/mediawiki_content_current/vecwiki/2026-04-01/xml/bzip2/vecwiki-2026-04-01-p3p154496.xml.bz2', 'vec_texts'),
 ]
 
 SCRIPT_DIR = Path(__file__).resolve().parent  # Dataset/wiki/scripts/

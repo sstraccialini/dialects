@@ -1,552 +1,430 @@
-import os
+"""
+Wikipedia preprocessing pipeline for Italo-Romance varieties.
+
+Architecture: **Camposampiero/ETHZ-first** (article-level cleaning + spaCy
+sentence splitting), with SUKI used as a selective addition for markup
+regex sets and per-variety boilerplate patterns.
+
+Why this architecture (and not line-level / SUKI-first):
+  When we used SUKI's line-level cleanup BEFORE the spaCy splitter, the
+  articles we fed to spaCy were "moncated" — entire wikiextractor lines
+  were missing in the middle. The resulting sentences were short,
+  broken, and incoherent ("frasi buttate a caso"). Camposampiero/ETHZ
+  cleans the entire article text first and only then splits, producing
+  far more natural sentences.
+
+References:
+  - Jauhiainen et al. 2022 (SUKI):
+      https://aclanthology.org/2022.vardial-1.13/
+  - Camposampiero et al. 2022 (ETHZ):
+      https://aclanthology.org/2022.vardial-1.10/
+
+Pipeline:
+  Stage 1. Load each wikiextractor article (full text, not split into lines).
+  Stage 2. Article-level cleaning:
+             a. html.unescape (Camposampiero/ETHZ — entities)
+             b. drop wiki headers ==...==
+             c. SUKI markup regex sets 1+2 applied to the full article
+             d. strip stray <, br>, residual entities
+             e. whitespace collapse
+             f. drop articles shorter than 50 chars (Camposampiero/ETHZ)
+  Stage 3. Article-level deduplication.
+  Stage 4. Sentence split with spaCy IT (it_core_news_sm) on the cleaned
+           full-article texts.
+  Stage 5. Sentence-level filters:
+             - drop sentences shorter than 20 chars
+             - drop sentences without any lowercase ASCII letter
+             - drop sentences without a word starting with lowercase ASCII
+             - per-variety filters (SUKI VEC patterns + Camposampiero
+               LMO/VEC substring patterns)
+  Stage 6. Sentence-level deduplication (keep="first").
+  Stage 7. Save <code>.csv, <code>_meta.csv, <code>_stats.json (atomic).
+
+Per-variety filters:
+  - VEC: SUKI French commune + SUKI Italian commune + SUKI Roman numbers
+         + Camposampiero "el xe un comun" + Camposampiero "gregorian".
+  - LMO: 24 Camposampiero substring patterns + SUKI len<14 short-line filter.
+  - fur, lij, sc, scn: no per-variety filter (no published patterns yet).
+
+Choices that depart from SUKI for FLORES/OLDI consistency:
+  - NO digit→1 substitution (FLORES/OLDI keep real digits).
+  - NO ł→l normalization (FLORES/OLDI veneto keep ł in 82-83% of rows).
+
+The script is meant to be invoked from `Dataset/wiki/`, where the
+wikiextractor `<lang>_texts/` folders sit. It writes its outputs (and the
+stats JSON) right next to them, then `create.py` cleans up the
+intermediates.
+"""
+
+from __future__ import annotations
+
+import html
 import json
-import pandas as pd
+import os
 import re
-from tqdm import tqdm
-import numpy as np
-import urllib.request
-import urllib.parse
-import urllib.error
+import sys
 from pathlib import Path
-import time
 
-print("Generating the dataset...")
+import pandas as pd
+import spacy
+from tqdm import tqdm
 
-# list of dialects in the training set
-dialects = [d for d in os.listdir(".") if not os.path.isfile(d) and d != '.ipynb_checkpoints' and d != '.cache' and not d.startswith('.')]
 
-# define dictionaries for string->int and int->label conversion
-fold_label = {
-    'eml_texts' : 0,
-    'nap_texts' : 1,
-    'pms_texts' : 2,
-    'fur_texts' : 3,
-    'lld_texts' : 4,
-    'lij_texts' : 5,
-    'lmo_texts' : 6,
-    'roa_tara_texts' : 7,
-    'scn_texts' : 8,
-    'vec_texts' : 9,
-    'sc_texts' : 10,
-    'it_texts' : 11,
-    'es_texts' : 12,
-    'fr_texts' : 13,
-    'ca_texts' : 14,
-    'de_texts' : 15,
-    'el_texts' : 16,
-    'ar_texts' : 17,
-    'sl_texts' : 18,
-    'en_texts' : 19,
+# --------------------------------------------------------------------------- #
+# Variety registry — italo-romance varieties shared by FLORES + OLDI.
+# --------------------------------------------------------------------------- #
+FOLD_LABEL = {
+    "fur_texts": 0,   # Friulian
+    "lij_texts": 1,   # Ligurian
+    "lmo_texts": 2,   # Lombard
+    "sc_texts":  3,   # Sardinian
+    "scn_texts": 4,   # Sicilian
+    "vec_texts": 5,   # Venetian
 }
-dial_label = {
-    0 : 'EML',
-    1 : 'NAP',
-    2 : 'PMS',
-    3 : 'FUR',
-    4 : 'LLD',
-    5 : 'LIJ',
-    6 : 'LMO',
-    7 : 'ROA_TARA',
-    8 : 'SCN',
-    9 : 'VEC',
-    10 : 'SC',
-    11 : 'ITA',
-    12 : 'ES',
-    13 : 'FR',
-    14 : 'CA',
-    15 : 'DE',
-    16 : 'EL',
-    17 : 'AR',
-    18 : 'SL',
-    19 : 'EN',
-}
-
-# folder -> Wikidata site id (for wbgetentities sites=...)
-folder_to_wiki = {
-    'eml_texts': 'emlwiki',
-    'nap_texts': 'napwiki',
-    'pms_texts': 'pmswiki',
-    'fur_texts': 'furwiki',
-    'lld_texts': 'lldwiki',
-    'lij_texts': 'lijwiki',
-    'lmo_texts': 'lmowiki',
-    'roa_tara_texts': 'roa_tarawiki',
-    'scn_texts': 'scnwiki',
-    'vec_texts': 'vecwiki',
-    'sc_texts': 'scwiki',
-    'it_texts': 'itwiki',
-    'es_texts': 'eswiki',
-    'fr_texts': 'frwiki',
-    'ca_texts': 'cawiki',
-    'de_texts': 'dewiki',
-    'el_texts': 'elwiki',
-    'ar_texts': 'arwiki',
-    'sl_texts': 'slwiki',
-    'en_texts': 'enwiki',
-}
-
-# folder -> hostname for MediaWiki category API
-folder_to_host = {
-    'eml_texts': 'eml.wikipedia.org',
-    'nap_texts': 'nap.wikipedia.org',
-    'pms_texts': 'pms.wikipedia.org',
-    'fur_texts': 'fur.wikipedia.org',
-    'lld_texts': 'lld.wikipedia.org',
-    'lij_texts': 'lij.wikipedia.org',
-    'lmo_texts': 'lmo.wikipedia.org',
-    'roa_tara_texts': 'roa-tara.wikipedia.org',
-    'scn_texts': 'scn.wikipedia.org',
-    'vec_texts': 'vec.wikipedia.org',
-    'sc_texts': 'sc.wikipedia.org',
-    'it_texts': 'it.wikipedia.org',
-    'es_texts': 'es.wikipedia.org',
-    'fr_texts': 'fr.wikipedia.org',
-    'ca_texts': 'ca.wikipedia.org',
-    'de_texts': 'de.wikipedia.org',
-    'el_texts': 'el.wikipedia.org',
-    'ar_texts': 'ar.wikipedia.org',
-    'sl_texts': 'sl.wikipedia.org',
-    'en_texts': 'en.wikipedia.org',
-}
-
-# P31 (instance of) QID -> macro topic bucket
-P31_TO_TOPIC = {
-    # persone
-    'Q5': 'persona',
-    # luoghi
-    'Q515': 'luogo',            # citta
-    'Q747074': 'luogo',         # comune in Italia
-    'Q1549591': 'luogo',        # big city
-    'Q3957': 'luogo',           # town
-    'Q532': 'luogo',            # village
-    'Q15284': 'luogo',          # municipality
-    'Q6256': 'luogo',           # country
-    'Q10742': 'luogo',          # frazione
-    'Q486972': 'luogo',         # human settlement
-    'Q22865': 'luogo',          # capital
-    'Q23397': 'luogo',          # lake
-    'Q8502': 'luogo',           # mountain
-    'Q4022': 'luogo',           # river
-    # opere
-    'Q11424': 'opera',          # film
-    'Q7725634': 'opera',        # opera letteraria
-    'Q571': 'opera',            # libro
-    'Q2188189': 'opera',        # composizione musicale
-    'Q7366': 'opera',           # canzone
-    'Q482994': 'opera',         # album
-    'Q5398426': 'opera',        # serie TV
-    # eventi
-    'Q1190554': 'evento',
-    'Q13418847': 'evento',      # evento storico
-    'Q198': 'evento',           # guerra
-    'Q178561': 'evento',        # battaglia
-    # organizzazioni
-    'Q43229': 'organizzazione',
-    'Q4830453': 'organizzazione',   # business
-    'Q783794': 'organizzazione',    # company
-    'Q327333': 'organizzazione',    # government agency
-    # specie / tassonomia
-    'Q16521': 'specie',
-    # meta (da droppare)
-    'Q4167410': 'meta',         # disambigua
-    'Q13406463': 'meta',        # lista
-    'Q11266439': 'meta',        # template
-    'Q4167836': 'meta',         # category
-}
-
-CACHE_DIR = Path(".cache")
-CACHE_DIR.mkdir(exist_ok=True)
-
-USER_AGENT = "italian-dialects-research/1.0 (educational project)"
-
-# Toggle: se False, salta le chiamate API a Wikidata e MediaWiki.
-# I campi qid/topic/title_en/categories restano stringhe vuote nel meta CSV.
-ENRICH_VIA_API = False
+DIAL_LABEL = {v: k.replace("_texts", "").upper() for k, v in FOLD_LABEL.items()}
 
 
-# ===== clean() per il testo dell'articolo =====
+# --------------------------------------------------------------------------- #
+# Article-level cleaning regexes.
+# --------------------------------------------------------------------------- #
+# Wiki headers like ==Storia==, ===Sotto-titolo===, ...
+HEADER = re.compile(r"=+\s*[^=]+\s*=+")
 
-def clean(text):
-    text = re.sub(r'==.*?==+', '', text)
-    text = text.replace("\n", " ")
-    text = text.replace('"', " ")
-    regex = re.compile('&[^;]+;')
-    text = re.sub(regex, '', text)
-    regex = re.compile('(graph.*/graph|\(.*\)|\[.*\]|parentid>.*/parentid>|BR[^>]+>|bR[^>]+>|Br[^>]+>|br[^>]+>|ns>.*/ns>|timestamp>.*/timestamp>|revision>.*/revision>|contributor>.*/contributor>|model>.*/model>|format>.*/format>|comment>.*/comment>)')
-    text = re.sub(regex, '', text)
-    regex = re.compile('(parentid.*/parentid|ns.*/ns|timestamp.*/timestamp|revision.*/revision|contributor.*/contributor|model.*/model|format.*/format|comment.*/comment)')
-    text = re.sub(regex, '', text)
-    text = text.replace("revision>", "")
-    text = text.replace("br>", "")
-    text = text.replace("Br>", "")
-    text = text.replace("bR>", "")
-    text = text.replace("BR>", "")
-    text = text.replace("/br>", "")
-    text = text.replace("/Br>", "")
-    text = text.replace("/bR>", "")
-    text = text.replace("/BR>", "")
-    text = text.replace("&quot;", "")
-    text = text.replace("br clear=all>", "")
+# SUKI markup set 1: drop the matched span. Applied at article level here.
+SUKI_MARKUP_1 = re.compile(
+    r"<comment>.*?</comment>"
+    r"|<contributor>"
+    r"|</contributor>"
+    r"|<format>.*?</format>"
+    r"|<ip>.*?</ip>"
+    r"|<minor\s*/>"
+    r"|<model>.*?</model>"
+    r"|<ns[^>]*>[^<]*</ns>"
+    r"|<parentid>.*?</parentid>"
+    r"|<revision>"
+    r"|<timestamp>.*?</timestamp>"
+    r"|<username>.*?</username>"
+)
+
+# SUKI markup set 2: drop the matched tag.
+SUKI_MARKUP_2 = re.compile(
+    r"</math>"
+    r"|</[pP]oem>"
+    r"|</small>"
+    r"|<references>"
+    r"|</html>"
+    r"|</includeonly></onlyinclude>"
+    r"|</table>"
+    r"|<\?php"
+    r"|<BR\s+C[^>]*>"
+    r"|#redirect",
+    re.IGNORECASE,
+)
+
+# Stray brackets / tags left over after the SUKI sweeps.
+STRAY = re.compile(r"<|br>")
+
+
+# --------------------------------------------------------------------------- #
+# Sentence-level filters.
+# --------------------------------------------------------------------------- #
+HAS_LOWER_ASCII = re.compile(r"[a-z]")
+HAS_WORD_LOWER = re.compile(r"(?:^|\s)[a-z]")
+
+
+# --------------------------------------------------------------------------- #
+# Per-variety patterns (SUKI + Camposampiero/ETHZ).
+# --------------------------------------------------------------------------- #
+# VEC — SUKI templates (regex).
+VEC_FRENCH_COMMUNE = re.compile(
+    r"el xe on comun de.*abitanti del departemento.*in Fransa\.",
+    re.IGNORECASE,
+)
+VEC_ROMAN_NUMBERS = re.compile(
+    r"\(L?[IVXC]+\s+(?:en|in)\s+numeri\s+romani\)", re.IGNORECASE,
+)
+VEC_ITALIAN_COMMUNE = re.compile(
+    r"el xe (?:on|un) comun italian de.*abitanti", re.IGNORECASE,
+)
+# VEC — Camposampiero/ETHZ extras (substring).
+VEC_CAMPOSAMPIERO_SUBSTRINGS = ("el xe un comun de", "gregorian")
+
+# LMO — Camposampiero/ETHZ substrings.
+LMO_CAMPOSAMPIERO_SUBSTRINGS = (
+    "La Stazzion de",
+    "La Stazion de",
+    "El cumün",
+    "El cümü",
+    "El cumün de",
+    "El Distret",
+    "El Passaport",
+    "El cunfìna coi cümü",
+    "km²",
+    "Al gh'ha pressapoch abitant",
+    "L'andament del numer de abitant",
+    "L'andament del nömer dei abitàncc",
+    "L'andamènt del nömer dei abitàncc",
+    "a l'è una cità",
+    "l'è 'na stazion de la",
+    "l'è un cumün",
+    "l'è un cümü",
+    "l'è 'n cümü",
+    "l'è menziunaa la prima volta",
+    "L'è taccada a stazione di",
+    "La a l'è 'na strada",
+    "a l'è 'na ferrovia",
+    "la se tróa a 'na",
+    "e 'na densità de",
+)
+LMO_MIN_LEN = 14  # SUKI
+
+
+# --------------------------------------------------------------------------- #
+# Cleaning functions.
+# --------------------------------------------------------------------------- #
+def clean_article(text: str) -> str | None:
+    """Apply article-level cleanup (Camposampiero/ETHZ + SUKI markup).
+
+    Returns the cleaned article text, or None if it should be discarded.
+    """
+    if not text:
+        return None
+    # 1. Decode HTML entities (Camposampiero/ETHZ).
+    text = html.unescape(text)
+    # 2. Drop wiki headers.
+    text = HEADER.sub(" ", text)
+    # 3. SUKI markup regex sets — drop matched spans.
+    text = SUKI_MARKUP_1.sub(" ", text)
+    text = SUKI_MARKUP_2.sub(" ", text)
+    # 4. Strip stray < and br>.
+    text = STRAY.sub(" ", text)
+    # 5. Whitespace normalize.
+    text = re.sub(r"\s+", " ", text).strip()
+    # 6. Length filter.
     if len(text) < 50:
-        text = np.nan
+        return None
     return text
 
 
-# ===== helpers per l'enrichment via API =====
-
-def _load_cache(path):
-    if path.exists():
-        try:
-            with open(path, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception:
-            return {}
-    return {}
-
-
-def _save_cache(cache, path):
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(cache, f, ensure_ascii=False)
-
-
-def _chunks(lst, n):
-    for i in range(0, len(lst), n):
-        yield lst[i:i+n]
-
-
-def _http_get_json(url, params, timeout=30):
-    full_url = url + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(full_url, headers={'User-Agent': USER_AGENT})
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return json.loads(resp.read().decode('utf-8'))
-
-
-def _with_retry(fn, *args, max_attempts=5, base_wait=2.0, label="batch"):
-    """Call fn(*args); on HTTP 429 back off exponentially. Returns None on final failure."""
-    for attempt in range(max_attempts):
-        try:
-            return fn(*args)
-        except urllib.error.HTTPError as e:
-            if e.code == 429:
-                wait = base_wait * (2 ** attempt)
-                print(f"    {label}: 429 rate-limited, sleeping {wait:.1f}s (attempt {attempt+1}/{max_attempts})")
-                time.sleep(wait)
-                continue
-            print(f"    {label}: HTTP error {e.code}: {e}")
+def filter_sentence(text: str, label: int) -> str | None:
+    """Apply sentence-level cleanup. Returns text or None if discarded."""
+    if len(text) <= 20:
+        return None
+    if not HAS_LOWER_ASCII.search(text):
+        return None
+    if not HAS_WORD_LOWER.search(text):
+        return None
+    code = DIAL_LABEL[label]
+    if code == "VEC":
+        if VEC_FRENCH_COMMUNE.search(text):
             return None
-        except Exception as e:
-            print(f"    {label}: error {type(e).__name__}: {e}")
-            if attempt < max_attempts - 1:
-                time.sleep(base_wait)
-                continue
+        if VEC_ITALIAN_COMMUNE.search(text):
             return None
-    return None
+        if VEC_ROMAN_NUMBERS.search(text):
+            return None
+        lower = text.lower()
+        for pat in VEC_CAMPOSAMPIERO_SUBSTRINGS:
+            if pat in lower:
+                return None
+    elif code == "LMO":
+        if len(text) < LMO_MIN_LEN:
+            return None
+        for pat in LMO_CAMPOSAMPIERO_SUBSTRINGS:
+            if pat in text:
+                return None
+    return text
 
 
-def fetch_wikidata_batch(batch_titles, wiki_site):
-    """Given a batch of up to 50 page titles, return {title: {qid, topic, title_en}}."""
-    if not batch_titles:
-        return {}
-    params = {
-        'action': 'wbgetentities',
-        'sites': wiki_site,
-        'titles': "|".join(batch_titles),
-        'languages': 'en',
-        'props': 'labels|claims|sitelinks',
-        'format': 'json',
-    }
-    data = _http_get_json("https://www.wikidata.org/w/api.php", params)
-    out = {}
-    entities = data.get('entities', {})
-    for qid, entity in entities.items():
-        if 'missing' in entity or qid.startswith('-'):
-            continue
-        sitelinks = entity.get('sitelinks', {})
-        if wiki_site not in sitelinks:
-            continue
-        wiki_title = sitelinks[wiki_site].get('title', '')
-        topic = 'altro'
-        for claim in entity.get('claims', {}).get('P31', []):
-            try:
-                p31_qid = claim['mainsnak']['datavalue']['value']['id']
-            except (KeyError, TypeError):
-                continue
-            if p31_qid in P31_TO_TOPIC:
-                topic = P31_TO_TOPIC[p31_qid]
-                break
-        title_en = entity.get('labels', {}).get('en', {}).get('value', '')
-        out[wiki_title] = {'qid': qid, 'topic': topic, 'title_en': title_en}
-    return out
+# --------------------------------------------------------------------------- #
+# Sentence splitter — rule-based (loaded once).
+#
+# We use spaCy's rule-based sentencizer (split on .!?) instead of the
+# Italian statistical parser (`it_core_news_sm`). The parser is trained on
+# Italian standard and on dialectal text it makes systematic segmentation
+# errors — sentences come out fragmented or merged in non-obvious ways.
+# The rule-based sentencizer is deterministic, fast, and produces more
+# faithful "sentences between full stops". It does miss some abbreviations
+# (e.g. "Art. 5"), but our downstream length / lowercase-word filters
+# catch most of the resulting fragments.
+# --------------------------------------------------------------------------- #
+print("[generation] loading spaCy rule-based sentencizer ...")
+NLP = spacy.blank("xx")
+NLP.add_pipe("sentencizer")
 
 
-def fetch_categories_batch(batch_titles, host):
-    """Given a batch of up to 50 page titles, return {title: [category, ...]}."""
-    if not batch_titles:
-        return {}
-    params = {
-        'action': 'query',
-        'prop': 'categories',
-        'titles': "|".join(batch_titles),
-        'cllimit': 'max',
-        'clshow': '!hidden',
-        'format': 'json',
-    }
-    data = _http_get_json(f"https://{host}/w/api.php", params)
-    out = {}
-    pages = data.get('query', {}).get('pages', {})
-    for page in pages.values():
-        title = page.get('title', '')
-        cats = []
-        for c in page.get('categories', []):
-            name = c.get('title', '')
-            if ':' in name:
-                name = name.split(':', 1)[1]
-            cats.append(name)
-        out[title] = cats
-    return out
+# --------------------------------------------------------------------------- #
+# Pipeline per variety.
+# --------------------------------------------------------------------------- #
+def process_dialect(folder: str) -> dict | None:
+    label = FOLD_LABEL[folder]
+    code = DIAL_LABEL[label].lower()
+    out_dir = Path("wiki_new")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_main = out_dir / f"{code}.csv"
+    out_meta = out_dir / f"{code}_meta.csv"
+    out_stats = out_dir / f"{code}_stats.json"
 
+    if out_main.exists() and out_meta.exists() and out_stats.exists():
+        print(f"[skip] {folder}: outputs already present")
+        return None
 
-def _norm(t):
-    return t.replace('_', ' ').strip()
+    print(f"\n=== {folder} (label={label}, output={code}.csv) ===")
 
+    aa_dir = Path(folder) / "AA"
+    if not aa_dir.is_dir():
+        print(f"  [warn] {aa_dir} not found, skip")
+        return None
 
-def _enrich_meta_inplace(meta_df, folder):
-    """Riempe in-place le colonne qid/topic/title_en/categories via API."""
-    wiki_site = folder_to_wiki[folder]
-    host = folder_to_host[folder]
-
-    unique_titles = meta_df['title'].unique().tolist()
-
-    wd_path = CACHE_DIR / f"wikidata_{folder}.json"
-    wd_cache = _load_cache(wd_path)
-    missing = [t for t in unique_titles if t not in wd_cache]
-    if missing:
-        print(f"  {folder}: {len(unique_titles)} titoli unici, {len(missing)} da Wikidata")
-        for batch in tqdm(list(_chunks(missing, 50)), desc=f"Wikidata {folder}"):
-            result = _with_retry(fetch_wikidata_batch, batch, wiki_site, label=f"Wikidata {folder}")
-            if result is None:
-                time.sleep(1.0)
-                continue
-            norm_result = {_norm(k): v for k, v in result.items()}
-            for t in batch:
-                match = result.get(t) or norm_result.get(_norm(t))
-                wd_cache[t] = match if match is not None else {'qid': '', 'topic': '', 'title_en': ''}
-            _save_cache(wd_cache, wd_path)
-            time.sleep(0.3)
-
-    cat_path = CACHE_DIR / f"categories_{folder}.json"
-    cat_cache = _load_cache(cat_path)
-    missing = [t for t in unique_titles if t not in cat_cache]
-    if missing:
-        print(f"  {folder}: {len(missing)} da MediaWiki (categorie)")
-        for batch in tqdm(list(_chunks(missing, 50)), desc=f"Categorie {folder}"):
-            result = _with_retry(fetch_categories_batch, batch, host, label=f"Categorie {folder}")
-            if result is None:
-                time.sleep(1.0)
-                continue
-            norm_result = {_norm(k): v for k, v in result.items()}
-            for t in batch:
-                match = result.get(t)
-                if match is None:
-                    match = norm_result.get(_norm(t), [])
-                cat_cache[t] = match
-            _save_cache(cat_cache, cat_path)
-            time.sleep(0.3)
-
-    def _lookup_wd(t, field):
-        v = wd_cache.get(t, {})
-        if isinstance(v, dict):
-            return v.get(field, '')
-        return ''
-
-    def _lookup_cats(t):
-        v = cat_cache.get(t, [])
-        if isinstance(v, list):
-            return '|'.join(v)
-        return ''
-
-    meta_df['qid'] = meta_df['title'].map(lambda t: _lookup_wd(t, 'qid'))
-    meta_df['topic'] = meta_df['title'].map(lambda t: _lookup_wd(t, 'topic'))
-    meta_df['title_en'] = meta_df['title'].map(lambda t: _lookup_wd(t, 'title_en'))
-    meta_df['categories'] = meta_df['title'].map(_lookup_cats)
-
-
-# ===== spaCy: carichiamo i modelli una volta sola =====
-
-import spacy
-
-# Strategia ibrida:
-# - label 0-10 (solo dialetti italo-romanzi): parser statistico
-#   it_core_news_sm, come nella versione originale del progetto
-# - label 11-19 (italiano standard + es/fr/ca/de/el/ar/sl/en):
-#   sentencizer rule-based. Sull'italiano standard la differenza pratica e'
-#   minima (abbreviazioni tipo "art." producono false frasi brevi che poi
-#   vengono scartate dal filtro len<=20), sulle altre lingue il parser
-#   italiano sarebbe comunque sbagliato.
-nlp_it = spacy.load("it_core_news_sm", disable=['ner', 'lemmatizer', 'textcat', 'custom', 'tagger'])
-nlp_other = spacy.blank("xx")
-nlp_other.add_pipe("sentencizer")
-
-DIALECT_LABELS_MAX = 10  # <=10 dialetti (parser), >10 italiano + altre lingue (sentencizer)
-
-
-# ===== core: process one dialect at a time, resume-friendly =====
-
-def process_dialect(d):
-    """Carica, pulisce, splitta e salva i CSV per UNO dialetto. Skippa se gia' fatto."""
-    lbl = fold_label[d]
-    name = dial_label[lbl].lower()
-    out_main = Path(f"{name}.csv")
-    out_meta = Path(f"{name}_meta.csv")
-
-    if out_main.exists() and out_meta.exists():
-        print(f"[skip] {d}: {out_main.name} e {out_meta.name} esistono gia'")
-        return
-
-    print(f"\n=== {d} (label={lbl}, output={name}.csv) ===")
-
-    aa_dir = os.path.join(d, "AA")
-    if not os.path.isdir(aa_dir):
-        print(f"  [warn] {aa_dir} non esiste, skip")
-        return
-
-    # --- load articles ---
-    rows = []
-    for fname in os.listdir(aa_dir):
-        with open(os.path.join(aa_dir, fname), "r") as f:
-            for line in f:
-                jline = json.loads(line)
-                if not jline.get('text'):
+    # --------------- Stage 1: load articles --------------- #
+    articles: list[dict] = []
+    for fname in sorted(os.listdir(aa_dir)):
+        with (aa_dir / fname).open("r", encoding="utf-8") as f:
+            for jline in f:
+                obj = json.loads(jline)
+                text = obj.get("text") or ""
+                if not text.strip():
                     continue
-                rows.append([int(jline['id']), jline['url'], jline['title'], jline['text'], lbl])
-    print(f"  {len(rows)} articoli caricati")
-    if not rows:
-        return
+                articles.append({
+                    "article_id": int(obj["id"]),
+                    "url": obj.get("url", ""),
+                    "title": obj.get("title", ""),
+                    "text": text,
+                })
+    raw_n = len(articles)
+    print(f"  raw articles loaded:        {raw_n:>10,}")
+    if raw_n == 0:
+        return None
+    df = pd.DataFrame(articles)
+    stats = {"raw_articles": raw_n}
 
-    df = pd.DataFrame(rows, columns=['id', 'url', 'title', 'text', 'label'])
-    del rows
-
-    # --- clean article text ---
-    df['text'] = df['text'].apply(clean)
-    df.dropna(subset=['text'], inplace=True)
-    df.drop_duplicates(subset='text', keep=False, inplace=True)
-    print(f"  {len(df)} articoli dopo cleaning")
+    # --------------- Stage 2: article-level clean --------------- #
+    df["text"] = df["text"].apply(clean_article)
+    df = df.dropna(subset=["text"]).reset_index(drop=True)
+    stats["after_article_clean"] = len(df)
+    print(f"  after article cleanup:      {len(df):>10,}")
     if len(df) == 0:
-        return
+        return stats
 
-    # --- sentence split ---
-    if lbl <= DIALECT_LABELS_MAX:
-        nlp = nlp_it
-        batch_size = 64
-        split_desc = "Parser IT"
-    else:
-        nlp = nlp_other
-        batch_size = 512
-        split_desc = "Sentencizer"
+    # --------------- Stage 3: article-level dedup --------------- #
+    # Camposampiero-style aggressive dedup: drop ALL occurrences of any
+    # duplicated article text (keep=False). Two full-article texts being
+    # byte-identical is essentially always boilerplate (bot-generated
+    # template pages, accidental dupes, redirects). At sentence level we
+    # are softer (keep="first"), but at article level Camposampiero's
+    # choice is sound.
+    df = df.drop_duplicates(subset="text", keep=False).reset_index(drop=True)
+    stats["after_article_dedup"] = len(df)
+    print(f"  after article dedup:        {len(df):>10,}")
 
-    texts = df['text'].tolist()
-    ids_list = df['id'].tolist()
-    titles_list = df['title'].tolist()
-    urls_list = df['url'].tolist()
-    del df
+    # --------------- Stage 4: sentence split (spaCy IT) --------------- #
+    sent_records: list[dict] = []
+    texts = df["text"].tolist()
+    article_ids = df["article_id"].tolist()
+    titles = df["title"].tolist()
+    urls = df["url"].tolist()
 
-    X, Y, AIDS, TITLES, URLS = [], [], [], [], []
-    for i, doc in enumerate(tqdm(nlp.pipe(texts, batch_size=batch_size),
-                                  total=len(texts),
-                                  desc=f"{split_desc} {d}")):
+    for i, doc in enumerate(
+        tqdm(
+            NLP.pipe(texts, batch_size=512),
+            total=len(texts),
+            desc=f"  sentencizer {code}",
+        )
+    ):
         for sent in doc.sents:
-            X.append(sent.text)
-            Y.append(lbl)
-            AIDS.append(ids_list[i])
-            TITLES.append(titles_list[i])
-            URLS.append(urls_list[i])
-    del texts, ids_list, titles_list, urls_list
+            t = sent.text.strip()
+            if not t:
+                continue
+            sent_records.append({
+                "text": t,
+                "label": label,
+                "article_id": article_ids[i],
+                "title": titles[i],
+                "url": urls[i],
+            })
+    stats["raw_sentences"] = len(sent_records)
+    print(f"  raw sentences from split:   {len(sent_records):>10,}")
+    if not sent_records:
+        return stats
+    sent_df = pd.DataFrame(sent_records)
 
-    if not X:
-        print("  nessuna frase estratta, skip")
-        return
+    # --------------- Stage 5: sentence-level filters --------------- #
+    sent_df["text"] = sent_df["text"].apply(lambda t: filter_sentence(t, label))
+    sent_df = sent_df.dropna(subset=["text"]).reset_index(drop=True)
+    stats["after_sentence_filter"] = len(sent_df)
+    print(f"  after sentence filter:      {len(sent_df):>10,}")
 
-    df = pd.DataFrame({
-        'text': X,
-        'label': Y,
-        'article_id': AIDS,
-        'title': TITLES,
-        'url': URLS,
-    })
-    del X, Y, AIDS, TITLES, URLS
+    # --------------- Stage 6: sentence-level dedup --------------- #
+    sent_df = sent_df.drop_duplicates(subset="text", keep="first").reset_index(drop=True)
+    stats["final_sentences"] = len(sent_df)
+    stats["final_articles"] = int(sent_df["article_id"].nunique())
+    print(f"  final sentences (kept):     {len(sent_df):>10,}")
+    print(f"  final articles (with ≥1):   {stats['final_articles']:>10,}")
 
-    # --- sentence-level cleaning ---
-    df['text'] = df['text'].apply(lambda x: x.replace("http://www.sil.org/iso639-3/documentation.asp?id=", ""))
-    df['text'] = df['text'].apply(lambda x: x.replace("&lt;br clear=all&gt;", ""))
-    df['text'] = df['text'].apply(lambda x: x.replace("Evulusiù demogràfica.", ""))
-    df['text'] = df['text'].apply(lambda x: x.replace("&lt;br&gt;&lt;br&gt;", ""))
-    df['text'] = df['text'].apply(lambda x: x.replace("ł", "l"))
-    df['text'] = df['text'].apply(lambda x: x.replace("Ł", "l"))
-    df['text'] = df['text'].apply(lambda x: np.nan if len(x) <= 20 else x)
-    df.dropna(subset=['text'], inplace=True)
+    # --------------- Stage 7: build meta + atomic save --------------- #
+    meta_df = (
+        sent_df[["label", "article_id", "title", "url"]]
+        .drop_duplicates(subset=["article_id"])
+        .reset_index(drop=True)
+        .copy()
+    )
+    counts = sent_df.groupby("article_id").size().reset_index(name="n_sentences")
+    meta_df = meta_df.merge(counts, on="article_id", how="left")
 
-    # --- per-dialect stub filters (solo PMS/LMO/VEC) ---
-    if lbl == 2:  # PMS
-        df['text'] = df['text'].apply(lambda x: np.nan if ("grup ëd popolassion." in x or "A confin-a con " in x or "a l’é na comun-a ëd" in x or "con na densità" in x or "A së stend" in x or "As dëstend për" in x or "a l'é na comun" in x or "La lenga" in x or "Në schema" in x or "Ël sìndich a l'é" in x or "a l'é un comun" in x) else x)
-    elif lbl == 6:  # LMO
-        df['text'] = df['text'].apply(lambda x: np.nan if ("La Stazzion de" in x or "El cumün" in x or "a l'è una cità" in x or "El Passaport" in x or "la se tróa a 'na" in x or "a l'è 'na ferrovia" in x or "L'è taccada a stazione di" in x or "La a l'è 'na strada" in x or "L'andament del numer de abitant" in x or "L'andament del nömer dei abitàncc" in x or "l'è menziunaa la prima volta" in x or "l'è 'na stazion de la" in x or "L'andamènt del nömer dei abitàncc" in x or "La Stazion de" in x or "El Distret" in x or "El cümü" in x or "km²" in x or "Al gh’ha pressapoch abitant" in x or "l'è un cumün" in x or "El cumün de" in x or "El cunfìna coi cümü" in x or "l'è un cümü" in x or "l'è 'n cümü" in x or "e 'na densità de" in x) else x)
-    elif lbl == 9:  # VEC
-        df['text'] = df['text'].apply(lambda x: np.nan if ("el xe on comun de" in x or "el xe un comun" in x or "gregorian" in x) else x)
-
-    df.dropna(subset=['text'], inplace=True)
-    df.drop_duplicates(subset='text', keep=False, inplace=True)
-    print(f"  {len(df)} frasi dopo cleaning/filtri")
-    if len(df) == 0:
-        return
-
-    # --- meta ---
-    meta_df = (df[['label', 'article_id', 'title', 'url']]
-               .drop_duplicates(subset=['label', 'article_id'])
-               .reset_index(drop=True)
-               .copy())
-    meta_df['qid'] = ''
-    meta_df['topic'] = ''
-    meta_df['title_en'] = ''
-    meta_df['categories'] = ''
-
-    if ENRICH_VIA_API:
-        _enrich_meta_inplace(meta_df, d)
-
-    counts = df.groupby(['label', 'article_id']).size().reset_index(name='n_sentences')
-    meta_df = meta_df.merge(counts, on=['label', 'article_id'], how='left')
-    meta_df['n_sentences'] = meta_df['n_sentences'].fillna(0).astype(int)
-
-    # drop meta/disambigua/lista
-    if ENRICH_VIA_API and (meta_df['topic'] == 'meta').any():
-        drop_aids = set(meta_df.loc[meta_df['topic'] == 'meta', 'article_id'].tolist())
-        df = df[~df['article_id'].isin(drop_aids)].reset_index(drop=True)
-        meta_df = meta_df[meta_df['topic'] != 'meta'].reset_index(drop=True)
-
-    # --- save (scriviamo prima .tmp e poi rinominiamo, cosi' i file finali
-    #     esistono solo se il salvataggio e' completo e un crash a meta'
-    #     non lascia CSV troncati) ---
-    tmp_main = out_main.with_suffix('.csv.tmp')
-    tmp_meta = out_meta.with_suffix('.csv.tmp')
-    df[['text', 'label', 'article_id']].to_csv(tmp_main, index=False)
-    meta_df[['article_id', 'title', 'url', 'qid', 'topic', 'title_en', 'categories', 'n_sentences']].to_csv(tmp_meta, index=False)
+    tmp_main = out_main.with_suffix(".csv.tmp")
+    tmp_meta = out_meta.with_suffix(".csv.tmp")
+    tmp_stats = out_stats.with_suffix(".json.tmp")
+    sent_df[["text", "label", "article_id"]].to_csv(tmp_main, index=False)
+    meta_df[["article_id", "title", "url", "n_sentences"]].to_csv(tmp_meta, index=False)
+    with tmp_stats.open("w", encoding="utf-8") as f:
+        json.dump(stats, f, ensure_ascii=False, indent=2)
     tmp_main.replace(out_main)
     tmp_meta.replace(out_meta)
-    print(f"  -> {out_main} ({len(df)} frasi)")
-    print(f"  -> {out_meta} ({len(meta_df)} articoli)")
+    tmp_stats.replace(out_stats)
+
+    print(f"  -> {out_main}  ({len(sent_df):,} sentences)")
+    print(f"  -> {out_meta}  ({len(meta_df):,} articles)")
+    print(f"  -> {out_stats}")
+
+    return stats
 
 
-# ===== main =====
+# --------------------------------------------------------------------------- #
+# CLI entry point.
+# --------------------------------------------------------------------------- #
+def main():
+    print("Camposampiero/ETHZ-first preprocessing for Italo-Romance Wikipedia dumps")
+    print("=" * 75)
 
-if ENRICH_VIA_API:
-    print("Enriching via Wikidata + MediaWiki (cached on disk)...")
-else:
-    print("Skipping API enrichment (ENRICH_VIA_API=False). "
-          "qid/topic/title_en/categories resteranno vuoti.")
+    folders = sorted(
+        d for d in os.listdir(".")
+        if os.path.isdir(d) and d in FOLD_LABEL
+    )
+    if not folders:
+        print("No dialect '*_texts/' directory found in cwd.")
+        print("Run create.py first (which calls wikiextractor).")
+        sys.exit(1)
+    print(f"Found dialects: {folders}\n")
 
-for d in dialects:
-    if d not in fold_label:
-        print(f"[warn] cartella sconosciuta: {d}, skip")
-        continue
-    process_dialect(d)
+    all_stats: dict[str, dict] = {}
+    for folder in folders:
+        s = process_dialect(folder)
+        if s:
+            all_stats[folder] = s
 
-print("\nDataset created.")
+    if all_stats:
+        print("\n" + "=" * 75)
+        print("SUMMARY")
+        print("=" * 75)
+        cols = ["raw_articles", "after_article_clean", "after_article_dedup",
+                "raw_sentences", "after_sentence_filter", "final_sentences"]
+        header = f"{'dialect':<10}" + "".join(f"{c:>22}" for c in cols)
+        print(header)
+        for folder, s in all_stats.items():
+            row = f"{folder:<10}" + "".join(
+                f"{s.get(c, 0):>22,}" for c in cols
+            )
+            print(row)
+
+
+if __name__ == "__main__":
+    main()
