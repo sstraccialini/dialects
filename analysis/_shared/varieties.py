@@ -82,6 +82,15 @@ OLDI_PARQUET = {
     "cat": "cat_Latn", "deu": "deu_Latn", "slv": "slv_Latn", "eng": "eng_Latn",
 }
 
+# OLDI Italian↔dialect parallel pairs — only the 6 Italo-Romance dialects.
+# Files live at Dataset/oldi/normalized/pairs_ita_<slug>.tsv with columns
+# {"id", "italiano", "<slug>"}.
+OLDI_PAIR_DIALECTS = ["fur", "lij", "lmo", "sc", "scn", "vec"]
+OLDI_PAIR_SLUG = {
+    "fur": "friulano", "lij": "ligure", "lmo": "lombardo",
+    "sc":  "sardo",    "scn": "siciliano", "vec": "veneto",
+}
+
 
 # --------------------------------------------------------------------------- #
 # Display labels (for plots and tables)

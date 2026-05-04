@@ -36,6 +36,14 @@ Dataset/wiki/*_texts/
 Dataset/wiki/*.xml.bz2
 Dataset/wiki/_cache/
 
+# Exploratory side-datasets — kept local-only
+Dataset/manzini_savoia/
+Dataset/asjp/
+
+# Exploratory comparison scripts (one-off analyses, not part of pipeline)
+analysis/_comparisons/asjp_distances.py
+analysis/_comparisons/results/
+
 # Method-specific binary artefacts (too large for GitHub).
 # Vectors / models live under method_outputs/; evaluation outputs are kept.
 analysis/**/method_outputs/models/

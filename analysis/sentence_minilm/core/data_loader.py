@@ -18,6 +18,8 @@ from .config import (
     FLORES_SLUG,
     OLDI_DIR,
     OLDI_PARQUET,
+    OLDI_PAIR_DIALECTS,
+    OLDI_PAIR_SLUG,
     SAMPLE_SIZE,
     RANDOM_STATE,
 )
@@ -150,3 +152,45 @@ def load_oldi_parallel(
     if len(set(lengths.values())) > 1:
         raise ValueError(f"OLDI parallel requires equal lengths, got {lengths}")
     return data, pd.DataFrame(rows)
+
+
+# --------------------------------------------------------------------------- #
+# OLDI parallel pairs Italian↔dialect — for contrastive (MNRL) training
+# --------------------------------------------------------------------------- #
+def load_oldi_pairs(code: str) -> List[Tuple[str, str]]:
+    """Load (italian, dialect) parallel pairs for one Italo-Romance dialect."""
+    if code not in OLDI_PAIR_SLUG:
+        raise ValueError(f"No OLDI Italian-pair file for code {code!r}")
+    slug = OLDI_PAIR_SLUG[code]
+    tsv_path = OLDI_DIR / f"pairs_ita_{slug}.tsv"
+    if not tsv_path.exists():
+        raise FileNotFoundError(f"OLDI pairs file not found: {tsv_path}")
+    df = pd.read_csv(tsv_path, sep="\t", dtype=str)
+    pairs = []
+    for _, row in df.iterrows():
+        ita = str(row.get("italiano", "")).strip()
+        dial = str(row.get(slug, "")).strip()
+        if ita and dial and ita != "nan" and dial != "nan":
+            pairs.append((ita, dial))
+    return pairs
+
+
+def load_all_oldi_pairs(
+    codes: List[str] = None,
+    verbose: bool = True,
+) -> List[Tuple[str, str]]:
+    """Concatenate OLDI Italian↔dialect pairs across all 6 dialects."""
+    if codes is None:
+        codes = OLDI_PAIR_DIALECTS
+    out: List[Tuple[str, str]] = []
+    for code in codes:
+        try:
+            pairs = load_oldi_pairs(code)
+        except FileNotFoundError as e:
+            if verbose:
+                print(f"  [oldi pairs] WARNING: {e} — skipping {code}")
+            continue
+        if verbose:
+            print(f"  [oldi pairs {code:>4}] {len(pairs):>6d} pairs")
+        out.extend(pairs)
+    return out
