@@ -1,0 +1,18 @@
+{
+  "method": "word2vec",
+  "experiment": "wiki_to_flores_oldi",
+  "timestamp": "2026-05-04T19:37:54Z",
+  "git_commit": "1002bd2345540c2b1c14fe234c71382ed61f38af",
+  "python": "3.9.6",
+  "platform": "macOS-26.3-arm64-arm-64bit",
+  "params": {
+    "sample_size": 100000,
+    "random_state": 42,
+    "vector_size": 100,
+    "window": 5,
+    "min_count": 2,
+    "sg": 1,
+    "epochs": 15,
+    "seed": 42
+  }
+}
