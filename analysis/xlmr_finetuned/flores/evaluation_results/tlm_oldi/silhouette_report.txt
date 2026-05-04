@@ -1,0 +1,29 @@
+Silhouette report (XLM-R (tlm_oldi))
+============================================================
+  n_varieties           = 16
+  linkage_method        = average
+  silhouette (family)   = +0.1163
+  silhouette (romance)  = +0.1303
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  catalano              romance              +0.4708
+  lombardo              italo_romance        +0.3528
+  francese              romance              +0.3114
+  ladino                italo_romance        +0.2967
+  spagnolo              romance              +0.2309
+  ligure                italo_romance        +0.2232
+  friulano              italo_romance        +0.1357
+  sardo                 italo_romance        +0.0704
+  tedesco               germanic             +0.0000
+  arabo                 semitic              +0.0000
+  greco                 greek                +0.0000
+  inglese               english              +0.0000
+  sloveno               slavic               +0.0000
+  italiano              italian              +0.0000
+  siciliano             italo_romance        -0.0808
+  veneto                italo_romance        -0.1506

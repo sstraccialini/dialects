@@ -1,9 +1,9 @@
-Silhouette report (Word2Vec (FLORES+))
+Silhouette report (Word2Vec)
 ============================================================
   n_varieties           = 16
   linkage_method        = average
-  silhouette (family)   = -0.0729
-  silhouette (romance)  = +0.2839
+  silhouette (family)   = -0.0703
+  silhouette (romance)  = +0.2700
 
 Notes:
   Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
@@ -11,19 +11,19 @@ Notes:
 Per-variety silhouette scores (sorted descending):
   variety               family            silhouette
   ----------------------------------------------------
-  catalano              romance              +0.4453
-  spagnolo              romance              +0.1973
-  francese              romance              +0.1963
+  catalano              romance              +0.4392
+  spagnolo              romance              +0.2209
+  francese              romance              +0.2081
   sloveno               slavic               +0.0000
-  arabo                 semitic              +0.0000
-  greco                 greek                +0.0000
   inglese               english              +0.0000
+  greco                 greek                +0.0000
+  arabo                 semitic              +0.0000
   tedesco               germanic             +0.0000
   italiano              italian              +0.0000
-  sardo                 italo_romance        -0.0609
-  ladino                italo_romance        -0.0706
-  lombardo              italo_romance        -0.2535
-  ligure                italo_romance        -0.2886
-  friulano              italo_romance        -0.3944
-  siciliano             italo_romance        -0.4075
-  veneto                italo_romance        -0.5298
+  sardo                 italo_romance        -0.0698
+  ladino                italo_romance        -0.0927
+  lombardo              italo_romance        -0.2607
+  ligure                italo_romance        -0.2792
+  friulano              italo_romance        -0.3791
+  siciliano             italo_romance        -0.3951
+  veneto                italo_romance        -0.5162
