@@ -59,10 +59,15 @@ class MultilingualEmbedder:
         texts: List[str],
         batch_size: int = BATCH_SIZE,
         verbose: bool = True,
+        centre: bool = True,
     ) -> np.ndarray:
+        """
+        ``centre=True`` subtracts the corpus mean before L2-normalisation to
+        correct the anisotropy of BERT-style token embeddings.
+        """
         if not texts:
             raise ValueError("encode() received an empty list")
-        chunks: List[np.ndarray] = []
+        raw_chunks: List[np.ndarray] = []
         iterator = range(0, len(texts), batch_size)
         if verbose:
             iterator = tqdm(iterator, desc="Embedding batches", unit="batch")
@@ -79,6 +84,9 @@ class MultilingualEmbedder:
             with torch.no_grad():
                 out = self.model(**enc)
             pooled = self._mean_pool(out, enc["attention_mask"])
-            pooled = torch.nn.functional.normalize(pooled, p=2, dim=1)
-            chunks.append(pooled.cpu().numpy().astype(np.float32))
-        return np.vstack(chunks)
+            raw_chunks.append(pooled.cpu().numpy().astype(np.float32))
+        raw = np.vstack(raw_chunks)
+        if centre:
+            raw = raw - raw.mean(axis=0, keepdims=True)
+        norms = np.linalg.norm(raw, axis=1, keepdims=True)
+        return (raw / np.clip(norms, 1e-9, None)).astype(np.float32)

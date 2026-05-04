@@ -34,15 +34,16 @@ class Embedder:
         
         return sum_embeddings / sum_mask
 
-    def encode(self, texts, batch_size=32):
+    def encode(self, texts, batch_size=32, centre=True):
         """
-        Produce sentence embeddings for a list of texts iteratively.
+        Produce sentence embeddings for a list of texts.
+
+        ``centre=True`` subtracts the corpus mean before L2-normalisation to
+        correct BERT-style anisotropy (representations collapsed into a cone).
         """
-        embeddings = []
+        raw_chunks = []
         for i in tqdm(range(0, len(texts), batch_size), desc="Extracting embeddings"):
             batch_texts = texts[i:i + batch_size]
-            
-            # Tokenize and format input
             encoded_input = self.tokenizer(
                 batch_texts,
                 padding=True,
@@ -50,16 +51,14 @@ class Embedder:
                 max_length=MAX_LENGTH,
                 return_tensors='pt'
             )
-            
             encoded_input = {k: v.to(self.device) for k, v in encoded_input.items()}
-            
             with torch.no_grad():
                 model_output = self.model(**encoded_input)
-                
-            # Perform exact mean pooling
             batch_embeddings = self.mean_pooling(model_output, encoded_input['attention_mask'])
-            batch_embeddings = torch.nn.functional.normalize(batch_embeddings, p=2, dim=1)
-            
-            embeddings.append(batch_embeddings.cpu().numpy())
-            
-        return np.vstack(embeddings)
+            raw_chunks.append(batch_embeddings.cpu().numpy())
+
+        raw = np.vstack(raw_chunks)
+        if centre:
+            raw = raw - raw.mean(axis=0, keepdims=True)
+        norms = np.linalg.norm(raw, axis=1, keepdims=True)
+        return (raw / np.clip(norms, 1e-9, None)).astype(np.float32)
