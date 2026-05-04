@@ -7,8 +7,13 @@ training corpus must be consistent with what is described here.
 
 ## 1. Scope
 
-We process **6 Italo-Romance varieties** — the intersection of OLDI and
-FLORES+ training/eval sets:
+We process **10 Italo-Romance varieties** in two groups, plus a third
+group of **9 comparison languages** that the script can also handle
+(URLs commented in `create.py`, ready to activate when we want to
+re-extract them):
+
+**Group A** (labels 0-5): the 6 varieties in BOTH OLDI and FLORES — the
+primary downstream training/eval set.
 
 | Code | Wiki edition | Italian name |
 |---|---|---|
@@ -19,10 +24,28 @@ FLORES+ training/eval sets:
 | `scn` | scnwiki | Siciliano |
 | `vec` | vecwiki | Veneto |
 
-Italian standard, the other Romance languages (es/fr/ca), and the
-non-Romance comparison languages (de/en/el/ar/sl) are NOT re-extracted
-here. If we ever need them with the same cleaning pipeline, we can add
-them by extending `FOLD_LABEL` in `scripts/generation.py`.
+**Group B** (labels 6-9): other italo-romance varieties on Wikipedia.
+
+| Code | Wiki edition | Italian name |
+|---|---|---|
+| `lld` | lldwiki | Ladino (in FLORES, not OLDI) |
+| `nap` | napwiki | Napoletano |
+| `pms` | pmswiki | Piemontese |
+| `roa_tara` | roa_tarawiki | Tarantino |
+
+**Comparison languages** (labels 10-16): not currently extracted.
+URLs are present (commented) in `create.py` — uncomment to activate
+when ready.
+
+| Code | ISO 639-3 |
+|---|---|
+| `ita` | Italian |
+| `spa` | Spanish |
+| `fra` | French |
+| `eng` | English |
+| `deu` | German |
+| `cat` | Catalan |
+| `slv` | Slovenian |
 
 ## 2. Sources and snapshot
 
@@ -53,18 +76,37 @@ into fragmented, incoherent sentences. Article-level cleaning + then
 splitting yields markedly more natural sentences (verified by sample
 inspection).
 
-Pipeline summary:
+**MAJOR CHANGE (May 2026)**: the pipeline now applies an **aggressive
+normalize step** that strips digits, punctuation, symbols, diacritics,
+and case to produce lowercase-ASCII-only text. This makes Wiki output
+directly comparable to FLORES+ and OLDI normalized variants (parallel
+files at `Dataset/flores/normalized/` and `Dataset/oldi/normalized/`,
+produced by `Dataset/{flores,oldi}/scripts/normalize.py`). The original
+text is NOT preserved in the Wiki CSV — only the normalized form. For
+FLORES/OLDI the original files are kept under `not_normalized/`.
+
+Pipeline summary (10 stages):
 
 ```
 wikiextractor (cached)
-  → article-level clean (HTML entities + SUKI markup + drop short)
-  → article-level dedup (keep=False, kills bot-generated duplicates)
-  → sentencizer + lowercase-merge (fix abbreviation splits like "s.p.a.")
-  → sentence-level filters (length>30 + lowercase + per-variety + must end with .!?)
-  → sentence dedup (keep="first")
-  → auto prefix-dedup PL=30 K=10 (data-driven catch of template clusters)
-  → save: wiki/<group>/<lang>.csv + _meta + _stats
+  → Stage 1.  load articles
+  → Stage 2.  article-level clean (HTML + SUKI markup + drop <50 chars)
+  → Stage 3.  article-level dedup (keep=False)
+  → Stage 4.  sentencizer + lowercase-merge (fix abbreviation splits)
+  → Stage 5.  PRE-NORM filters [native]: len>=30, has-lowercase-ASCII,
+                                          has-word-lowercase, endswith-terminator
+  → Stage 6.  AGGRESSIVE NORMALIZE [→ aggressive]
+  → Stage 7.  POST-NORM filters [aggressive]: len<=500 (mega-list killer)
+                                              + per-variety lowercase substrings
+                                              (VEC 6+5, LMO 22, PMS 11)
+  → Stage 8.  sentence dedup (keep="first") on aggressive
+  → Stage 9.  auto prefix-dedup PL=30 K=10 on aggressive
+  → Stage 10. save: wiki/<group>/<lang>.csv (single text col) + _meta + _stats
 ```
+
+The previous fingerprint dedup (digit→N, roman→R) is REMOVED — on
+aggressive text those characters are already stripped, so the pass
+becomes a no-op equivalent to Stage 8 dedup.
 
 ## 4. Step by step
 
@@ -136,165 +178,142 @@ Applied to the full article text before any splitting:
   starting with lowercase. The merge is generic — no hard-coded
   abbreviation list needed.
 
-### Stage 5 — Sentence-level filters
+### Stage 5 — Pre-normalize generic filters (NATIVE text)
+
+These run on the **native** sentence text, before aggressive normalize.
+They use punctuation/case/digits/romans which are about to be stripped.
 
 - **Drop sentences shorter than 30 characters**. We tightened from the
   Camposampiero/SUKI default of 20 to 30 because below that threshold
-  almost everything is structured noise (scoreline tables like
-  `"Juve - Cagliari : 2 a 1."`, infobox values like
-  `"Linea de costa: 296 km."`, single-row headings like
-  `"Maria inte el Nòvo Testamento."`). We sampled the 21–30 char range
-  on vec and found 10/10 to be such fragments, while the volume cost
-  is just ~2-3% per variety.
-- **Drop sentences without any lowercase ASCII letter** (SUKI).
+  almost everything is structured noise (scoreline tables, infobox
+  values, single-row headings). We sampled the 21–30 char range on vec
+  and found 10/10 to be such fragments.
+- **Drop sentences without any lowercase ASCII letter** (SUKI). Catches
+  all-caps fragments (`"ROMA"`, `"GIOVANNI XXIII"`).
 - **Drop sentences without a word starting with lowercase ASCII** (SUKI).
+  Catches title-case fragments (`"Roma Capitale d'Italia"`, `"Storia
+  Della Toscana"`).
 - **Drop sentences that do not end with a sentence terminator**
   (`.`, `!`, `?`, `"`, `'`, `”`, `’`, `»`, `…`, `)`, `]`). We
   deliberately exclude `:` and `;` — empirically a colon-ending fragment
-  is almost always a section heading or an intro to a list (e.g.
-  `"Persone inportanti che xe nate a Padoa:"`), not a real sentence.
-  This single filter catches three kinds of residual noise simultaneously:
-  (i) section titles, (ii) splitter mid-sentence glitches, (iii) the
-  giant comune-list templates that span thousands of characters and
-  end with the last municipality name (no period).
-- **Per-variety filters**:
-  - **VEC** — eight drops total (no orthographic normalization, see §5):
-    - SUKI: French commune template
-      `el xe on comun de.*abitanti del departemento.*in Fransa\.`
-      (33,701 lines in SUKI; biggest single boilerplate cluster of vec).
-    - SUKI: Italian commune template
-      `el xe (?:on|un) comun italian de.*abitanti`.
-    - SUKI (generalized): Roman numbers stub
-      `\([MDCLXVI]+(?:\s+v\.C\.?)?\s+(?:en|in)\s+num[ae]ri\s+romani\)`.
-      Generalized from SUKI's original `L?[IVXC]+` to also match
-      `MCMXV`-style year-page templates.
-    - Year-page template `el xe (?:on|un) an(?:no)? del [IVX]+ sec`
-      (TACL survey: ~1k pages for years 1 BC–999 BC).
-    - Day-of-year template `ghe manca \d+ d[iì] par l[ae]? fin de l'ann?o`
-      (one page for each of the 365 days).
-    - Day-to-year-end template `par rivar al cao de l'an[oó] ghe vo[lł]+e`.
-    - Camposampiero: generic-comun substring `el xe un comun de`.
-    - Camposampiero: calendar-stub substring `gregorian`.
-  - **LMO** — combination of SUKI and Camposampiero:
-    - SUKI: drop lines shorter than 14 characters.
-    - Camposampiero: 24 substring patterns covering geographic /
-      template stubs (`El cumün`, `La Stazzion de`, `km²`,
-      `El Distret`, `Al gh'ha pressapoch abitant`,
-      `L'andament del numer de abitant`, ...). Full list in
-      `scripts/generation.py:LMO_CAMPOSAMPIERO_SUBSTRINGS`.
-  - **fur, lij, sc, scn** — no hard-coded per-variety patterns; for
-    these varieties we rely on the general filters above plus the
-    auto prefix-dedup in Stage 7 (which catches the same kind of
-    bot-generated templates without needing a manual catalogue).
+  is almost always a section heading or an intro to a list, not a real
+  sentence. This single filter catches three kinds of residual noise
+  simultaneously: (i) section titles, (ii) splitter mid-sentence
+  glitches, (iii) the giant comune-list templates that span thousands
+  of characters and end with the last municipality name (no period).
 
-### Stage 6 — Sentence-level exact-duplicate dedup
-- `drop_duplicates(subset="text", keep="first")` — keep the first
-  occurrence and drop subsequent duplicates.
-- A previous version of this pipeline used `keep=False` like
-  Camposampiero, but at sentence level that turned out too aggressive:
-  legitimate repeated sentences (e.g. *"Inoltre, è un noto attore."*)
-  appearing in two unrelated articles got removed entirely. The
-  boilerplate volume is already controlled by Stages 2, 3, and 5 —
-  at this point a soft dedup is enough.
+The **per-variety patterns** were moved out of this stage — they now
+live in Stage 7 (post-normalize) as lowercase substring matches on
+aggressive text. See Stage 7 below for the full list.
 
-### Stage 7 — Auto prefix-based template dedup (data-driven)
-- Compute `prefix_lower(t) = t[:30].lower()` for every surviving
-  sentence, and **drop all sentences whose prefix appears ≥10 times**.
-  Concretely: any cluster of 10+ sentences starting with the same first
-  30 characters is treated as a templated boilerplate and removed.
-- **Limitation**: only catches templates that begin with a fixed prefix.
-  Templates whose variable part appears early (e.g. year-page stubs
-  `"El 64 v.C. (LXIV in numari romani) el xe..."` where the year
-  varies in the first few chars) escape — they are caught by Stage 8
-  instead.
-- Why 30/10 (and not 20/10 or 15/20):
-  - 30 characters is long enough that natural sentences almost never
-    coincide on the prefix by accident (verified empirically: in vec
-    most prefix-30 clusters above 10 occurrences are bot-generated
-    `"El xe in provincia de ..."` / `"L'abità el xe situà ..."`,
-    while shorter prefixes like `el confina co i` would also match
-    legitimate descriptive sentences and trigger false positives).
-  - The 10-occurrence threshold filters out small accidental clusters
-    while still catching template families (most templates produce
-    50–1500 occurrences).
-- Concrete catches per variety with 30/10:
+### Stage 6 — Aggressive normalize
 
-  | Variety | dropped here | of which not already caught upstream |
-  |---|---:|---|
-  | fur |   ~35 | minimal |
-  | lij |  ~220 | new |
-  | lmo | ~3,600 | mostly new (LMO French commune template) |
-  | sc  |  ~125 | minimal |
-  | scn |  ~755 | mostly new ("Havi na pupulazzioni di...") |
-  | vec | ~1,400 | mostly new (province / confina / abitato) |
+Single function `aggressive_normalize(text)` in `generation.py`. Pipeline:
 
-  Crucially this catches the lmo bot-generated French commune pages
-  ("El fa part del cantù de Romans-sur-Isère...", 963 occurrences)
-  which neither SUKI nor Camposampiero patterns covered.
-- This step makes the per-variety hard-coded substring lists in
-  Stage 5 less load-bearing — they remain because they catch
-  *substring* patterns (template content embedded mid-sentence,
-  which prefix-matching cannot see), but the auto-dedup is the
-  more powerful net for *prefix-templates*.
+1. **NFC** + explicit char mapping for letters that NFD does not
+   decompose: `ß → ss`, `ł → l, Ł → L`, `æ → ae, œ → oe`, `ø → o`,
+   `đ → d`, `ð → d`, `þ → th` (and uppercase variants).
+2. **Strip uppercase Roman numerals** `\b[IVXLCDM]{2,}\b → " "` BEFORE
+   lowercase (the regex is uppercase-only by design — case-insensitive
+   would false-positive on `"il"`, `"vi"`, `"li"`, etc.).
+3. **Lowercase**.
+4. **NFD decompose** + strip combining diacritic marks
+   (`[̀-ͯ]`). Handles all the regular accents:
+   `à è é ñ ç ü ä ö è ì ò ù ï` → `a e e n c u a o e i o u i`.
+5. **Strip digits** `\d+ → " "`.
+6. **Strip everything not `[a-z\s]`** — punctuation, symbols, residual
+   non-Latin characters.
+7. **Collapse whitespace** to single spaces.
 
-### Stage 8 — Fingerprint-based dedup (numbers / roman numerals)
-- Complementary to Stage 7. Many templates do **not** share a fixed
-  prefix because the variable part is in the middle (year-page stubs,
-  statistical templates, geographic data). To catch these, we compute
-  a normalized fingerprint:
+Output: only lowercase ASCII letters and single spaces.
 
-  ```python
-  fingerprint(t) = re.sub(r"\d+", "N",
-                   re.sub(r"\b[IVXLCDM]{2,}\b", "R", t.lower()))
-  ```
+Concrete example (vec):
+```
+INPUT:  "Ła cità de Padova ga 207,694 abitanti nel 2023 (CCXXIII° posto in Europa) — fonte: Istat."
+OUTPUT: "la cita de padova ga abitanti nel posto in europa fonte istat"
+```
 
-  i.e. all digit runs become `N` and all roman-numeral tokens of
-  length ≥2 become `R`. Sentences whose fingerprint clusters with
-  ≥10 others are dropped.
-- Crucially, **the CSV keeps the original sentence** (with real digits
-  and roman numerals). The fingerprint is used only for the dedup
-  decision — coherence with FLORES/OLDI (which keep real digits) is
-  preserved.
-- Concrete catches per variety:
+### Stage 7 — Post-normalize filters (AGGRESSIVE text)
 
-  | Variety | dropped here | of which |
-  |---|---:|---|
-  | fur | ~780 (3.2%) | statistical templates |
-  | lij | ~700 (1.3%) | varied |
-  | lmo | ~500 (0.3%) | residue (most caught upstream) |
-  | sc  |   ~10 (0%)  | almost nothing |
-  | scn | ~1,360 (1.7%) | song / film templates |
-  | vec | ~460 (0.5%) | year/day templates that survived Stage 5 |
-  | lld |  ~220 (0.1%) | minimal |
-  | nap | ~700 (2.4%) | demographic templates |
-  | pms | ~1,950 (1.9%) | municipal data templates |
-  | roa_tara | 0 | already clean |
+- **Drop sentences longer than 500 characters**. Catches the residual
+  mega-list templates (`"comuni della provincia di padova padova abano
+  terme albignasego ..."` for thousands of chars). The terminator
+  filter in Stage 5 caught them when they ended without a period; this
+  catches the rest.
+- **Per-variety lowercase substring drops**. The previous regex /
+  substring patterns were rewritten as plain lowercase substring lookups
+  on aggressive text. Simpler, tolerant of small variants, and uniform
+  across varieties:
+  - **VEC** — 6 single-substring drops + 5 multi-substring (AND) drops:
+    - Single: `"numari romani"`, `"numeri romani"`, `"par rivar al cao"`,
+      `"el xe un comun de"`, `"el xe on comun de"`, `"gregorian"`.
+    - AND: `("abitanti del departemento", "in fransa")` (was French
+      commune regex), `("comun italian de", "abitanti")` (was Italian
+      commune regex), `("ghe manca", "fin de l")` (was day-of-year
+      template), `("el xe on an", "secolo")` and `("el xe un an",
+      "secolo")` (was year-page template).
+  - **LMO** — 22 substrings: `"la stazzion de"`, `"el cumun"`,
+    `"el cumu"`, `"el distret"`, `"al gh ha pressapoch abitant"`,
+    `"l andament del numer de abitant"`, `"e na densita de"`, ...
+    (was 24, dropped `km²` which collapses to too-generic `km`, and
+    merged `L'andament/L'andamènt` which collapse to the same form).
+  - **PMS** — 11 substrings: `"grup ed popolassion"`, `"a confin a con"`,
+    `"con na densita"`, `"el sindich a l e"`, ...
+  - **fur, lij, sc, scn, lld, nap, roa_tara** + comparison languages —
+    no per-variety patterns. Rely on Stages 8-9 (data-driven dedup).
 
-  Sample (vec): `"L'abità el xe situà a 5 metri s.l.m."` — 437 copies
-  varying only in the `5`. Stage 7 (prefix-dedup) catches this too,
-  but fingerprint also catches `"Ła ga na superfisie de 2467,35 km²
-  e ła conprende 29 comuni."` (11 copies varying in numbers, prefix
-  too short to cluster).
+### Stage 8 — Sentence-level dedup (AGGRESSIVE text)
 
-### Stage 9 — Save outputs (atomic)
+- `drop_duplicates(subset="text", keep="first")` on aggressive text.
+- Catches case/punctuation/diacritic variants that were distinct
+  sentences in native form but collapse to the same string post-aggressive.
+  Example: `"La Casa Rossa."` and `"la casa rossa"` (different in
+  native, same after normalize).
+- We use `keep="first"` (not `keep=False`) — Camposampiero used the
+  latter at sentence level, but it was too aggressive: legitimate
+  repeated sentences (e.g. *"Inoltre, è un noto attore."*) appearing
+  in two unrelated articles got removed entirely. Soft dedup is enough.
+
+### Stage 9 — Auto prefix-dedup PL=30 K=10 (AGGRESSIVE text)
+
+- Compute `prefix(t) = t[:30]` for every sentence (already lowercase
+  after Stage 6) and **drop sentences whose prefix appears ≥10 times**.
+- 30/10 thresholds verified empirically (sweet spot between false
+  positives on real sentences sharing prefixes by coincidence and false
+  negatives on small template clusters).
+- Catches data-driven boilerplate (LMO French commune pages, scn
+  demographic stubs, vec province/commune templates) that the
+  hard-coded substring lists in Stage 7 may not cover.
+
+### Stage 10 — Save outputs (atomic)
+
 - Write to `.tmp` first, then rename, so a crash mid-write never leaves
   truncated files.
 - Per variety we save:
-  - `<code>.csv` — `text,label,article_id` (the actual training data).
-  - `<code>_meta.csv` — `article_id,title,url,n_sentences`.
-  - `<code>_stats.json` — line counts after each stage, comparable
-    column-by-column to SUKI Table 4.
+  - `<code>.csv` — `text,label,article_id` (text is **normalized only**;
+    no native column).
+  - `<code>_meta.csv` — `article_id,title,url,n_sentences` (titles and
+    URLs preserve the native form for human readability).
+  - `<code>_stats.json` — line counts after each stage.
 
+### Removed: old Stage 8 fingerprint dedup
+
+The previous fingerprint dedup (digit→N, roman→R, lowercased) was
+removed. On aggressive text, digits and roman numerals are already
+stripped to spaces, so the fingerprint computation is identity (no
+substitutions happen). The pass would be exactly equivalent to Stage 8
+exact dedup → no information gained, just slower.
 ## 5. Where we deliberately depart from the published pipelines
 
 | Step | We do? | Reason |
 |---|---|---|
-| SUKI: substitute every digit with `1` | **NO** | SUKI does this so that "in 2013" and "in 2014" collapse for their language-ID classifier. For embedding/distance modeling, numbers carry signal. Most importantly, FLORES devtest and OLDI seed pairs **keep real digits** — substituting in the Wiki side would create a Wiki↔eval mismatch. |
-| SUKI + Camposampiero: normalize Venetian `ł → l, Ł → L` | **NO** | SUKI normalizes to align with the ITDI dev set, which uses `l`. Camposampiero applies the same. But our evaluation targets do **not** use `l`: 82% of FLORES veneto sentences and 83% of OLDI veneto pairs contain `ł`. Normalizing the Wiki side would create a Wiki↔eval orthographic mismatch. If a downstream encoder is sensitive to it (e.g. XLM-R subword), we apply `ł→l` as an in-line preprocessing step at evaluation time, **on both training and eval inputs**, never on the source files. |
-| Camposampiero: `text.replace('"', " ")` | **NO** | This breaks CSV quoting in Camposampiero's output; we keep the original quotes. |
-| Camposampiero: greedy regex `\(.*\)` and `\[.*\]` to strip parentheticals | **NO** | This is a **bug in the original Camposampiero script** — the greedy `.*` matches from the first `(` to the *last* `)` in the article, which deletes large stretches of legitimate text whenever an article contains multiple parentheses. We do not strip parentheticals at all (they are usually informative). |
+| SUKI: substitute every digit with `1` | **STRIP entirely** (was: NO) | Aggressive normalize Stage 6 strips all digits. Decision driven by the embedding-similarity task: numbers are universal background noise across languages and inflate cross-language similarity in TF-IDF / FastText / Word2Vec methods (e.g., shared "1995", "2023" between Italian and Arabic Wikipedia). For methods that benefit from numbers as semantic context (CANINE, contextual encoders) we have separately the FLORES `not_normalized/` files. |
+| SUKI + Camposampiero: normalize Venetian `ł → l, Ł → L` | **YES** (was: NO) | Aggressive normalize Stage 6 maps `ł → l` for ALL languages where it appears. With the project moving to a full normalization step, the Wiki↔FLORES↔OLDI consistency is preserved by applying the same `aggressive_normalize` function in `Dataset/{flores,oldi}/scripts/normalize.py`. The `not_normalized/` folders preserve the original `ł`-bearing text for any analysis that needs it. |
+| Aggressive: lowercase + strip diacritics + strip punctuation + strip symbols | **YES** (NEW) | Same rationale as digit stripping: cross-language similarity benefits from removing surface noise. `año → ano`, `Schön → schon`, `cità → cita` is acceptable loss — within-language disambiguation is not the project's task; cross-language alignment is. |
+| Camposampiero: `text.replace('"', " ")` | **NO** | This breaks CSV quoting in Camposampiero's output; we keep the original quotes (and they get stripped by Stage 6 anyway). |
+| Camposampiero: greedy regex `\(.*\)` and `\[.*\]` to strip parentheticals | **NO** | Bug in the original Camposampiero script: the greedy `.*` matches from the first `(` to the *last* `)` in the article, deleting large stretches of legitimate text. We do not strip parentheticals at the article level (Stage 6 strips parens at sentence level cleanly). |
 | Camposampiero: `it_core_news_sm` parser for sentence segmentation | **NO** | Trained on Italian standard, makes systematic errors on dialect. We use the rule-based sentencizer instead (see Stage 4). |
-| Camposampiero: sentence-level `drop_duplicates(keep=False)` | **NO** | Drops legitimate repeated sentences. We use `keep="first"` at sentence level. |
+| Camposampiero: sentence-level `drop_duplicates(keep=False)` | **NO** | Drops legitimate repeated sentences. We use `keep="first"` (Stage 8). |
 | SUKI: per-variety adaptive thresholding for the classifier | n/a | We are not training a Naive Bayes classifier; SUKI's adaptive splits are model-specific. |
 
 ### Diagnostic comparison with the legacy Camposampiero output
@@ -327,18 +346,15 @@ The legacy folder has since been deleted to avoid confusion.
 | HAS_LOWER_ASCII filter (Stage 5) | SUKI |
 | HAS_WORD_LOWER filter (Stage 5) | SUKI |
 | Terminator-punctuation filter (Stage 5) | ours (catches titles, splitter glitches, mega-lists) |
-| VEC French/Italian commune regexes (Stage 5) | SUKI |
-| VEC Roman-numbers regex (Stage 5) | SUKI (generalized to `[MDCLXVI]+` and `numari`/`numeri`) |
-| VEC year-page + day-of-year templates (Stage 5) | ours (data-driven, ~2k vec sentences) |
-| VEC `el xe un comun` + `gregorian` substrings (Stage 5) | Camposampiero/ETHZ |
-| LMO `len < 14` filter (Stage 5) | SUKI |
-| LMO 24 boilerplate substrings (Stage 5) | Camposampiero/ETHZ |
-| Sentence-level exact dedup `keep="first"` (Stage 6) | ours (Camposampiero used `keep=False`, too aggressive at sentence level) |
-| Auto prefix-dedup PL=30 K=10 (Stage 7) | ours (data-driven, catches prefix-template clusters) |
-| Fingerprint dedup K=10 (digits→N, romans→R) (Stage 8) | ours (data-driven, catches mid-sentence templates that vary only in numbers/roman numerals — vec year-page stubs, pms municipal data, etc.) |
-| PMS Camposampiero substrings (Stage 5) | Camposampiero/ETHZ |
-| Two-folder routing (Group A / Group B) | ours (separates OLDI ∩ FLORES varieties from "others") |
-| Atomic save + per-stage `_stats.json` (Stage 9) | ours |
+| **Aggressive normalize (Stage 6)** | **ours (NEW: lowercase ASCII + strip diacritics/digits/punct/symbols + explicit map ß→ss, ł→l, æ→ae)** |
+| Length max 500 filter (Stage 7) | ours (kills mega-list templates that survived terminator filter) |
+| VEC post-norm substrings (Stage 7, 6+5 patterns) | rewritten from native regexes (SUKI French/Italian commune + SUKI Roman numbers + ours year/day templates + Camposampiero substrings) |
+| LMO post-norm substrings (Stage 7, 22 patterns) | rewritten from Camposampiero/ETHZ 24 substrings (dropped `km²`, merged accent-equivalents) |
+| PMS post-norm substrings (Stage 7, 11 patterns) | rewritten from Camposampiero/ETHZ |
+| Sentence-level exact dedup `keep="first"` (Stage 8, on aggressive) | ours (`keep="first"` is softer than Camposampiero `keep=False`; on aggressive catches case/punct/diacritic variants) |
+| Auto prefix-dedup PL=30 K=10 (Stage 9, on aggressive) | ours (data-driven, catches prefix-template clusters) |
+| Three-folder routing (Group A / Group B / languages) | ours (separates OLDI ∩ FLORES varieties from "others" from comparison) |
+| Atomic save + per-stage `_stats.json` (Stage 10) | ours |
 
 ## 7. Output format
 
@@ -350,7 +366,7 @@ Dataset/wiki/
 │   └── <code>_stats.json  → per-stage line counts
 ├── others_dialects/                    → Group B (lld, nap, pms, roa_tara)
 │   └── (same three files per code)
-├── languages/                          → comparison languages (ita/eng/fra/spa/cat/deu/ell/ara/slv)
+├── languages/                          → comparison languages (ita/eng/fra/spa/cat/deu/slv)
 │   ├── <iso>.csv          → columns: text, label, article_id (legacy Camposampiero)
 │   └── <iso>_meta.csv     → columns: article_id, title, url, ...
 ├── _cache/                             → wikiextractor *_texts/ + .xml.bz2 (gitignored)
@@ -360,15 +376,30 @@ Dataset/wiki/
 └── PIPELINE.md                         → this file
 ```
 
-`label` is a small integer (`fur=0, lij=1, lmo=2, sc=3, scn=4, vec=5`)
-defined in `scripts/generation.py:FOLD_LABEL`. Downstream code can map
-back to a code via `DIAL_LABEL`.
+`label` is a small integer defined in `scripts/generation.py:FOLD_LABEL`:
+- Group A: `fur=0, lij=1, lmo=2, sc=3, scn=4, vec=5`
+- Group B: `lld=6, nap=7, pms=8, roa_tara=9`
+- Comparison: `ita=10, spa=11, fra=12, eng=13, deu=14, cat=15, slv=16`
+
+Downstream code can map back to a code via `DIAL_LABEL`.
+
+For FLORES and OLDI, the same `aggressive_normalize` function is applied
+by `Dataset/flores/scripts/normalize.py` and `Dataset/oldi/scripts/normalize.py`,
+producing parallel files:
+
+```text
+Dataset/flores/
+├── not_normalized/         original FLORES+ files (.txt + parallel.tsv)
+└── normalized/             aggressive-normalized parallels
+
+Dataset/oldi/
+├── not_normalized/         original OLDI parquet + pairs TSVs
+└── normalized/             aggressive-normalized parallels
+```
 
 ## 8. Reproduction
 
-One command, after the project venv is set up and `it_core_news_sm` is
-installed (the model is no longer used for splitting but is in the
-requirements; see future improvements §10):
+For Wiki:
 
 ```bash
 cd Dataset/wiki
@@ -376,12 +407,21 @@ python scripts/create.py
 ```
 
 `create.py` will:
-1. download the six dumps from Wikimedia for snapshot `2026-04-01`,
+1. download the dumps from Wikimedia for snapshot `2026-04-01`,
 2. run `wikiextractor` for each,
 3. invoke `scripts/generation.py` which produces the per-variety
-   `.csv`, `_meta.csv`, and `_stats.json`,
-4. delete only its own intermediates (`*.xml.bz2` and `*_texts/`),
-   never touching pre-existing files of other contributors.
+   `.csv`, `_meta.csv`, and `_stats.json` (single text col, normalized).
+4. cache `_cache/` is preserved between runs; delete it manually to
+   force re-download.
+
+For FLORES and OLDI normalization (run once after originals are in place):
+
+```bash
+python Dataset/flores/scripts/normalize.py
+python Dataset/oldi/scripts/normalize.py
+```
+
+These read from `not_normalized/` and write to `normalized/` next to it.
 
 Tool versions (current):
 - `wikiextractor==3.0.6`
@@ -390,44 +430,52 @@ Tool versions (current):
 
 ## 9. Final stats
 
-Final per-variety sentence counts after the full pipeline
-(snapshot 2026-04-01, all 9 stages including fingerprint dedup).
-Output is split into two subfolders under `Dataset/wiki/`.
+Final per-variety sentence counts after the full 10-stage pipeline
+(snapshot 2026-04-01, with aggressive normalize). Output is split into
+three subfolders under `Dataset/wiki/`.
 
-**Group A — `dialects_in_both_OLDI_and_Flores/`** (the 6 italo-romance
-varieties that appear in BOTH OLDI and FLORES, our primary set):
+**Group A — `dialects_in_both_OLDI_and_Flores/`** (6 varieties in BOTH
+OLDI and FLORES, primary set):
 
-| Variety | raw articles | after article dedup | raw sentences | after sentence filter | after exact dedup | **final** |
+| Variety | raw art. | after art.dedup | raw sent. | after pre-norm | after post-norm | **final** |
 |---|---:|---:|---:|---:|---:|---:|
-| fur | 4,979 | 4,678 | 30,228 | 23,980 | 23,770 | **22,956** |
-| lij | 8,223 | 7,371 | 62,139 | 52,426 | 52,265 | **51,351** |
-| lmo | 79,073 | 52,155 | 252,941 | 159,250 | 139,751 | **135,642** |
-| sc  | 7,692 | 7,648 | 68,817 | 62,346 | 62,168 | **62,031** |
-| scn | 23,457 | 19,373 | 94,075 | 81,827 | 80,688 | **78,570** |
-| vec | 68,960 | 49,367 | 159,686 | 103,145 | 102,121 | **100,268** |
+| fur | 4,979 | 4,678 | 30,228 | 24,062 | 23,969 | **22,468** |
+| lij | 8,223 | 7,371 | 62,139 | 52,534 | 52,114 | **50,917** |
+| lmo | 79,073 | 52,155 | 252,941 | 214,231 | 161,744 | **129,263** |
+| sc  | 7,692 | 7,648 | 68,817 | 62,483 | 61,935 | **61,213** |
+| scn | 23,457 | 19,373 | 94,075 | 82,067 | 81,714 | **78,125** |
+| vec | 68,960 | 49,367 | 159,686 | 141,270 | 102,053 | **98,786** |
 
-**Group B — `others_dialects/`** (italo-romance varieties on Wikipedia
-that are NOT in OLDI; lld is in FLORES but not OLDI):
+**Group B — `others_dialects/`** (italo-romance varieties NOT in OLDI;
+lld is in FLORES):
 
-| Variety | raw articles | after article dedup | raw sentences | after sentence filter | after exact dedup | **final** |
+| Variety | raw art. | after art.dedup | raw sent. | after pre-norm | after post-norm | **final** |
 |---|---:|---:|---:|---:|---:|---:|
-| lld      | 176,204 | 166,503 | 385,088 | 359,578 | 212,755 | **212,539** |
-| nap      |  12,887 |  11,835 |  32,688 |  28,965 |  28,416 | **27,716** |
-| pms      |  71,072 |  69,397 | 270,038 | 111,011 | 100,911 | **98,965** |
-| roa_tara |   9,230 |   8,101 |  34,744 |  30,315 |  29,963 | **29,963** |
+| lld      | 176,204 | 166,503 | 385,088 | 360,330 | 360,296 | **211,432** |
+| nap      |  12,887 |  11,835 |  32,688 |  29,027 |  28,960 | **27,577** |
+| pms      |  71,072 |  69,397 | 270,038 | 207,158 | 109,713 | **96,024** |
+| roa_tara |   9,230 |   8,101 |  34,744 |  30,362 |  30,111 | **29,682** |
 
-The auto prefix-dedup at the end (Stage 7) drops a further 0.1–2.5%
-beyond exact dedup, with the bigger cuts on lmo (template French
-commune pages) and vec (province / commune templates SUKI/Camposampiero
-miss).
+**Comparison languages — `languages/`** — currently legacy Camposampiero
+files (ita 320k, deu 360k, eng 301k, fra 294k, spa 277k, slv 249k,
+cat 104k). Re-extract with the new pipeline by uncommenting the dump
+URLs in `scripts/create.py`.
+
+Notable from the May 2026 normalized run vs. the previous Camposampiero
+hybrid pipeline:
+- **lmo** drops more (-4.7%) because Stage 6 normalize collapses many
+  case/diacritic variants into duplicates that Stage 8 catches; also,
+  the post-norm LMO substring list catches additional templates.
+- **pms** drops more (-3.0%) for the same reason.
+- All other varieties drop less than 1.5% — the new pipeline is mostly
+  consistent with the previous one in terms of sentence count, but the
+  output text is now lowercase-ASCII-only.
 
 Quality indicators on final output:
-- **Sentence length**: median ~110-140 chars, average ~130-160. Only
-  ~2% of sentences are below 40 chars now (since min length is 30,
-  and most short fragments fail the terminator-punct filter).
-- **HTML entity residue**: 0 for fur/lij/sc/scn, ≤3 for lmo and vec.
-- **Lowercase-start sentences**: ≤0.3% per variety (the lowercase-merge
-  in Stage 4 nearly eliminates splitter glitches).
+- **Sentence length**: typically 60-120 chars (was 110-140 native — drop
+  due to removed punctuation/digits/spaces).
+- **Character classes in output**: only `[a-z\s]` for all varieties.
+- **HTML entity residue**: 0 across all varieties.
 
 For the historical comparison with the legacy Camposampiero output
 (`wiki_old/`, no longer kept on disk), see §5 "Diagnostic comparison
@@ -462,123 +510,38 @@ References to cite when the cleaning pipeline is described in the paper:
 
 ## 11. Open issues / future improvements
 
-- **Empirical boilerplate dictionaries for fur/lij/sc/scn**: SUKI did
-  not document patterns for these. We can derive them by inspecting top
-  n-grams in the per-variety CSVs and codifying the obvious templated
-  fragments. Estimated effort: ~30 min/variety.
-- **In-line preprocessing module** — done. See §12 below.
+- **Re-extract comparison languages with the new pipeline**: dump URLs
+  are commented in `scripts/create.py`. When ready, uncomment + fill in
+  the actual `pXpY` page ranges from `dumps.wikimedia.org`. Output
+  routes to `wiki/languages/<iso>.csv`.
+- **Empirical boilerplate dictionaries for fur/lij/sc/scn**: we don't
+  have explicit substring lists for these. Derive by inspecting top
+  n-grams in the per-variety CSVs after each generation run. Estimated
+  effort: ~30 min/variety.
 - **FLORES↔Wiki overlap check**: a quick sanity check that no FLORES
-  devtest sentence appears verbatim in the cleaned Wiki training set
-  (potential data leakage). Run via exact-string match, no model needed.
+  devtest sentence (after aggressive normalize) appears verbatim in the
+  cleaned Wiki training set. Trivial to run on the normalized files.
 - **External validation on ITDI dev/test**: train a TF-IDF char
   classifier on our Wiki and evaluate on ITDI dev (6,799 sentences,
   with our 6 varieties present) — sanity check that the pipeline
   produces classifiable data and a number comparable to published
   baselines.
 - **`it_core_news_sm` no longer required**: now that we use the
-  rule-based sentencizer, the model is no longer used for sentence
-  segmentation. We could remove it from `requirements.txt` and shrink
-  the venv (~50 MB). Currently kept in case a contributor wants to
-  switch back for ablation.
+  rule-based sentencizer, the model is no longer used. We could remove
+  it from `requirements.txt` and shrink the venv (~50 MB).
 
-## 12. Normalization & loader API
+## 12. Normalization function — single source of truth
 
-The cleaning pipeline above keeps source files in their **native
-orthography** (PIPELINE.md §5). For analysis-time consistency across
-encoders and corpora, we expose two modules at the package root:
+The `aggressive_normalize` function is defined identically in three
+places (kept in sync manually — short enough to copy-paste):
 
 ```
-Dataset/
-├── normalize.py     # composable text-normalization functions
-├── loaders.py       # unified API over wiki / FLORES / OLDI
-└── __init__.py
+Dataset/wiki/scripts/generation.py     # for Wiki extraction (Stage 6)
+Dataset/flores/scripts/normalize.py    # for FLORES not_normalized → normalized
+Dataset/oldi/scripts/normalize.py      # for OLDI not_normalized → normalized
 ```
 
-### Four normalization levels
+If you change one (e.g., add a new explicit char mapping), update the
+other two so that Wiki/FLORES/OLDI normalized variants stay byte-equivalent
+on shared text.
 
-Defined in `Dataset/normalize.py`. Monotone — each strictly extends the
-previous.
-
-| Level | What it does | Loss | Recommended for |
-|---|---|---|---|
-| `none` | identity | — | debug / diff with sources |
-| `hygiene` | NFC + curly quotes/dashes → ASCII + Unicode whitespace → `" "` | none | char-level encoders (CANINE-c), default everywhere |
-| `subword_safe` | hygiene + `ł→l, Ł→L` (only when `lang=="vec"`) | minimal (cross-orthography variation in vec) | subword encoders (XLM-R, mBERT, LaBSE, mT5); also when ITDI is in pipeline |
-| `tfidf_safe` | subword_safe + strip roman numerals + strip digits + strip punctuation/symbols + collapse whitespace | strips all non-letter content | bag-of-features methods (TF-IDF, FastText, Word2Vec, Naive Bayes, KenLM) |
-
-Per-encoder defaults (use this table directly when wiring a method):
-
-| Method family | Default normalize |
-|---|---|
-| Char-level contextual (CANINE-c, ByT5) | `hygiene` |
-| Subword contextual (XLM-R, mBERT, LaBSE, mUSE, mT5) | `subword_safe` |
-| Bag-of-features (TF-IDF, FastText, Word2Vec, NB, KenLM) | `tfidf_safe` |
-
-### Loader API
-
-`Dataset/loaders.py` wraps the three corpora behind a uniform interface:
-
-```python
-from Dataset.loaders import load_wiki, load_flores, load_oldi
-from Dataset.loaders import load_flores_parallel, list_supported
-
-df = load_wiki("vec", normalize="subword_safe")        # Wiki Group A/B auto-routed
-df = load_flores("vec", normalize="hygiene")           # FLORES+ one-sentence-per-row
-df = load_oldi("vec", normalize="tfidf_safe")          # OLDI parquet
-pp = load_flores_parallel(normalize="subword_safe")    # 16-language aligned (2009 rows)
-list_supported()                                       # availability matrix
-```
-
-`lang` is always the **ISO 639-3 code** we use internally (`vec`, `fur`,
-`lij`, `lmo`, `sc`, `scn`, `lld`, `nap`, `pms`, `roa_tara` for dialects;
-`ita`, `eng`, `fra`, `spa`, `cat`, `deu`, `ell`, `ara`, `slv` for
-comparison languages). The loaders translate to each corpus's native
-naming convention (FLORES uses Italian names like `veneto.txt`, OLDI
-uses BCP47 like `vec_Latn.parquet`, Sardinian's OLDI release uses the
-macrolanguage code `srd`).
-
-### Coverage
-
-|  | Wiki | FLORES+ | OLDI |
-|---|:---:|:---:|:---:|
-| **Group A dialects** (fur, lij, lmo, sc, scn, vec) | ✓ | ✓ | ✓ |
-| **Group B dialects** (lld, nap, pms, roa_tara) | ✓ | only `lld` | — |
-| **Comparison Romance** (ita, fra, spa) | ✓ (legacy)¹ | ✓ | ✓ |
-| **Comparison Romance** (cat) | ✓ (legacy)¹ | ✓ | — |
-| **Non-Romance** (eng, deu, ell, ara, slv) | ✓ (legacy)¹ | ✓ | only `eng` |
-
-¹ The Wiki CSVs for the 9 comparison languages live under
-`wiki/languages/` and were produced with the **original Camposampiero
-script** (legacy pipeline). They are ~30-50% smaller than a re-extraction
-with the current Stage 1-9 pipeline would yield, but suffice for
-comparison-language baselines where the same surgical cleaning is not
-needed. To re-extract them with the current pipeline, add their dump
-URLs to `scripts/create.py` and their `_texts` codes to `FOLD_LABEL`
-in `scripts/generation.py`.
-
-Comparison-language sentence counts (legacy Camposampiero output):
-
-| Lang | sentences |
-|---|---:|
-| ita | 320,307 |
-| deu | 360,568 |
-| eng | 301,112 |
-| fra | 294,414 |
-| spa | 276,661 |
-| slv | 249,497 |
-| cat | 103,854 |
-| ell |  18,257 |
-| ara |  16,165 |
-
-Expanding coverage is just a matter of adding entries to the `_FLORES_NAME`
-or `_OLDI_NAME` dictionaries in `loaders.py` (no code change to the
-loader functions themselves).
-
-### Why runtime normalization (and not materialized variants)
-
-We considered materializing `<lang>_norm.csv` files alongside the
-sources, but the variant count explodes: 4 normalization levels × 4
-sources × 19 languages = up to 304 files to keep in sync. Runtime
-normalization via the loader API gives the same guarantees with one
-source of truth and zero disk duplication. Source files therefore
-remain native (`ł` preserved in `vec`, accents preserved everywhere).

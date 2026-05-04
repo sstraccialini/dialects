@@ -13,4 +13,4 @@ set -uo pipefail
 source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 
 nvidia-smi || true
-python -u analysis/multilingual_xlmr_adapted/flores/src/run_pipeline.py
+python -u analysis/multilingual_xlmr_adapted/experiments/train_flores_eval_flores/run.py

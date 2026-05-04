@@ -58,11 +58,11 @@ cleanup_fasttext_blobs() {
     fi
 }
 
-run_step "08 wiki subword_fasttext"     python -u analysis/fasttext/wiki/src/run_approach.py
+run_step "08 wiki subword_fasttext"     python -u analysis/fasttext/experiments/train_wiki_eval_wiki/run.py
 cleanup_fasttext_blobs "$PROJECT_ROOT/analysis/fasttext/wiki/method_outputs/models"
 
-run_step "09 wiki multilingual"         python -u analysis/multilingual_xlmr/wiki/src/run_pipeline.py
-run_step "10 wiki sentence_baseline"    python -u analysis/sentence_baseline/wiki/src/run_sentence_baseline.py
+run_step "09 wiki multilingual"         python -u analysis/multilingual_xlmr/experiments/train_wiki_eval_wiki/run.py
+run_step "10 wiki sentence_minilm"    python -u analysis/sentence_minilm/experiments/train_wiki_eval_wiki/run.py
 
 echo "=============================================================="
 echo "=== run_remaining done"

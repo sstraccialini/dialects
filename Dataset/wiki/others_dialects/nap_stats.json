@@ -3,9 +3,11 @@
   "after_article_clean": 11837,
   "after_article_dedup": 11835,
   "raw_sentences": 32688,
-  "after_sentence_filter": 28965,
-  "after_sentence_dedup": 28416,
-  "after_prefix_dedup": 28416,
-  "final_sentences": 27716,
-  "final_articles": 11471
+  "after_pre_norm_filter": 29027,
+  "after_normalize": 29027,
+  "after_post_norm_filter": 21179,
+  "after_sentence_dedup": 19797,
+  "after_prefix_dedup": 19797,
+  "final_sentences": 19797,
+  "final_articles": 3854
 }

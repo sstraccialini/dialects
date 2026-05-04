@@ -23,7 +23,16 @@ nvidia-smi || true
 df -h "$HOME" || true
 echo ""
 
-python -u analysis/sentence_finetuned/flores/src/run_pipeline.py \
+# 4 conditions, each its own experiment script. tsdae_then_mnrl reuses
+# the tsdae_wiki checkpoint (--skip-train) once it's been trained.
+python -u analysis/sentence_finetuned/experiments/baseline/run.py
+python -u analysis/sentence_finetuned/experiments/tsdae_wiki/run.py \
+    --tsdae-epochs 3 \
+    --wiki-samples 10000
+python -u analysis/sentence_finetuned/experiments/mnrl_oldi/run.py \
+    --mnrl-epochs 5
+python -u analysis/sentence_finetuned/experiments/tsdae_then_mnrl/run.py \
     --tsdae-epochs 3 \
     --mnrl-epochs 5 \
-    --wiki-samples 10000
+    --wiki-samples 10000 \
+    --skip-train  # reuse tsdae_wiki checkpoint trained above

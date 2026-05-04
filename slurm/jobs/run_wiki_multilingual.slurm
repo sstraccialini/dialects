@@ -18,4 +18,4 @@ source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 nvidia-smi || true
 echo ""
 
-python -u analysis/multilingual_xlmr/wiki/src/run_pipeline.py
+python -u analysis/multilingual_xlmr/experiments/train_wiki_eval_wiki/run.py

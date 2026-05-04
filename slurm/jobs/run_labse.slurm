@@ -33,7 +33,7 @@ run_step() {
     echo ""
 }
 
-run_step "11 flores labse"   python -u analysis/sentence_labse/flores/src/run_sentence_baseline.py
-run_step "12 wiki   labse"   python -u analysis/sentence_labse/wiki/src/run_sentence_baseline.py
+run_step "11 flores labse"   python -u analysis/sentence_labse/experiments/train_flores_eval_flores/run.py
+run_step "12 wiki   labse"   python -u analysis/sentence_labse/experiments/train_wiki_eval_wiki/run.py
 
 df -h "$HOME" 2>/dev/null || true

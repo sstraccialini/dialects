@@ -24,7 +24,16 @@ nvidia-smi || true
 df -h "$HOME" || true
 echo ""
 
-python -u analysis/xlmr_finetuned/flores/src/run_pipeline.py \
+# 4 conditions, each its own experiment script. mlm_then_tlm reuses
+# the mlm_wiki checkpoint (--skip-train) once it's been trained.
+python -u analysis/xlmr_finetuned/experiments/baseline/run.py
+python -u analysis/xlmr_finetuned/experiments/mlm_wiki/run.py \
+    --mlm-epochs 3 \
+    --wiki-samples 10000
+python -u analysis/xlmr_finetuned/experiments/tlm_oldi/run.py \
+    --tlm-epochs 5
+python -u analysis/xlmr_finetuned/experiments/mlm_then_tlm/run.py \
     --mlm-epochs 3 \
     --tlm-epochs 5 \
-    --wiki-samples 10000
+    --wiki-samples 10000 \
+    --skip-train  # reuse mlm_wiki checkpoint trained above

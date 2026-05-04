@@ -45,6 +45,11 @@ analysis/**/method_outputs/**/*.safetensors
 analysis/**/method_outputs/**/*.npy
 analysis/**/method_outputs/**/sentence_vectors.npz
 analysis/**/method_outputs/**/combined_corpus.csv
+# variety_vectors are reproducible artefacts of a run, kept local-only.
+# Light evaluation results (distances.csv, family_stats.csv, plots, ...)
+# stay tracked; heavy / binary outputs do not.
+analysis/**/method_outputs/**/variety_vectors.csv
+analysis/**/method_outputs/**/variety_vectors.npz
 
 # Fine-tuned model checkpoints (saved directly under analysis/<method>/models/).
 analysis/**/models/

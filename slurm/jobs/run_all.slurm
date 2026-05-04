@@ -46,18 +46,18 @@ cleanup_fasttext_blobs() {
     fi
 }
 
-run_step "01 flores tfidf"              python -u analysis/tfidf/flores/src/run_baseline.py
-run_step "02 flores word2vec"           python -u analysis/word2vec/flores/src/run_word2vec.py
-run_step "03 flores subword_fasttext"   python -u analysis/fasttext/flores/src/run_approach.py
+run_step "01 flores tfidf"              python -u analysis/tfidf/experiments/train_flores_eval_flores/run.py
+run_step "02 flores word2vec"           python -u analysis/word2vec/experiments/train_flores_eval_flores/run.py
+run_step "03 flores subword_fasttext"   python -u analysis/fasttext/experiments/train_flores_eval_flores/run.py
 cleanup_fasttext_blobs "$PROJECT_ROOT/analysis/fasttext/flores/method_outputs/models"
-run_step "04 flores multilingual"       python -u analysis/multilingual_xlmr/flores/src/run_pipeline.py
-run_step "05 flores sentence_baseline"  python -u analysis/sentence_baseline/flores/src/run_sentence_baseline.py
-run_step "06 wiki tfidf"                python -u analysis/tfidf/wiki/src/run_baseline.py
-run_step "07 wiki word2vec"             python -u analysis/word2vec/wiki/src/run_word2vec.py
-run_step "08 wiki subword_fasttext"     python -u analysis/fasttext/wiki/src/run_approach.py
+run_step "04 flores multilingual"       python -u analysis/multilingual_xlmr/experiments/train_flores_eval_flores/run.py
+run_step "05 flores sentence_minilm"  python -u analysis/sentence_minilm/experiments/train_flores_eval_flores/run.py
+run_step "06 wiki tfidf"                python -u analysis/tfidf/experiments/train_wiki_eval_wiki/run.py
+run_step "07 wiki word2vec"             python -u analysis/word2vec/experiments/train_wiki_eval_wiki/run.py
+run_step "08 wiki subword_fasttext"     python -u analysis/fasttext/experiments/train_wiki_eval_wiki/run.py
 cleanup_fasttext_blobs "$PROJECT_ROOT/analysis/fasttext/wiki/method_outputs/models"
-run_step "09 wiki multilingual"         python -u analysis/multilingual_xlmr/wiki/src/run_pipeline.py
-run_step "10 wiki sentence_baseline"    python -u analysis/sentence_baseline/wiki/src/run_sentence_baseline.py
+run_step "09 wiki multilingual"         python -u analysis/multilingual_xlmr/experiments/train_wiki_eval_wiki/run.py
+run_step "10 wiki sentence_minilm"    python -u analysis/sentence_minilm/experiments/train_wiki_eval_wiki/run.py
 
 echo "=============================================================="
 echo "=== run_all done"

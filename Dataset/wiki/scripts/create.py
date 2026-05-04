@@ -26,6 +26,11 @@ import requests
 # downstream training/eval set).
 # Group B — other italo-romance varieties on Wikipedia (in ITDI 2022 but
 # not in OLDI/FLORES); useful as a comparison set.
+# COMPARISON LANGUAGES — currently commented out. To re-extract them
+# with the new pipeline (aggressive normalize), uncomment the lines below
+# and update the pXpY page ranges with the actual ones from
+# https://dumps.wikimedia.org/<lang>wiki/2026-04-01/. Output is routed to
+# Dataset/wiki/languages/ via generation.py.
 dumps = [
     # --- Group A: OLDI ∩ FLORES ---
     ('https://dumps.wikimedia.org/other/mediawiki_content_current/furwiki/2026-04-01/xml/bzip2/furwiki-2026-04-01-p1p14311.xml.bz2',     'fur_texts'),
@@ -38,7 +43,14 @@ dumps = [
     ('https://dumps.wikimedia.org/other/mediawiki_content_current/lldwiki/2026-04-01/xml/bzip2/lldwiki-2026-04-01-p1p189680.xml.bz2',    'lld_texts'),       # Ladino (in FLORES but not OLDI)
     ('https://dumps.wikimedia.org/other/mediawiki_content_current/napwiki/2026-04-01/xml/bzip2/napwiki-2026-04-01-p1p66122.xml.bz2',     'nap_texts'),       # Napoletano
     ('https://dumps.wikimedia.org/other/mediawiki_content_current/pmswiki/2026-04-01/xml/bzip2/pmswiki-2026-04-01-p1p111428.xml.bz2',    'pms_texts'),       # Piemontese
-    ('https://dumps.wikimedia.org/other/mediawiki_content_current/roa_tarawiki/2026-04-01/xml/bzip2/roa_tarawiki-2026-04-01-p2p21745.xml.bz2', 'roa_tara_texts'),  # Tarantino
+    # --- Comparison languages (UNCOMMENT to re-extract; update pXpY page ranges) ---
+    # ('https://dumps.wikimedia.org/other/mediawiki_content_current/itwiki/2026-04-01/xml/bzip2/itwiki-2026-04-01-pXpY.xml.bz2',         'ita_texts'),       # Italian (large dump, multi-part)
+    # ('https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-04-01/xml/bzip2/eswiki-2026-04-01-pXpY.xml.bz2',         'spa_texts'),       # Spanish
+    # ('https://dumps.wikimedia.org/other/mediawiki_content_current/frwiki/2026-04-01/xml/bzip2/frwiki-2026-04-01-pXpY.xml.bz2',         'fra_texts'),       # French
+    # ('https://dumps.wikimedia.org/other/mediawiki_content_current/enwiki/2026-04-01/xml/bzip2/enwiki-2026-04-01-pXpY.xml.bz2',         'eng_texts'),       # English (huge — multi-part)
+    # ('https://dumps.wikimedia.org/other/mediawiki_content_current/dewiki/2026-04-01/xml/bzip2/dewiki-2026-04-01-pXpY.xml.bz2',         'deu_texts'),       # German
+    # ('https://dumps.wikimedia.org/other/mediawiki_content_current/cawiki/2026-04-01/xml/bzip2/cawiki-2026-04-01-pXpY.xml.bz2',         'cat_texts'),       # Catalan
+    # ('https://dumps.wikimedia.org/other/mediawiki_content_current/slwiki/2026-04-01/xml/bzip2/slwiki-2026-04-01-pXpY.xml.bz2',         'slv_texts'),       # Slovenian
 ]
 
 SCRIPT_DIR = Path(__file__).resolve().parent  # Dataset/wiki/scripts/

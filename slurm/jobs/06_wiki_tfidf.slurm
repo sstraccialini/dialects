@@ -12,4 +12,4 @@
 set -euo pipefail
 source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 
-python -u analysis/tfidf/wiki/src/run_baseline.py
+python -u analysis/tfidf/experiments/train_wiki_eval_wiki/run.py

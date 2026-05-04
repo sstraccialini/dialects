@@ -13,4 +13,4 @@ set -uo pipefail
 source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 
 nvidia-smi || true
-python -u analysis/sentence_labse/wiki/src/run_sentence_baseline.py
+python -u analysis/sentence_labse/experiments/train_wiki_eval_wiki/run.py
