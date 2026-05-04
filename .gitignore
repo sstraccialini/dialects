@@ -34,6 +34,7 @@ slurm/logs/*
 # Wikipedia dump intermediates and bz2 archives (heavy)
 Dataset/wiki/*_texts/
 Dataset/wiki/*.xml.bz2
+Dataset/wiki/_cache/
 
 # Method-specific binary artefacts (too large for GitHub).
 # Vectors / models live under method_outputs/; evaluation outputs are kept.

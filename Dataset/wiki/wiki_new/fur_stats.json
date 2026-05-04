@@ -1,9 +1,0 @@
-{
-  "raw_articles": 4979,
-  "after_article_clean": 4680,
-  "after_article_dedup": 4678,
-  "raw_sentences": 30601,
-  "after_sentence_filter": 25911,
-  "final_sentences": 25392,
-  "final_articles": 4669
-}

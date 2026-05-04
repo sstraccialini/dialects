@@ -28,32 +28,59 @@ Pipeline:
              d. strip stray <, br>, residual entities
              e. whitespace collapse
              f. drop articles shorter than 50 chars (Camposampiero/ETHZ)
-  Stage 3. Article-level deduplication.
-  Stage 4. Sentence split with spaCy IT (it_core_news_sm) on the cleaned
-           full-article texts.
+  Stage 3. Article-level deduplication (keep=False — drop all duplicates).
+  Stage 4. Sentence split with spaCy's rule-based sentencizer
+           (`spacy.blank("xx") + sentencizer`), then merge fragments
+           starting with lowercase into the previous sentence (fixes
+           splits inside abbreviations like "s.p.a.", "a.C.", "D.O.C.G.").
   Stage 5. Sentence-level filters:
-             - drop sentences shorter than 20 chars
+             - drop sentences shorter than 30 chars
              - drop sentences without any lowercase ASCII letter
              - drop sentences without a word starting with lowercase ASCII
+             - drop sentences not ending with a real terminator
+               (.!?")']”’»…) — excludes : and ; on purpose
              - per-variety filters (SUKI VEC patterns + Camposampiero
-               LMO/VEC substring patterns)
-  Stage 6. Sentence-level deduplication (keep="first").
-  Stage 7. Save <code>.csv, <code>_meta.csv, <code>_stats.json (atomic).
+               LMO/VEC/PMS substring patterns)
+  Stage 6. Sentence-level deduplication (keep="first" — softer than at
+           article level, preserves legitimate repeated sentences).
+  Stage 7. Auto prefix-based template dedup: drop sentences whose first
+           30 characters appear ≥10 times (data-driven boilerplate catch).
+  Stage 8. Fingerprint dedup: drop sentences whose fingerprint (digits→N,
+           roman numerals→R, lowercased) appears ≥10 times — catches
+           templates that vary only in numbers/years.
+  Stage 9. Build per-article metadata + atomic save of <code>.csv,
+           <code>_meta.csv, <code>_stats.json. Outputs are routed to
+           `wiki/dialects_in_both_OLDI_and_Flores/` (Group A) or
+           `wiki/others_dialects/` (Group B).
 
 Per-variety filters:
   - VEC: SUKI French commune + SUKI Italian commune + SUKI Roman numbers
-         + Camposampiero "el xe un comun" + Camposampiero "gregorian".
-  - LMO: 24 Camposampiero substring patterns + SUKI len<14 short-line filter.
-  - fur, lij, sc, scn: no per-variety filter (no published patterns yet).
+         (generalized to also match `par numari romani` and `MCMXV`-style
+         year-page templates) + year-page template (`el xe on an del XX
+         secolo` / `de el III secoło`) + day-of-year templates
+         (`Ghe manca N dì par la fin de l'anno` and the symmetric
+         `Par rivar al cao de l'an ghe vołe N dì`) + Camposampiero
+         substrings (`el xe un comun de`, `gregorian`).
+  - LMO: SUKI len<14 short-line filter + 24 Camposampiero substring
+         patterns covering geographic / template stubs.
+  - PMS: 11 Camposampiero substring patterns (Piemontese Wikipedia is
+         heavily templated for municipal pages).
+  - fur, lij, sc, scn, lld, nap, roa_tara: no per-variety filter — they
+    rely on the general filters in Stage 5 plus the auto prefix-dedup
+    (Stage 7) and fingerprint dedup (Stage 8) for boilerplate cleanup.
 
 Choices that depart from SUKI for FLORES/OLDI consistency:
   - NO digit→1 substitution (FLORES/OLDI keep real digits).
-  - NO ł→l normalization (FLORES/OLDI veneto keep ł in 82-83% of rows).
+  - NO ł→l normalization at the source (FLORES/OLDI veneto keep ł in
+    82-83% of rows). When a downstream encoder needs `ł→l` (e.g. XLM-R
+    subword), apply it at runtime via `Dataset.normalize.subword_safe`
+    on BOTH training and eval inputs — see PIPELINE.md §12.
 
-The script is meant to be invoked from `Dataset/wiki/`, where the
-wikiextractor `<lang>_texts/` folders sit. It writes its outputs (and the
-stats JSON) right next to them, then `create.py` cleans up the
-intermediates.
+The script is meant to be invoked from the `_cache/` directory (set
+by create.py), where the wikiextractor `<lang>_texts/` folders sit.
+It writes its outputs to the two `wiki/` subfolders described in
+Stage 9 above. The cache is preserved between runs so re-runs only
+re-execute the cleaning stages.
 """
 
 from __future__ import annotations
@@ -71,17 +98,42 @@ from tqdm import tqdm
 
 
 # --------------------------------------------------------------------------- #
-# Variety registry — italo-romance varieties shared by FLORES + OLDI.
+# Variety registry — italo-romance varieties on Wikipedia.
+#
+# Group A (labels 0–5): the 6 varieties present in BOTH OLDI and FLORES,
+#   our primary downstream training/eval set.
+# Group B (labels 6–9): other italo-romance varieties that have a
+#   Wikipedia edition but are missing from OLDI (and FLORES, except lld).
+#   We process them with the same pipeline so they can be used as a
+#   comparison set or for sanity checks against ITDI 2022.
 # --------------------------------------------------------------------------- #
 FOLD_LABEL = {
-    "fur_texts": 0,   # Friulian
-    "lij_texts": 1,   # Ligurian
-    "lmo_texts": 2,   # Lombard
-    "sc_texts":  3,   # Sardinian
-    "scn_texts": 4,   # Sicilian
-    "vec_texts": 5,   # Venetian
+    # Group A: OLDI ∩ FLORES
+    "fur_texts":      0,   # Friulian
+    "lij_texts":      1,   # Ligurian
+    "lmo_texts":      2,   # Lombard
+    "sc_texts":       3,   # Sardinian
+    "scn_texts":      4,   # Sicilian
+    "vec_texts":      5,   # Venetian
+    # Group B: other italo-romance varieties on Wikipedia
+    "lld_texts":      6,   # Ladino (in FLORES but NOT in OLDI)
+    "nap_texts":      7,   # Napoletano
+    "pms_texts":      8,   # Piemontese
+    "roa_tara_texts": 9,   # Tarantino (sub-variety of nap, separate Wiki edition)
 }
 DIAL_LABEL = {v: k.replace("_texts", "").upper() for k, v in FOLD_LABEL.items()}
+
+# Group routing: where each variety's CSV ends up under wiki/.
+GROUP_A = {"fur_texts", "lij_texts", "lmo_texts", "sc_texts", "scn_texts", "vec_texts"}
+GROUP_B = {"lld_texts", "nap_texts", "pms_texts", "roa_tara_texts"}
+
+
+def _output_subdir_for(folder: str) -> Path:
+    base = Path(__file__).resolve().parents[1]   # Dataset/wiki/
+    if folder in GROUP_A:
+        return base / "dialects_in_both_OLDI_and_Flores"
+    else:
+        return base / "others_dialects"
 
 
 # --------------------------------------------------------------------------- #
@@ -130,6 +182,11 @@ STRAY = re.compile(r"<|br>")
 # --------------------------------------------------------------------------- #
 HAS_LOWER_ASCII = re.compile(r"[a-z]")
 HAS_WORD_LOWER = re.compile(r"(?:^|\s)[a-z]")
+# Sentence terminators we accept as "this is a complete sentence". We
+# deliberately exclude ":" and ";" — empirically a colon-ending fragment
+# is almost always an intro to a list ("Persone inportanti che xe nate
+# a Padoa:") or a heading-like incomplete fragment, not a real sentence.
+SENTENCE_TERMINATORS = (".", "!", "?", '"', "'", "”", "’", "»", "…", ")", "]")
 
 
 # --------------------------------------------------------------------------- #
@@ -141,7 +198,30 @@ VEC_FRENCH_COMMUNE = re.compile(
     re.IGNORECASE,
 )
 VEC_ROMAN_NUMBERS = re.compile(
-    r"\(L?[IVXC]+\s+(?:en|in)\s+numeri\s+romani\)", re.IGNORECASE,
+    r"\([MDCLXVI]+(?:\s+v\.C\.?)?\s+(?:en|in|par)\s+num[ae]ri\s+romani\)",
+    re.IGNORECASE,
+)
+# VEC — year-page templates (TACL survey: ~1k pages for years 1 BC–999 BC).
+# "El 1915 ... el xe un an del XX secoło"
+VEC_YEAR_DESCRIPTION = re.compile(
+    # Matches:  "el xe on an del XX sec..."  AND  "el xe on an de el III secoło v.C.."
+    # The optional `(?:\s+\w+)?` allows for things like "an bisestile".
+    # `an(?:n?o)?` matches "an" / "ano" / "anno" (all three attested forms).
+    r"\bel\s+xe\s+(?:on|un)\s+an(?:n?o)?(?:\s+\w+)?\s+(?:del|de\s+el)\s+[IVX]+\s+sec",
+    re.IGNORECASE,
+)
+# VEC — day-of-year templates (one per each of the 365 days).
+# "Ghe manca 318 dì par la fin de l'anno (o 319 inte i anni bisestiłi)"
+# The article body uses both `la` and `ła` (Venetian ł), and the noun
+# is attested as `anno`, `ano`, and the apocopated `an`.
+VEC_DAY_REMAINING = re.compile(
+    r"ghe\s+manca\s+\d+\s+d[iì]\s+par\s+[lł][ae]?\s+fin\s+de\s+l['’]?\s*an(?:n?o)?\b",
+    re.IGNORECASE,
+)
+# "Par rivar al cao de l'ano ghe vołe oncora 188 dì"
+VEC_DAY_TO_YEAR_END = re.compile(
+    r"par\s+rivar\s+al\s+cao\s+de\s+l['’]?\s*an[oó]?\s+ghe\s+vo[lł]+e",
+    re.IGNORECASE,
 )
 VEC_ITALIAN_COMMUNE = re.compile(
     r"el xe (?:on|un) comun italian de.*abitanti", re.IGNORECASE,
@@ -178,6 +258,23 @@ LMO_CAMPOSAMPIERO_SUBSTRINGS = (
 )
 LMO_MIN_LEN = 14  # SUKI
 
+# PMS — Camposampiero/ETHZ template substrings (carried over from the
+# original Camposampiero generation.py). Piemontese Wikipedia is heavily
+# templated for municipal pages.
+PMS_CAMPOSAMPIERO_SUBSTRINGS = (
+    "grup ëd popolassion.",
+    "A confin-a con ",
+    "a l'é na comun-a ëd",
+    "con na densità",
+    "A së stend",
+    "As dëstend për",
+    "a l'é na comun",
+    "La lenga",
+    "Në schema",
+    "Ël sìndich a l'é",
+    "a l'é un comun",
+)
+
 
 # --------------------------------------------------------------------------- #
 # Cleaning functions.
@@ -208,11 +305,17 @@ def clean_article(text: str) -> str | None:
 
 def filter_sentence(text: str, label: int) -> str | None:
     """Apply sentence-level cleanup. Returns text or None if discarded."""
-    if len(text) <= 20:
+    if len(text) <= 30:
         return None
     if not HAS_LOWER_ASCII.search(text):
         return None
     if not HAS_WORD_LOWER.search(text):
+        return None
+    # Drop fragments that don't end with a real sentence terminator —
+    # catches section titles ("Vangelo secondo Marco"), splitter glitches
+    # ("Łe Nóve l'è zemełà co"), and the giant comune-list templates
+    # that end with the last municipality name (5k+ chars, no period).
+    if not text.rstrip().endswith(SENTENCE_TERMINATORS):
         return None
     code = DIAL_LABEL[label]
     if code == "VEC":
@@ -222,6 +325,13 @@ def filter_sentence(text: str, label: int) -> str | None:
             return None
         if VEC_ROMAN_NUMBERS.search(text):
             return None
+        # Year and day-of-year placeholder pages (~2% of vec corpus).
+        if VEC_YEAR_DESCRIPTION.search(text):
+            return None
+        if VEC_DAY_REMAINING.search(text):
+            return None
+        if VEC_DAY_TO_YEAR_END.search(text):
+            return None
         lower = text.lower()
         for pat in VEC_CAMPOSAMPIERO_SUBSTRINGS:
             if pat in lower:
@@ -230,6 +340,10 @@ def filter_sentence(text: str, label: int) -> str | None:
         if len(text) < LMO_MIN_LEN:
             return None
         for pat in LMO_CAMPOSAMPIERO_SUBSTRINGS:
+            if pat in text:
+                return None
+    elif code == "PMS":
+        for pat in PMS_CAMPOSAMPIERO_SUBSTRINGS:
             if pat in text:
                 return None
     return text
@@ -258,7 +372,11 @@ NLP.add_pipe("sentencizer")
 def process_dialect(folder: str) -> dict | None:
     label = FOLD_LABEL[folder]
     code = DIAL_LABEL[label].lower()
-    out_dir = Path("wiki_new")
+    # Routing: Group A → wiki/dialects_in_both_OLDI_and_Flores/,
+    #          Group B → wiki/others_dialects/.
+    # parents[1] of __file__ is Dataset/wiki/ regardless of cwd
+    # (create.py runs us from the cache dir).
+    out_dir = _output_subdir_for(folder)
     out_dir.mkdir(parents=True, exist_ok=True)
     out_main = out_dir / f"{code}.csv"
     out_meta = out_dir / f"{code}_meta.csv"
@@ -316,7 +434,7 @@ def process_dialect(folder: str) -> dict | None:
     stats["after_article_dedup"] = len(df)
     print(f"  after article dedup:        {len(df):>10,}")
 
-    # --------------- Stage 4: sentence split (spaCy IT) --------------- #
+    # --------------- Stage 4: sentence split (rule-based) ------------- #
     sent_records: list[dict] = []
     texts = df["text"].tolist()
     article_ids = df["article_id"].tolist()
@@ -330,10 +448,22 @@ def process_dialect(folder: str) -> dict | None:
             desc=f"  sentencizer {code}",
         )
     ):
+        # First collect raw splits, then merge any sentence that starts
+        # with a lowercase letter into the previous one — this fixes the
+        # rule-based sentencizer's main failure mode (it splits on every
+        # period, even inside abbreviations like "s.p.a.", "a.C.",
+        # "D.O.C.G.", "es.", which produces fragments starting with
+        # lowercase).
+        article_sents: list[str] = []
         for sent in doc.sents:
             t = sent.text.strip()
             if not t:
                 continue
+            if article_sents and t[:1].islower():
+                article_sents[-1] = article_sents[-1] + " " + t
+            else:
+                article_sents.append(t)
+        for t in article_sents:
             sent_records.append({
                 "text": t,
                 "label": label,
@@ -355,12 +485,53 @@ def process_dialect(folder: str) -> dict | None:
 
     # --------------- Stage 6: sentence-level dedup --------------- #
     sent_df = sent_df.drop_duplicates(subset="text", keep="first").reset_index(drop=True)
+    stats["after_sentence_dedup"] = len(sent_df)
+    print(f"  after sentence dedup:       {len(sent_df):>10,}")
+
+    # --------------- Stage 7: auto prefix-based template dedup --------- #
+    # Catches templated boilerplate that SUKI/Camposampiero patterns missed
+    # (e.g. lmo's bot-generated French commune pages, scn's "Havi na
+    # pupulazzioni" demographic stubs). Conservative thresholds:
+    # PREFIX_LEN=30 + MIN_COUNT=10 → only drop when ≥10 sentences share
+    # the same first 30 characters, which is statistically near-impossible
+    # for natural sentences.
+    PREFIX_LEN, MIN_COUNT = 30, 10
+    from collections import Counter
+    prefixes = Counter(t[:PREFIX_LEN].lower() for t in sent_df["text"])
+    keep_mask = sent_df["text"].str[:PREFIX_LEN].str.lower().map(prefixes) < MIN_COUNT
+    sent_df = sent_df[keep_mask].reset_index(drop=True)
+    stats["after_prefix_dedup"] = len(sent_df)
+    print(f"  after auto prefix-dedup:    {len(sent_df):>10,}")
+
+    # --------------- Stage 8: fingerprint dedup ---------------------- #
+    # Complementary to prefix-dedup: catches templates whose VARIABLE
+    # part is in the middle/end of the sentence, like year-page stubs
+    # ("El 64 v.C. (LXIV in numari romani) el xe on an ...") and
+    # statistical templates ("L'abità el xe situà a 5 metri s.l.m.").
+    # Fingerprint normalizes digits → "N" and roman numerals → "R",
+    # so all sentences differing only in numbers collapse to one
+    # fingerprint and get clustered. The CSV keeps the original
+    # text — we only use the fingerprint for the dedup decision.
+    NUM_RE = re.compile(r"\d+")
+    ROMAN_RE = re.compile(r"\b[IVXLCDM]{2,}\b")
+    def _fingerprint(t: str) -> str:
+        # IMPORTANT: substitute roman numerals BEFORE lowercasing —
+        # the regex character class is uppercase only, so applying it
+        # after `t.lower()` silently matches nothing (year templates
+        # like "(CCLIV v.C par numari romani)" survived because of this).
+        t = ROMAN_RE.sub("R", t)
+        t = NUM_RE.sub("N", t)
+        return t.lower()
+    fps = sent_df["text"].apply(_fingerprint)
+    fp_counts = Counter(fps)
+    keep_mask = fps.map(fp_counts) < MIN_COUNT
+    sent_df = sent_df[keep_mask].reset_index(drop=True)
     stats["final_sentences"] = len(sent_df)
     stats["final_articles"] = int(sent_df["article_id"].nunique())
-    print(f"  final sentences (kept):     {len(sent_df):>10,}")
+    print(f"  after fingerprint dedup:    {len(sent_df):>10,}")
     print(f"  final articles (with ≥1):   {stats['final_articles']:>10,}")
 
-    # --------------- Stage 7: build meta + atomic save --------------- #
+    # --------------- Stage 9: build meta + atomic save --------------- #
     meta_df = (
         sent_df[["label", "article_id", "title", "url"]]
         .drop_duplicates(subset=["article_id"])

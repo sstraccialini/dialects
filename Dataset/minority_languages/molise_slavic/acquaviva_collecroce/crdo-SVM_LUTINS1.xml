@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TEXT SYSTEM "https://cocoon.huma-num.fr/schemas/Archive.dtd">
+<TEXT xml:lang="svm" id="crdo-SVM_LUTINS1">
+   
+    <S id="s1">
+        <AUDIO start="0.0381" end="2.1332"/>
+        <FORM>Kada bihu mali,</FORM>
+        <TRANSL xml:lang="it">Quando ero piccolo,</TRANSL>
+        <W>
+            <M>
+                <FORM>káda</FORM>
+                <TRANSL>when</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈbi</FORM>
+                <TRANSL>be</TRANSL>
+            </M>
+            <M>
+                <FORM>x</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>1SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈmaːl</FORM>
+                <TRANSL>little</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Als ich klein war,</TRANSL>
+        <TRANSL xml:lang="en">When I was little,</TRANSL>
+    </S>
+    <S id="s2">
+        <AUDIO start="2.2475" end="6.0568"/>
+        <FORM>do lita stojahma van, Mačalongu.</FORM>
+        <TRANSL xml:lang="it">d’estate stavamo in campagna, a Macchialonga.</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈdo</FORM>
+                <TRANSL>of</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>=lit</FORM>
+                <TRANSL>summer</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>stój</FORM>
+                <TRANSL>stay</TRANSL>
+            </M>
+            <M>
+                <FORM>aːx</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>ma</FORM>
+                <TRANSL>1PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈvan</FORM>
+                <TRANSL>in.the.country</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>mátʃaːloŋg</FORM>
+                <TRANSL>Macchialonga</TRANSL>
+            </M>
+            <M>
+                <FORM>u̥</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">hielten wir uns im Sommer draußen auf, in *Mačalonga*.</TRANSL>
+        <TRANSL xml:lang="en">we used to stay outside in the summer, in Mačalonga.</TRANSL>
+    </S>
+    <S id="s3">
+        <AUDIO start="6.7424" end="9.0661"/>
+        <FORM>Kada rivivaša okla podne,</FORM>
+        <TRANSL xml:lang="it">Quando si *arrivava* (=era) verso mezzogiorno,</TRANSL>
+        <W>
+            <M>
+                <FORM>káda</FORM>
+                <TRANSL>when</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>rív</FORM>
+                <TRANSL>arrive</TRANSL>
+            </M>
+            <M>
+                <FORM>iːv</FORM>
+                <TRANSL>IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈokla</FORM>
+                <TRANSL>around</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>pódne</FORM>
+                <TRANSL>midday</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Wenn es um die Mittagszeit wurde</TRANSL>
+        <TRANSL xml:lang="en">When it would be around lunchtime</TRANSL>
+    </S>
+    <S id="s4">
+        <AUDIO start="9.1804" end="11.6564"/>
+        <FORM>ka mi stojahma okla masarije, jidahma,</FORM>
+        <TRANSL xml:lang="it">*che* (=e) noi stavamo vicino alla *masseria*, mangiavamo,</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>COMP</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈmi</FORM>
+                <TRANSL>we.NOM</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>stój</FORM>
+                <TRANSL>stay</TRANSL>
+            </M>
+            <M>
+                <FORM>aːx</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>ma</FORM>
+                <TRANSL>1PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>okla</FORM>
+                <TRANSL>around</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>másaːrij</FORM>
+                <TRANSL>farm</TRANSL>
+            </M>
+            <M>
+                <FORM>e</FORM>
+                <TRANSL>GEN.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>jíd</FORM>
+                <TRANSL>eat.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aːx</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>mḁ</FORM>
+                <TRANSL>1PL</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">und wir uns bei der Masseria aufhielten, aßen wir,</TRANSL>
+        <TRANSL xml:lang="en">and we stayed close to the Masseria, we ate,</TRANSL>
+    </S>
+    <S id="s5">
+        <AUDIO start="11.8469" end="14.8943"/>
+        <FORM>e kumandzaša pušat na vitar.</FORM>
+        <TRANSL xml:lang="it">*e cominciava* a soffiare un vento.</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>kúmandz</FORM>
+                <TRANSL>begin</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>púʃa</FORM>
+                <TRANSL>blow.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>t</FORM>
+                <TRANSL>INF</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>n</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a=</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈvitar</FORM>
+                <TRANSL>wind.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">und es begann ein Wind zu wehen.</TRANSL>
+        <TRANSL xml:lang="en">and a wind began to blow.</TRANSL>
+    </S>
+    <S id="s6">
+        <AUDIO start="15.1610" end="16.9894"/>
+        <FORM>È, mama govaraša:</FORM>
+        <TRANSL xml:lang="it">*Eh*, la nonna diceva:</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ɛ</FORM>
+                <TRANSL>INTERJ</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈmam</FORM>
+                <TRANSL>grandmother</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>góvar</FORM>
+                <TRANSL>say.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Nun, Oma sagte:</TRANSL>
+        <TRANSL xml:lang="en">Well, Grandma said:</TRANSL>
+    </S>
+    <S id="s7">
+        <AUDIO start="16.9894" end="18.5512"/>
+        <FORM>«Otasu vilja!»</FORM>
+        <TRANSL xml:lang="it">“Eccoli i folletti!”</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈota</FORM>
+                <TRANSL>DEM.MID</TRANSL>
+            </M>
+            <M>
+                <FORM>s</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈviːʎ</FORM>
+                <TRANSL>elfin</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.PL.M</TRANSL>
+            </M>
+        </W>
+        <W/>
+        <TRANSL xml:lang="de">"Da sind die Vilen (=Kobolde)!"</TRANSL>
+        <TRANSL xml:lang="en">“That’s the Vilyas (=elfins)!”</TRANSL>
+    </S>
+    <S id="s8">
+        <AUDIO start="18.8560" end="24.3414"/>
+        <FORM>È, è, mi vidahma ove šušnja, ova kaša, ovo...</FORM>
+        <TRANSL xml:lang="it">*Eh*, *eh*, noi vedevamo queste foglie, questa terra, questo...</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ɛ</FORM>
+                <TRANSL>INTERJ</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ɛ</FORM>
+                <TRANSL>INTERJ</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈmi</FORM>
+                <TRANSL>we.NOM</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈvid</FORM>
+                <TRANSL>see</TRANSL>
+            </M>
+            <M>
+                <FORM>ax</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>ma</FORM>
+                <TRANSL>1PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈov</FORM>
+                <TRANSL>DEM.PROX</TRANSL>
+            </M>
+            <M>
+                <FORM>e</FORM>
+                <TRANSL>ACC.PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈʃuːʃɲ</FORM>
+                <TRANSL>leaf</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>ACC.PL.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈov</FORM>
+                <TRANSL>DEM.PROX</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈkaʃ</FORM>
+                <TRANSL>earth</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈov</FORM>
+                <TRANSL>DEM.PROX</TRANSL>
+            </M>
+            <M>
+                <FORM>o</FORM>
+                <TRANSL>NOM.SG.N</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Ja, ja, wir sahen diese Blätter, diese Erde (NOM!), das…</TRANSL>
+        <TRANSL xml:lang="en">Yes, yes, we saw these leaves, this soil that (=those things)…</TRANSL>
+    </S>
+    <S id="s9">
+        <AUDIO start="24.3795" end="27.2745"/>
+        <FORM>ka džirivaša, džirivaša e sa vičinivaša...</FORM>
+        <TRANSL xml:lang="it">*che girava, girava e* si *avvicinava*...</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>REL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>dʒír</FORM>
+                <TRANSL>whirl</TRANSL>
+            </M>
+            <M>
+                <FORM>iːv</FORM>
+                <TRANSL>IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>dʒír</FORM>
+                <TRANSL>whirl</TRANSL>
+            </M>
+            <M>
+                <FORM>iːv</FORM>
+                <TRANSL>IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>sa</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>vitʃín</FORM>
+                <TRANSL>approach</TRANSL>
+            </M>
+            <M>
+                <FORM>iːv</FORM>
+                <TRANSL>IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">das sich drehte, sich drehte und näherkam…</TRANSL>
+        <TRANSL xml:lang="en">that turned and turned and came closer…</TRANSL>
+    </S>
+    <S id="s10">
+        <AUDIO start="27.3888" end="30.5124"/>
+        <FORM>sa vičinivahu kurta nasa, okula.</FORM>
+        <TRANSL xml:lang="it">si *avvicinavano a* noi, intorno.</TRANSL>
+        <W>
+            <M>
+                <FORM>sa</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>vitʃín</FORM>
+                <TRANSL>approach</TRANSL>
+            </M>
+            <M>
+                <FORM>iːv</FORM>
+                <TRANSL>IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ax</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>kurta</FORM>
+                <TRANSL>near</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈnasḁ</FORM>
+                <TRANSL>we.GEN</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈokula</FORM>
+                <TRANSL>around</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">sie kamen nahe bei uns vorbei, rund herum.</TRANSL>
+        <TRANSL xml:lang="en">they came close by us, round about.</TRANSL>
+    </S>
+    <S id="s11">
+        <AUDIO start="30.9695" end="32.19"/>
+        <FORM>E moja mama govaraša:</FORM>
+        <TRANSL xml:lang="it">*E* mia nonna diceva:</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>moj</FORM>
+                <TRANSL>my</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈmam</FORM>
+                <TRANSL>grandmother</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>góvar</FORM>
+                <TRANSL>say.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Und meine Oma sagte:</TRANSL>
+        <TRANSL xml:lang="en">And my Grandma said:</TRANSL>
+    </S>
+    <S id="s12">
+        <AUDIO start="32.1885" end="33.9408"/>
+        <FORM>„Pojta-si-ga, pojta-si-ga!“</FORM>
+        <TRANSL xml:lang="it">“Andatevene, andatevene!”</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈpo</FORM>
+                <TRANSL>go.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>j</FORM>
+                <TRANSL>IMP</TRANSL>
+            </M>
+            <M>
+                <FORM>ta</FORM>
+                <TRANSL>2PL</TRANSL>
+            </M>
+            <M>
+                <FORM>si</FORM>
+                <TRANSL>REFL.DAT</TRANSL>
+            </M>
+            <M>
+                <FORM>gḁ</FORM>
+                <TRANSL>it.GEN</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈpo</FORM>
+                <TRANSL>go.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>j</FORM>
+                <TRANSL>IMP</TRANSL>
+            </M>
+            <M>
+                <FORM>ta</FORM>
+                <TRANSL>2PL</TRANSL>
+            </M>
+            <M>
+                <FORM>si</FORM>
+                <TRANSL>REFL.DAT</TRANSL>
+            </M>
+            <M>
+                <FORM>gḁ</FORM>
+                <TRANSL>it.GEN</TRANSL>
+            </M>
+        </W>
+        <W/>
+        <TRANSL xml:lang="de">"Geht weg, geht weg!"</TRANSL>
+        <TRANSL xml:lang="en">“Go away, go away!”</TRANSL>
+    </S>
+    <S id="s13">
+        <AUDIO start="34.0932" end="38.3215"/>
+        <FORM>Aje-ka sa strašaša. Ka si ove nasa... cupahu,</FORM>
+        <TRANSL xml:lang="it">*Perché* aveva paura. *Perché se* questi ci... *colpivano* (=avessero colpiti),</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈaje</FORM>
+                <TRANSL>because</TRANSL>
+            </M>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>COMP</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈstraʃ</FORM>
+                <TRANSL>fear.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>because</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>si</FORM>
+                <TRANSL>if</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈov</FORM>
+                <TRANSL>DEM.PROX</TRANSL>
+            </M>
+            <M>
+                <FORM>e</FORM>
+                <TRANSL>NOM.PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>nasḁ=</FORM>
+                <TRANSL>we.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈtsuːp</FORM>
+                <TRANSL>hit.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ax</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>u̥</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+            <TRANSL>IRR(1)</TRANSL>
+        </W>
+        <TRANSL xml:lang="de">Denn sie hatte Angst. Denn wenn diese uns… geschlagen hätten,</TRANSL>
+        <TRANSL xml:lang="en">Because she was afraid. Because if they had… hit us,</TRANSL>
+    </S>
+    <S id="s14">
+        <AUDIO start="38.4357" end="41.4070"/>
+        <FORM>pa nami gredaša dolur do grini.</FORM>
+        <TRANSL xml:lang="it">poi ci veniva (=sarebbe venuto) il *dolore* di *schiena*.</TRANSL>
+        <W>
+            <M>
+                <FORM>pa</FORM>
+                <TRANSL>then</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>nami=</FORM>
+                <TRANSL>we.DAT</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>gréd</FORM>
+                <TRANSL>come.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aːʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+            <TRANSL>IRR(2)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>dóluːr</FORM>
+                <TRANSL>pain.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>do</FORM>
+                <TRANSL>of</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈgriːn</FORM>
+                <TRANSL>back</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>GEN.PL.F</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">dann hätten wir Rückenweh bekommen.</TRANSL>
+        <TRANSL xml:lang="en">then we would’ve got sore backs.</TRANSL>
+    </S>
+    <S id="s15">
+        <AUDIO start="41.8641" end="43.6926"/>
+        <FORM>E mi sa skandzivahma.</FORM>
+        <TRANSL xml:lang="it">*E* noi ci *scansavamo*.</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈmi</FORM>
+                <TRANSL>we.NOM</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>skándz</FORM>
+                <TRANSL>evade</TRANSL>
+            </M>
+            <M>
+                <FORM>iːv</FORM>
+                <TRANSL>IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ax</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>mḁ</FORM>
+                <TRANSL>1PL</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Und wir wichen aus.</TRANSL>
+        <TRANSL xml:lang="en">And we evaded them.</TRANSL>
+    </S>
+    <S id="s16">
+        <AUDIO start="43.6545" end="46.2067"/>
+        <FORM>Ma ove, ka su bi čil njifog džir,</FORM>
+        <TRANSL xml:lang="it">*Ma* questi, quando avevano fatto il loro *giro*,</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ma</FORM>
+                <TRANSL>but</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈov</FORM>
+                <TRANSL>DEM.PROX</TRANSL>
+            </M>
+            <M>
+                <FORM>e</FORM>
+                <TRANSL>NOM.PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ká</FORM>
+                <TRANSL>when</TRANSL>
+            </M>
+        </W>
+        <W>
+            <TRANSL>AUX.PRF=PQP(1)</TRANSL>
+            <M>
+                <FORM>s</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>u=</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>bi=</FORM>
+                <TRANSL>PTL</TRANSL>
+            </M>
+            <TRANSL>PST=PQP(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>tʃíː</FORM>
+                <TRANSL>make</TRANSL>
+            </M>
+            <M>
+                <FORM>l</FORM>
+                <TRANSL>PTCP.PL</TRANSL>
+            </M>
+            <TRANSL>PRF=PQP(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈɲifog</FORM>
+                <TRANSL>their.ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈdʒiːr</FORM>
+                <TRANSL>round.ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Aber diese, wenn sie ihre Runde gemacht hatten,</TRANSL>
+        <TRANSL xml:lang="en">But these, when they had done their round,</TRANSL>
+    </S>
+    <S id="s17">
+        <AUDIO start="46.4353" end="48.4161"/>
+        <FORM>si ga gredahu sama.</FORM>
+        <TRANSL xml:lang="it">se ne andavano da soli.</TRANSL>
+        <W>
+            <M>
+                <FORM>si=</FORM>
+                <TRANSL>REFL.DAT</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ga=</FORM>
+                <TRANSL>it.GEN</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>gréd</FORM>
+                <TRANSL>go.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aːx</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈsaːmḁ</FORM>
+                <TRANSL>alone</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">gingen von selbst weg.</TRANSL>
+        <TRANSL xml:lang="en">they would go away by themselves.</TRANSL>
+    </S>
+   
+</TEXT>

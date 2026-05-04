@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TEXT SYSTEM "https://cocoon.huma-num.fr/schemas/Archive.dtd">
+<TEXT xml:lang="svm" id="crdo-SVM_ECLAIRS">
+   
+    <S id="s1">
+        <AUDIO start="0.4634" end="3.4757"/>
+        <FORM>Sa nahodam di profesor |Breu|,</FORM>
+        <TRANSL xml:lang="it">Mi trovo dal *professore* |Breu|,</TRANSL>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>náxoːd</FORM>
+                <TRANSL>find.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>m</FORM>
+                <TRANSL>1SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>di</FORM>
+                <TRANSL>where</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>profésoːr</FORM>
+                <TRANSL>professor.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈbroj</FORM>
+                <TRANSL>====</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Ich befinde mich (jetzt) bei Professor Breu,</TRANSL>
+        <TRANSL xml:lang="en">I’m (currently) with Professor Breu,</TRANSL>
+    </S>
+    <S id="s2">
+        <AUDIO start="3.7075" end="9.2686"/>
+        <FORM>doma Dunatina, gor, di... di abita on.</FORM>
+        <TRANSL xml:lang="it">a casa di *Donato*, sopra, dove... dove egli *abita*.</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈdom</FORM>
+                <TRANSL>home</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>duˈnaːt</FORM>
+                <TRANSL>Donato</TRANSL>
+            </M>
+            <M>
+                <FORM>ɪn</FORM>
+                <TRANSL>POSS</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈgor</FORM>
+                <TRANSL>up</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>diː</FORM>
+                <TRANSL>where</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>di</FORM>
+                <TRANSL>where</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>abít</FORM>
+                <TRANSL>live</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈoːn</FORM>
+                <TRANSL>he.NOM</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">im Haus von Donato, oben, wo… wo er wohnt.</TRANSL>
+        <TRANSL xml:lang="en">in Donato’s house, upstairs, where… where he is living.</TRANSL>
+    </S>
+    <S id="s3">
+        <AUDIO start="9.3613" end="13.3469"/>
+        <FORM>Ka abita, saki gošta greda oda di Dunat, jesu vind an ka greda sfe odeka.</FORM>
+        <TRANSL xml:lang="it">*Perché abita*, ogni anno viene qua da *Donato*, sono *venti anni che* viene sempre qua.</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>because</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>abít</FORM>
+                <TRANSL>live</TRANSL>
+            </M>
+            <M class="CL">
+                <FORM>a</FORM>
+                <TRANSL>PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈsaki</FORM>
+                <TRANSL>every</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>góːʃt</FORM>
+                <TRANSL>year</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>gréːd</FORM>
+                <TRANSL>come.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>óːdḁ</FORM>
+                <TRANSL>here</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>di</FORM>
+                <TRANSL>where</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>duˈnaːt</FORM>
+                <TRANSL>Donato.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>jés</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈvind</FORM>
+                <TRANSL>twenty</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈan</FORM>
+                <TRANSL>year</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>COMP</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>gréːd</FORM>
+                <TRANSL>come.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈsfe</FORM>
+                <TRANSL>always</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ódeːka</FORM>
+                <TRANSL>here</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Denn er wohnt, jedes Jahr kommt er hierher zu Donato, es sind zwanzig Jahre, daß er immer hierher kommt.</TRANSL>
+        <TRANSL xml:lang="en">Because he lives, each year he comes here to Donato, it is twenty years that he’s always been coming here.</TRANSL>
+    </S>
+    <S id="s4">
+        <AUDIO start="13.4395" end="15.3860"/>
+        <FORM>Je sa afecjuna di ovi mista.</FORM>
+        <TRANSL xml:lang="it">Si è *affezionato* a questo posto.</TRANSL>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <TRANSL>PRF(1)</TRANSL>
+            <M class="CL">
+                <FORM>afetsjúna</FORM>
+                <TRANSL>grow.fond.PFV.PTCP.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>di</FORM>
+                <TRANSL>where</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ov</FORM>
+                <TRANSL>DEM.PROX</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈmist</FORM>
+                <TRANSL>place</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Er hat diesen Ort liebgewonnen.</TRANSL>
+        <TRANSL xml:lang="en">He has grown fond of this place.</TRANSL>
+    </S>
+    <S id="s5">
+        <AUDIO start="15.3860" end="18.2129"/>
+        <FORM>Sma sa nafačal di funaštra</FORM>
+        <TRANSL xml:lang="it">Ci siamo *affacciati* alla *finestra*</TRANSL>
+        <W>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+            <M>
+                <FORM>s</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>ma=</FORM>
+                <TRANSL>1PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>nafátʃa</FORM>
+                <TRANSL>go.and.stand.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>l</FORM>
+                <TRANSL>PTCP.PL</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>di</FORM>
+                <TRANSL>where</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>fúnaʃtr</FORM>
+                <TRANSL>window</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Wir haben uns ans Fenster gestellt</TRANSL>
+        <TRANSL xml:lang="en">We stood by the window</TRANSL>
+    </S>
+    <S id="s6">
+        <AUDIO start="18.3519" end="21.84"/>
+        <FORM>e, napri njega, sma vidil ka je |contrada| Purgatòrij.</FORM>
+        <TRANSL xml:lang="it">*e*, davanti a lui, abbiamo visto *che* c’è la *contrada Purgatorio*.</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈnapri</FORM>
+                <TRANSL>in.front</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ɲéː</FORM>
+                <TRANSL>he</TRANSL>
+            </M>
+            <M>
+                <FORM>gḁ</FORM>
+                <TRANSL>GEN</TRANSL>
+            </M>
+        </W>
+        <W>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+            <M>
+                <FORM>s</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>ma=</FORM>
+                <TRANSL>1PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈvidɪ</FORM>
+                <TRANSL>see</TRANSL>
+            </M>
+            <M>
+                <FORM>l</FORM>
+                <TRANSL>PTCP.PL</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>COMP</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>conˈtrada</FORM>
+                <TRANSL>======</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>purgaˈtɔrij</FORM>
+                <TRANSL>purgatory.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">und, vor ihm, haben wir gesehen, daß da die Ortslage Purgatorio (=Fegefeuer) ist.</TRANSL>
+        <TRANSL xml:lang="en">and, in front of it, we saw that there was the (village) quarter of Purgatorio (=purgatory).</TRANSL>
+    </S>
+    <S id="s7">
+        <AUDIO start="21.84" end="25.35"/>
+        <FORM>E ja sa mu reka: «Znaš što je surtila nondekaj di sa bita Lurèndz?»</FORM>
+        <TRANSL xml:lang="it">*E* io gli ho detto: “Sai che cosa è *successo* lì dove ora *abita Lorenzo*?”</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈja</FORM>
+                <TRANSL>I.NOM</TRANSL>
+            </M>
+        </W>
+        <W>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+            <M>
+                <FORM>s</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>a=</FORM>
+                <TRANSL>1SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>mu=</FORM>
+                <TRANSL>he.DAT</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈrek</FORM>
+                <TRANSL>say.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈzn</FORM>
+                <TRANSL>know</TRANSL>
+            </M>
+            <M>
+                <FORM>aː</FORM>
+                <TRANSL>PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>ʃ</FORM>
+                <TRANSL>2SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈʃto</FORM>
+                <TRANSL>what.NOM</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈsuːrti</FORM>
+                <TRANSL>happen.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>l</FORM>
+                <TRANSL>PTCP</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>SG.N</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>nóndeːkaj</FORM>
+                <TRANSL>there</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>di</FORM>
+                <TRANSL>where</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈsa</FORM>
+                <TRANSL>now</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>bít</FORM>
+                <TRANSL>live</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>luˈrɛndz</FORM>
+                <TRANSL>Lorenzo.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W/>
+        <TRANSL xml:lang="de">Und ich sagte zu ihm: "Weißt du, was hier passiert ist, wo jetzt Lorenzo wohnt?"</TRANSL>
+        <TRANSL xml:lang="en">And I said to him: “Do you know, what happened here, where Lorenzo now lives?”</TRANSL>
+    </S>
+    <S id="s8">
+        <AUDIO start="25.35" end="30.2622"/>
+        <FORM>Nondekaj biša jena hiža stara, jena kazata stara.</FORM>
+        <TRANSL xml:lang="it">Lì c’era una casa vecchia, una vecchia *casetta*.</TRANSL>
+        <W>
+            <M>
+                <FORM>nóndeːkaj</FORM>
+                <TRANSL>there</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈbi</FORM>
+                <TRANSL>be</TRANSL>
+            </M>
+            <M>
+                <FORM>ʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>jén</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈxiʒ</FORM>
+                <TRANSL>house</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈstaːr</FORM>
+                <TRANSL>old</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>jen</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>kázat</FORM>
+                <TRANSL>litle.house</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈstaːr</FORM>
+                <TRANSL>old</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Hier war ein altes Haus, ein altes Häuschen.</TRANSL>
+        <TRANSL xml:lang="en">There was an old house here, a little old house.</TRANSL>
+    </S>
+    <S id="s9">
+        <AUDIO start="30.2158" end="34.6"/>
+        <FORM>Je umbra jena did, je umbra fulminan.</FORM>
+        <TRANSL xml:lang="it">È morto un vecchio, è morto *fulminato*.</TRANSL>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈumbra</FORM>
+                <TRANSL>die.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>jen</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdid</FORM>
+                <TRANSL>old.man.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈumbra</FORM>
+                <TRANSL>die.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>fulmí</FORM>
+                <TRANSL>strike.by.lightning.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>n</FORM>
+                <TRANSL>PTCP.PASS</TRANSL>
+            </M>
+            <M>
+                <FORM>aːn</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Ein Alter ist hier gestorben, er wurde tödlich vom Blitz getroffen.</TRANSL>
+        <TRANSL xml:lang="en">An old person died here, he was hit by lightning.</TRANSL>
+    </S>
+    <S id="s10">
+        <AUDIO start="34.58" end="38.33"/>
+        <FORM>Je ga koljija, je ga cupija, je ga koljija jena fulmin,</FORM>
+        <TRANSL xml:lang="it">Lo *colpì*, lo *batté*, lo *colpì* un *fulmine*,</TRANSL>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ga=</FORM>
+                <TRANSL>he.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈkoʎi</FORM>
+                <TRANSL>hit.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ga=</FORM>
+                <TRANSL>he.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈtsupi</FORM>
+                <TRANSL>beat.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(3)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ga=</FORM>
+                <TRANSL>he.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈkoʎi</FORM>
+                <TRANSL>hit.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(3)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>jen</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfulmin</FORM>
+                <TRANSL>lightning.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Es traf ihn, erschlug ihn, es traf ihn ein Blitz,</TRANSL>
+        <TRANSL xml:lang="en">It struck him, it killed him, a bolt of lightning hit him,</TRANSL>
+    </S>
+    <S id="s11">
+        <AUDIO start="38.37" end="43.33"/>
+        <FORM>jena dan ka daždaša. Biša do lita, je pa fulmin, je ga koljija, je ga fulmina. Je umbra.</FORM>
+        <TRANSL xml:lang="it">un giorno *che* (=in cui) pioveva. Era d’estate, cadde un *fulmine*, lo *colpì*, lo *fulminò*. Morì.</TRANSL>
+        <W>
+            <M>
+                <FORM>jen</FORM>
+                <TRANSL>INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdaːn</FORM>
+                <TRANSL>day.ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>REL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>dáʒd</FORM>
+                <TRANSL>rain</TRANSL>
+            </M>
+            <M>
+                <FORM>aːʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈbi</FORM>
+                <TRANSL>be</TRANSL>
+            </M>
+            <M>
+                <FORM>ʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdo</FORM>
+                <TRANSL>of</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>=lit</FORM>
+                <TRANSL>summer</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈpa</FORM>
+                <TRANSL>fall.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfulmin</FORM>
+                <TRANSL>lightning.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ga=</FORM>
+                <TRANSL>he.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈkoʎi</FORM>
+                <TRANSL>hit.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(3)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ga=</FORM>
+                <TRANSL>he.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>fulmína</FORM>
+                <TRANSL>strike.by.lightning.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(3)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈumbra</FORM>
+                <TRANSL>die.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <TRANSL xml:lang="de">an einem Tag, an dem es regnete. Es war im Sommer, ein Blitz ging nieder, hat ihn erfaßt. Er ist gestorben.</TRANSL>
+        <TRANSL xml:lang="en">on a day on which it was raining. It was in summer, a bolt of lightning came down, and it grabbed him. He died.</TRANSL>
+    </S>
+    <S id="s12">
+        <AUDIO start="43.33" end="46.0189"/>
+        <FORM>Su ga nal napri vrat, mrtav.</FORM>
+        <TRANSL xml:lang="it">Lo trovarono davanti alla porta, morto.</TRANSL>
+        <W>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+            <M>
+                <FORM>s</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>u=</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ga=</FORM>
+                <TRANSL>he.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈna</FORM>
+                <TRANSL>find.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>l</FORM>
+                <TRANSL>PTCP.PL</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈnapri</FORM>
+                <TRANSL>in.front</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈvraːt</FORM>
+                <TRANSL>door.GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>mŕtav</FORM>
+                <TRANSL>dead.ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Sie haben ihn vor der Tür gefunden, tot.</TRANSL>
+        <TRANSL xml:lang="en">They found him in front of the door, dead.</TRANSL>
+    </S>
+    <S id="s13">
+        <AUDIO start="46.1116" end="49.4020"/>
+        <FORM>Aje-ka nondeka je na kaša puna...</FORM>
+        <TRANSL xml:lang="it">*Perché* lì c’è un terreno pieno...</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈaje</FORM>
+                <TRANSL>because</TRANSL>
+            </M>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>COMP</TRANSL>
+            </M>
+        </W>
+        <W/>
+        <W>
+            <M>
+                <FORM>nóndeːka</FORM>
+                <TRANSL>there</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈje</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>jen</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈkaʃ</FORM>
+                <TRANSL>soil</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>pun</FORM>
+                <TRANSL>full</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Denn dort ist eine Erde voller…</TRANSL>
+        <TRANSL xml:lang="en">Because the ground there is full of …</TRANSL>
+    </S>
+    <S id="s14">
+        <AUDIO start="49.4020" end="56.4925"/>
+        <FORM>čuda puna gozja. Kada čini temborala do lita,</FORM>
+        <TRANSL xml:lang="it">molto pieno (=ricco) di ferro. Quando fa(nno) i *temporali* d’estate,</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈtʃudḁ</FORM>
+                <TRANSL>much</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>pun</FORM>
+                <TRANSL>full</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈgozdj</FORM>
+                <TRANSL>iron</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>kádḁːː</FORM>
+                <TRANSL>when</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tʃín</FORM>
+                <TRANSL>make</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>temboˈraːl</FORM>
+                <TRANSL>storm</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>ACC.PL.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdo</FORM>
+                <TRANSL>of</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>=lit</FORM>
+                <TRANSL>summer</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">ganz voller Eisen. Wenn es im Sommer Gewitter gibt,</TRANSL>
+        <TRANSL xml:lang="en">much (=completely) full of iron. When there are thunderstorms in summer,</TRANSL>
+    </S>
+    <S id="s15">
+        <AUDIO start="56.3998" end="58.8560"/>
+        <FORM>padaju sfe fulmina, sfe nonda padaju.</FORM>
+        <TRANSL xml:lang="it">cadono sempre i *fulmini*, sempre là cadono.</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈpad</FORM>
+                <TRANSL>fall.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>ju</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈsfe</FORM>
+                <TRANSL>always</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfulmin</FORM>
+                <TRANSL>lightning</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.PL.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈsfe</FORM>
+                <TRANSL>always</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>nóːndḁ</FORM>
+                <TRANSL>there</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈpad</FORM>
+                <TRANSL>fall.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>ju</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">gehen immer Blitze nieder, sie gehen immer dort nieder.</TRANSL>
+        <TRANSL xml:lang="en">the lightning always strikes, it always strikes there.</TRANSL>
+    </S>
+   
+</TEXT>

@@ -1,0 +1,1548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TEXT SYSTEM "https://cocoon.huma-num.fr/schemas/Archive.dtd">
+<TEXT xml:lang="svm" id="crdo-SVM_FILIBERT">
+    
+    <S id="s1">
+        <AUDIO start="1.0210" end="5.8259"/>
+        <FORM>Ono ka sa vami hočam reč jesu dva fata ka</FORM>
+        <TRANSL xml:lang="it">Quello *che* adesso vi voglio dire sono due *fatti che*</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈon</FORM>
+                <TRANSL>DEM.DIST</TRANSL>
+            </M>
+            <M>
+                <FORM>o</FORM>
+                <TRANSL>NOM.SG.N</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>REL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈsa</FORM>
+                <TRANSL>now</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>vami=</FORM>
+                <TRANSL>you.PL.DAT</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈxotʃ</FORM>
+                <TRANSL>want</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>m</FORM>
+                <TRANSL>1SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈre</FORM>
+                <TRANSL>say.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>tʃ</FORM>
+                <TRANSL>INF</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>jés</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdwa</FORM>
+                <TRANSL>two.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfat</FORM>
+                <TRANSL>story</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>REL</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Das, was ich euch sagen will, sind zwei Geschichten, die</TRANSL>
+        <TRANSL xml:lang="en">What I want to tell you now are two stories that</TRANSL>
+    </S>
+    <S id="s2">
+        <AUDIO start="5.7058" end="8.5888"/>
+        <FORM>mi povidivaša sfedni moj šurjak.</FORM>
+        <TRANSL xml:lang="it">mi raccontava sempre mio cognato.</TRANSL>
+        <W>
+            <M>
+                <FORM>mi=</FORM>
+                <TRANSL>I.DAT</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>povíd</FORM>
+                <TRANSL>tell</TRANSL>
+            </M>
+            <M>
+                <FORM>iːv</FORM>
+                <TRANSL>IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈsfedni</FORM>
+                <TRANSL>always</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>moj</FORM>
+                <TRANSL>my.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ʃúrjaːk</FORM>
+                <TRANSL>brother.in.law.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">mir immer mein Schwager erzählte.</TRANSL>
+        <TRANSL xml:lang="en">were always told to me by my brother-in-law.</TRANSL>
+    </S>
+    <S id="s3">
+        <AUDIO start="8.8890" end="14.3546"/>
+        <FORM>Bihu... jesu dva fata, do dva(hi) čeljada do dva grada vude kurta,</FORM>
+        <TRANSL xml:lang="it">Erano... sono due *fatti*, di due persone di due paesi qui *vicino*,</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈbi</FORM>
+                <TRANSL>be</TRANSL>
+            </M>
+            <M>
+                <FORM>x</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>jés</FORM>
+                <TRANSL>be.PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>3PL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdwa</FORM>
+                <TRANSL>two.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfat</FORM>
+                <TRANSL>story</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>do</FORM>
+                <TRANSL>of</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdwa</FORM>
+                <TRANSL>two.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tʃeʎáːd</FORM>
+                <TRANSL>person</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>do</FORM>
+                <TRANSL>of</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdwa</FORM>
+                <TRANSL>two.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈgraːd</FORM>
+                <TRANSL>village</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>vúde</FORM>
+                <TRANSL>here</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈkurtḁ</FORM>
+                <TRANSL>near</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Es waren… es sind zwei Geschichten von zwei Personen von zwei Dörfern hier in der Nähe,</TRANSL>
+        <TRANSL xml:lang="en">They were… they are two stories of two people from two villages nearby here,</TRANSL>
+    </S>
+    <S id="s4">
+        <AUDIO start="14.3546" end="17.1775"/>
+        <FORM>jena je Kašteluč e drugi grad je Falkun.</FORM>
+        <TRANSL xml:lang="it">uno è *Castelmauro e* l’altro paese è *Montefalcone*.</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈjen</FORM>
+                <TRANSL>one</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>káʃtelutʃ</FORM>
+                <TRANSL>Castelmauro.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>drúg</FORM>
+                <TRANSL>other</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈgraːd</FORM>
+                <TRANSL>village.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>fálkuːn</FORM>
+                <TRANSL>Montefalcone.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">eines ist Castelmauro und das andere Dorf ist Montefalcone.</TRANSL>
+        <TRANSL xml:lang="en">one is Castelmauro and the other village is Montefalcone.</TRANSL>
+    </S>
+    <S id="s5">
+        <AUDIO start="16.9973" end="20.1806"/>
+        <FORM>Vami povidivam prije fat do vga čeljada s Kašteluča.</FORM>
+        <TRANSL xml:lang="it">Vi racconto prima il *fatto* di questa persona di *Castelmauro*.</TRANSL>
+        <W>
+            <M>
+                <FORM>vami=</FORM>
+                <TRANSL>you.PL.DAT</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>povíd</FORM>
+                <TRANSL>tell</TRANSL>
+            </M>
+            <M>
+                <FORM>iːv</FORM>
+                <TRANSL>IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>m</FORM>
+                <TRANSL>1SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈprije</FORM>
+                <TRANSL>first</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfat</FORM>
+                <TRANSL>story.ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdo</FORM>
+                <TRANSL>of</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>=v</FORM>
+                <TRANSL>DEM.PROX</TRANSL>
+            </M>
+            <M>
+                <FORM>ga</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tʃeʎáːd</FORM>
+                <TRANSL>person</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>s</FORM>
+                <TRANSL>from</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>káʃtelutʃ</FORM>
+                <TRANSL>Castelmauro</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Ich erzähle euch zuerst die Geschichte von der Person aus Castelmauro.</TRANSL>
+        <TRANSL xml:lang="en">I’ll tell you first the story of the person from Castelmauro.</TRANSL>
+    </S>
+    <S id="s6">
+        <AUDIO start="20.4208" end="24.5050"/>
+        <FORM>Biša nu votu, Kašteluč, na čeljada ka sa zovaša Filibèrt.</FORM>
+        <TRANSL xml:lang="it">C’era una *volta*, a *Castelmauro*, una persona *che* si chiamava *Filiberto*.</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈbi</FORM>
+                <TRANSL>be</TRANSL>
+            </M>
+            <M>
+                <FORM>ʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>n</FORM>
+                <TRANSL>INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>u=</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>vóːt</FORM>
+                <TRANSL>time</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>káʃtelutʃ</FORM>
+                <TRANSL>Castelmauro.ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>n</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a=</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tʃeʎáːd</FORM>
+                <TRANSL>person</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ka</FORM>
+                <TRANSL>REL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>zóv</FORM>
+                <TRANSL>call</TRANSL>
+            </M>
+            <M>
+                <FORM>aːʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>filiˈbɛrt</FORM>
+                <TRANSL>Filiberto.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Es war einmal in Castelmauro eine Person, die Filibert hieß.</TRANSL>
+        <TRANSL xml:lang="en">Once upon a time in Castelmauro there was a person, called Filibert.</TRANSL>
+    </S>
+    <S id="s7">
+        <AUDIO start="24.6251" end="28.2888"/>
+        <FORM>Biša na čeljada velki aš čuda fermi.</FORM>
+        <TRANSL xml:lang="it">Era una persona grossa (=un uomo grosso) e molto *forte*.</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈbi</FORM>
+                <TRANSL>be</TRANSL>
+            </M>
+            <M>
+                <FORM>ʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>n</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a=</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tʃeʎáːd</FORM>
+                <TRANSL>person</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈvelk</FORM>
+                <TRANSL>big</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tʃudḁ</FORM>
+                <TRANSL>much</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfeːrm</FORM>
+                <TRANSL>strong</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Es war eine große und sehr starke Person.</TRANSL>
+        <TRANSL xml:lang="en">He was a tall and very strong person (=man).</TRANSL>
+    </S>
+    <S id="s8">
+        <AUDIO start="28.6492" end="31.8324"/>
+        <FORM>Na gošta, je bi riva vrima za čit vina.</FORM>
+        <TRANSL xml:lang="it">Un anno, era *giunto* il tempo per fare il vino.</TRANSL>
+        <W>
+            <M>
+                <FORM>n</FORM>
+                <TRANSL>INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>a=</FORM>
+                <TRANSL>ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>góːʃt</FORM>
+                <TRANSL>year</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF=PQP(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>bi=</FORM>
+                <TRANSL>PTL</TRANSL>
+            </M>
+            <TRANSL>PST=PQP(1)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ríva</FORM>
+                <TRANSL>arrive.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF=PQP(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>vríːm</FORM>
+                <TRANSL>time</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>za</FORM>
+                <TRANSL>for</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tʃíː</FORM>
+                <TRANSL>make</TRANSL>
+            </M>
+            <M>
+                <FORM>t</FORM>
+                <TRANSL>INF</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>víːn</FORM>
+                <TRANSL>wine</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">In einem Jahr, war die Zeit gekommen, um Wein zu machen.</TRANSL>
+        <TRANSL xml:lang="en">One year, the time had come to make wine.</TRANSL>
+    </S>
+    <S id="s9">
+        <AUDIO start="32.0126" end="34.4151"/>
+        <FORM>E on, kada je furnija trgat,</FORM>
+        <TRANSL xml:lang="it">*Ed* egli, quando *finì* di vendemmiare,</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈoːn</FORM>
+                <TRANSL>he.NOM</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>káda</FORM>
+                <TRANSL>when</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfuːrni</FORM>
+                <TRANSL>end.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈtrga</FORM>
+                <TRANSL>harvest.grapes.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>t</FORM>
+                <TRANSL>INF</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Und er, als er mit dem Weinlesen fertig war,</TRANSL>
+        <TRANSL xml:lang="en">And he, when he had finished gathering the grapes,</TRANSL>
+    </S>
+    <S id="s10">
+        <AUDIO start="34.4751" end="38.4392"/>
+        <FORM>je vaza baundze, je hi veza zgora tovara.</FORM>
+        <TRANSL xml:lang="it">prese le *bigonce*, le legò sull’asino.</TRANSL>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈvaza</FORM>
+                <TRANSL>take.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>báuːndz</FORM>
+                <TRANSL>barrel</TRANSL>
+            </M>
+            <M>
+                <FORM>e</FORM>
+                <TRANSL>ACC.PL.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(3)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>xi=</FORM>
+                <TRANSL>they.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <TRANSL>PRF(3)</TRANSL>
+            <M>
+                <FORM>véza</FORM>
+                <TRANSL>bind.PFV.PTCP.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>zgora</FORM>
+                <TRANSL>on.top</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tóvar</FORM>
+                <TRANSL>donkey</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">nahm er die Bütten, band sie auf den Esel.</TRANSL>
+        <TRANSL xml:lang="en">he took the barrels and tied them to the donkey.</TRANSL>
+    </S>
+    <S id="s11">
+        <AUDIO start="38.9197" end="40.7816"/>
+        <FORM>Je hi napunija grozlja</FORM>
+        <TRANSL xml:lang="it">Le riempì di uva</TRANSL>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>xi=</FORM>
+                <TRANSL>they.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ná</FORM>
+                <TRANSL>PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>puni</FORM>
+                <TRANSL>fill</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈgroːzʎ</FORM>
+                <TRANSL>grape</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Er füllte sie mit Trauben,</TRANSL>
+        <TRANSL xml:lang="en">He filled them with grapes,</TRANSL>
+    </S>
+    <S id="s12">
+        <AUDIO start="40.6614" end="43.0639"/>
+        <FORM>e pa je ponija ovi grozlja doma,</FORM>
+        <TRANSL xml:lang="it">*e* poi portò quest’uva a casa,</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>pa</FORM>
+                <TRANSL>then</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>póni</FORM>
+                <TRANSL>take.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ov</FORM>
+                <TRANSL>DEM.PROX</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈgroːzʎ</FORM>
+                <TRANSL>grape</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdom</FORM>
+                <TRANSL>home</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">und dann brachte er diese Trauben nach Hause,</TRANSL>
+        <TRANSL xml:lang="en">and then he brought these grapes home,</TRANSL>
+    </S>
+    <S id="s13">
+        <AUDIO start="43.0639" end="44.2651"/>
+        <FORM>semaj s tovarom.</FORM>
+        <TRANSL xml:lang="it">*sempre* coll’asino.</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>sémaːj</FORM>
+                <TRANSL>always</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>s</FORM>
+                <TRANSL>with</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tóvar</FORM>
+                <TRANSL>donkey</TRANSL>
+            </M>
+            <M>
+                <FORM>om</FORM>
+                <TRANSL>INS.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">immer mit dem Esel.</TRANSL>
+        <TRANSL xml:lang="en">always by donkey.</TRANSL>
+    </S>
+    <S id="s14">
+        <AUDIO start="44.8657" end="47.1480"/>
+        <FORM>Kada je furnija prvi put,</FORM>
+        <TRANSL xml:lang="it">Quando *finì* il primo viaggio,</TRANSL>
+        <W>
+            <M>
+                <FORM>káda</FORM>
+                <TRANSL>when</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfuːrni</FORM>
+                <TRANSL>end.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈprv</FORM>
+                <TRANSL>first</TRANSL>
+            </M>
+            <M>
+                <FORM>i</FORM>
+                <TRANSL>ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈpuːt</FORM>
+                <TRANSL>way.ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Als er mit der ersten Runde fertig war,</TRANSL>
+        <TRANSL xml:lang="en">When he (had) finished the first round,</TRANSL>
+    </S>
+    <S id="s15">
+        <AUDIO start="47.0279" end="48.8898"/>
+        <FORM>je sa vrnija van.</FORM>
+        <TRANSL xml:lang="it">tornò in campagna.</TRANSL>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>vɛ́rni</FORM>
+                <TRANSL>return.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈvan</FORM>
+                <TRANSL>in.the.country</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">kehrte er aufs Feld zurück.</TRANSL>
+        <TRANSL xml:lang="en">he went back to the field.</TRANSL>
+    </S>
+    <S id="s16">
+        <AUDIO start="49.0700" end="51.4124"/>
+        <FORM>Je jopa napunija baundze</FORM>
+        <TRANSL xml:lang="it">Riempì di nuovo la *bigonce*</TRANSL>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>jópa</FORM>
+                <TRANSL>again</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ná</FORM>
+                <TRANSL>PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>puni</FORM>
+                <TRANSL>fill</TRANSL>
+            </M>
+            <M>
+                <FORM>ja</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>báuːndz</FORM>
+                <TRANSL>barrel</TRANSL>
+            </M>
+            <M>
+                <FORM>e</FORM>
+                <TRANSL>ACC.PL.F</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Er füllte wieder die Bütten,</TRANSL>
+        <TRANSL xml:lang="en">He filled up the barrels again,</TRANSL>
+    </S>
+    <S id="s17">
+        <AUDIO start="51.5325" end="53.6947"/>
+        <FORM>za ponit još grozja doma.</FORM>
+        <TRANSL xml:lang="it">per portare ancora uva a casa.</TRANSL>
+        <W>
+            <M>
+                <FORM>za</FORM>
+                <TRANSL>for</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>póni</FORM>
+                <TRANSL>take.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>t</FORM>
+                <TRANSL>INF</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>joʃ</FORM>
+                <TRANSL>still</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈgroːzj</FORM>
+                <TRANSL>grape</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdom</FORM>
+                <TRANSL>home</TRANSL>
+            </M>
+            <M>
+                <FORM>ḁ</FORM>
+                <TRANSL>GEN.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">um noch weitere Trauben heimzubringen.</TRANSL>
+        <TRANSL xml:lang="en">in order to bring still more grapes home.</TRANSL>
+    </S>
+    <S id="s18">
+        <AUDIO start="53.6947" end="55.9771"/>
+        <FORM>Ma tovar sa neča mobaša.</FORM>
+        <TRANSL xml:lang="it">*Ma* l’asino non si voleva *muovere*.</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ma</FORM>
+                <TRANSL>but</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>tóvar</FORM>
+                <TRANSL>donkey.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈne</FORM>
+                <TRANSL>NEG</TRANSL>
+            </M>
+            <M>
+                <FORM>tʃ</FORM>
+                <TRANSL>want</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS.3SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈmoːb</FORM>
+                <TRANSL>move.IPFV</TRANSL>
+            </M>
+            <M>
+                <FORM>aʃ</FORM>
+                <TRANSL>IPRF</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>3SG</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Aber der Esel wollte sich nicht bewegen.</TRANSL>
+        <TRANSL xml:lang="en">But the donkey didn’t want to move.</TRANSL>
+    </S>
+    <S id="s19">
+        <AUDIO start="56.2173" end="59.5207"/>
+        <FORM>Tiraj oglav nu votu, tiraj dvi, tiraj tri,</FORM>
+        <TRANSL xml:lang="it">*Tira* la briglia una *volta, *tira* due, *tira* tre,</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>tír</FORM>
+                <TRANSL>pull.PFV</TRANSL>
+            </M>
+            <M class="CL">
+                <FORM>aːj</FORM>
+                <TRANSL>IMP.2SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈoglav</FORM>
+                <TRANSL>rein.ACC.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>n</FORM>
+                <TRANSL>one</TRANSL>
+            </M>
+            <M>
+                <FORM>u=</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>vóːt</FORM>
+                <TRANSL>time</TRANSL>
+            </M>
+            <M>
+                <FORM>u̥</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>tír</FORM>
+                <TRANSL>pull.PFV</TRANSL>
+            </M>
+            <M class="CL">
+                <FORM>aːj</FORM>
+                <TRANSL>IMP.2SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈdwi</FORM>
+                <TRANSL>two.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>tír</FORM>
+                <TRANSL>pull.PFV</TRANSL>
+            </M>
+            <M class="CL">
+                <FORM>aːj</FORM>
+                <TRANSL>IMP.2SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈtri</FORM>
+                <TRANSL>three</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Zieh den Zügel einmal, zieh zwei, zieh drei, (er zog…)</TRANSL>
+        <TRANSL xml:lang="en">Pull (=he pulled) the reins once, pull twice, pull three times,</TRANSL>
+    </S>
+    <S id="s20">
+        <AUDIO start="59.5207" end="61.0822"/>
+        <FORM>naza je sa štufa</FORM>
+        <TRANSL xml:lang="it">alla fine si *stufò*</TRANSL>
+        <W>
+            <M>
+                <FORM>náza</FORM>
+                <TRANSL>finally</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>sa=</FORM>
+                <TRANSL>REFL</TRANSL>
+            </M>
+        </W>
+        <W>
+            <TRANSL>PRF(1)</TRANSL>
+            <M class="CL">
+                <FORM>ʃtúfa</FORM>
+                <TRANSL>get.fed.up.PFV.PTCP.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">schließlich wurde er es leid,</TRANSL>
+        <TRANSL xml:lang="en">finally he was annoyed,</TRANSL>
+    </S>
+    <S id="s21">
+        <AUDIO start="61.2024" end="63.3045"/>
+        <FORM>e je seta tovaru nu šaku,</FORM>
+        <TRANSL xml:lang="it">*e assestò* all’asino un pugno,</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>séta</FORM>
+                <TRANSL>throw.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>tóvar</FORM>
+                <TRANSL>donkey</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>DAT.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>n</FORM>
+                <TRANSL>ART.INDF</TRANSL>
+            </M>
+            <M>
+                <FORM>u=</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈʃak</FORM>
+                <TRANSL>fist</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">und versetzte dem Esel einen Faustschlag,</TRANSL>
+        <TRANSL xml:lang="en">and punched the donkey with his fist,</TRANSL>
+    </S>
+    <S id="s22">
+        <AUDIO start="63.4246" end="65.5868"/>
+        <FORM>jušt u glavu, ma fermu!</FORM>
+        <TRANSL xml:lang="it">*proprio* in testa, *ma forte*!</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ˈjuʃt</FORM>
+                <TRANSL>exactly</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈu</FORM>
+                <TRANSL>in</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>=glav</FORM>
+                <TRANSL>head</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ma</FORM>
+                <TRANSL>but</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfeːrm</FORM>
+                <TRANSL>strong</TRANSL>
+            </M>
+            <M>
+                <FORM>u</FORM>
+                <TRANSL>ACC.SG.F</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">genau auf den Kopf, aber fest!</TRANSL>
+        <TRANSL xml:lang="en">right on the head, and hard!</TRANSL>
+    </S>
+    <S id="s23">
+        <AUDIO start="66.0073" end="68.2295"/>
+        <FORM>Tovar je pa pozjamu mrtav.</FORM>
+        <TRANSL xml:lang="it">L’asino cadde per terra morto.</TRANSL>
+        <W>
+            <M>
+                <FORM>tóvar</FORM>
+                <TRANSL>donkey.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈpa</FORM>
+                <TRANSL>fall.PFV.PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈpozjamu</FORM>
+                <TRANSL>on.the.earth</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>mŕtav</FORM>
+                <TRANSL>dead.NOM.SG.M</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">Der Esel fiel tot zu Boden.</TRANSL>
+        <TRANSL xml:lang="en">The donkey fell to the ground dead.</TRANSL>
+    </S>
+    <S id="s24">
+        <AUDIO start="68.3497" end="71.2326"/>
+        <FORM>On je ga gleda e je mu reka:</FORM>
+        <TRANSL xml:lang="it">Egli lo guardò *e* gli disse:</TRANSL>
+        <W>
+            <M>
+                <FORM>ˈoːn</FORM>
+                <TRANSL>he.NOM</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(1)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>ga=</FORM>
+                <TRANSL>he.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <TRANSL>PRF(1)</TRANSL>
+            <M>
+                <FORM>ˈgleda</FORM>
+                <TRANSL>look.PTCP.SG.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>e</FORM>
+                <TRANSL>and</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>je=</FORM>
+                <TRANSL>be.PRS.3SG</TRANSL>
+            </M>
+            <TRANSL>AUX.PRF(2)</TRANSL>
+        </W>
+        <W>
+            <M>
+                <FORM>mu=</FORM>
+                <TRANSL>he.DAT</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈrek</FORM>
+                <TRANSL>say.PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PTCP.SG.M</TRANSL>
+            </M>
+            <TRANSL>PRF(2)</TRANSL>
+        </W>
+        <TRANSL xml:lang="de">Es schaute ihn an und sagte zu ihm:</TRANSL>
+        <TRANSL xml:lang="en">He looked at it and said to it:</TRANSL>
+    </S>
+    <S id="s25">
+        <AUDIO start="71.1725" end="73.2146"/>
+        <FORM>«S moždani ma moraš zaorat,</FORM>
+        <TRANSL xml:lang="it">“Con il cervello mi puoi fregare,</TRANSL>
+        <W>
+            <M>
+                <FORM>s=</FORM>
+                <TRANSL>with</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>móʒd</FORM>
+                <TRANSL>brain</TRANSL>
+            </M>
+            <M>
+                <FORM>aːni</FORM>
+                <TRANSL>INS.PL.M</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ma=</FORM>
+                <TRANSL>I.ACC</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈmor</FORM>
+                <TRANSL>can</TRANSL>
+            </M>
+            <M>
+                <FORM>a</FORM>
+                <TRANSL>PRS</TRANSL>
+            </M>
+            <M>
+                <FORM>ʃ</FORM>
+                <TRANSL>2SG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈza</FORM>
+                <TRANSL>PFV</TRANSL>
+            </M>
+            <M>
+                <FORM>ora</FORM>
+                <TRANSL>cheat</TRANSL>
+            </M>
+            <M>
+                <FORM>t</FORM>
+                <TRANSL>INF</TRANSL>
+            </M>
+        </W>
+        <TRANSL xml:lang="de">"Mit dem Hirn kannst du mich verarschen,</TRANSL>
+        <TRANSL xml:lang="en">“With your brain you can fool me,</TRANSL>
+    </S>
+    <S id="s26">
+        <AUDIO start="73.2146" end="74.8363"/>
+        <FORM>ma ne s forcom!»</FORM>
+        <TRANSL xml:lang="it">*ma* non con la *forza*!”</TRANSL>
+        <W>
+            <M class="CL">
+                <FORM>ˈma</FORM>
+                <TRANSL>but</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>ˈne</FORM>
+                <TRANSL>NEG</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M>
+                <FORM>s=</FORM>
+                <TRANSL>with</TRANSL>
+            </M>
+        </W>
+        <W>
+            <M class="CL">
+                <FORM>ˈfo:rts</FORM>
+                <TRANSL>power</TRANSL>
+            </M>
+            <M>
+                <FORM>om</FORM>
+                <TRANSL>INS.SG.F</TRANSL>
+            </M>
+        </W>
+        <W/>
+        <TRANSL xml:lang="de">aber nicht mit der Kraft!"</TRANSL>
+        <TRANSL xml:lang="en">but not with the power!”</TRANSL>
+    </S>
+   
+</TEXT>

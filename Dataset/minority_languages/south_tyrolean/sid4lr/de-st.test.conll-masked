@@ -1,0 +1,6230 @@
+# id: 1
+# text-en: show all reminders
+# text: Zoag olle Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+
+# id: 2
+# text-en: Do I need a sweater?
+# text: Brauch i an Pullover?
+# intent: _
+1	Brauch	_	_
+2	i	_	_
+3	an	_	_
+4	Pullover	_	_
+5	?	_	_
+
+# id: 3
+# text-en: Add a reminder for today at 4pm
+# text: An Erinnerung fir heinte um 4 nomittog derzua tian
+# intent: _
+1	An	_	_
+2	Erinnerung	_	_
+3	fir	_	_
+4	heinte	_	_
+5	um	_	_
+6	4	_	_
+7	nomittog	_	_
+8	derzua	_	_
+9	tian	_	_
+
+# id: 4
+# text-en: Cancel my reminder
+# text: lesch meine Erinnerung
+# intent: _
+1	lesch	_	_
+2	meine	_	_
+3	Erinnerung	_	_
+
+# id: 5
+# text-en: Remind me to get gas.
+# text: Erinner mi Gas zi kafn.
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	Gas	_	_
+4	zi	_	_
+5	kafn	_	_
+6	.	_	_
+
+# id: 6
+# text-en: Do I need an umbrella on Wednesday?
+# text: Brauch i in Mittig an Regenschirm?
+# intent: _
+1	Brauch	_	_
+2	i	_	_
+3	in	_	_
+4	Mittig	_	_
+5	an	_	_
+6	Regenschirm	_	_
+7	?	_	_
+
+# id: 7
+# text-en: snooze my alarms for five minutes
+# text: snooze mein Wecker fir fünf Minutn
+# intent: _
+1	snooze	_	_
+2	mein	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	fünf	_	_
+6	Minutn	_	_
+
+# id: 8
+# text-en: set a birthday reminder for max
+# text: erstell a Geburtstogserinnerung fir max
+# intent: _
+1	erstell	_	_
+2	a	_	_
+3	Geburtstogserinnerung	_	_
+4	fir	_	_
+5	max	_	_
+
+# id: 9
+# text-en: Show me all reminders
+# text: Zoag mir olle Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	olle	_	_
+4	Erinnerungen	_	_
+
+# id: 10
+# text-en: Show all alarms.
+# text: Zoag olle Wecker.
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	.	_	_
+
+# id: 11
+# text-en: Is it going to rain today?
+# text: Regnts heinte?
+# intent: _
+1	Regnts	_	_
+2	heinte	_	_
+3	?	_	_
+
+# id: 12
+# text-en: Set alarm for 8am
+# text: Stell in Wecker af 8:00 in der friah
+# intent: _
+1	Stell	_	_
+2	in	_	_
+3	Wecker	_	_
+4	af	_	_
+5	8:00	_	_
+6	in	_	_
+7	der	_	_
+8	friah	_	_
+
+# id: 13
+# text-en: What is the temperature today?
+# text: Wia isch die Temperatur heinte?
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Temperatur	_	_
+5	heinte	_	_
+6	?	_	_
+
+# id: 14
+# text-en: Show my reminder
+# text: Zoag meine Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	meine	_	_
+3	Erinnerungen	_	_
+
+# id: 15
+# text-en: Show all alarms
+# text: Olle Wecker zoagn
+# intent: _
+1	Olle	_	_
+2	Wecker	_	_
+3	zoagn	_	_
+
+# id: 16
+# text-en: Remind me to talk to Ben about Georgia
+# text: Erinner mi mitn Ben iber Georgia zi redn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	mitn	_	_
+4	Ben	_	_
+5	iber	_	_
+6	Georgia	_	_
+7	zi	_	_
+8	redn	_	_
+
+# id: 17
+# text-en: Set alarm for 5 am
+# text: stell an Wecker fir 5 in der friah
+# intent: _
+1	stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	5	_	_
+6	in	_	_
+7	der	_	_
+8	friah	_	_
+
+# id: 18
+# text-en: is it cloudy today
+# text: Isches heint bewölkt?
+# intent: _
+1	Isches	_	_
+2	heint	_	_
+3	bewölkt	_	_
+4	?	_	_
+
+# id: 19
+# text-en: How many inches of rain will we get today?
+# text: Wia viele Millimeter Regen soll heint no kemmen?
+# intent: _
+1	Wia	_	_
+2	viele	_	_
+3	Millimeter	_	_
+4	Regen	_	_
+5	soll	_	_
+6	heint	_	_
+7	no	_	_
+8	kemmen	_	_
+9	?	_	_
+
+# id: 20
+# text-en: Remind me to call my sister tomorrow
+# text: Erinner mi morgn meine Schweschter unziriafn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	morgn	_	_
+4	meine	_	_
+5	Schweschter	_	_
+6	unziriafn	_	_
+
+# id: 21
+# text-en: stop alarm
+# text: Schalt di Wecker aus
+# intent: _
+1	Schalt	_	_
+2	di	_	_
+3	Wecker	_	_
+4	aus	_	_
+
+# id: 22
+# text-en: Is it going to be hot this week?
+# text: Wearts de Woche hoas?
+# intent: _
+1	Wearts	_	_
+2	de	_	_
+3	Woche	_	_
+4	hoas	_	_
+5	?	_	_
+
+# id: 23
+# text-en: Set alarm for 3pm.
+# text: Stell an Wecker fir drei in nomittog
+# intent: _
+1	Stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	drei	_	_
+6	in	_	_
+7	nomittog	_	_
+
+# id: 24
+# text-en: will it snow today
+# text: Wearts heint schneibm
+# intent: _
+1	Wearts	_	_
+2	heint	_	_
+3	schneibm	_	_
+
+# id: 25
+# text-en: delete all alarms
+# text: tua olle Wecker weck
+# intent: _
+1	tua	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	weck	_	_
+
+# id: 26
+# text-en: Show me my reminders
+# text: Zoag mir olle meine Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	olle	_	_
+4	meine	_	_
+5	Erinnerungen	_	_
+
+# id: 27
+# text-en: How much time is left on alarm
+# text: Wia viel Zeit bleib ban Wecker ibrig
+# intent: _
+1	Wia	_	_
+2	viel	_	_
+3	Zeit	_	_
+4	bleib	_	_
+5	ban	_	_
+6	Wecker	_	_
+7	ibrig	_	_
+
+# id: 28
+# text-en: What are my reminders?
+# text: Wos sein meine Erinnerungen?
+# intent: _
+1	Wos	_	_
+2	sein	_	_
+3	meine	_	_
+4	Erinnerungen	_	_
+5	?	_	_
+
+# id: 29
+# text-en: Set an alarm for 8am daily
+# text: Stell fir jedn Tog an Wecker um 8 in der friah
+# intent: _
+1	Stell	_	_
+2	fir	_	_
+3	jedn	_	_
+4	Tog	_	_
+5	an	_	_
+6	Wecker	_	_
+7	um	_	_
+8	8	_	_
+9	in	_	_
+10	der	_	_
+11	friah	_	_
+
+# id: 30
+# text-en: can you show me the alarms?
+# text: konnsch du mir di Wecker zoagn?
+# intent: _
+1	konnsch	_	_
+2	du	_	_
+3	mir	_	_
+4	di	_	_
+5	Wecker	_	_
+6	zoagn	_	_
+7	?	_	_
+
+# id: 31
+# text-en: Is Disney world expecting storms today?
+# text: Sein in Disney World heinte Stürme?
+# intent: _
+1	Sein	_	_
+2	in	_	_
+3	Disney	_	_
+4	World	_	_
+5	heinte	_	_
+6	Stürme	_	_
+7	?	_	_
+
+# id: 32
+# text-en: will it snow today
+# text: Wearts heint schneibm
+# intent: _
+1	Wearts	_	_
+2	heint	_	_
+3	schneibm	_	_
+
+# id: 33
+# text-en: show all alarms
+# text: zoag olle Wecker
+# intent: _
+1	zoag	_	_
+2	olle	_	_
+3	Wecker	_	_
+
+# id: 34
+# text-en: Is it cold today?
+# text: Is heint kolt?
+# intent: _
+1	Is	_	_
+2	heint	_	_
+3	kolt	_	_
+4	?	_	_
+
+# id: 35
+# text-en: Please cancel the alarm for Thursday morning.
+# text: Bitte lesch in Wecker fir Donnerstog friah.
+# intent: _
+1	Bitte	_	_
+2	lesch	_	_
+3	in	_	_
+4	Wecker	_	_
+5	fir	_	_
+6	Donnerstog	_	_
+7	friah	_	_
+8	.	_	_
+
+# id: 36
+# text-en: Is it going to rain today?
+# text: Regnts heinte?
+# intent: _
+1	Regnts	_	_
+2	heinte	_	_
+3	?	_	_
+
+# id: 37
+# text-en: is it snowing in canada
+# text: Schneibs in Kanada
+# intent: _
+1	Schneibs	_	_
+2	in	_	_
+3	Kanada	_	_
+
+# id: 38
+# text-en: What will the high be today?
+# text: Wia hoass wearts heint maximal?
+# intent: _
+1	Wia	_	_
+2	hoass	_	_
+3	wearts	_	_
+4	heint	_	_
+5	maximal	_	_
+6	?	_	_
+
+# id: 39
+# text-en: Will it snow enough tonight to make travelling hazardous?
+# text: Wearts heint nocht souvl schneibm dass es reisen gefährlich weart?
+# intent: _
+1	Wearts	_	_
+2	heint	_	_
+3	nocht	_	_
+4	souvl	_	_
+5	schneibm	_	_
+6	dass	_	_
+7	es	_	_
+8	reisen	_	_
+9	gefährlich	_	_
+10	weart	_	_
+11	?	_	_
+
+# id: 40
+# text-en: show all reminders
+# text: Zoag olle Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+
+# id: 41
+# text-en: delete all reminders
+# text: Lesch olle Erinnerungen
+# intent: _
+1	Lesch	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+
+# id: 42
+# text-en: will i need a jacket tomorrow?
+# text: brauch i morgn a Jagge?
+# intent: _
+1	brauch	_	_
+2	i	_	_
+3	morgn	_	_
+4	a	_	_
+5	Jagge	_	_
+6	?	_	_
+
+# id: 43
+# text-en: How much time is left on alarm
+# text: Wia viel Zeit bleib ban Wecker ibrig
+# intent: _
+1	Wia	_	_
+2	viel	_	_
+3	Zeit	_	_
+4	bleib	_	_
+5	ban	_	_
+6	Wecker	_	_
+7	ibrig	_	_
+
+# id: 44
+# text-en: Pause the alarm
+# text: Pausier in Alarm
+# intent: _
+1	Pausier	_	_
+2	in	_	_
+3	Alarm	_	_
+
+# id: 45
+# text-en: Show me all the alarms
+# text: Zoag olle Wecker un
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	un	_	_
+
+# id: 46
+# text-en: What's the weather like in yellowstone?
+# text: Wia is Wetter in Yellowstone?
+# intent: _
+1	Wia	_	_
+2	is	_	_
+3	Wetter	_	_
+4	in	_	_
+5	Yellowstone	_	_
+6	?	_	_
+
+# id: 47
+# text-en: What's the weather like today?
+# text: wia isches Wetter heinte?
+# intent: _
+1	wia	_	_
+2	isches	_	_
+3	Wetter	_	_
+4	heinte	_	_
+5	?	_	_
+
+# id: 48
+# text-en: Delete my reminder for picking up Patrick from school tomorrow.
+# text: Lsch meine Erinnerung um morgn in Patrick vu dr Schuale ozuholn
+# intent: _
+1	Lsch	_	_
+2	meine	_	_
+3	Erinnerung	_	_
+4	um	_	_
+5	morgn	_	_
+6	in	_	_
+7	Patrick	_	_
+8	vu	_	_
+9	dr	_	_
+10	Schuale	_	_
+11	ozuholn	_	_
+
+# id: 49
+# text-en: Remind me tomorrow at this time to schedule a doctor appointment
+# text: Erinner mi morgn um der Zeit an Orzttermin auszumochn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	morgn	_	_
+4	um	_	_
+5	der	_	_
+6	Zeit	_	_
+7	an	_	_
+8	Orzttermin	_	_
+9	auszumochn	_	_
+
+# id: 50
+# text-en: Remind me to drop off rent
+# text: Erinner mi die Miete ozigebn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	die	_	_
+4	Miete	_	_
+5	ozigebn	_	_
+
+# id: 51
+# text-en: when will the rain end?
+# text: Wenn hearts epper au zi regnen?
+# intent: _
+1	Wenn	_	_
+2	hearts	_	_
+3	epper	_	_
+4	au	_	_
+5	zi	_	_
+6	regnen	_	_
+7	?	_	_
+
+# id: 52
+# text-en: cancel alarms
+# text: Wecker leschen
+# intent: _
+1	Wecker	_	_
+2	leschen	_	_
+
+# id: 53
+# text-en: Remind me to call Stephanie on Tuesday
+# text: Erinner mi Stephanie in Dienschtig unzuriafn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	Stephanie	_	_
+4	in	_	_
+5	Dienschtig	_	_
+6	unzuriafn	_	_
+
+# id: 54
+# text-en: show all my alarms
+# text: zoag mir olle Weckzeiten
+# intent: _
+1	zoag	_	_
+2	mir	_	_
+3	olle	_	_
+4	Weckzeiten	_	_
+
+# id: 55
+# text-en: How hot will it get today?
+# text: Wia hoass wearts heint?
+# intent: _
+1	Wia	_	_
+2	hoass	_	_
+3	wearts	_	_
+4	heint	_	_
+5	?	_	_
+
+# id: 56
+# text-en: Set alarm for 5 pm tonight
+# text: Stell an Wecker fir heinte 5 zu marende
+# intent: _
+1	Stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	heinte	_	_
+6	5	_	_
+7	zu	_	_
+8	marende	_	_
+
+# id: 57
+# text-en: remind me to go to the doctors on august 21st 3 pm
+# text: erinner mi drun in 21. August um 3 nomittog zin Doktor zu gian
+# intent: _
+1	erinner	_	_
+2	mi	_	_
+3	drun	_	_
+4	in	_	_
+5	21	_	_
+6	.	_	_
+7	August	_	_
+8	um	_	_
+9	3	_	_
+10	nomittog	_	_
+11	zin	_	_
+12	Doktor	_	_
+13	zu	_	_
+14	gian	_	_
+
+# id: 58
+# text-en: cancel my recurring reminder to take meds daily at 7 am
+# text: lesch meine wiederholte Erinnerung olle Toge um 7 in der friah Medizin einzinemmen
+# intent: _
+1	lesch	_	_
+2	meine	_	_
+3	wiederholte	_	_
+4	Erinnerung	_	_
+5	olle	_	_
+6	Toge	_	_
+7	um	_	_
+8	7	_	_
+9	in	_	_
+10	der	_	_
+11	friah	_	_
+12	Medizin	_	_
+13	einzinemmen	_	_
+
+# id: 59
+# text-en: when does the forecast next show rain
+# text: Wenn gibs laut Wettervorhersage es negschte Mol Regen?
+# intent: _
+1	Wenn	_	_
+2	gibs	_	_
+3	laut	_	_
+4	Wettervorhersage	_	_
+5	es	_	_
+6	negschte	_	_
+7	Mol	_	_
+8	Regen	_	_
+9	?	_	_
+
+# id: 60
+# text-en: What time is my alarm set for tomorrow morning?
+# text: Wenn isch mein Wecker fir morgn in der friah eingstellt?
+# intent: _
+1	Wenn	_	_
+2	isch	_	_
+3	mein	_	_
+4	Wecker	_	_
+5	fir	_	_
+6	morgn	_	_
+7	in	_	_
+8	der	_	_
+9	friah	_	_
+10	eingstellt	_	_
+11	?	_	_
+
+# id: 61
+# text-en: will it snow today
+# text: Wearts heint schneibm
+# intent: _
+1	Wearts	_	_
+2	heint	_	_
+3	schneibm	_	_
+
+# id: 62
+# text-en: Turn off my alarm.
+# text: Scholt mein Wecker aus.
+# intent: _
+1	Scholt	_	_
+2	mein	_	_
+3	Wecker	_	_
+4	aus	_	_
+5	.	_	_
+
+# id: 63
+# text-en: Cancel all alarms
+# text: Lesch olle Wecker
+# intent: _
+1	Lesch	_	_
+2	olle	_	_
+3	Wecker	_	_
+
+# id: 64
+# text-en: remind me to buy groceries
+# text: erinner mi Lebensmittel zi kafn
+# intent: _
+1	erinner	_	_
+2	mi	_	_
+3	Lebensmittel	_	_
+4	zi	_	_
+5	kafn	_	_
+
+# id: 65
+# text-en: I need an alarm set for a 9 am breakfast
+# text: I brauch an Wecker fir 9 in der friah firs Frühstück
+# intent: _
+1	I	_	_
+2	brauch	_	_
+3	an	_	_
+4	Wecker	_	_
+5	fir	_	_
+6	9	_	_
+7	in	_	_
+8	der	_	_
+9	friah	_	_
+10	firs	_	_
+11	Frühstück	_	_
+
+# id: 66
+# text-en: set reminder to watch the Colts one hour before game starts
+# text: Erstell a Erinnerung um „the Colts“ zi schaugn a Stunde vor es Spiel unfong
+# intent: _
+1	Erstell	_	_
+2	a	_	_
+3	Erinnerung	_	_
+4	um	_	_
+5	„	_	_
+6	the	_	_
+7	Colts	_	_
+8	“	_	_
+9	zi	_	_
+10	schaugn	_	_
+11	a	_	_
+12	Stunde	_	_
+13	vor	_	_
+14	es	_	_
+15	Spiel	_	_
+16	unfong	_	_
+
+# id: 67
+# text-en: cancel all alarms
+# text: olle Wecker leschn
+# intent: _
+1	olle	_	_
+2	Wecker	_	_
+3	leschn	_	_
+
+# id: 68
+# text-en: Cancel my third reminder on this list.
+# text: Lesch meine dritte Erinnerung vun dear Liste
+# intent: _
+1	Lesch	_	_
+2	meine	_	_
+3	dritte	_	_
+4	Erinnerung	_	_
+5	vun	_	_
+6	dear	_	_
+7	Liste	_	_
+
+# id: 69
+# text-en: set alarm for 6 am
+# text: stell an Wecker af 6 in der friah
+# intent: _
+1	stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	af	_	_
+5	6	_	_
+6	in	_	_
+7	der	_	_
+8	friah	_	_
+
+# id: 70
+# text-en: Reset this alarm now and start at 2 pm
+# text: Stell den Wecker iatz zrugg und start um 2 nomittog
+# intent: _
+1	Stell	_	_
+2	den	_	_
+3	Wecker	_	_
+4	iatz	_	_
+5	zrugg	_	_
+6	und	_	_
+7	start	_	_
+8	um	_	_
+9	2	_	_
+10	nomittog	_	_
+
+# id: 71
+# text-en: Is it going to snow?
+# text: Wearts schneibm?
+# intent: _
+1	Wearts	_	_
+2	schneibm	_	_
+3	?	_	_
+
+# id: 72
+# text-en: Remind me to pay rent.
+# text: Erinner mi die Miete zi zohln.
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	die	_	_
+4	Miete	_	_
+5	zi	_	_
+6	zohln	_	_
+7	.	_	_
+
+# id: 73
+# text-en: whats the low for tomorrow
+# text: Welles isch es Tief fir morgen
+# intent: _
+1	Welles	_	_
+2	isch	_	_
+3	es	_	_
+4	Tief	_	_
+5	fir	_	_
+6	morgen	_	_
+
+# id: 74
+# text-en: Is it going to be sunny today?
+# text: Wearts heint sunnig?
+# intent: _
+1	Wearts	_	_
+2	heint	_	_
+3	sunnig	_	_
+4	?	_	_
+
+# id: 75
+# text-en: How many reminders do I have today?
+# text: Wia viele Erinnerungen honni heinte?
+# intent: _
+1	Wia	_	_
+2	viele	_	_
+3	Erinnerungen	_	_
+4	honni	_	_
+5	heinte	_	_
+6	?	_	_
+
+# id: 76
+# text-en: What are my reminders for tomorrow?
+# text: Wos sein meine Erinnerungen fir morgn?
+# intent: _
+1	Wos	_	_
+2	sein	_	_
+3	meine	_	_
+4	Erinnerungen	_	_
+5	fir	_	_
+6	morgn	_	_
+7	?	_	_
+
+# id: 77
+# text-en: Cancel all my reminders.
+# text: Lesch olle meine Erinnerungen.
+# intent: _
+1	Lesch	_	_
+2	olle	_	_
+3	meine	_	_
+4	Erinnerungen	_	_
+5	.	_	_
+
+# id: 78
+# text-en: set alarm for 6am tomorrow
+# text: Stell an Wecker für morgen 6 in der friah
+# intent: _
+1	Stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	für	_	_
+5	morgen	_	_
+6	6	_	_
+7	in	_	_
+8	der	_	_
+9	friah	_	_
+
+# id: 79
+# text-en: Set alarm for 30 minutes
+# text: Stell in Wecker fir 30 Minutn
+# intent: _
+1	Stell	_	_
+2	in	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	30	_	_
+6	Minutn	_	_
+
+# id: 80
+# text-en: Set an alarm for an hour from now.
+# text: Erstelle an Wecker fir iatz in an Stunde.
+# intent: _
+1	Erstelle	_	_
+2	an	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	iatz	_	_
+6	in	_	_
+7	an	_	_
+8	Stunde	_	_
+9	.	_	_
+
+# id: 81
+# text-en: cancel all alarms
+# text: olle Wecker leschn
+# intent: _
+1	olle	_	_
+2	Wecker	_	_
+3	leschn	_	_
+
+# id: 82
+# text-en: weather update Los Angeles
+# text: Wetter Update fir Los Angeles
+# intent: _
+1	Wetter	_	_
+2	Update	_	_
+3	fir	_	_
+4	Los	_	_
+5	Angeles	_	_
+
+# id: 83
+# text-en: cancel all alarms
+# text: olle Wecker leschn
+# intent: _
+1	olle	_	_
+2	Wecker	_	_
+3	leschn	_	_
+
+# id: 84
+# text-en: How many reminders do I have today?
+# text: Wia viele Erinnerungen honni heinte?
+# intent: _
+1	Wia	_	_
+2	viele	_	_
+3	Erinnerungen	_	_
+4	honni	_	_
+5	heinte	_	_
+6	?	_	_
+
+# id: 85
+# text-en: Remind me to get paper towels at the store tomorrow
+# text: Erinner mi morgn in Gscheft a Küchnrolle zi kafn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	morgn	_	_
+4	in	_	_
+5	Gscheft	_	_
+6	a	_	_
+7	Küchnrolle	_	_
+8	zi	_	_
+9	kafn	_	_
+
+# id: 86
+# text-en: show me all my reminders
+# text: Zoag mir olle meine Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	olle	_	_
+4	meine	_	_
+5	Erinnerungen	_	_
+
+# id: 87
+# text-en: set alarm for 6 am
+# text: stell an Wecker af 6 in der friah
+# intent: _
+1	stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	af	_	_
+5	6	_	_
+6	in	_	_
+7	der	_	_
+8	friah	_	_
+
+# id: 88
+# text-en: will it snow tomorrow
+# text: Wearts morgn schneibm?
+# intent: _
+1	Wearts	_	_
+2	morgn	_	_
+3	schneibm	_	_
+4	?	_	_
+
+# id: 89
+# text-en: cancel my alarm for tomorrow morning
+# text: lesch mein Wecker vu morgen fria
+# intent: _
+1	lesch	_	_
+2	mein	_	_
+3	Wecker	_	_
+4	vu	_	_
+5	morgen	_	_
+6	fria	_	_
+
+# id: 90
+# text-en: Set the alarm for noon on Mondays only.
+# text: Stell in Wecker lai af muntig zi mittog ein.
+# intent: _
+1	Stell	_	_
+2	in	_	_
+3	Wecker	_	_
+4	lai	_	_
+5	af	_	_
+6	muntig	_	_
+7	zi	_	_
+8	mittog	_	_
+9	ein	_	_
+10	.	_	_
+
+# id: 91
+# text-en: How hot will it get today?
+# text: Wia hoass wearts heint?
+# intent: _
+1	Wia	_	_
+2	hoass	_	_
+3	wearts	_	_
+4	heint	_	_
+5	?	_	_
+
+# id: 92
+# text-en: remind me to set alarms for morning
+# text: Erinner mi in Wecker fir morgn einzustellen
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	in	_	_
+4	Wecker	_	_
+5	fir	_	_
+6	morgn	_	_
+7	einzustellen	_	_
+
+# id: 93
+# text-en: delete all alarms
+# text: tua olle Wecker weck
+# intent: _
+1	tua	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	weck	_	_
+
+# id: 94
+# text-en: show my alarms
+# text: Zoag meine Wecker
+# intent: _
+1	Zoag	_	_
+2	meine	_	_
+3	Wecker	_	_
+
+# id: 95
+# text-en: dismiss alarm
+# text: Alarm verwerfen
+# intent: _
+1	Alarm	_	_
+2	verwerfen	_	_
+
+# id: 96
+# text-en: What is the temperature today?
+# text: Wia isch die Temperatur heinte?
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Temperatur	_	_
+5	heinte	_	_
+6	?	_	_
+
+# id: 97
+# text-en: dismiss alarm
+# text: Alarm verwerfen
+# intent: _
+1	Alarm	_	_
+2	verwerfen	_	_
+
+# id: 98
+# text-en: show all alarms
+# text: zoag olle Wecker
+# intent: _
+1	zoag	_	_
+2	olle	_	_
+3	Wecker	_	_
+
+# id: 99
+# text-en: set alarm for every 30 minutes
+# text: Stell an Wecker olle 30 Minuten
+# intent: _
+1	Stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	olle	_	_
+5	30	_	_
+6	Minuten	_	_
+
+# id: 100
+# text-en: What is the temperature going to be today?
+# text: Wia weart die Temperatur heinte?
+# intent: _
+1	Wia	_	_
+2	weart	_	_
+3	die	_	_
+4	Temperatur	_	_
+5	heinte	_	_
+6	?	_	_
+
+# id: 101
+# text-en: Is it going to be hot today?
+# text: Wearts heint hoas?
+# intent: _
+1	Wearts	_	_
+2	heint	_	_
+3	hoas	_	_
+4	?	_	_
+
+# id: 102
+# text-en: Is it going to rain tomorrow?
+# text: Wearts morgen regnen?
+# intent: _
+1	Wearts	_	_
+2	morgen	_	_
+3	regnen	_	_
+4	?	_	_
+
+# id: 103
+# text-en: Cancel the next alarm
+# text: Lesch in negschtn Wecker
+# intent: _
+1	Lesch	_	_
+2	in	_	_
+3	negschtn	_	_
+4	Wecker	_	_
+
+# id: 104
+# text-en: Remind me to go to grocery store today
+# text: Erinner mi heint zin Supermarkt zu gian
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	heint	_	_
+4	zin	_	_
+5	Supermarkt	_	_
+6	zu	_	_
+7	gian	_	_
+
+# id: 105
+# text-en: cancel my reminders for next week
+# text: Lesch meine Erinnerungen vu negster Woche
+# intent: _
+1	Lesch	_	_
+2	meine	_	_
+3	Erinnerungen	_	_
+4	vu	_	_
+5	negster	_	_
+6	Woche	_	_
+
+# id: 106
+# text-en: remind me to take dog to groomer tuesday at 3pm
+# text: Erinner mi in Dienschtig um 3 nomittog mein Hund zu groomer zi bringen
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	in	_	_
+4	Dienschtig	_	_
+5	um	_	_
+6	3	_	_
+7	nomittog	_	_
+8	mein	_	_
+9	Hund	_	_
+10	zu	_	_
+11	groomer	_	_
+12	zi	_	_
+13	bringen	_	_
+
+# id: 107
+# text-en: Remind me to pick up flowers for Jen for our anniversary on the 28th.
+# text: Erinner mi fir Jen die Bluamen ozuhouln fir insern Johrestog in 28
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	fir	_	_
+4	Jen	_	_
+5	die	_	_
+6	Bluamen	_	_
+7	ozuhouln	_	_
+8	fir	_	_
+9	insern	_	_
+10	Johrestog	_	_
+11	in	_	_
+12	28	_	_
+
+# id: 108
+# text-en: What's the weather like today?
+# text: wia isches Wetter heinte?
+# intent: _
+1	wia	_	_
+2	isches	_	_
+3	Wetter	_	_
+4	heinte	_	_
+5	?	_	_
+
+# id: 109
+# text-en: Remind me to make a doctor's appointment tomorrow.
+# text: Erinner mi morgen an Termin ban Doktor zi mochn.
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	morgen	_	_
+4	an	_	_
+5	Termin	_	_
+6	ban	_	_
+7	Doktor	_	_
+8	zi	_	_
+9	mochn	_	_
+10	.	_	_
+
+# id: 110
+# text-en: turn off all alarms
+# text: scholt olle Wecker aus
+# intent: _
+1	scholt	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	aus	_	_
+
+# id: 111
+# text-en: Should I bring a raincoat?
+# text: Soll i an Regenmontel mitbringen?
+# intent: _
+1	Soll	_	_
+2	i	_	_
+3	an	_	_
+4	Regenmontel	_	_
+5	mitbringen	_	_
+6	?	_	_
+
+# id: 112
+# text-en: What is the severe weather forecast?
+# text: Welle isch die extreme Wettervorhersoge?
+# intent: _
+1	Welle	_	_
+2	isch	_	_
+3	die	_	_
+4	extreme	_	_
+5	Wettervorhersoge	_	_
+6	?	_	_
+
+# id: 113
+# text-en: remind me of next weeks doctor appointment
+# text: Erinner mi an in Orzttermin vu negster Woche
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	an	_	_
+4	in	_	_
+5	Orzttermin	_	_
+6	vu	_	_
+7	negster	_	_
+8	Woche	_	_
+
+# id: 114
+# text-en: set reminder to go to the store at 8am
+# text: Erstell an Erinnerung um morgn in der friah um 8 zin Gscheft zu gian
+# intent: _
+1	Erstell	_	_
+2	an	_	_
+3	Erinnerung	_	_
+4	um	_	_
+5	morgn	_	_
+6	in	_	_
+7	der	_	_
+8	friah	_	_
+9	um	_	_
+10	8	_	_
+11	zin	_	_
+12	Gscheft	_	_
+13	zu	_	_
+14	gian	_	_
+
+# id: 115
+# text-en: Set reminder to get the dry cleaning.
+# text: Erstelle a Erinnerung, um di Sochn vun der chemischen Reinigung ozuholen.
+# intent: _
+1	Erstelle	_	_
+2	a	_	_
+3	Erinnerung	_	_
+4	,	_	_
+5	um	_	_
+6	di	_	_
+7	Sochn	_	_
+8	vun	_	_
+9	der	_	_
+10	chemischen	_	_
+11	Reinigung	_	_
+12	ozuholen	_	_
+13	.	_	_
+
+# id: 116
+# text-en: when is it cool down
+# text: Wenn wearts okialn?
+# intent: _
+1	Wenn	_	_
+2	wearts	_	_
+3	okialn	_	_
+4	?	_	_
+
+# id: 117
+# text-en: will it rain this week
+# text: Weards de Woche regnen
+# intent: _
+1	Weards	_	_
+2	de	_	_
+3	Woche	_	_
+4	regnen	_	_
+
+# id: 118
+# text-en: delete all alarms
+# text: tua olle Wecker weck
+# intent: _
+1	tua	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	weck	_	_
+
+# id: 119
+# text-en: cancel alarms
+# text: Wecker leschen
+# intent: _
+1	Wecker	_	_
+2	leschen	_	_
+
+# id: 120
+# text-en: show me my alarms
+# text: Zoag mir meine Wecker
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	meine	_	_
+4	Wecker	_	_
+
+# id: 121
+# text-en: What time do I have an alarm set for?
+# text: Af wenn honni in Wecker eingstellt?
+# intent: _
+1	Af	_	_
+2	wenn	_	_
+3	honni	_	_
+4	in	_	_
+5	Wecker	_	_
+6	eingstellt	_	_
+7	?	_	_
+
+# id: 122
+# text-en: Is it going to rain Saturday?
+# text: Wearts in Somstig regnen?
+# intent: _
+1	Wearts	_	_
+2	in	_	_
+3	Somstig	_	_
+4	regnen	_	_
+5	?	_	_
+
+# id: 123
+# text-en: how hot is it going to get today
+# text: wia worm wearts heint?
+# intent: _
+1	wia	_	_
+2	worm	_	_
+3	wearts	_	_
+4	heint	_	_
+5	?	_	_
+
+# id: 124
+# text-en: Reset all alarms
+# text: Setz olle Wecker zrugg
+# intent: _
+1	Setz	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	zrugg	_	_
+
+# id: 125
+# text-en: Weather in Tahoe this weekend?
+# text: Es Wetter in Tahoe des Wochenende?
+# intent: _
+1	Es	_	_
+2	Wetter	_	_
+3	in	_	_
+4	Tahoe	_	_
+5	des	_	_
+6	Wochenende	_	_
+7	?	_	_
+
+# id: 126
+# text-en: Do I need a coat today?
+# text: Brauch i heint an Montel?
+# intent: _
+1	Brauch	_	_
+2	i	_	_
+3	heint	_	_
+4	an	_	_
+5	Montel	_	_
+6	?	_	_
+
+# id: 127
+# text-en: When will the rain stop?
+# text: wenn hearts au zi regnen?
+# intent: _
+1	wenn	_	_
+2	hearts	_	_
+3	au	_	_
+4	zi	_	_
+5	regnen	_	_
+6	?	_	_
+
+# id: 128
+# text-en: Set a reminder to call my school on Monday at 4 PM
+# text: Setz an Erinnerung meine Schuale in Muntig um 4 nomittog unzuriafn
+# intent: _
+1	Setz	_	_
+2	an	_	_
+3	Erinnerung	_	_
+4	meine	_	_
+5	Schuale	_	_
+6	in	_	_
+7	Muntig	_	_
+8	um	_	_
+9	4	_	_
+10	nomittog	_	_
+11	unzuriafn	_	_
+
+# id: 129
+# text-en: Turn off my alarm.
+# text: Scholt mein Wecker aus.
+# intent: _
+1	Scholt	_	_
+2	mein	_	_
+3	Wecker	_	_
+4	aus	_	_
+5	.	_	_
+
+# id: 130
+# text-en: How cold will it be tonight?
+# text: Wia kolt wearts de Nacht?
+# intent: _
+1	Wia	_	_
+2	kolt	_	_
+3	wearts	_	_
+4	de	_	_
+5	Nacht	_	_
+6	?	_	_
+
+# id: 131
+# text-en: Set alarm for 7 am tomorrow.
+# text: Stell in Wecker af 7:00 in der friah morgn.
+# intent: _
+1	Stell	_	_
+2	in	_	_
+3	Wecker	_	_
+4	af	_	_
+5	7:00	_	_
+6	in	_	_
+7	der	_	_
+8	friah	_	_
+9	morgn	_	_
+10	.	_	_
+
+# id: 132
+# text-en: Cancel my reminder to pick up Rob
+# text: Lesch meine Erinnerung in Rob zu holn
+# intent: _
+1	Lesch	_	_
+2	meine	_	_
+3	Erinnerung	_	_
+4	in	_	_
+5	Rob	_	_
+6	zu	_	_
+7	holn	_	_
+
+# id: 133
+# text-en: Create a reminder for tomorrow to buy milk.
+# text: Erstell a Erinnerung fir morgn Milch zi kafn.
+# intent: _
+1	Erstell	_	_
+2	a	_	_
+3	Erinnerung	_	_
+4	fir	_	_
+5	morgn	_	_
+6	Milch	_	_
+7	zi	_	_
+8	kafn	_	_
+9	.	_	_
+
+# id: 134
+# text-en: set alarm for 6pm
+# text: Stell in Wecker af 6 gschnochts
+# intent: _
+1	Stell	_	_
+2	in	_	_
+3	Wecker	_	_
+4	af	_	_
+5	6	_	_
+6	gschnochts	_	_
+
+# id: 135
+# text-en: schedule a daily alarm for 7:30 pm until deleted
+# text: Plan fir jedn Tog um holbe ochte gschnochts an Alarm ein bis er glescht weart.
+# intent: _
+1	Plan	_	_
+2	fir	_	_
+3	jedn	_	_
+4	Tog	_	_
+5	um	_	_
+6	holbe	_	_
+7	ochte	_	_
+8	gschnochts	_	_
+9	an	_	_
+10	Alarm	_	_
+11	ein	_	_
+12	bis	_	_
+13	er	_	_
+14	glescht	_	_
+15	weart	_	_
+16	.	_	_
+
+# id: 136
+# text-en: remind me to set an alarm for ups
+# text: erinner mi drun an Alarm fir Ups einzistellen
+# intent: _
+1	erinner	_	_
+2	mi	_	_
+3	drun	_	_
+4	an	_	_
+5	Alarm	_	_
+6	fir	_	_
+7	Ups	_	_
+8	einzistellen	_	_
+
+# id: 137
+# text-en: Cancel my reminder
+# text: lesch meine Erinnerung
+# intent: _
+1	lesch	_	_
+2	meine	_	_
+3	Erinnerung	_	_
+
+# id: 138
+# text-en: Is it going to snow today?
+# text: Wearts heinte schneibm?
+# intent: _
+1	Wearts	_	_
+2	heinte	_	_
+3	schneibm	_	_
+4	?	_	_
+
+# id: 139
+# text-en: Show me all the alarms
+# text: Zoag olle Wecker un
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	un	_	_
+
+# id: 140
+# text-en: show all reminders
+# text: Zoag olle Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+
+# id: 141
+# text-en: how much time is left on my alarm
+# text: wia viel Zeit bleib af mein Wecker
+# intent: _
+1	wia	_	_
+2	viel	_	_
+3	Zeit	_	_
+4	bleib	_	_
+5	af	_	_
+6	mein	_	_
+7	Wecker	_	_
+
+# id: 142
+# text-en: set alarm for 2 hours
+# text: An Wecker fir 2 Stundn stellen
+# intent: _
+1	An	_	_
+2	Wecker	_	_
+3	fir	_	_
+4	2	_	_
+5	Stundn	_	_
+6	stellen	_	_
+
+# id: 143
+# text-en: Remind me to get bread after work
+# text: Erinner mi noch der Orbit Brot zi holn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	noch	_	_
+4	der	_	_
+5	Orbit	_	_
+6	Brot	_	_
+7	zi	_	_
+8	holn	_	_
+
+# id: 144
+# text-en: Will it rain today?
+# text: Wearts heint regnen?
+# intent: _
+1	Wearts	_	_
+2	heint	_	_
+3	regnen	_	_
+4	?	_	_
+
+# id: 145
+# text-en: read today's weather forecast
+# text: les die heintige Wettervorhersage
+# intent: _
+1	les	_	_
+2	die	_	_
+3	heintige	_	_
+4	Wettervorhersage	_	_
+
+# id: 146
+# text-en: What time is my alarm set for?
+# text: Fir welle Zeit isch mein Wecker eingstellt?
+# intent: _
+1	Fir	_	_
+2	welle	_	_
+3	Zeit	_	_
+4	isch	_	_
+5	mein	_	_
+6	Wecker	_	_
+7	eingstellt	_	_
+8	?	_	_
+
+# id: 147
+# text-en: at 4 tomorrow remind me to go to the mall
+# text: morgen um 4 nomittog erinner mi drun zin Einkaufszentrum zu gian
+# intent: _
+1	morgen	_	_
+2	um	_	_
+3	4	_	_
+4	nomittog	_	_
+5	erinner	_	_
+6	mi	_	_
+7	drun	_	_
+8	zin	_	_
+9	Einkaufszentrum	_	_
+10	zu	_	_
+11	gian	_	_
+
+# id: 148
+# text-en: do I need to bring an umbrella today
+# text: Soll i heint an Regenschirm mitbringen?
+# intent: _
+1	Soll	_	_
+2	i	_	_
+3	heint	_	_
+4	an	_	_
+5	Regenschirm	_	_
+6	mitbringen	_	_
+7	?	_	_
+
+# id: 149
+# text-en: Show my reminder
+# text: Zoag meine Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	meine	_	_
+3	Erinnerungen	_	_
+
+# id: 150
+# text-en: Show all my reminders
+# text: Zoag olle meine Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	meine	_	_
+4	Erinnerungen	_	_
+
+# id: 151
+# text-en: Set a reminder for dog food on Monday.
+# text: Erstell a Erinnerung fir Hundefuater in Muntug.
+# intent: _
+1	Erstell	_	_
+2	a	_	_
+3	Erinnerung	_	_
+4	fir	_	_
+5	Hundefuater	_	_
+6	in	_	_
+7	Muntug	_	_
+8	.	_	_
+
+# id: 152
+# text-en: Set reminder "Sub yoga class Tuesday night at Bala" for tomorrow
+# text: Erstell a Erinnerung "Sub yoga class Tuesday night at Bala" fir morgn
+# intent: _
+1	Erstell	_	_
+2	a	_	_
+3	Erinnerung	_	_
+4	"	_	_
+5	Sub	_	_
+6	yoga	_	_
+7	class	_	_
+8	Tuesday	_	_
+9	night	_	_
+10	at	_	_
+11	Bala	_	_
+12	"	_	_
+13	fir	_	_
+14	morgn	_	_
+
+# id: 153
+# text-en: Cancel all reminders for today
+# text: Lesch olle Erinnerungen vu heinte
+# intent: _
+1	Lesch	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+4	vu	_	_
+5	heinte	_	_
+
+# id: 154
+# text-en: What will the weather be in New York city this week
+# text: Wia wearts Wetter in New York de Woche
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	in	_	_
+5	New	_	_
+6	York	_	_
+7	de	_	_
+8	Woche	_	_
+
+# id: 155
+# text-en: remind me of a doctor visit Thursday at 12 pm
+# text: Erinner mi an in Termin ban Doktor in Donnerstog um 12 zi mittog
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	an	_	_
+4	in	_	_
+5	Termin	_	_
+6	ban	_	_
+7	Doktor	_	_
+8	in	_	_
+9	Donnerstog	_	_
+10	um	_	_
+11	12	_	_
+12	zi	_	_
+13	mittog	_	_
+
+# id: 156
+# text-en: Set an alarm for 6:50 pm
+# text: stell an Wecker af 6:50 gschnochts ein
+# intent: _
+1	stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	af	_	_
+5	6:50	_	_
+6	gschnochts	_	_
+7	ein	_	_
+
+# id: 157
+# text-en: Is it going to snow today?
+# text: Wearts heinte schneibm?
+# intent: _
+1	Wearts	_	_
+2	heinte	_	_
+3	schneibm	_	_
+4	?	_	_
+
+# id: 158
+# text-en: What alarms are set?
+# text: Welle Wecker sein eingestellt?
+# intent: _
+1	Welle	_	_
+2	Wecker	_	_
+3	sein	_	_
+4	eingestellt	_	_
+5	?	_	_
+
+# id: 159
+# text-en: Set a reminder alarm for October 7
+# text: Stell an Erinnerungsalarm firn 7. Oktober ein
+# intent: _
+1	Stell	_	_
+2	an	_	_
+3	Erinnerungsalarm	_	_
+4	firn	_	_
+5	7	_	_
+6	.	_	_
+7	Oktober	_	_
+8	ein	_	_
+
+# id: 160
+# text-en: Will there be snow today?
+# text: Wearts heint no schneibm?
+# intent: _
+1	Wearts	_	_
+2	heint	_	_
+3	no	_	_
+4	schneibm	_	_
+5	?	_	_
+
+# id: 161
+# text-en: snooze alarm for 15 minutes
+# text: Schlummeralarm fir 15 Minutn
+# intent: _
+1	Schlummeralarm	_	_
+2	fir	_	_
+3	15	_	_
+4	Minutn	_	_
+
+# id: 162
+# text-en: How much snow are they predicting?
+# text: Wia viel Schnea meldn se?
+# intent: _
+1	Wia	_	_
+2	viel	_	_
+3	Schnea	_	_
+4	meldn	_	_
+5	se	_	_
+6	?	_	_
+
+# id: 163
+# text-en: is it hot outside
+# text: Is afoure hoas?
+# intent: _
+1	Is	_	_
+2	afoure	_	_
+3	hoas	_	_
+4	?	_	_
+
+# id: 164
+# text-en: What is the temperature going to be today?
+# text: Wia weart die Temperatur heinte?
+# intent: _
+1	Wia	_	_
+2	weart	_	_
+3	die	_	_
+4	Temperatur	_	_
+5	heinte	_	_
+6	?	_	_
+
+# id: 165
+# text-en: what will the weather be like in Dallas tomorrow
+# text: Wia wearts Wetter morgn in Dallas
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	morgn	_	_
+5	in	_	_
+6	Dallas	_	_
+
+# id: 166
+# text-en: Show me all my reminders for today
+# text: Zoag mir olle meine Erinnerungen vu heinte
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	olle	_	_
+4	meine	_	_
+5	Erinnerungen	_	_
+6	vu	_	_
+7	heinte	_	_
+
+# id: 167
+# text-en: Set a weekly reminder for groceries.
+# text: Erstell a wöchentliche Erinnerung fir Lebensmittel.
+# intent: _
+1	Erstell	_	_
+2	a	_	_
+3	wöchentliche	_	_
+4	Erinnerung	_	_
+5	fir	_	_
+6	Lebensmittel	_	_
+7	.	_	_
+
+# id: 168
+# text-en: weather
+# text: Wetter
+# intent: _
+1	Wetter	_	_
+
+# id: 169
+# text-en: Is it supposed to rain all day?
+# text: Solls heint in gonzn Tog regnen?
+# intent: _
+1	Solls	_	_
+2	heint	_	_
+3	in	_	_
+4	gonzn	_	_
+5	Tog	_	_
+6	regnen	_	_
+7	?	_	_
+
+# id: 170
+# text-en: is it going to rain tomorrow
+# text: Wearts morgn regnen
+# intent: _
+1	Wearts	_	_
+2	morgn	_	_
+3	regnen	_	_
+
+# id: 171
+# text-en: Remind me to reply to work emails tonight
+# text: Erinner mi die Emails vu der Orbit heint gschnochts no zu beontwortn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	die	_	_
+4	Emails	_	_
+5	vu	_	_
+6	der	_	_
+7	Orbit	_	_
+8	heint	_	_
+9	gschnochts	_	_
+10	no	_	_
+11	zu	_	_
+12	beontwortn	_	_
+
+# id: 172
+# text-en: Delete alarms
+# text: Wecker leschen
+# intent: _
+1	Wecker	_	_
+2	leschen	_	_
+
+# id: 173
+# text-en: Cancel my alarms
+# text: Lesch meine Wecker
+# intent: _
+1	Lesch	_	_
+2	meine	_	_
+3	Wecker	_	_
+
+# id: 174
+# text-en: Can I wear shorts today?
+# text: Konn i heint a kurze Hose unlegn?
+# intent: _
+1	Konn	_	_
+2	i	_	_
+3	heint	_	_
+4	a	_	_
+5	kurze	_	_
+6	Hose	_	_
+7	unlegn	_	_
+8	?	_	_
+
+# id: 175
+# text-en: Will it rain tomorrow?
+# text: wearts morgn regnen?
+# intent: _
+1	wearts	_	_
+2	morgn	_	_
+3	regnen	_	_
+4	?	_	_
+
+# id: 176
+# text-en: Set alarm for 10 am
+# text: stell an Wecker af 10 in der friah
+# intent: _
+1	stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	af	_	_
+5	10	_	_
+6	in	_	_
+7	der	_	_
+8	friah	_	_
+
+# id: 177
+# text-en: Is it going to rain this week?
+# text: Wearts des Wochenende regnen?
+# intent: _
+1	Wearts	_	_
+2	des	_	_
+3	Wochenende	_	_
+4	regnen	_	_
+5	?	_	_
+
+# id: 178
+# text-en: show all reminders
+# text: Zoag olle Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+
+# id: 179
+# text-en: cancel alarms
+# text: Wecker leschen
+# intent: _
+1	Wecker	_	_
+2	leschen	_	_
+
+# id: 180
+# text-en: turn off all alarms
+# text: scholt olle Wecker aus
+# intent: _
+1	scholt	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	aus	_	_
+
+# id: 181
+# text-en: show all alarms preset
+# text: zoag olle voreingestelltn Wecker un
+# intent: _
+1	zoag	_	_
+2	olle	_	_
+3	voreingestelltn	_	_
+4	Wecker	_	_
+5	un	_	_
+
+# id: 182
+# text-en: Set alarm every minute for 20 minutes.
+# text: Stell an Wecker olle Minutn fir 20 Minutn.
+# intent: _
+1	Stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	olle	_	_
+5	Minutn	_	_
+6	fir	_	_
+7	20	_	_
+8	Minutn	_	_
+9	.	_	_
+
+# id: 183
+# text-en: What are my reminders?
+# text: Wos sein meine Erinnerungen?
+# intent: _
+1	Wos	_	_
+2	sein	_	_
+3	meine	_	_
+4	Erinnerungen	_	_
+5	?	_	_
+
+# id: 184
+# text-en: cancel alarm for tomorrow
+# text: lesch in Wecker fir morgn
+# intent: _
+1	lesch	_	_
+2	in	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	morgn	_	_
+
+# id: 185
+# text-en: Do I need an umbrella today?
+# text: Brauch i heint an Regenschirm?
+# intent: _
+1	Brauch	_	_
+2	i	_	_
+3	heint	_	_
+4	an	_	_
+5	Regenschirm	_	_
+6	?	_	_
+
+# id: 186
+# text-en: is it supposed to snow today?
+# text: Solls heint no schneibm?
+# intent: _
+1	Solls	_	_
+2	heint	_	_
+3	no	_	_
+4	schneibm	_	_
+5	?	_	_
+
+# id: 187
+# text-en: Remind me to call my mom tonight
+# text: Erinner mi heint gschnochts meine Mamma unzuriafn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	heint	_	_
+4	gschnochts	_	_
+5	meine	_	_
+6	Mamma	_	_
+7	unzuriafn	_	_
+
+# id: 188
+# text-en: will it rain today?
+# text: wearts heint regnen?
+# intent: _
+1	wearts	_	_
+2	heint	_	_
+3	regnen	_	_
+4	?	_	_
+
+# id: 189
+# text-en: Is it going to rain Saturday?
+# text: Wearts in Somstig regnen?
+# intent: _
+1	Wearts	_	_
+2	in	_	_
+3	Somstig	_	_
+4	regnen	_	_
+5	?	_	_
+
+# id: 190
+# text-en: Will you set the alarm every minute for 20 minutes?
+# text: Wearsch du in Wecker 20 Minutn long jede Minute einstellen?
+# intent: _
+1	Wearsch	_	_
+2	du	_	_
+3	in	_	_
+4	Wecker	_	_
+5	20	_	_
+6	Minutn	_	_
+7	long	_	_
+8	jede	_	_
+9	Minute	_	_
+10	einstellen	_	_
+11	?	_	_
+
+# id: 191
+# text-en: Tropical storms in caribbean
+# text: Tropische Stirme in der Karibik
+# intent: _
+1	Tropische	_	_
+2	Stirme	_	_
+3	in	_	_
+4	der	_	_
+5	Karibik	_	_
+
+# id: 192
+# text-en: cancel all alarms
+# text: olle Wecker leschn
+# intent: _
+1	olle	_	_
+2	Wecker	_	_
+3	leschn	_	_
+
+# id: 193
+# text-en: Set alarm for every nine minutes.
+# text: Erstell an Wecker fir olle nein Minutn
+# intent: _
+1	Erstell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	olle	_	_
+6	nein	_	_
+7	Minutn	_	_
+
+# id: 194
+# text-en: Delete the last two reminders on my list
+# text: Lesch die leschtn zwoa Erinnerungen af meiner Liste
+# intent: _
+1	Lesch	_	_
+2	die	_	_
+3	leschtn	_	_
+4	zwoa	_	_
+5	Erinnerungen	_	_
+6	af	_	_
+7	meiner	_	_
+8	Liste	_	_
+
+# id: 195
+# text-en: hows the weather today
+# text: wia isches Wetter heinte?
+# intent: _
+1	wia	_	_
+2	isches	_	_
+3	Wetter	_	_
+4	heinte	_	_
+5	?	_	_
+
+# id: 196
+# text-en: turn on my alarm
+# text: scholt mein Wecker ein
+# intent: _
+1	scholt	_	_
+2	mein	_	_
+3	Wecker	_	_
+4	ein	_	_
+
+# id: 197
+# text-en: What is the humidity today?
+# text: Wia hoch isch di Luftfeichtigkeit heinte?
+# intent: _
+1	Wia	_	_
+2	hoch	_	_
+3	isch	_	_
+4	di	_	_
+5	Luftfeichtigkeit	_	_
+6	heinte	_	_
+7	?	_	_
+
+# id: 198
+# text-en: remind me to set an alarm for ups
+# text: erinner mi drun an Alarm fir Ups einzistellen
+# intent: _
+1	erinner	_	_
+2	mi	_	_
+3	drun	_	_
+4	an	_	_
+5	Alarm	_	_
+6	fir	_	_
+7	Ups	_	_
+8	einzistellen	_	_
+
+# id: 199
+# text-en: Will it snow this weekend?
+# text: Schneibs epper des Wochenende?
+# intent: _
+1	Schneibs	_	_
+2	epper	_	_
+3	des	_	_
+4	Wochenende	_	_
+5	?	_	_
+
+# id: 200
+# text-en: How hot will it get today?
+# text: Wia hoass wearts heint?
+# intent: _
+1	Wia	_	_
+2	hoass	_	_
+3	wearts	_	_
+4	heint	_	_
+5	?	_	_
+
+# id: 201
+# text-en: What time is my alarm set for
+# text: Af welle Zeit isch mein Wecker gschtellt
+# intent: _
+1	Af	_	_
+2	welle	_	_
+3	Zeit	_	_
+4	isch	_	_
+5	mein	_	_
+6	Wecker	_	_
+7	gschtellt	_	_
+
+# id: 202
+# text-en: What's the weather like today?
+# text: wia isches Wetter heinte?
+# intent: _
+1	wia	_	_
+2	isches	_	_
+3	Wetter	_	_
+4	heinte	_	_
+5	?	_	_
+
+# id: 203
+# text-en: Will it rain tomorrow?
+# text: wearts morgn regnen?
+# intent: _
+1	wearts	_	_
+2	morgn	_	_
+3	regnen	_	_
+4	?	_	_
+
+# id: 204
+# text-en: Cancel my alarm for 5:15am on Tuesday
+# text: Lesch mein Alarm vu 5:15 in der fria vun Dianstig
+# intent: _
+1	Lesch	_	_
+2	mein	_	_
+3	Alarm	_	_
+4	vu	_	_
+5	5:15	_	_
+6	in	_	_
+7	der	_	_
+8	fria	_	_
+9	vun	_	_
+10	Dianstig	_	_
+
+# id: 205
+# text-en: cancel reminder for tonight's game
+# text: Erinnerung firs Spiel heint Obnd leschn
+# intent: _
+1	Erinnerung	_	_
+2	firs	_	_
+3	Spiel	_	_
+4	heint	_	_
+5	Obnd	_	_
+6	leschn	_	_
+
+# id: 206
+# text-en: set alarm for 3am
+# text: An Wecker fir 3 in der friah stellen
+# intent: _
+1	An	_	_
+2	Wecker	_	_
+3	fir	_	_
+4	3	_	_
+5	in	_	_
+6	der	_	_
+7	friah	_	_
+8	stellen	_	_
+
+# id: 207
+# text-en: cancel all alarms for saturday
+# text: lesch olle Wecker firn Somstig
+# intent: _
+1	lesch	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	firn	_	_
+5	Somstig	_	_
+
+# id: 208
+# text-en: i need a reminder to pick Lisa up
+# text: I brauch an Erinnerung um Lisa ozuholn
+# intent: _
+1	I	_	_
+2	brauch	_	_
+3	an	_	_
+4	Erinnerung	_	_
+5	um	_	_
+6	Lisa	_	_
+7	ozuholn	_	_
+
+# id: 209
+# text-en: What is the high today?
+# text: Wia wearts heinte sein?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	heinte	_	_
+4	sein	_	_
+5	?	_	_
+
+# id: 210
+# text-en: Is it going to be cloudy today in Grindstone?
+# text: Wearts in Grindstone heinte bewölkt?
+# intent: _
+1	Wearts	_	_
+2	in	_	_
+3	Grindstone	_	_
+4	heinte	_	_
+5	bewölkt	_	_
+6	?	_	_
+
+# id: 211
+# text-en: Remind me later
+# text: Erinner mi speter
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	speter	_	_
+
+# id: 212
+# text-en: what is the weather in france today
+# text: wia is Wetter in Frankreich heint
+# intent: _
+1	wia	_	_
+2	is	_	_
+3	Wetter	_	_
+4	in	_	_
+5	Frankreich	_	_
+6	heint	_	_
+
+# id: 213
+# text-en: Will it be sunny for the party on Saturday?
+# text: Wearts fir die Party in Somstig sunnig?
+# intent: _
+1	Wearts	_	_
+2	fir	_	_
+3	die	_	_
+4	Party	_	_
+5	in	_	_
+6	Somstig	_	_
+7	sunnig	_	_
+8	?	_	_
+
+# id: 214
+# text-en: Is it going to rain tomorrow?
+# text: Wearts morgen regnen?
+# intent: _
+1	Wearts	_	_
+2	morgen	_	_
+3	regnen	_	_
+4	?	_	_
+
+# id: 215
+# text-en: Can I wear shorts today?
+# text: Konn i heint a kurze Hose unlegn?
+# intent: _
+1	Konn	_	_
+2	i	_	_
+3	heint	_	_
+4	a	_	_
+5	kurze	_	_
+6	Hose	_	_
+7	unlegn	_	_
+8	?	_	_
+
+# id: 216
+# text-en: Show my reminder
+# text: Zoag meine Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	meine	_	_
+3	Erinnerungen	_	_
+
+# id: 217
+# text-en: what is the average forecast for september
+# text: Wia wearts durchschnittlich in Settember?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	durchschnittlich	_	_
+4	in	_	_
+5	Settember	_	_
+6	?	_	_
+
+# id: 218
+# text-en: Is it cold today?
+# text: Is heint kolt?
+# intent: _
+1	Is	_	_
+2	heint	_	_
+3	kolt	_	_
+4	?	_	_
+
+# id: 219
+# text-en: Cancel all reminders
+# text: Lesch olle Erinnerungen
+# intent: _
+1	Lesch	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+
+# id: 220
+# text-en: is it hot?
+# text: is hoas?
+# intent: _
+1	is	_	_
+2	hoas	_	_
+3	?	_	_
+
+# id: 221
+# text-en: Make alarm for weekends at 2pm
+# text: stell an Wecker fir di Wochenenden um zwoa nomittog ein
+# intent: _
+1	stell	_	_
+2	an	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	di	_	_
+6	Wochenenden	_	_
+7	um	_	_
+8	zwoa	_	_
+9	nomittog	_	_
+10	ein	_	_
+
+# id: 222
+# text-en: Set alarm for 2 am
+# text: Stell in Wecker af 2:00 in der nocht
+# intent: _
+1	Stell	_	_
+2	in	_	_
+3	Wecker	_	_
+4	af	_	_
+5	2:00	_	_
+6	in	_	_
+7	der	_	_
+8	nocht	_	_
+
+# id: 223
+# text-en: What is the humidity today?
+# text: Wia hoch isch di Luftfeichtigkeit heinte?
+# intent: _
+1	Wia	_	_
+2	hoch	_	_
+3	isch	_	_
+4	di	_	_
+5	Luftfeichtigkeit	_	_
+6	heinte	_	_
+7	?	_	_
+
+# id: 224
+# text-en: show all my alarms
+# text: zoag mir olle Weckzeiten
+# intent: _
+1	zoag	_	_
+2	mir	_	_
+3	olle	_	_
+4	Weckzeiten	_	_
+
+# id: 225
+# text-en: Show me all my reminders
+# text: Zoag mir olle meine Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	olle	_	_
+4	meine	_	_
+5	Erinnerungen	_	_
+
+# id: 226
+# text-en: cancel all alarms
+# text: olle Wecker leschn
+# intent: _
+1	olle	_	_
+2	Wecker	_	_
+3	leschn	_	_
+
+# id: 227
+# text-en: Is there a storm headed for my area?
+# text: Gibs a Sturmwarnung fir wo i grot bin?
+# intent: _
+1	Gibs	_	_
+2	a	_	_
+3	Sturmwarnung	_	_
+4	fir	_	_
+5	wo	_	_
+6	i	_	_
+7	grot	_	_
+8	bin	_	_
+9	?	_	_
+
+# id: 228
+# text-en: what's the weather today
+# text: Wia wearts Wetter heint
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	heint	_	_
+
+# id: 229
+# text-en: delete last reminder
+# text: Lesch die leschte Erinnerung
+# intent: _
+1	Lesch	_	_
+2	die	_	_
+3	leschte	_	_
+4	Erinnerung	_	_
+
+# id: 230
+# text-en: What time is left on the alarm.
+# text: Wia long dauerts bis zin Alarm
+# intent: _
+1	Wia	_	_
+2	long	_	_
+3	dauerts	_	_
+4	bis	_	_
+5	zin	_	_
+6	Alarm	_	_
+
+# id: 231
+# text-en: Cancel all my alarms for Sunday.
+# text: Lesch olle meine Wecker firn Sunntig.
+# intent: _
+1	Lesch	_	_
+2	olle	_	_
+3	meine	_	_
+4	Wecker	_	_
+5	firn	_	_
+6	Sunntig	_	_
+7	.	_	_
+
+# id: 232
+# text-en: How hot will it get today?
+# text: Wia hoass wearts heint?
+# intent: _
+1	Wia	_	_
+2	hoass	_	_
+3	wearts	_	_
+4	heint	_	_
+5	?	_	_
+
+# id: 233
+# text-en: I'd like you to create a new alarm for 8:45 tomorrow morning
+# text: I mecht, dass du fir morgen friah um 8:45 an Alarm stellsch
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	,	_	_
+4	dass	_	_
+5	du	_	_
+6	fir	_	_
+7	morgen	_	_
+8	friah	_	_
+9	um	_	_
+10	8:45	_	_
+11	an	_	_
+12	Alarm	_	_
+13	stellsch	_	_
+
+# id: 234
+# text-en: cancel all alarms
+# text: olle Wecker leschn
+# intent: _
+1	olle	_	_
+2	Wecker	_	_
+3	leschn	_	_
+
+# id: 235
+# text-en: Is it going to snow today?
+# text: Wearts heinte schneibm?
+# intent: _
+1	Wearts	_	_
+2	heinte	_	_
+3	schneibm	_	_
+4	?	_	_
+
+# id: 236
+# text-en: remind me to buy ice
+# text: Erinner mi Eis zi kafn
+# intent: _
+1	Erinner	_	_
+2	mi	_	_
+3	Eis	_	_
+4	zi	_	_
+5	kafn	_	_
+
+# id: 237
+# text-en: show all reminders
+# text: Zoag olle Erinnerungen
+# intent: _
+1	Zoag	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+
+# id: 238
+# text-en: show all alarms
+# text: zoag olle Wecker
+# intent: _
+1	zoag	_	_
+2	olle	_	_
+3	Wecker	_	_
+
+# id: 239
+# text-en: What's the weather in San Francisco?
+# text: Wia is Wetter in San Francisco?
+# intent: _
+1	Wia	_	_
+2	is	_	_
+3	Wetter	_	_
+4	in	_	_
+5	San	_	_
+6	Francisco	_	_
+7	?	_	_
+
+# id: 240
+# text-en: Cancel all reminders
+# text: Lesch olle Erinnerungen
+# intent: _
+1	Lesch	_	_
+2	olle	_	_
+3	Erinnerungen	_	_
+
+# id: 241
+# text-en: Cancel reminder for concert
+# text: Lesch die Erinnerung firs Konzert
+# intent: _
+1	Lesch	_	_
+2	die	_	_
+3	Erinnerung	_	_
+4	firs	_	_
+5	Konzert	_	_
+
+# id: 242
+# text-en: Cancel the alarm for tomorrow morning
+# text: Lesch in Alarm fir morgn friah
+# intent: _
+1	Lesch	_	_
+2	in	_	_
+3	Alarm	_	_
+4	fir	_	_
+5	morgn	_	_
+6	friah	_	_
+
+# id: 243
+# text-en: will it rain this week
+# text: Weards de Woche regnen
+# intent: _
+1	Weards	_	_
+2	de	_	_
+3	Woche	_	_
+4	regnen	_	_
+
+# id: 244
+# text-en: What is the weather like on Wednesday for golfing?
+# text: Wia is Wetter in Mittig zun Golf spielen?
+# intent: _
+1	Wia	_	_
+2	is	_	_
+3	Wetter	_	_
+4	in	_	_
+5	Mittig	_	_
+6	zun	_	_
+7	Golf	_	_
+8	spielen	_	_
+9	?	_	_
+
+# id: 245
+# text-en: show all alarms
+# text: zoag olle Wecker
+# intent: _
+1	zoag	_	_
+2	olle	_	_
+3	Wecker	_	_
+
+# id: 246
+# text-en: turn off all alarms for tomorrow
+# text: Scholt olle Wecker fir morgen o
+# intent: _
+1	Scholt	_	_
+2	olle	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	morgen	_	_
+6	o	_	_
+
+# id: 247
+# text-en: Set alarm for 5pm tonight
+# text: Stell in Wecker heint af 5 zu marende
+# intent: _
+1	Stell	_	_
+2	in	_	_
+3	Wecker	_	_
+4	heint	_	_
+5	af	_	_
+6	5	_	_
+7	zu	_	_
+8	marende	_	_
+
+# id: 248
+# text-en: set alarm for 7 tomorrow
+# text: Setz in Wecker fir morgen um 7
+# intent: _
+1	Setz	_	_
+2	in	_	_
+3	Wecker	_	_
+4	fir	_	_
+5	morgen	_	_
+6	um	_	_
+7	7	_	_
+
+# id: 249
+# text-en: Will it be sunny tomorrow?
+# text: Scheint morgn die Sunne?
+# intent: _
+1	Scheint	_	_
+2	morgn	_	_
+3	die	_	_
+4	Sunne	_	_
+5	?	_	_
+
+# id: 250
+# text-en: how hot will it be today
+# text: Wia hoas wearts heint
+# intent: _
+1	Wia	_	_
+2	hoas	_	_
+3	wearts	_	_
+4	heint	_	_
+
+# id: 251
+# text-en: Give zero stars to Halo: Ghosts of Onyx
+# text: Gib Halo: Ghosts of Onyx 0 Sterne
+# intent: _
+1	Gib	_	_
+2	Halo:	_	_
+3	Ghosts	_	_
+4	of	_	_
+5	Onyx	_	_
+6	0	_	_
+7	Sterne	_	_
+
+# id: 252
+# text-en: Play music by Joy Nilo .
+# text: Spiel Musig vu Joy Nilo
+# intent: _
+1	Spiel	_	_
+2	Musig	_	_
+3	vu	_	_
+4	Joy	_	_
+5	Nilo	_	_
+
+# id: 253
+# text-en: Please find me the video game titled 20 Hours in America .
+# text: Suach mir es Videospiel mitn Titl 20 Hours in America.
+# intent: _
+1	Suach	_	_
+2	mir	_	_
+3	es	_	_
+4	Videospiel	_	_
+5	mitn	_	_
+6	Titl	_	_
+7	20	_	_
+8	Hours	_	_
+9	in	_	_
+10	America	_	_
+11	.	_	_
+
+# id: 254
+# text-en: Play my inventive playlist
+# text: Spiel meine erfundene Playlist
+# intent: _
+1	Spiel	_	_
+2	meine	_	_
+3	erfundene	_	_
+4	Playlist	_	_
+
+# id: 255
+# text-en: Book spot for 9 at Thurmont
+# text: Bauch für 9 in Thurmont
+# intent: _
+1	Bauch	_	_
+2	für	_	_
+3	9	_	_
+4	in	_	_
+5	Thurmont	_	_
+
+# id: 256
+# text-en: Add this tune to dorthy's 80's party playlist
+# text: Tua des Liad zu Dorthy's 80er Party Lischte derzua
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Liad	_	_
+4	zu	_	_
+5	Dorthy's	_	_
+6	80er	_	_
+7	Party	_	_
+8	Lischte	_	_
+9	derzua	_	_
+
+# id: 257
+# text-en: Play the newest melody on Last Fm by Eddie Vinson .
+# text: Spiel es nuigschte Liad vu Eddie Vinson af Last Fm.
+# intent: _
+1	Spiel	_	_
+2	es	_	_
+3	nuigschte	_	_
+4	Liad	_	_
+5	vu	_	_
+6	Eddie	_	_
+7	Vinson	_	_
+8	af	_	_
+9	Last	_	_
+10	Fm	_	_
+11	.	_	_
+
+# id: 258
+# text-en: Check the forecast for Nebraska .
+# text: Kontrollier die Wettervorhersoge fir Nebraska.
+# intent: _
+1	Kontrollier	_	_
+2	die	_	_
+3	Wettervorhersoge	_	_
+4	fir	_	_
+5	Nebraska	_	_
+6	.	_	_
+
+# id: 259
+# text-en: Is there a storm now in NC ?
+# text: Isch iatz grot a Sturm in NC?
+# intent: _
+1	Isch	_	_
+2	iatz	_	_
+3	grot	_	_
+4	a	_	_
+5	Sturm	_	_
+6	in	_	_
+7	NC	_	_
+8	?	_	_
+
+# id: 260
+# text-en: I want to listen to an ep from 1998 .
+# text: I mecht a EP vu 1998 lousn.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	a	_	_
+4	EP	_	_
+5	vu	_	_
+6	1998	_	_
+7	lousn	_	_
+8	.	_	_
+
+# id: 261
+# text-en: I need times for A Yiddish World Remembered at Dipson Theatres
+# text: I brauch es Progamm vu Dipson Theatres vu A Yiddish World Remembered
+# intent: _
+1	I	_	_
+2	brauch	_	_
+3	es	_	_
+4	Progamm	_	_
+5	vu	_	_
+6	Dipson	_	_
+7	Theatres	_	_
+8	vu	_	_
+9	A	_	_
+10	Yiddish	_	_
+11	World	_	_
+12	Remembered	_	_
+
+# id: 262
+# text-en: Give 1 out of 6 rating to the current textbook
+# text: Gib den Buach 1 vu 6 Punkte
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Buach	_	_
+4	1	_	_
+5	vu	_	_
+6	6	_	_
+7	Punkte	_	_
+
+# id: 263
+# text-en: Add the Matt Murphy tune to the Flow Español playlist.
+# text: Tua es Matt Murphy Liad zu der Flow Espanol Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	es	_	_
+3	Matt	_	_
+4	Murphy	_	_
+5	Liad	_	_
+6	zu	_	_
+7	der	_	_
+8	Flow	_	_
+9	Espanol	_	_
+10	Playlist	_	_
+11	derzua	_	_
+12	.	_	_
+
+# id: 264
+# text-en: I want to book a sundanese gastropub nearby in Texas for 3 people on 5/20/2025 .
+# text: I mecht fir 3 in an sudanesischen Gastropub in der Nechne vu Texas firn 20 Mai 2025 reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	fir	_	_
+4	3	_	_
+5	in	_	_
+6	an	_	_
+7	sudanesischen	_	_
+8	Gastropub	_	_
+9	in	_	_
+10	der	_	_
+11	Nechne	_	_
+12	vu	_	_
+13	Texas	_	_
+14	firn	_	_
+15	20	_	_
+16	Mai	_	_
+17	2025	_	_
+18	reserviern	_	_
+19	.	_	_
+
+# id: 265
+# text-en: Could you find the TV series The Approach
+# text: Konnsch die Fernsehserie The Approach suachn
+# intent: _
+1	Konnsch	_	_
+2	die	_	_
+3	Fernsehserie	_	_
+4	The	_	_
+5	Approach	_	_
+6	suachn	_	_
+
+# id: 266
+# text-en: Give this chronicle a 2 rating.
+# text: Gib der Chronik a 2er Bewertung.
+# intent: _
+1	Gib	_	_
+2	der	_	_
+3	Chronik	_	_
+4	a	_	_
+5	2er	_	_
+6	Bewertung	_	_
+7	.	_	_
+
+# id: 267
+# text-en: Give The American Scene 2 of 6 stars
+# text: Gib The American Scene 2 vu 6 Punkte
+# intent: _
+1	Gib	_	_
+2	The	_	_
+3	American	_	_
+4	Scene	_	_
+5	2	_	_
+6	vu	_	_
+7	6	_	_
+8	Punkte	_	_
+
+# id: 268
+# text-en: Add emilie autumn to my Nação Reggae playlist.
+# text: Tua Emilie Autumn zu meiner Nação Reggae Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	Emilie	_	_
+3	Autumn	_	_
+4	zu	_	_
+5	meiner	_	_
+6	Nação	_	_
+7	Reggae	_	_
+8	Playlist	_	_
+9	derzua	_	_
+10	.	_	_
+
+# id: 269
+# text-en: I want to book a jewish restaurant in Gambia .
+# text: I mecht an Plotz in an jüdischen Restaurant in Gambia reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	an	_	_
+4	Plotz	_	_
+5	in	_	_
+6	an	_	_
+7	jüdischen	_	_
+8	Restaurant	_	_
+9	in	_	_
+10	Gambia	_	_
+11	reserviern	_	_
+12	.	_	_
+
+# id: 270
+# text-en: book a table at a Fried chicken restaurant
+# text: Reservier an Tisch in an Fried chicken Restaurant
+# intent: _
+1	Reservier	_	_
+2	an	_	_
+3	Tisch	_	_
+4	in	_	_
+5	an	_	_
+6	Fried	_	_
+7	chicken	_	_
+8	Restaurant	_	_
+
+# id: 271
+# text-en: add we have a theme song to my House Afterwork playlist
+# text: Tua We have a theme song zu meiner House Afterwork Playlist derzua
+# intent: _
+1	Tua	_	_
+2	We	_	_
+3	have	_	_
+4	a	_	_
+5	theme	_	_
+6	song	_	_
+7	zu	_	_
+8	meiner	_	_
+9	House	_	_
+10	Afterwork	_	_
+11	Playlist	_	_
+12	derzua	_	_
+
+# id: 272
+# text-en: What will the weather be not far from here on October the nineteenth, 2026 ?
+# text: Wia wearts Wetter do ba ins in der Nechne in 19. Oktober 2026 sein?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	do	_	_
+5	ba	_	_
+6	ins	_	_
+7	in	_	_
+8	der	_	_
+9	Nechne	_	_
+10	in	_	_
+11	19	_	_
+12	.	_	_
+13	Oktober	_	_
+14	2026	_	_
+15	sein	_	_
+16	?	_	_
+
+# id: 273
+# text-en: Weather in Walden Russia on 12/26/2018
+# text: Es Wetter in Walden Russia in 26. Dezember 2018
+# intent: _
+1	Es	_	_
+2	Wetter	_	_
+3	in	_	_
+4	Walden	_	_
+5	Russia	_	_
+6	in	_	_
+7	26	_	_
+8	.	_	_
+9	Dezember	_	_
+10	2018	_	_
+
+# id: 274
+# text-en: I want to book a restaurant for my father in law and I in Buckner a year from now .
+# text: I mecht fir mi und mein zukinftigen Schwiegervoter an Tisch in an Restaurant in Buckner in an Johr reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	fir	_	_
+4	mi	_	_
+5	und	_	_
+6	mein	_	_
+7	zukinftigen	_	_
+8	Schwiegervoter	_	_
+9	an	_	_
+10	Tisch	_	_
+11	in	_	_
+12	an	_	_
+13	Restaurant	_	_
+14	in	_	_
+15	Buckner	_	_
+16	in	_	_
+17	an	_	_
+18	Johr	_	_
+19	reserviern	_	_
+20	.	_	_
+
+# id: 275
+# text-en: Rate this book a 1
+# text: Gib den Buach 1 Punkt
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Buach	_	_
+4	1	_	_
+5	Punkt	_	_
+
+# id: 276
+# text-en: add this artist to my spotlight on country 2016 playlist
+# text: Tua den Interpret zu der Playlist my spotlight on country 2016 derzua
+# intent: _
+1	Tua	_	_
+2	den	_	_
+3	Interpret	_	_
+4	zu	_	_
+5	der	_	_
+6	Playlist	_	_
+7	my	_	_
+8	spotlight	_	_
+9	on	_	_
+10	country	_	_
+11	2016	_	_
+12	derzua	_	_
+
+# id: 277
+# text-en: Could you locate the Epic Conditions picture ?
+# text: Kanntsch mir sogn wo es Epic Conditions Foto isch?
+# intent: _
+1	Kanntsch	_	_
+2	mir	_	_
+3	sogn	_	_
+4	wo	_	_
+5	es	_	_
+6	Epic	_	_
+7	Conditions	_	_
+8	Foto	_	_
+9	isch	_	_
+10	?	_	_
+
+# id: 278
+# text-en: Play rich sex on Iheart
+# text: Spiel Rich Sex af Iheart
+# intent: _
+1	Spiel	_	_
+2	Rich	_	_
+3	Sex	_	_
+4	af	_	_
+5	Iheart	_	_
+
+# id: 279
+# text-en: Is Bartok the Magnificent playing at seven AM ?
+# text: Spieln se Bartok the Magnificent um 7 in der Fria?
+# intent: _
+1	Spieln	_	_
+2	se	_	_
+3	Bartok	_	_
+4	the	_	_
+5	Magnificent	_	_
+6	um	_	_
+7	7	_	_
+8	in	_	_
+9	der	_	_
+10	Fria	_	_
+11	?	_	_
+
+# id: 280
+# text-en: Play something on Zvooq
+# text: Spiel irgendeppis af Zvooq
+# intent: _
+1	Spiel	_	_
+2	irgendeppis	_	_
+3	af	_	_
+4	Zvooq	_	_
+
+# id: 281
+# text-en: Let me hear Chris Knight music
+# text: Loss mi Chris Knight Musig hearn
+# intent: _
+1	Loss	_	_
+2	mi	_	_
+3	Chris	_	_
+4	Knight	_	_
+5	Musig	_	_
+6	hearn	_	_
+
+# id: 282
+# text-en: play Jill Sobule album
+# text: Spiel a Album vu Jill Sobule
+# intent: _
+1	Spiel	_	_
+2	a	_	_
+3	Album	_	_
+4	vu	_	_
+5	Jill	_	_
+6	Sobule	_	_
+
+# id: 283
+# text-en: Give four stars to The Broken Window
+# text: Gib The Broken Window 4 Sterne
+# intent: _
+1	Gib	_	_
+2	The	_	_
+3	Broken	_	_
+4	Window	_	_
+5	4	_	_
+6	Sterne	_	_
+
+# id: 284
+# text-en: Tell me the forecast for 6 am in Tatra-Nationalpark
+# text: Sog mir die Wettervorhersoge fir 6 in der Friah fürn Tatra Nationalpark
+# intent: _
+1	Sog	_	_
+2	mir	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	fir	_	_
+6	6	_	_
+7	in	_	_
+8	der	_	_
+9	Friah	_	_
+10	fürn	_	_
+11	Tatra	_	_
+12	Nationalpark	_	_
+
+# id: 285
+# text-en: Please book me a table at a bistro which serves lorna doone .
+# text: Reservier an Tisch in an Bistro wo se lorna doone unbiatn.
+# intent: _
+1	Reservier	_	_
+2	an	_	_
+3	Tisch	_	_
+4	in	_	_
+5	an	_	_
+6	Bistro	_	_
+7	wo	_	_
+8	se	_	_
+9	lorna	_	_
+10	doone	_	_
+11	unbiatn	_	_
+12	.	_	_
+
+# id: 286
+# text-en: Rate The Mystery of the Tolling Bell series 4 stars .
+# text: Gib der Serie The Mystery of the Tolling Bell 4 Sterne.
+# intent: _
+1	Gib	_	_
+2	der	_	_
+3	Serie	_	_
+4	The	_	_
+5	Mystery	_	_
+6	of	_	_
+7	the	_	_
+8	Tolling	_	_
+9	Bell	_	_
+10	4	_	_
+11	Sterne	_	_
+12	.	_	_
+
+# id: 287
+# text-en: Use Groove Shark to play music
+# text: Spiel Musig iber Groove Shark
+# intent: _
+1	Spiel	_	_
+2	Musig	_	_
+3	iber	_	_
+4	Groove	_	_
+5	Shark	_	_
+
+# id: 288
+# text-en: Check the timings for Snowbound at the closest movie theatre .
+# text: Kontrollier es Programm fir Snowbound in nechnschten Kino.
+# intent: _
+1	Kontrollier	_	_
+2	es	_	_
+3	Programm	_	_
+4	fir	_	_
+5	Snowbound	_	_
+6	in	_	_
+7	nechnschten	_	_
+8	Kino	_	_
+9	.	_	_
+
+# id: 289
+# text-en: Please open Zvooq
+# text: Tua Zvooq au
+# intent: _
+1	Tua	_	_
+2	Zvooq	_	_
+3	au	_	_
+
+# id: 290
+# text-en: book spot for 1 at Town of Ramsgate in Merit
+# text: Buach fir 1 Person Town of Ramsgate in Merit
+# intent: _
+1	Buach	_	_
+2	fir	_	_
+3	1	_	_
+4	Person	_	_
+5	Town	_	_
+6	of	_	_
+7	Ramsgate	_	_
+8	in	_	_
+9	Merit	_	_
+
+# id: 291
+# text-en: Will I Think I Do be playing at 7 PM ?
+# text: Weart I Think I Do um 7 gschnochts gezoag?
+# intent: _
+1	Weart	_	_
+2	I	_	_
+3	Think	_	_
+4	I	_	_
+5	Do	_	_
+6	um	_	_
+7	7	_	_
+8	gschnochts	_	_
+9	gezoag	_	_
+10	?	_	_
+
+# id: 292
+# text-en: will Custer National Forest be chillier at seven Pm
+# text: Wearts in Cluster National Forest um 7 gschnochts kiahler sein
+# intent: _
+1	Wearts	_	_
+2	in	_	_
+3	Cluster	_	_
+4	National	_	_
+5	Forest	_	_
+6	um	_	_
+7	7	_	_
+8	gschnochts	_	_
+9	kiahler	_	_
+10	sein	_	_
+
+# id: 293
+# text-en: I want to listen to something on Youtube
+# text: I mecht irgendeppis iber Youtube lousn
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	irgendeppis	_	_
+4	iber	_	_
+5	Youtube	_	_
+6	lousn	_	_
+
+# id: 294
+# text-en: Search for the game Difficult Loves
+# text: Suach es Spiel Difficult Loves
+# intent: _
+1	Suach	_	_
+2	es	_	_
+3	Spiel	_	_
+4	Difficult	_	_
+5	Loves	_	_
+
+# id: 295
+# text-en: What's the weather forecast for Bothe-Napa Valley State Park close by february 20 ?
+# text: Wia isch die Wettervorhersoge fir Bothe-Napa Valley State Park ummin 20 Februar?
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	fir	_	_
+6	Bothe-Napa	_	_
+7	Valley	_	_
+8	State	_	_
+9	Park	_	_
+10	ummin	_	_
+11	20	_	_
+12	Februar	_	_
+13	?	_	_
+
+# id: 296
+# text-en: show me the schedule of movie The Great Gildersleeve near movie house
+# text: Zoag mir es Kinoprogramm vu The Great Gildersleevein an Kino in der Nechne
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	es	_	_
+4	Kinoprogramm	_	_
+5	vu	_	_
+6	The	_	_
+7	Great	_	_
+8	Gildersleevein	_	_
+9	an	_	_
+10	Kino	_	_
+11	in	_	_
+12	der	_	_
+13	Nechne	_	_
+
+# id: 297
+# text-en: Tell me the weather forecast for Gibsland
+# text: Sog mir die Wettervorhersoge fir Gibsland
+# intent: _
+1	Sog	_	_
+2	mir	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	fir	_	_
+6	Gibsland	_	_
+
+# id: 298
+# text-en: Can I get the times for movies in the neighbourhood
+# text: Krieg i die Filmzeiten fir Filme in der Nochborschoft
+# intent: _
+1	Krieg	_	_
+2	i	_	_
+3	die	_	_
+4	Filmzeiten	_	_
+5	fir	_	_
+6	Filme	_	_
+7	in	_	_
+8	der	_	_
+9	Nochborschoft	_	_
+
+# id: 299
+# text-en: Rate Soul Music a 0 .
+# text: Gib Soul Musik 0 Punkte
+# intent: _
+1	Gib	_	_
+2	Soul	_	_
+3	Musik	_	_
+4	0	_	_
+5	Punkte	_	_
+
+# id: 300
+# text-en: Book a reservation for five people for a tatar taverna in Sargents
+# text: Reservier fir 5 Leit in Sargents in an Tatar Taverne
+# intent: _
+1	Reservier	_	_
+2	fir	_	_
+3	5	_	_
+4	Leit	_	_
+5	in	_	_
+6	Sargents	_	_
+7	in	_	_
+8	an	_	_
+9	Tatar	_	_
+10	Taverne	_	_
+
+# id: 301
+# text-en: Play All Things Must Pass .
+# text: Spiel All Things Must Pass.
+# intent: _
+1	Spiel	_	_
+2	All	_	_
+3	Things	_	_
+4	Must	_	_
+5	Pass	_	_
+6	.	_	_
+
+# id: 302
+# text-en: What is the rain forecast for one hour from now in South Korea
+# text: Wia isch die Regenvorhersoge fir in an Stunde in Südkorea
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Regenvorhersoge	_	_
+5	fir	_	_
+6	in	_	_
+7	an	_	_
+8	Stunde	_	_
+9	in	_	_
+10	Südkorea	_	_
+
+# id: 303
+# text-en: Book a spot for 4 in Oklahoma at South Street Diner
+# text: Buach fir 4 Leit ban South Street Diner in Oklahoma
+# intent: _
+1	Buach	_	_
+2	fir	_	_
+3	4	_	_
+4	Leit	_	_
+5	ban	_	_
+6	South	_	_
+7	Street	_	_
+8	Diner	_	_
+9	in	_	_
+10	Oklahoma	_	_
+
+# id: 304
+# text-en: Play music off Netflix .
+# text: Spiel Musig iber Netflix.
+# intent: _
+1	Spiel	_	_
+2	Musig	_	_
+3	iber	_	_
+4	Netflix	_	_
+5	.	_	_
+
+# id: 305
+# text-en: I want to see Shattered Image .
+# text: I mecht Shattered Image sechn.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	Shattered	_	_
+4	Image	_	_
+5	sechn	_	_
+6	.	_	_
+
+# id: 306
+# text-en: Search for The Sound of One Hand Clapping
+# text: Suach The Sound of One Hand Clapping
+# intent: _
+1	Suach	_	_
+2	The	_	_
+3	Sound	_	_
+4	of	_	_
+5	One	_	_
+6	Hand	_	_
+7	Clapping	_	_
+
+# id: 307
+# text-en: Look for the album Wolves Within
+# text: Suach es Album Wolves Within
+# intent: _
+1	Suach	_	_
+2	es	_	_
+3	Album	_	_
+4	Wolves	_	_
+5	Within	_	_
+
+# id: 308
+# text-en: is We Are Northern Lights playing in any movie theatre
+# text: Zoagn se We Are Northern Lights in irgenduan Kino
+# intent: _
+1	Zoagn	_	_
+2	se	_	_
+3	We	_	_
+4	Are	_	_
+5	Northern	_	_
+6	Lights	_	_
+7	in	_	_
+8	irgenduan	_	_
+9	Kino	_	_
+
+# id: 309
+# text-en: Add our little corner of the world music from gilmore girls to my The Funny Thing About Football Is playlist.
+# text: Tua vu die Gilmore Girls Our little corner of the world music zu meiner Playlist The Funny Thing About Football Is derzua.
+# intent: _
+1	Tua	_	_
+2	vu	_	_
+3	die	_	_
+4	Gilmore	_	_
+5	Girls	_	_
+6	Our	_	_
+7	little	_	_
+8	corner	_	_
+9	of	_	_
+10	the	_	_
+11	world	_	_
+12	music	_	_
+13	zu	_	_
+14	meiner	_	_
+15	Playlist	_	_
+16	The	_	_
+17	Funny	_	_
+18	Thing	_	_
+19	About	_	_
+20	Football	_	_
+21	Is	_	_
+22	derzua	_	_
+23	.	_	_
+
+# id: 310
+# text-en: what is the forecast for hotter weather at Southford Falls State Park
+# text: Wia isch die Vorhersoge fir wermers Wetter in Southford Falls State Park
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Vorhersoge	_	_
+5	fir	_	_
+6	wermers	_	_
+7	Wetter	_	_
+8	in	_	_
+9	Southford	_	_
+10	Falls	_	_
+11	State	_	_
+12	Park	_	_
+
+# id: 311
+# text-en: Please book me a table at a pizzeria with a parking facility in Ghana .
+# text: Bitte reservier an Tisch in an Pizzeria mit Parkplotz in Ghana.
+# intent: _
+1	Bitte	_	_
+2	reservier	_	_
+3	an	_	_
+4	Tisch	_	_
+5	in	_	_
+6	an	_	_
+7	Pizzeria	_	_
+8	mit	_	_
+9	Parkplotz	_	_
+10	in	_	_
+11	Ghana	_	_
+12	.	_	_
+
+# id: 312
+# text-en: I want to hear a seventies sound track .
+# text: I mecht a Liad vu die 70er lousn.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	a	_	_
+4	Liad	_	_
+5	vu	_	_
+6	die	_	_
+7	70er	_	_
+8	lousn	_	_
+9	.	_	_
+
+# id: 313
+# text-en: Weather in two hours in Uzbekistan
+# text: Es Wetter in 2 Stundn in Usbekistan
+# intent: _
+1	Es	_	_
+2	Wetter	_	_
+3	in	_	_
+4	2	_	_
+5	Stundn	_	_
+6	in	_	_
+7	Usbekistan	_	_
+
+# id: 314
+# text-en: Please find me the Journal of the British Astronomical Association movie .
+# text: Bitte suach in Film Journal of the British Astronomical Association.
+# intent: _
+1	Bitte	_	_
+2	suach	_	_
+3	in	_	_
+4	Film	_	_
+5	Journal	_	_
+6	of	_	_
+7	the	_	_
+8	British	_	_
+9	Astronomical	_	_
+10	Association	_	_
+11	.	_	_
+
+# id: 315
+# text-en: Book a reservation for 8 people in Wardville , Kansas
+# text: Buach fir 8 Leit in Wardville in Kansas
+# intent: _
+1	Buach	_	_
+2	fir	_	_
+3	8	_	_
+4	Leit	_	_
+5	in	_	_
+6	Wardville	_	_
+7	in	_	_
+8	Kansas	_	_
+
+# id: 316
+# text-en: What will the weather be faraway from here ?
+# text: Wia wearts Wetter weit weg vu do sein?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	weit	_	_
+5	weg	_	_
+6	vu	_	_
+7	do	_	_
+8	sein	_	_
+9	?	_	_
+
+# id: 317
+# text-en: Add Richard McNamara newest song to the Just Smile playlist
+# text: Tua es nuigschte Liad vu Richard McNamara zu meiner Just Smile Playlist derzua
+# intent: _
+1	Tua	_	_
+2	es	_	_
+3	nuigschte	_	_
+4	Liad	_	_
+5	vu	_	_
+6	Richard	_	_
+7	McNamara	_	_
+8	zu	_	_
+9	meiner	_	_
+10	Just	_	_
+11	Smile	_	_
+12	Playlist	_	_
+13	derzua	_	_
+
+# id: 318
+# text-en: how cold will it be here in 1 second
+# text: Wia kolt wearts do in uaner Sekunde sein
+# intent: _
+1	Wia	_	_
+2	kolt	_	_
+3	wearts	_	_
+4	do	_	_
+5	in	_	_
+6	uaner	_	_
+7	Sekunde	_	_
+8	sein	_	_
+
+# id: 319
+# text-en: Looking for a painting with the title With You
+# text: I suach a Bild mitn Titl With You
+# intent: _
+1	I	_	_
+2	suach	_	_
+3	a	_	_
+4	Bild	_	_
+5	mitn	_	_
+6	Titl	_	_
+7	With	_	_
+8	You	_	_
+
+# id: 320
+# text-en: Find the creative work Deadly Weapons
+# text: Find es Kunstwerk Deadly Weapons
+# intent: _
+1	Find	_	_
+2	es	_	_
+3	Kunstwerk	_	_
+4	Deadly	_	_
+5	Weapons	_	_
+
+# id: 321
+# text-en: What will the weather be in nov. in Brookneal ?
+# text: Wia wearts Wetter in November in Brookneal sein?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	in	_	_
+5	November	_	_
+6	in	_	_
+7	Brookneal	_	_
+8	sein	_	_
+9	?	_	_
+
+# id: 322
+# text-en: Book a reservation at tavern for noodle
+# text: Reservier in an Taverne wos Nudl gib
+# intent: _
+1	Reservier	_	_
+2	in	_	_
+3	an	_	_
+4	Taverne	_	_
+5	wos	_	_
+6	Nudl	_	_
+7	gib	_	_
+
+# id: 323
+# text-en: what is the forecast for Costa Rica
+# text: Wia isch die Wettervorhersoge fir Costa Rica
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	fir	_	_
+6	Costa	_	_
+7	Rica	_	_
+
+# id: 324
+# text-en: Is The Two Gladiators playing
+# text: Spielnse The Two Gladiators
+# intent: _
+1	Spielnse	_	_
+2	The	_	_
+3	Two	_	_
+4	Gladiators	_	_
+
+# id: 325
+# text-en: what movies at Star Theatres .
+# text: Welle Fillme sein in die Star Theatres.
+# intent: _
+1	Welle	_	_
+2	Fillme	_	_
+3	sein	_	_
+4	in	_	_
+5	die	_	_
+6	Star	_	_
+7	Theatres	_	_
+8	.	_	_
+
+# id: 326
+# text-en: Can you please find me the Harry Hood saga ?
+# text: Konnsch mir bitte die Harry Hood Geschichte finden?
+# intent: _
+1	Konnsch	_	_
+2	mir	_	_
+3	bitte	_	_
+4	die	_	_
+5	Harry	_	_
+6	Hood	_	_
+7	Geschichte	_	_
+8	finden	_	_
+9	?	_	_
+
+# id: 327
+# text-en: add this tune to my Sleepify playlist
+# text: Tua des Liad zu meiner Sleepify Playlist derzua
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Liad	_	_
+4	zu	_	_
+5	meiner	_	_
+6	Sleepify	_	_
+7	Playlist	_	_
+8	derzua	_	_
+
+# id: 328
+# text-en: Is Any Which Way You Can playing in 15 seconds
+# text: Zoagnse Any Which Way You Can in 15 Sekundn
+# intent: _
+1	Zoagnse	_	_
+2	Any	_	_
+3	Which	_	_
+4	Way	_	_
+5	You	_	_
+6	Can	_	_
+7	in	_	_
+8	15	_	_
+9	Sekundn	_	_
+
+# id: 329
+# text-en: Play music from E-type .
+# text: Spiel Musig fa E-type.
+# intent: _
+1	Spiel	_	_
+2	Musig	_	_
+3	fa	_	_
+4	E-type	_	_
+5	.	_	_
+
+# id: 330
+# text-en: Give one start to the current book
+# text: Gib den Buach 1 Stern
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Buach	_	_
+4	1	_	_
+5	Stern	_	_
+
+# id: 331
+# text-en: Play Another Passenger from Louis Nelson Delisle .
+# text: Spiel Another Passenger vun Louis Nelson Delisle .
+# intent: _
+1	Spiel	_	_
+2	Another	_	_
+3	Passenger	_	_
+4	vun	_	_
+5	Louis	_	_
+6	Nelson	_	_
+7	Delisle	_	_
+8	.	_	_
+
+# id: 332
+# text-en: Where can I find the movie schedules
+# text: Wo find i die Filmprogramme
+# intent: _
+1	Wo	_	_
+2	find	_	_
+3	i	_	_
+4	die	_	_
+5	Filmprogramme	_	_
+
+# id: 333
+# text-en: what's the forecast for sep. 26 in Emerado Saint Pierre and Miquelon
+# text: Wia isch die Wettervorhersoge firn 26 September in Emerado Saint Pierre und Miquelon
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	firn	_	_
+6	26	_	_
+7	September	_	_
+8	in	_	_
+9	Emerado	_	_
+10	Saint	_	_
+11	Pierre	_	_
+12	und	_	_
+13	Miquelon	_	_
+
+# id: 334
+# text-en: Lets eat near Oakfield 17 seconds from now at Ted Peters Famous Smoked Fish
+# text: Loss ins in 17 Sekunden in der Nechne vu Oakfield ba Ted Peters Famous Smoked Fish essn
+# intent: _
+1	Loss	_	_
+2	ins	_	_
+3	in	_	_
+4	17	_	_
+5	Sekunden	_	_
+6	in	_	_
+7	der	_	_
+8	Nechne	_	_
+9	vu	_	_
+10	Oakfield	_	_
+11	ba	_	_
+12	Ted	_	_
+13	Peters	_	_
+14	Famous	_	_
+15	Smoked	_	_
+16	Fish	_	_
+17	essn	_	_
+
+# id: 335
+# text-en: get me the trailer of Good Morning Sunshine
+# text: Suach mir in Trailer fir Good Morning Sunshine
+# intent: _
+1	Suach	_	_
+2	mir	_	_
+3	in	_	_
+4	Trailer	_	_
+5	fir	_	_
+6	Good	_	_
+7	Morning	_	_
+8	Sunshine	_	_
+
+# id: 336
+# text-en: I want to book a brasserie for 3 people in Netherlands Antilles .
+# text: I mecht in an Brasserie fir 3 Leit af die Niederländischen Antillen buachn
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	in	_	_
+4	an	_	_
+5	Brasserie	_	_
+6	fir	_	_
+7	3	_	_
+8	Leit	_	_
+9	af	_	_
+10	die	_	_
+11	Niederländischen	_	_
+12	Antillen	_	_
+13	buachn	_	_
+
+# id: 337
+# text-en: rate this current album 0 stars
+# text: Gib den Album 0 Sterne
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Album	_	_
+4	0	_	_
+5	Sterne	_	_
+
+# id: 338
+# text-en: Like to book a seat in Monaco for the Yankee Doodle Coffee Shop
+# text: Buach mir an Sitzplotz in Monaco firn Yankee Doodle Coffee Shop
+# intent: _
+1	Buach	_	_
+2	mir	_	_
+3	an	_	_
+4	Sitzplotz	_	_
+5	in	_	_
+6	Monaco	_	_
+7	firn	_	_
+8	Yankee	_	_
+9	Doodle	_	_
+10	Coffee	_	_
+11	Shop	_	_
+
+# id: 339
+# text-en: Add the artist to the political punks playlist.
+# text: Tua den Interpret zu der Playlist Political punks derzua
+# intent: _
+1	Tua	_	_
+2	den	_	_
+3	Interpret	_	_
+4	zu	_	_
+5	der	_	_
+6	Playlist	_	_
+7	Political	_	_
+8	punks	_	_
+9	derzua	_	_
+
+# id: 340
+# text-en: Will it be colder four months from now in Suwanee AK
+# text: Wearts in 4 Munite in Suwanee AK kiahler sein
+# intent: _
+1	Wearts	_	_
+2	in	_	_
+3	4	_	_
+4	Munite	_	_
+5	in	_	_
+6	Suwanee	_	_
+7	AK	_	_
+8	kiahler	_	_
+9	sein	_	_
+
+# id: 341
+# text-en: add Muzika za decu to my Crash Course playlist
+# text: Tua Muzika za decu zu meiner Crash Course Playlist derzua
+# intent: _
+1	Tua	_	_
+2	Muzika	_	_
+3	za	_	_
+4	decu	_	_
+5	zu	_	_
+6	meiner	_	_
+7	Crash	_	_
+8	Course	_	_
+9	Playlist	_	_
+10	derzua	_	_
+
+# id: 342
+# text-en: Can you look up the Molecular Oncology saga ?
+# text: Konnsch du di Molecular Oncology Geschichte suachn?
+# intent: _
+1	Konnsch	_	_
+2	du	_	_
+3	di	_	_
+4	Molecular	_	_
+5	Oncology	_	_
+6	Geschichte	_	_
+7	suachn	_	_
+8	?	_	_
+
+# id: 343
+# text-en: I want to book a restaurant for six people in Wagstaff AK .
+# text: I mecht an Tisch fir 6 Leit in Wagstaff AK reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	an	_	_
+4	Tisch	_	_
+5	fir	_	_
+6	6	_	_
+7	Leit	_	_
+8	in	_	_
+9	Wagstaff	_	_
+10	AK	_	_
+11	reserviern	_	_
+12	.	_	_
+
+# id: 344
+# text-en: Play some symphony music from David Lindley .
+# text: Spiel Musig vu an Symphonieorchester vun David Lindley.
+# intent: _
+1	Spiel	_	_
+2	Musig	_	_
+3	vu	_	_
+4	an	_	_
+5	Symphonieorchester	_	_
+6	vun	_	_
+7	David	_	_
+8	Lindley	_	_
+9	.	_	_
+
+# id: 345
+# text-en: Please fine me the TV series , Now We Are Married .
+# text: Bitte suach mir die Serie Now We Are Married.
+# intent: _
+1	Bitte	_	_
+2	suach	_	_
+3	mir	_	_
+4	die	_	_
+5	Serie	_	_
+6	Now	_	_
+7	We	_	_
+8	Are	_	_
+9	Married	_	_
+10	.	_	_
+
+# id: 346
+# text-en: I want to see Outcast .
+# text: I mecht Outcast sechn.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	Outcast	_	_
+4	sechn	_	_
+5	.	_	_
+
+# id: 347
+# text-en: add the current track to my This Is Tchaikovsky playlist
+# text: Tua des Liad zu der This Is Tchaikovsky Playlist derzua
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Liad	_	_
+4	zu	_	_
+5	der	_	_
+6	This	_	_
+7	Is	_	_
+8	Tchaikovsky	_	_
+9	Playlist	_	_
+10	derzua	_	_
+
+# id: 348
+# text-en: Play This Is: Miles Davis on Lastfm .
+# text: Spiel af Lastfm This Is: Miles Davis.
+# intent: _
+1	Spiel	_	_
+2	af	_	_
+3	Lastfm	_	_
+4	This	_	_
+5	Is:	_	_
+6	Miles	_	_
+7	Davis	_	_
+8	.	_	_
+
+# id: 349
+# text-en: book the best table in Tanzania for 5 people at a diner
+# text: Bauch in beschtn Tisch fir 5 Leit zun Nochtessn in Tansania
+# intent: _
+1	Bauch	_	_
+2	in	_	_
+3	beschtn	_	_
+4	Tisch	_	_
+5	fir	_	_
+6	5	_	_
+7	Leit	_	_
+8	zun	_	_
+9	Nochtessn	_	_
+10	in	_	_
+11	Tansania	_	_
+
+# id: 350
+# text-en: Let's hear good Mohammad Mamle on Vimeo .
+# text: Loss ins good Mohammad Mamle af Vimeo lousn.
+# intent: _
+1	Loss	_	_
+2	ins	_	_
+3	good	_	_
+4	Mohammad	_	_
+5	Mamle	_	_
+6	af	_	_
+7	Vimeo	_	_
+8	lousn	_	_
+9	.	_	_
+
+# id: 351
+# text-en: Put Vandemataram Srinivas 's track onto HipHop Hot 50 .
+# text: Tua Vandemataram Srinivas 's Liad zu die beschten 50 Hip Hop derzua.
+# intent: _
+1	Tua	_	_
+2	Vandemataram	_	_
+3	Srinivas	_	_
+4	's	_	_
+5	Liad	_	_
+6	zu	_	_
+7	die	_	_
+8	beschten	_	_
+9	50	_	_
+10	Hip	_	_
+11	Hop	_	_
+12	derzua	_	_
+13	.	_	_
+
+# id: 352
+# text-en: Get me the Secret South song .
+# text: Suach es Secret South Liad.
+# intent: _
+1	Suach	_	_
+2	es	_	_
+3	Secret	_	_
+4	South	_	_
+5	Liad	_	_
+6	.	_	_
+
+# id: 353
+# text-en: nineties songs on Zvooq
+# text: 90er Liader af Zvooq
+# intent: _
+1	90er	_	_
+2	Liader	_	_
+3	af	_	_
+4	Zvooq	_	_
+
+# id: 354
+# text-en: what is the forecast in Admire in TX starting at seventeen
+# text: Wia isch die Wettervorhersoge in Admire in TX ob 5 zu marende
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	in	_	_
+6	Admire	_	_
+7	in	_	_
+8	TX	_	_
+9	ob	_	_
+10	5	_	_
+11	zu	_	_
+12	marende	_	_
+
+# id: 355
+# text-en: Play something on Last Fm
+# text: Spiel irgendeppis af Last Fm
+# intent: _
+1	Spiel	_	_
+2	irgendeppis	_	_
+3	af	_	_
+4	Last	_	_
+5	Fm	_	_
+
+# id: 356
+# text-en: I want to see The Portrait of a Lady at the nearest cinema .
+# text: I mecht in nechnschten Kino The Portrait of a Lady sechn.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	in	_	_
+4	nechnschten	_	_
+5	Kino	_	_
+6	The	_	_
+7	Portrait	_	_
+8	of	_	_
+9	a	_	_
+10	Lady	_	_
+11	sechn	_	_
+12	.	_	_
+
+# id: 357
+# text-en: Please find me Phineas Redux .
+# text: Bitte suach mir Phineas Redux .
+# intent: _
+1	Bitte	_	_
+2	suach	_	_
+3	mir	_	_
+4	Phineas	_	_
+5	Redux	_	_
+6	.	_	_
+
+# id: 358
+# text-en: Add the 40 cal tune to the laundry playlist.
+# text: Tua es Liad 40 cal tune zu der Laundry Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	es	_	_
+3	Liad	_	_
+4	40	_	_
+5	cal	_	_
+6	tune	_	_
+7	zu	_	_
+8	der	_	_
+9	Laundry	_	_
+10	Playlist	_	_
+11	derzua	_	_
+12	.	_	_
+
+# id: 359
+# text-en: Open itunes and play Ben Burnley Ready To Die
+# text: Tua Itunes au und spiel vun Ben Burnley Ready To Die
+# intent: _
+1	Tua	_	_
+2	Itunes	_	_
+3	au	_	_
+4	und	_	_
+5	spiel	_	_
+6	vun	_	_
+7	Ben	_	_
+8	Burnley	_	_
+9	Ready	_	_
+10	To	_	_
+11	Die	_	_
+
+# id: 360
+# text-en: What will the weather be in Monument of Lihula on december the 5th ?
+# text: Wia wearts Wetter in 5 Dezember in Monument of Lihula?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	in	_	_
+5	5	_	_
+6	Dezember	_	_
+7	in	_	_
+8	Monument	_	_
+9	of	_	_
+10	Lihula	_	_
+11	?	_	_
+
+# id: 361
+# text-en: Show the Sexy Dance 2 times at the closest movie house
+# text: Zoag die Filmzeiten vu Sexy Dance 2 vu die Kinos in der Nechne
+# intent: _
+1	Zoag	_	_
+2	die	_	_
+3	Filmzeiten	_	_
+4	vu	_	_
+5	Sexy	_	_
+6	Dance	_	_
+7	2	_	_
+8	vu	_	_
+9	die	_	_
+10	Kinos	_	_
+11	in	_	_
+12	der	_	_
+13	Nechne	_	_
+
+# id: 362
+# text-en: Looking for a song with the title of Live at the Kings Center
+# text: I suach a Liad mitn Titl Live at the Kings Center
+# intent: _
+1	I	_	_
+2	suach	_	_
+3	a	_	_
+4	Liad	_	_
+5	mitn	_	_
+6	Titl	_	_
+7	Live	_	_
+8	at	_	_
+9	the	_	_
+10	Kings	_	_
+11	Center	_	_
+
+# id: 363
+# text-en: What's the weather like in Tyonek , New Jersey
+# text: Wia isches Wetter in Tyonek , New Jersey
+# intent: _
+1	Wia	_	_
+2	isches	_	_
+3	Wetter	_	_
+4	in	_	_
+5	Tyonek	_	_
+6	,	_	_
+7	New	_	_
+8	Jersey	_	_
+
+# id: 364
+# text-en: I want to book Tupelo Honey Cafe in New Jersey for five people.
+# text: I mecht fir 5 Leit in Tupelo Honey Cafe in New Jersey reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	fir	_	_
+4	5	_	_
+5	Leit	_	_
+6	in	_	_
+7	Tupelo	_	_
+8	Honey	_	_
+9	Cafe	_	_
+10	in	_	_
+11	New	_	_
+12	Jersey	_	_
+13	reserviern	_	_
+14	.	_	_
+
+# id: 365
+# text-en: book spot for my nieces and I at a tea house
+# text: Buach fir mi und meine Nichten in an Teehaus
+# intent: _
+1	Buach	_	_
+2	fir	_	_
+3	mi	_	_
+4	und	_	_
+5	meine	_	_
+6	Nichten	_	_
+7	in	_	_
+8	an	_	_
+9	Teehaus	_	_
+
+# id: 366
+# text-en: Will it be hot in the Netherlands on February 16th ?
+# text: Wearts in 16 Februar in die Niederlande hoass sein?
+# intent: _
+1	Wearts	_	_
+2	in	_	_
+3	16	_	_
+4	Februar	_	_
+5	in	_	_
+6	die	_	_
+7	Niederlande	_	_
+8	hoass	_	_
+9	sein	_	_
+10	?	_	_
+
+# id: 367
+# text-en: I'd like to add jordan rudess onto the Divertido para niños playlist.
+# text: I mecht Jordan Rudess zu der Divertido para niños Playlist derzua tian.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	Jordan	_	_
+4	Rudess	_	_
+5	zu	_	_
+6	der	_	_
+7	Divertido	_	_
+8	para	_	_
+9	niños	_	_
+10	Playlist	_	_
+11	derzua	_	_
+12	tian	_	_
+13	.	_	_
+
+# id: 368
+# text-en: Rate In the Company of Cheerful Ladies a zero out of 6
+# text: Bewert In the Company of Cheerful Ladies mit 0 vu 6 Punkte
+# intent: _
+1	Bewert	_	_
+2	In	_	_
+3	the	_	_
+4	Company	_	_
+5	of	_	_
+6	Cheerful	_	_
+7	Ladies	_	_
+8	mit	_	_
+9	0	_	_
+10	vu	_	_
+11	6	_	_
+12	Punkte	_	_
+
+# id: 369
+# text-en: Book me a reservation for the best bistro
+# text: Buach mir in beschtn Bistro
+# intent: _
+1	Buach	_	_
+2	mir	_	_
+3	in	_	_
+4	beschtn	_	_
+5	Bistro	_	_
+
+# id: 370
+# text-en: rate the current textbook 1 out of 6
+# text: Gib den Fachbuch 1 vu 6
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Fachbuch	_	_
+4	1	_	_
+5	vu	_	_
+6	6	_	_
+
+# id: 371
+# text-en: what are the movie times
+# text: Wia sein die Filmprogramme
+# intent: _
+1	Wia	_	_
+2	sein	_	_
+3	die	_	_
+4	Filmprogramme	_	_
+
+# id: 372
+# text-en: What will the weather be in Ohio ?
+# text: Wia wearts Wetter in Ohio?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	in	_	_
+5	Ohio	_	_
+6	?	_	_
+
+# id: 373
+# text-en: Add this artist to Showstopper Being Mary Jane
+# text: Tua den Interpret zu Showstopper Being Mary Jane derzua
+# intent: _
+1	Tua	_	_
+2	den	_	_
+3	Interpret	_	_
+4	zu	_	_
+5	Showstopper	_	_
+6	Being	_	_
+7	Mary	_	_
+8	Jane	_	_
+9	derzua	_	_
+
+# id: 374
+# text-en: Book a reservation for my babies and I
+# text: Reservier fir mi und meine Poppiler
+# intent: _
+1	Reservier	_	_
+2	fir	_	_
+3	mi	_	_
+4	und	_	_
+5	meine	_	_
+6	Poppiler	_	_
+
+# id: 375
+# text-en: What will the weather be in Sarygamyş Sanctuary on august 21, 2035 ?
+# text: Wia wearts Wetter in Sarygamyş Sanctuary in 21 August 2035?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	in	_	_
+5	Sarygamyş	_	_
+6	Sanctuary	_	_
+7	in	_	_
+8	21	_	_
+9	August	_	_
+10	2035	_	_
+11	?	_	_
+
+# id: 376
+# text-en: Rate Ruth five out of 6 points .
+# text: Gib Ruth 5 vu 6 Punkte.
+# intent: _
+1	Gib	_	_
+2	Ruth	_	_
+3	5	_	_
+4	vu	_	_
+5	6	_	_
+6	Punkte	_	_
+7	.	_	_
+
+# id: 377
+# text-en: Reminiscences of the Anti-Japanese Guerillas chronicle deserves zero points out of 6 for a rating.
+# text: Die Chronik vu Reminiscences of the Anti-Japanese Guerillas verdiant 0 vu 6 Punkte.
+# intent: _
+1	Die	_	_
+2	Chronik	_	_
+3	vu	_	_
+4	Reminiscences	_	_
+5	of	_	_
+6	the	_	_
+7	Anti-Japanese	_	_
+8	Guerillas	_	_
+9	verdiant	_	_
+10	0	_	_
+11	vu	_	_
+12	6	_	_
+13	Punkte	_	_
+14	.	_	_
+
+# id: 378
+# text-en: Show me Southern Theatres movie times
+# text: Zoag mir die Filmprogramme vu die Southern Theatres Kinos
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	die	_	_
+4	Filmprogramme	_	_
+5	vu	_	_
+6	die	_	_
+7	Southern	_	_
+8	Theatres	_	_
+9	Kinos	_	_
+
+# id: 379
+# text-en: Find the movie schedule close by
+# text: Find die Kinoprogramme vu Kinos in der Nechne
+# intent: _
+1	Find	_	_
+2	die	_	_
+3	Kinoprogramme	_	_
+4	vu	_	_
+5	Kinos	_	_
+6	in	_	_
+7	der	_	_
+8	Nechne	_	_
+
+# id: 380
+# text-en: Add this album to the Spanish Beat playlist
+# text: Tua des Album zu der Spanish Beat Playlist derzua
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Album	_	_
+4	zu	_	_
+5	der	_	_
+6	Spanish	_	_
+7	Beat	_	_
+8	Playlist	_	_
+9	derzua	_	_
+
+# id: 381
+# text-en: Book a reservation for 6 people for a creole tavern in Montenegro
+# text: Reservier fir 6 Leit in an kreolischen Taverne in Montenegro
+# intent: _
+1	Reservier	_	_
+2	fir	_	_
+3	6	_	_
+4	Leit	_	_
+5	in	_	_
+6	an	_	_
+7	kreolischen	_	_
+8	Taverne	_	_
+9	in	_	_
+10	Montenegro	_	_
+
+# id: 382
+# text-en: Give the Catedral series four stars .
+# text: Gib der Serie iber Kathedralen 4 Sterne.
+# intent: _
+1	Gib	_	_
+2	der	_	_
+3	Serie	_	_
+4	iber	_	_
+5	Kathedralen	_	_
+6	4	_	_
+7	Sterne	_	_
+8	.	_	_
+
+# id: 383
+# text-en: Add The Famous Flower of Serving-Men to my evening acoustic playlist.
+# text: Tua The Famous Flower of Serving-Men zu meiner Gschnochts Akustik Playliste derzua.
+# intent: _
+1	Tua	_	_
+2	The	_	_
+3	Famous	_	_
+4	Flower	_	_
+5	of	_	_
+6	Serving-Men	_	_
+7	zu	_	_
+8	meiner	_	_
+9	Gschnochts	_	_
+10	Akustik	_	_
+11	Playliste	_	_
+12	derzua	_	_
+13	.	_	_
+
+# id: 384
+# text-en: Show me the schedule for ArcLight Hollywood for only animated movies
+# text: Zoag mir es Kinoprogramm vu ArcLight Hollywood fir Animationsfilme
+# intent: _
+1	Zoag	_	_
+2	mir	_	_
+3	es	_	_
+4	Kinoprogramm	_	_
+5	vu	_	_
+6	ArcLight	_	_
+7	Hollywood	_	_
+8	fir	_	_
+9	Animationsfilme	_	_
+
+# id: 385
+# text-en: Please search for the painting titled This Is the Night .
+# text: Bitte suach es Bild mitn Titel This Is the Night.
+# intent: _
+1	Bitte	_	_
+2	suach	_	_
+3	es	_	_
+4	Bild	_	_
+5	mitn	_	_
+6	Titel	_	_
+7	This	_	_
+8	Is	_	_
+9	the	_	_
+10	Night	_	_
+11	.	_	_
+
+# id: 386
+# text-en: What will the humidity be in the current spot at 15:19:29 ?
+# text: Wia feicht wearts do sein um 15:19:29?
+# intent: _
+1	Wia	_	_
+2	feicht	_	_
+3	wearts	_	_
+4	do	_	_
+5	sein	_	_
+6	um	_	_
+7	15:19:29	_	_
+8	?	_	_
+
+# id: 387
+# text-en: i want to see JLA Adventures: Trapped In Time
+# text: I mecht JLA Adventures: Trapped In Time sechn
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	JLA	_	_
+4	Adventures:	_	_
+5	Trapped	_	_
+6	In	_	_
+7	Time	_	_
+8	sechn	_	_
+
+# id: 388
+# text-en: Add a derek watkins tune to This Is Johnny Cash
+# text: Tua a Derek Watkins Liad zu This Is Johnny Cash derzua
+# intent: _
+1	Tua	_	_
+2	a	_	_
+3	Derek	_	_
+4	Watkins	_	_
+5	Liad	_	_
+6	zu	_	_
+7	This	_	_
+8	Is	_	_
+9	Johnny	_	_
+10	Cash	_	_
+11	derzua	_	_
+
+# id: 389
+# text-en: Find a creative work called Fire in the Hole
+# text: Find a Kunstwerk mitn Titl Fire in the Hole
+# intent: _
+1	Find	_	_
+2	a	_	_
+3	Kunstwerk	_	_
+4	mitn	_	_
+5	Titl	_	_
+6	Fire	_	_
+7	in	_	_
+8	the	_	_
+9	Hole	_	_
+
+# id: 390
+# text-en: book a table near pat's college
+# text: Buach an Tisch nebn der Schuale vun Pat
+# intent: _
+1	Buach	_	_
+2	an	_	_
+3	Tisch	_	_
+4	nebn	_	_
+5	der	_	_
+6	Schuale	_	_
+7	vun	_	_
+8	Pat	_	_
+
+# id: 391
+# text-en: Is Patrick Still Lives showing at AMC Theaters
+# text: Zoagnse Patrick Still Lives in di AMC Theaters
+# intent: _
+1	Zoagnse	_	_
+2	Patrick	_	_
+3	Still	_	_
+4	Lives	_	_
+5	in	_	_
+6	di	_	_
+7	AMC	_	_
+8	Theaters	_	_
+
+# id: 392
+# text-en: I want to book a joint in a spa .
+# text: I mecht in an Spa reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	in	_	_
+4	an	_	_
+5	Spa	_	_
+6	reserviern	_	_
+7	.	_	_
+
+# id: 393
+# text-en: need a table somewhere in Quarryville 14 hours from now
+# text: I brauch an Tisch in 14 Stundn irgendwo in Quarryville
+# intent: _
+1	I	_	_
+2	brauch	_	_
+3	an	_	_
+4	Tisch	_	_
+5	in	_	_
+6	14	_	_
+7	Stundn	_	_
+8	irgendwo	_	_
+9	in	_	_
+10	Quarryville	_	_
+
+# id: 394
+# text-en: play some Gary Lee Conner
+# text: Spiel eppis vun Gary Lee Conner
+# intent: _
+1	Spiel	_	_
+2	eppis	_	_
+3	vun	_	_
+4	Gary	_	_
+5	Lee	_	_
+6	Conner	_	_
+
+# id: 395
+# text-en: show the closest movie theatre that shows Boycott
+# text: Zoag es nechnschte Kino wo se Boycott zoagn
+# intent: _
+1	Zoag	_	_
+2	es	_	_
+3	nechnschte	_	_
+4	Kino	_	_
+5	wo	_	_
+6	se	_	_
+7	Boycott	_	_
+8	zoagn	_	_
+
+# id: 396
+# text-en: Please play my ecstatic playlist.
+# text: Bitte spiel meine ekstatische Playlist
+# intent: _
+1	Bitte	_	_
+2	spiel	_	_
+3	meine	_	_
+4	ekstatische	_	_
+5	Playlist	_	_
+
+# id: 397
+# text-en: Please look up the song The Mad Magician .
+# text: Bitte suach es Liad The Mad Magician.
+# intent: _
+1	Bitte	_	_
+2	suach	_	_
+3	es	_	_
+4	Liad	_	_
+5	The	_	_
+6	Mad	_	_
+7	Magician	_	_
+8	.	_	_
+
+# id: 398
+# text-en: Check the schedule for Bow Tie Cinemas .
+# text: Kontrollier die Programme fir Bow Tie Cinemas.
+# intent: _
+1	Kontrollier	_	_
+2	die	_	_
+3	Programme	_	_
+4	fir	_	_
+5	Bow	_	_
+6	Tie	_	_
+7	Cinemas	_	_
+8	.	_	_
+
+# id: 399
+# text-en: Book me a reservation for a party of 3 at a pub in Northern Mariana Islands
+# text: Reservier an Tisch fir 3 in an Pub af die Nördlichen Marianen Inseln
+# intent: _
+1	Reservier	_	_
+2	an	_	_
+3	Tisch	_	_
+4	fir	_	_
+5	3	_	_
+6	in	_	_
+7	an	_	_
+8	Pub	_	_
+9	af	_	_
+10	die	_	_
+11	Nördlichen	_	_
+12	Marianen	_	_
+13	Inseln	_	_
+
+# id: 400
+# text-en: I need to add to my Infinite Indie Folk list the works of Rahim Shah
+# text: I muas zu meiner Infinite Indie Folk Liste di Werke vun Rahim Shah derzua tian
+# intent: _
+1	I	_	_
+2	muas	_	_
+3	zu	_	_
+4	meiner	_	_
+5	Infinite	_	_
+6	Indie	_	_
+7	Folk	_	_
+8	Liste	_	_
+9	di	_	_
+10	Werke	_	_
+11	vun	_	_
+12	Rahim	_	_
+13	Shah	_	_
+14	derzua	_	_
+15	tian	_	_
+
+# id: 401
+# text-en: Add Jerry Calliste, Jr to my Te quiero playlist.
+# text: Tua Jerry Calliste, Jr zu meiner Te quiero Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	Jerry	_	_
+3	Calliste	_	_
+4	,	_	_
+5	Jr	_	_
+6	zu	_	_
+7	meiner	_	_
+8	Te	_	_
+9	quiero	_	_
+10	Playlist	_	_
+11	derzua	_	_
+12	.	_	_
+
+# id: 402
+# text-en: How much colder will it be not far from Utah around 3 Am ?
+# text: Wia viel kelter wearts um 3 in der Nocht in der Nechne vu Utah sein?
+# intent: _
+1	Wia	_	_
+2	viel	_	_
+3	kelter	_	_
+4	wearts	_	_
+5	um	_	_
+6	3	_	_
+7	in	_	_
+8	der	_	_
+9	Nocht	_	_
+10	in	_	_
+11	der	_	_
+12	Nechne	_	_
+13	vu	_	_
+14	Utah	_	_
+15	sein	_	_
+16	?	_	_
+
+# id: 403
+# text-en: Add the album to the Hipster Soul playlist.
+# text: Tua des Album zu The Hipster Soul Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Album	_	_
+4	zu	_	_
+5	The	_	_
+6	Hipster	_	_
+7	Soul	_	_
+8	Playlist	_	_
+9	derzua	_	_
+10	.	_	_
+
+# id: 404
+# text-en: I want to eat a delicatessen in thirteen hours that serves eastern european food
+# text: I mecht in Lokal Delicatessen in 13 Stundn essn wo se osteuropäisches Essen servieren
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	in	_	_
+4	Lokal	_	_
+5	Delicatessen	_	_
+6	in	_	_
+7	13	_	_
+8	Stundn	_	_
+9	essn	_	_
+10	wo	_	_
+11	se	_	_
+12	osteuropäisches	_	_
+13	Essen	_	_
+14	servieren	_	_
+
+# id: 405
+# text-en: play a sixties soundtrack
+# text: Spiel a Liad vu die 60er
+# intent: _
+1	Spiel	_	_
+2	a	_	_
+3	Liad	_	_
+4	vu	_	_
+5	die	_	_
+6	60er	_	_
+
+# id: 406
+# text-en: Give this album one stars
+# text: Gib den Album uan Stern
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Album	_	_
+4	uan	_	_
+5	Stern	_	_
+
+# id: 407
+# text-en: Play the greatest music from Bryan Maclean .
+# text: Spiel die beschtn Liader vun Bryan Maclean.
+# intent: _
+1	Spiel	_	_
+2	die	_	_
+3	beschtn	_	_
+4	Liader	_	_
+5	vun	_	_
+6	Bryan	_	_
+7	Maclean	_	_
+8	.	_	_
+
+# id: 408
+# text-en: what is the forecast in Nicodemus and nearby
+# text: Wia isch die Vorhersoge fir Nicodemus und Umgebung
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Vorhersoge	_	_
+5	fir	_	_
+6	Nicodemus	_	_
+7	und	_	_
+8	Umgebung	_	_
+
+# id: 409
+# text-en: Looking for a game called Phinally Phamous
+# text: I suach a Spiel des hoasst Phinally Phamous
+# intent: _
+1	I	_	_
+2	suach	_	_
+3	a	_	_
+4	Spiel	_	_
+5	des	_	_
+6	hoasst	_	_
+7	Phinally	_	_
+8	Phamous	_	_
+
+# id: 410
+# text-en: Give a rating of 2 to Juneteenth .
+# text: Gib Juneteenth die Bewertung 2.
+# intent: _
+1	Gib	_	_
+2	Juneteenth	_	_
+3	die	_	_
+4	Bewertung	_	_
+5	2	_	_
+6	.	_	_
+
+# id: 411
+# text-en: Give zero stars to Rhialto the Marvellous
+# text: Gib Rhialto the Marvellous 0 Sterne
+# intent: _
+1	Gib	_	_
+2	Rhialto	_	_
+3	the	_	_
+4	Marvellous	_	_
+5	0	_	_
+6	Sterne	_	_
+
+# id: 412
+# text-en: I want to hear soundtrack music on Youtube from Helena Iren Michaelsen
+# text: I mecht iber Youtube a Liad vu Helena Iren Michaelsen lousn
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	iber	_	_
+4	Youtube	_	_
+5	a	_	_
+6	Liad	_	_
+7	vu	_	_
+8	Helena	_	_
+9	Iren	_	_
+10	Michaelsen	_	_
+11	lousn	_	_
+
+# id: 413
+# text-en: book a table on 1/20/2023 for 5 people in MH
+# text: Reservier an Tisch fir 5 Leit in 20 Jenner 2024 in MH
+# intent: _
+1	Reservier	_	_
+2	an	_	_
+3	Tisch	_	_
+4	fir	_	_
+5	5	_	_
+6	Leit	_	_
+7	in	_	_
+8	20	_	_
+9	Jenner	_	_
+10	2024	_	_
+11	in	_	_
+12	MH	_	_
+
+# id: 414
+# text-en: movie schedules close by for animated movies
+# text: Filmprogramme in der Nechne fir Animationsfilme
+# intent: _
+1	Filmprogramme	_	_
+2	in	_	_
+3	der	_	_
+4	Nechne	_	_
+5	fir	_	_
+6	Animationsfilme	_	_
+
+# id: 415
+# text-en: Add jack white to my playlist This Is Shakira
+# text: Tua Jack White zu meiner Playlist This is Shakira derzua
+# intent: _
+1	Tua	_	_
+2	Jack	_	_
+3	White	_	_
+4	zu	_	_
+5	meiner	_	_
+6	Playlist	_	_
+7	This	_	_
+8	is	_	_
+9	Shakira	_	_
+10	derzua	_	_
+
+# id: 416
+# text-en: I want to book a restaurant for five people in Sri Lanka .
+# text: I mecht in Sri Lanka an Tisch in an Restaurant fir 5 reservieren.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	in	_	_
+4	Sri	_	_
+5	Lanka	_	_
+6	an	_	_
+7	Tisch	_	_
+8	in	_	_
+9	an	_	_
+10	Restaurant	_	_
+11	fir	_	_
+12	5	_	_
+13	reservieren	_	_
+14	.	_	_
+
+# id: 417
+# text-en: Please search for the television show , Episodi di The Blacklist .
+# text: Suach die Fernsehshwo Episodi di The Blacklist.
+# intent: _
+1	Suach	_	_
+2	die	_	_
+3	Fernsehshwo	_	_
+4	Episodi	_	_
+5	di	_	_
+6	The	_	_
+7	Blacklist	_	_
+8	.	_	_
+
+# id: 418
+# text-en: what is the forecast for colder temps beginning on Law Day here
+# text: Wia isch die Wettervorhersoge fir frischre Temperaturen do ob in 1 Mai (Law Day)
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	fir	_	_
+6	frischre	_	_
+7	Temperaturen	_	_
+8	do	_	_
+9	ob	_	_
+10	in	_	_
+11	1	_	_
+12	Mai	_	_
+13	(	_	_
+14	Law	_	_
+15	Day	_	_
+16	)	_	_
+
+# id: 419
+# text-en: I want to book a restaurant for ten people.
+# text: I mecht in an Restaurant fir 10 Leit reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	in	_	_
+4	an	_	_
+5	Restaurant	_	_
+6	fir	_	_
+7	10	_	_
+8	Leit	_	_
+9	reserviern	_	_
+10	.	_	_
+
+# id: 420
+# text-en: Play something by Duke Ellington from the seventies
+# text: Spiel irgendeppis vun Duke Ellington vu die 70er
+# intent: _
+1	Spiel	_	_
+2	irgendeppis	_	_
+3	vun	_	_
+4	Duke	_	_
+5	Ellington	_	_
+6	vu	_	_
+7	die	_	_
+8	70er	_	_
+
+# id: 421
+# text-en: Rate Cotton Comes to Harlem a 2
+# text: Gib Cotton Comes to Harlem 2 Punkte
+# intent: _
+1	Gib	_	_
+2	Cotton	_	_
+3	Comes	_	_
+4	to	_	_
+5	Harlem	_	_
+6	2	_	_
+7	Punkte	_	_
+
+# id: 422
+# text-en: Add a song to my playlist madden nfl 16
+# text: Tua zu meiner Playlist madden nfl 16 a Liad derzua
+# intent: _
+1	Tua	_	_
+2	zu	_	_
+3	meiner	_	_
+4	Playlist	_	_
+5	madden	_	_
+6	nfl	_	_
+7	16	_	_
+8	a	_	_
+9	Liad	_	_
+10	derzua	_	_
+
+# id: 423
+# text-en: Add Toyan to my Epic Gaming playlist.
+# text: Tua Toyan zu meiner Epic Gaming Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	Toyan	_	_
+3	zu	_	_
+4	meiner	_	_
+5	Epic	_	_
+6	Gaming	_	_
+7	Playlist	_	_
+8	derzua	_	_
+9	.	_	_
+
+# id: 424
+# text-en: play some new Les Vandyke on Slacker
+# text: Spiel nuie Liader vun Les Vandyke iber Slacker
+# intent: _
+1	Spiel	_	_
+2	nuie	_	_
+3	Liader	_	_
+4	vun	_	_
+5	Les	_	_
+6	Vandyke	_	_
+7	iber	_	_
+8	Slacker	_	_
+
+# id: 425
+# text-en: rate the Three Junes one out of 6
+# text: Gib Three Junes 1 vu 6
+# intent: _
+1	Gib	_	_
+2	Three	_	_
+3	Junes	_	_
+4	1	_	_
+5	vu	_	_
+6	6	_	_
+
+# id: 426
+# text-en: Book a reservation for nine people at a bakery in Nunez
+# text: Reservier fir 9 Leit in an Beckerei in Nunez
+# intent: _
+1	Reservier	_	_
+2	fir	_	_
+3	9	_	_
+4	Leit	_	_
+5	in	_	_
+6	an	_	_
+7	Beckerei	_	_
+8	in	_	_
+9	Nunez	_	_
+
+# id: 427
+# text-en: Rate this current novel two out of 6 .
+# text: Gib den Roman 2 vu 6 Punkte.
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Roman	_	_
+4	2	_	_
+5	vu	_	_
+6	6	_	_
+7	Punkte	_	_
+8	.	_	_
+
+# id: 428
+# text-en: Play The Happy Blues by Ronnie Wood .
+# text: Spiel The Happy Blues vun Ronnie Wood.
+# intent: _
+1	Spiel	_	_
+2	The	_	_
+3	Happy	_	_
+4	Blues	_	_
+5	vun	_	_
+6	Ronnie	_	_
+7	Wood	_	_
+8	.	_	_
+
+# id: 429
+# text-en: Play a symphony from 2013 .
+# text: Spiel a Symphonie vu 2013.
+# intent: _
+1	Spiel	_	_
+2	a	_	_
+3	Symphonie	_	_
+4	vu	_	_
+5	2013	_	_
+6	.	_	_
+
+# id: 430
+# text-en: Play Subconscious Lobotomy from Jennifer Paull .
+# text: Spiel Subconscious Lobotomy vun Jennifer Paull.
+# intent: _
+1	Spiel	_	_
+2	Subconscious	_	_
+3	Lobotomy	_	_
+4	vun	_	_
+5	Jennifer	_	_
+6	Paull	_	_
+7	.	_	_
+
+# id: 431
+# text-en: Give The Crystal Snare 5 stars
+# text: Gib The Crystal Snare 5 Sterne
+# intent: _
+1	Gib	_	_
+2	The	_	_
+3	Crystal	_	_
+4	Snare	_	_
+5	5	_	_
+6	Sterne	_	_
+
+# id: 432
+# text-en: Give zero stars to this textbook
+# text: Gib den Buach 0 Sterne
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Buach	_	_
+4	0	_	_
+5	Sterne	_	_
+
+# id: 433
+# text-en: Rate the current series 4 points
+# text: Gib der Serie 4 Punkte
+# intent: _
+1	Gib	_	_
+2	der	_	_
+3	Serie	_	_
+4	4	_	_
+5	Punkte	_	_
+
+# id: 434
+# text-en: I want a table at James D. Conrey House in Urbank California
+# text: I hat gern an Tisch in James D. Conrey House in Urbank California
+# intent: _
+1	I	_	_
+2	hat	_	_
+3	gern	_	_
+4	an	_	_
+5	Tisch	_	_
+6	in	_	_
+7	James	_	_
+8	D	_	_
+9	.	_	_
+10	Conrey	_	_
+11	House	_	_
+12	in	_	_
+13	Urbank	_	_
+14	California	_	_
+
+# id: 435
+# text-en: Is Babar: King of the Elephants playing
+# text: Weart Babar: King of the Elephants gezoag
+# intent: _
+1	Weart	_	_
+2	Babar:	_	_
+3	King	_	_
+4	of	_	_
+5	the	_	_
+6	Elephants	_	_
+7	gezoag	_	_
+
+# id: 436
+# text-en: Add a song to this is racionais mc's
+# text: Tua a Liad zu this is racionais mc's derzua
+# intent: _
+1	Tua	_	_
+2	a	_	_
+3	Liad	_	_
+4	zu	_	_
+5	this	_	_
+6	is	_	_
+7	racionais	_	_
+8	mc's	_	_
+9	derzua	_	_
+
+# id: 437
+# text-en: rate the current essay zero out of 6 stars
+# text: Gib den Essay 0 vu 6 Sterne
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Essay	_	_
+4	0	_	_
+5	vu	_	_
+6	6	_	_
+7	Sterne	_	_
+
+# id: 438
+# text-en: Let's hear stuff from Andrew Hewitt .
+# text: Loss ins eppis vun Andrew Hewitt lousn.
+# intent: _
+1	Loss	_	_
+2	ins	_	_
+3	eppis	_	_
+4	vun	_	_
+5	Andrew	_	_
+6	Hewitt	_	_
+7	lousn	_	_
+8	.	_	_
+
+# id: 439
+# text-en: Find animated movies close by
+# text: Suach Animationsfilme in der Nechne
+# intent: _
+1	Suach	_	_
+2	Animationsfilme	_	_
+3	in	_	_
+4	der	_	_
+5	Nechne	_	_
+
+# id: 440
+# text-en: give the current chronicle five of 6 points
+# text: Gib der Chronik 5 vu 6 Punkte
+# intent: _
+1	Gib	_	_
+2	der	_	_
+3	Chronik	_	_
+4	5	_	_
+5	vu	_	_
+6	6	_	_
+7	Punkte	_	_
+
+# id: 441
+# text-en: I need a table for 4 in Saint Helena at Settha Palace Hotel
+# text: I brauch an Tisch fir 4 in Saint Helena in Settha Palace Hotel
+# intent: _
+1	I	_	_
+2	brauch	_	_
+3	an	_	_
+4	Tisch	_	_
+5	fir	_	_
+6	4	_	_
+7	in	_	_
+8	Saint	_	_
+9	Helena	_	_
+10	in	_	_
+11	Settha	_	_
+12	Palace	_	_
+13	Hotel	_	_
+
+# id: 442
+# text-en: What is the weather going to be like in Virginia on st. patrick's day ?
+# text: Wia wearts Wetter in Virginia in St. Patrick's Day sein?
+# intent: _
+1	Wia	_	_
+2	wearts	_	_
+3	Wetter	_	_
+4	in	_	_
+5	Virginia	_	_
+6	in	_	_
+7	St	_	_
+8	.	_	_
+9	Patrick's	_	_
+10	Day	_	_
+11	sein	_	_
+12	?	_	_
+
+# id: 443
+# text-en: I need a list of Speakeasy Theaters movie times
+# text: I brauch die Filmprogramme vu die Speakeasy Theaters
+# intent: _
+1	I	_	_
+2	brauch	_	_
+3	die	_	_
+4	Filmprogramme	_	_
+5	vu	_	_
+6	die	_	_
+7	Speakeasy	_	_
+8	Theaters	_	_
+
+# id: 444
+# text-en: Look for the television show Meet the Prince
+# text: Suach die Fernsehshow Meet the Prince
+# intent: _
+1	Suach	_	_
+2	die	_	_
+3	Fernsehshow	_	_
+4	Meet	_	_
+5	the	_	_
+6	Prince	_	_
+
+# id: 445
+# text-en: Please get me the Compulsive Disclosure song .
+# text: Suach mir es Liad Compulsive Disclosure.
+# intent: _
+1	Suach	_	_
+2	mir	_	_
+3	es	_	_
+4	Liad	_	_
+5	Compulsive	_	_
+6	Disclosure	_	_
+7	.	_	_
+
+# id: 446
+# text-en: Play Trance Life on Zvooq .
+# text: Spiel Trance Life af Zvooq .
+# intent: _
+1	Spiel	_	_
+2	Trance	_	_
+3	Life	_	_
+4	af	_	_
+5	Zvooq	_	_
+6	.	_	_
+
+# id: 447
+# text-en: Please find me the work, Serious Awesomeness !.
+# text: Suach fir mi Serious Awesomeness!
+# intent: _
+1	Suach	_	_
+2	fir	_	_
+3	mi	_	_
+4	Serious	_	_
+5	Awesomeness	_	_
+6	!	_	_
+
+# id: 448
+# text-en: i want to see I Dream of Jeanie in a movie theatre
+# text: I mcht I Dream of Jeanie in an Kino schaugn
+# intent: _
+1	I	_	_
+2	mcht	_	_
+3	I	_	_
+4	Dream	_	_
+5	of	_	_
+6	Jeanie	_	_
+7	in	_	_
+8	an	_	_
+9	Kino	_	_
+10	schaugn	_	_
+
+# id: 449
+# text-en: Play Paul Mccartney
+# text: Spiel Paul Mccartney
+# intent: _
+1	Spiel	_	_
+2	Paul	_	_
+3	Mccartney	_	_
+
+# id: 450
+# text-en: Rate the current novel 3 stars
+# text: Gib der Gschichte 3 Sterne
+# intent: _
+1	Gib	_	_
+2	der	_	_
+3	Gschichte	_	_
+4	3	_	_
+5	Sterne	_	_
+
+# id: 451
+# text-en: Can you search the book , Paris - When It Sizzles ?
+# text: Konnsch du es Buach Paris - When It Sizzles suachn?
+# intent: _
+1	Konnsch	_	_
+2	du	_	_
+3	es	_	_
+4	Buach	_	_
+5	Paris	_	_
+6	-	_	_
+7	When	_	_
+8	It	_	_
+9	Sizzles	_	_
+10	suachn	_	_
+11	?	_	_
+
+# id: 452
+# text-en: play some seventies Filipp Kirkorow
+# text: Spiel vu die 70er Filipp Kirkorow
+# intent: _
+1	Spiel	_	_
+2	vu	_	_
+3	die	_	_
+4	70er	_	_
+5	Filipp	_	_
+6	Kirkorow	_	_
+
+# id: 453
+# text-en: I want to book a bougatsa restaurant in next year nearby Penn for three people.
+# text: I mecht fir negschtes Johr in an Bougatsa Restaurant in Penn fir 3 Leit buachn.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	fir	_	_
+4	negschtes	_	_
+5	Johr	_	_
+6	in	_	_
+7	an	_	_
+8	Bougatsa	_	_
+9	Restaurant	_	_
+10	in	_	_
+11	Penn	_	_
+12	fir	_	_
+13	3	_	_
+14	Leit	_	_
+15	buachn	_	_
+16	.	_	_
+
+# id: 454
+# text-en: Will it be rainy in Tenino ?
+# text: Wearts in Tenino regnen?
+# intent: _
+1	Wearts	_	_
+2	in	_	_
+3	Tenino	_	_
+4	regnen	_	_
+5	?	_	_
+
+# id: 455
+# text-en: Please look up Three Essays on the Theory of Sexuality show .
+# text: Bitte suach die Show Three Essays on the Theory of Sexuality.
+# intent: _
+1	Bitte	_	_
+2	suach	_	_
+3	die	_	_
+4	Show	_	_
+5	Three	_	_
+6	Essays	_	_
+7	on	_	_
+8	the	_	_
+9	Theory	_	_
+10	of	_	_
+11	Sexuality	_	_
+12	.	_	_
+
+# id: 456
+# text-en: I want to eat in Ramona
+# text: I mecht in Ramona essn
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	in	_	_
+4	Ramona	_	_
+5	essn	_	_
+
+# id: 457
+# text-en: Add the boy george track to the Emo Forever playlist.
+# text: Tua des Liad vun Boy George zu meiner Emo Forever Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Liad	_	_
+4	vun	_	_
+5	Boy	_	_
+6	George	_	_
+7	zu	_	_
+8	meiner	_	_
+9	Emo	_	_
+10	Forever	_	_
+11	Playlist	_	_
+12	derzua	_	_
+13	.	_	_
+
+# id: 458
+# text-en: I want to book a steakhouse in Vimy Ridge .
+# text: I mecht in an Steakhouse in Vimy Ridge reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	in	_	_
+4	an	_	_
+5	Steakhouse	_	_
+6	in	_	_
+7	Vimy	_	_
+8	Ridge	_	_
+9	reserviern	_	_
+10	.	_	_
+
+# id: 459
+# text-en: Is Without Witness playing twenty two hours from now
+# text: Zoagnse in 22 Stundn Without Witness
+# intent: _
+1	Zoagnse	_	_
+2	in	_	_
+3	22	_	_
+4	Stundn	_	_
+5	Without	_	_
+6	Witness	_	_
+
+# id: 460
+# text-en: Book spot for 9
+# text: Buach fir 9
+# intent: _
+1	Buach	_	_
+2	fir	_	_
+3	9	_	_
+
+# id: 461
+# text-en: add this track to my Hands Up playlist
+# text: Tua des Liad zu meiner Hands Up Playlist derzua
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Liad	_	_
+4	zu	_	_
+5	meiner	_	_
+6	Hands	_	_
+7	Up	_	_
+8	Playlist	_	_
+9	derzua	_	_
+
+# id: 462
+# text-en: Play something from 90s Pop Rock Essentials
+# text: Spiel vu die 90er eppis vu Pop Rock Essentials
+# intent: _
+1	Spiel	_	_
+2	vu	_	_
+3	die	_	_
+4	90er	_	_
+5	eppis	_	_
+6	vu	_	_
+7	Pop	_	_
+8	Rock	_	_
+9	Essentials	_	_
+
+# id: 463
+# text-en: Can you find me the Blue Spring trailer ?
+# text: Suachsch mir in Trailer vu Blue Spring?
+# intent: _
+1	Suachsch	_	_
+2	mir	_	_
+3	in	_	_
+4	Trailer	_	_
+5	vu	_	_
+6	Blue	_	_
+7	Spring	_	_
+8	?	_	_
+
+# id: 464
+# text-en: Give two stars out of 6 to 36 Children
+# text: Gib 36 Children 2 vu 6 Sterne
+# intent: _
+1	Gib	_	_
+2	36	_	_
+3	Children	_	_
+4	2	_	_
+5	vu	_	_
+6	6	_	_
+7	Sterne	_	_
+
+# id: 465
+# text-en: I want animated movies at MJR Theatres
+# text: I mecht Animationsfilme in die MJR Theatres
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	Animationsfilme	_	_
+4	in	_	_
+5	die	_	_
+6	MJR	_	_
+7	Theatres	_	_
+
+# id: 466
+# text-en: Add the artist mike to the Sexy as Folk playlist.
+# text: Tua in Interpret Mike zu meinr Sexy as Folk Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	in	_	_
+3	Interpret	_	_
+4	Mike	_	_
+5	zu	_	_
+6	meinr	_	_
+7	Sexy	_	_
+8	as	_	_
+9	Folk	_	_
+10	Playlist	_	_
+11	derzua	_	_
+12	.	_	_
+
+# id: 467
+# text-en: add Highway Patrolman in my playlist this is al green
+# text: Tua Highway Patrolman zu meiner Playlist this is al green derzua
+# intent: _
+1	Tua	_	_
+2	Highway	_	_
+3	Patrolman	_	_
+4	zu	_	_
+5	meiner	_	_
+6	Playlist	_	_
+7	this	_	_
+8	is	_	_
+9	al	_	_
+10	green	_	_
+11	derzua	_	_
+
+# id: 468
+# text-en: Find me the novel with the name To Lose My Life …
+# text: Suach in Roman mitn Titl To Lose My Life …
+# intent: _
+1	Suach	_	_
+2	in	_	_
+3	Roman	_	_
+4	mitn	_	_
+5	Titl	_	_
+6	To	_	_
+7	Lose	_	_
+8	My	_	_
+9	Life	_	_
+10	…	_	_
+
+# id: 469
+# text-en: mark this album a score of 5
+# text: Gib den Album 5
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Album	_	_
+4	5	_	_
+
+# id: 470
+# text-en: Is Rare Birds showing at the nearest movie theatre at noon .
+# text: Zoagnse Rare Birds zu Mittog in an Kino in der Nechne.
+# intent: _
+1	Zoagnse	_	_
+2	Rare	_	_
+3	Birds	_	_
+4	zu	_	_
+5	Mittog	_	_
+6	in	_	_
+7	an	_	_
+8	Kino	_	_
+9	in	_	_
+10	der	_	_
+11	Nechne	_	_
+12	.	_	_
+
+# id: 471
+# text-en: Rate The 8-Week Cholesterol Cure three out of 6 .
+# text: Gib The 8-Week Cholesterol Cure 3 vu 6 Punkte.
+# intent: _
+1	Gib	_	_
+2	The	_	_
+3	8-Week	_	_
+4	Cholesterol	_	_
+5	Cure	_	_
+6	3	_	_
+7	vu	_	_
+8	6	_	_
+9	Punkte	_	_
+10	.	_	_
+
+# id: 472
+# text-en: Add martin barre to my punk unplugged playlist.
+# text: Tua Martin Barre zu meiner Punk unplugged Playlist derzua.
+# intent: _
+1	Tua	_	_
+2	Martin	_	_
+3	Barre	_	_
+4	zu	_	_
+5	meiner	_	_
+6	Punk	_	_
+7	unplugged	_	_
+8	Playlist	_	_
+9	derzua	_	_
+10	.	_	_
+
+# id: 473
+# text-en: rate the current novel zero out of 6
+# text: Gib den Roman 0 vu 6 Punkte
+# intent: _
+1	Gib	_	_
+2	den	_	_
+3	Roman	_	_
+4	0	_	_
+5	vu	_	_
+6	6	_	_
+7	Punkte	_	_
+
+# id: 474
+# text-en: What times will The Young Swordsman be showing at my cinema ?
+# text: Zu welle Uhrzeiten zoagnse The Young Swordsman in die Kinos?
+# intent: _
+1	Zu	_	_
+2	welle	_	_
+3	Uhrzeiten	_	_
+4	zoagnse	_	_
+5	The	_	_
+6	Young	_	_
+7	Swordsman	_	_
+8	in	_	_
+9	die	_	_
+10	Kinos	_	_
+11	?	_	_
+
+# id: 475
+# text-en: What are the movies showing in the neighbourhood
+# text: Welle Fillme zoagnse in die Kinos in der Nechne
+# intent: _
+1	Welle	_	_
+2	Fillme	_	_
+3	zoagnse	_	_
+4	in	_	_
+5	die	_	_
+6	Kinos	_	_
+7	in	_	_
+8	der	_	_
+9	Nechne	_	_
+
+# id: 476
+# text-en: I want to book Oregon Electric Station in North City .
+# text: I mecht fir Oregon Electric Station in North City reserviern.
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	fir	_	_
+4	Oregon	_	_
+5	Electric	_	_
+6	Station	_	_
+7	in	_	_
+8	North	_	_
+9	City	_	_
+10	reserviern	_	_
+11	.	_	_
+
+# id: 477
+# text-en: how's the weather here at two Am
+# text: Wia isch do es Wetter um 2 Nomittog
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	do	_	_
+4	es	_	_
+5	Wetter	_	_
+6	um	_	_
+7	2	_	_
+8	Nomittog	_	_
+
+# id: 478
+# text-en: Fine the movie schedules for the Wanda Group .
+# text: Suach die Filmprogramme fir die Wanda Group.
+# intent: _
+1	Suach	_	_
+2	die	_	_
+3	Filmprogramme	_	_
+4	fir	_	_
+5	die	_	_
+6	Wanda	_	_
+7	Group	_	_
+8	.	_	_
+
+# id: 479
+# text-en: what is the forecast for Waurika in Samoa
+# text: Wia isch die Wettervorhersoge fir Waurika af Samoa
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	fir	_	_
+6	Waurika	_	_
+7	af	_	_
+8	Samoa	_	_
+
+# id: 480
+# text-en: Show the movie schedules in the neighborhood
+# text: Zoag die Filmprogramme vu Kinos in der Nechne
+# intent: _
+1	Zoag	_	_
+2	die	_	_
+3	Filmprogramme	_	_
+4	vu	_	_
+5	Kinos	_	_
+6	in	_	_
+7	der	_	_
+8	Nechne	_	_
+
+# id: 481
+# text-en: Play some blues britânico .
+# text: Spiel eppis vun blues britânico.
+# intent: _
+1	Spiel	_	_
+2	eppis	_	_
+3	vun	_	_
+4	blues	_	_
+5	britânico	_	_
+6	.	_	_
+
+# id: 482
+# text-en: Is No Time to Be Young showing at AMC Theaters
+# text: Zoagnse Is No Time to Be Young in die AMC Theaters
+# intent: _
+1	Zoagnse	_	_
+2	Is	_	_
+3	No	_	_
+4	Time	_	_
+5	to	_	_
+6	Be	_	_
+7	Young	_	_
+8	in	_	_
+9	die	_	_
+10	AMC	_	_
+11	Theaters	_	_
+
+# id: 483
+# text-en: Please look up and find me Monty Python Live at the Hollywood Bowl .
+# text: Suachmer Monty Python Live in der Hollywood Bowl.
+# intent: _
+1	Suachmer	_	_
+2	Monty	_	_
+3	Python	_	_
+4	Live	_	_
+5	in	_	_
+6	der	_	_
+7	Hollywood	_	_
+8	Bowl	_	_
+9	.	_	_
+
+# id: 484
+# text-en: what is the forecast for here for blizzard conditions at five pm
+# text: Wia isch die Wettervorhersoge fir an Schneasturm um 5 Nomittog
+# intent: _
+1	Wia	_	_
+2	isch	_	_
+3	die	_	_
+4	Wettervorhersoge	_	_
+5	fir	_	_
+6	an	_	_
+7	Schneasturm	_	_
+8	um	_	_
+9	5	_	_
+10	Nomittog	_	_
+
+# id: 485
+# text-en: add ireland in the junior eurovision song contest 2015 to my Jazzy Dinner playlist
+# text: Zoag Ireland in the junior eurovision song contest 2015 zu meiner Jazzy Dinner Playlist derzua
+# intent: _
+1	Zoag	_	_
+2	Ireland	_	_
+3	in	_	_
+4	the	_	_
+5	junior	_	_
+6	eurovision	_	_
+7	song	_	_
+8	contest	_	_
+9	2015	_	_
+10	zu	_	_
+11	meiner	_	_
+12	Jazzy	_	_
+13	Dinner	_	_
+14	Playlist	_	_
+15	derzua	_	_
+
+# id: 486
+# text-en: Add a song to Indie Hipster
+# text: Tua a Liad zu Indie Hipster derzua
+# intent: _
+1	Tua	_	_
+2	a	_	_
+3	Liad	_	_
+4	zu	_	_
+5	Indie	_	_
+6	Hipster	_	_
+7	derzua	_	_
+
+# id: 487
+# text-en: Can you find me the National Anthem of the Ancient Britons television show ?
+# text: Suachmer die Erkennungsmelodie vu The Ancient Britons Fernsehshow ?
+# intent: _
+1	Suachmer	_	_
+2	die	_	_
+3	Erkennungsmelodie	_	_
+4	vu	_	_
+5	The	_	_
+6	Ancient	_	_
+7	Britons	_	_
+8	Fernsehshow	_	_
+9	?	_	_
+
+# id: 488
+# text-en: To the travelling playlist, please add this David Gahan song .
+# text: Tua des Liad vun Dave Gahan zu meiner The travelling playlist derzua.
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Liad	_	_
+4	vun	_	_
+5	Dave	_	_
+6	Gahan	_	_
+7	zu	_	_
+8	meiner	_	_
+9	The	_	_
+10	travelling	_	_
+11	playlist	_	_
+12	derzua	_	_
+13	.	_	_
+
+# id: 489
+# text-en: I want to hear them from the artist Murcof
+# text: I mecht die Liader vun Murcof hearn
+# intent: _
+1	I	_	_
+2	mecht	_	_
+3	die	_	_
+4	Liader	_	_
+5	vun	_	_
+6	Murcof	_	_
+7	hearn	_	_
+
+# id: 490
+# text-en: rate The Gift: Imagination and the Erotic Life of Property five stars
+# text: Gib The Gift: Imagination and the Erotic Life of Property 5 Sterne
+# intent: _
+1	Gib	_	_
+2	The	_	_
+3	Gift:	_	_
+4	Imagination	_	_
+5	and	_	_
+6	the	_	_
+7	Erotic	_	_
+8	Life	_	_
+9	of	_	_
+10	Property	_	_
+11	5	_	_
+12	Sterne	_	_
+
+# id: 491
+# text-en: Find me a TV show called Baby Blue
+# text: Suachmer die Fernsehshow Baby Blue
+# intent: _
+1	Suachmer	_	_
+2	die	_	_
+3	Fernsehshow	_	_
+4	Baby	_	_
+5	Blue	_	_
+
+# id: 492
+# text-en: look for the book The Girl Who Was Plugged In
+# text: Suach es Buach The Girl Who Was Plugged In
+# intent: _
+1	Suach	_	_
+2	es	_	_
+3	Buach	_	_
+4	The	_	_
+5	Girl	_	_
+6	Who	_	_
+7	Was	_	_
+8	Plugged	_	_
+9	In	_	_
+
+# id: 493
+# text-en: phyllis ward and veronica need a table at a restaurant in 152 days
+# text: Phyllis Ward und Veronica brauchn an Tisch in an Restaurant in 152 Toge
+# intent: _
+1	Phyllis	_	_
+2	Ward	_	_
+3	und	_	_
+4	Veronica	_	_
+5	brauchn	_	_
+6	an	_	_
+7	Tisch	_	_
+8	in	_	_
+9	an	_	_
+10	Restaurant	_	_
+11	in	_	_
+12	152	_	_
+13	Toge	_	_
+
+# id: 494
+# text-en: Book a popular restaurant for 5 people
+# text: Buach an Tisch in an bekonntn Restaurant fir 5 Leit
+# intent: _
+1	Buach	_	_
+2	an	_	_
+3	Tisch	_	_
+4	in	_	_
+5	an	_	_
+6	bekonntn	_	_
+7	Restaurant	_	_
+8	fir	_	_
+9	5	_	_
+10	Leit	_	_
+
+# id: 495
+# text-en: Book a reservation for The Dome, Edinburgh close to Brooklawn
+# text: Reservier in The Dome, Edinburgh nebn Brooklawn
+# intent: _
+1	Reservier	_	_
+2	in	_	_
+3	The	_	_
+4	Dome	_	_
+5	,	_	_
+6	Edinburgh	_	_
+7	nebn	_	_
+8	Brooklawn	_	_
+
+# id: 496
+# text-en: Add this album to Old School Death Metal
+# text: Tua des Album zu Old School Death Metal derzua
+# intent: _
+1	Tua	_	_
+2	des	_	_
+3	Album	_	_
+4	zu	_	_
+5	Old	_	_
+6	School	_	_
+7	Death	_	_
+8	Metal	_	_
+9	derzua	_	_
+
+# id: 497
+# text-en: Look for the TV series Jersey Boys
+# text: Suach die Fernsehserie Jersey Boys
+# intent: _
+1	Suach	_	_
+2	die	_	_
+3	Fernsehserie	_	_
+4	Jersey	_	_
+5	Boys	_	_
+
+# id: 498
+# text-en: Book a reservation for nine people at the best pub nearby Tangier in six months
+# text: Reservier fir 9 Leit in tollsten Pub in der Nechne vu Tanger in 6 Munite
+# intent: _
+1	Reservier	_	_
+2	fir	_	_
+3	9	_	_
+4	Leit	_	_
+5	in	_	_
+6	tollsten	_	_
+7	Pub	_	_
+8	in	_	_
+9	der	_	_
+10	Nechne	_	_
+11	vu	_	_
+12	Tanger	_	_
+13	in	_	_
+14	6	_	_
+15	Munite	_	_
+
+# id: 499
+# text-en: Show me the movies at Harkins Theatres .
+# text: Zoagmer die Filme de se in die Harkins Theatres zoagn.
+# intent: _
+1	Zoagmer	_	_
+2	die	_	_
+3	Filme	_	_
+4	de	_	_
+5	se	_	_
+6	in	_	_
+7	die	_	_
+8	Harkins	_	_
+9	Theatres	_	_
+10	zoagn	_	_
+11	.	_	_
+
+# id: 500
+# text-en: book a party at their campus within the same area for churrascaria
+# text: Reservier in der Nechne vu der Churrascaria afn Campus
+# intent: _
+1	Reservier	_	_
+2	in	_	_
+3	der	_	_
+4	Nechne	_	_
+5	vu	_	_
+6	der	_	_
+7	Churrascaria	_	_
+8	afn	_	_
+9	Campus	_	_
+
