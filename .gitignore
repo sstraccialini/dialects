@@ -44,3 +44,6 @@ analysis/**/method_outputs/**/*.safetensors
 analysis/**/method_outputs/**/*.npy
 analysis/**/method_outputs/**/sentence_vectors.npz
 analysis/**/method_outputs/**/combined_corpus.csv
+
+# Misc
+.claude/
