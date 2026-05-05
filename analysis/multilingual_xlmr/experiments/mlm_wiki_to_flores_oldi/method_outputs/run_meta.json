@@ -1,8 +1,8 @@
 {
   "method": "multilingual_xlmr",
   "experiment": "mlm_wiki_to_flores_oldi",
-  "timestamp": "2026-05-05T00:09:28Z",
-  "git_commit": "e422b4e9fff4d5d5475316021953e75d21d9d017",
+  "timestamp": "2026-05-05T11:24:21Z",
+  "git_commit": "95d5bafd315ac70f591eba5a1de4fc97baa61a1d",
   "python": "3.11.15",
   "platform": "Linux-5.14.0-570.12.1.el9_6.x86_64-x86_64-with-glibc2.34",
   "params": {
@@ -14,7 +14,15 @@
     "grad_accumulation": 4,
     "lr": 3e-05,
     "max_length": 128,
-    "varieties": [
+    "training_codes": [
+      "fur",
+      "lij",
+      "lmo",
+      "sc",
+      "scn",
+      "vec"
+    ],
+    "eval_codes": [
       "fur",
       "lij",
       "lmo",

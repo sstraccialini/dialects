@@ -1,0 +1,28 @@
+# Global clustering metrics
+metric,value,clusterer
+silhouette_global,-0.200752,family_labels
+davies_bouldin,1.191989,family_labels
+calinski_harabasz,2.143121,family_labels
+cophenetic_correlation,0.844432,hierarchical
+adjusted_rand_index,0.061856,hierarchical_cut
+normalized_mutual_info,0.578295,hierarchical_cut
+v_measure,0.578295,hierarchical_cut
+adjusted_rand_index,0.000000,kmeans
+normalized_mutual_info,0.546745,kmeans
+v_measure,0.546745,kmeans
+
+# Per-variety silhouette scores
+variety,family,silhouette
+fra,romance,0.491960
+cat,romance,0.389049
+deu,germanic,0.000000
+ita,italian,0.000000
+slv,slavic,0.000000
+eng,english,0.000000
+scn,italo_romance,-0.164672
+sc,italo_romance,-0.339383
+spa,romance,-0.369788
+fur,italo_romance,-0.539941
+lmo,italo_romance,-0.564911
+lij,italo_romance,-0.665836
+vec,italo_romance,-0.846260

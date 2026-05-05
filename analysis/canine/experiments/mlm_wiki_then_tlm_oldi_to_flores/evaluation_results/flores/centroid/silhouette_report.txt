@@ -1,0 +1,26 @@
+Silhouette report (CANINE MLM-Wiki→TLM-OLDI (FLORES centroid))
+============================================================
+  n_varieties           = 13
+  linkage_method        = average
+  silhouette (family)   = -0.1710
+  silhouette (romance)  = +0.6622
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  fra                   romance              +0.4534
+  cat                   romance              +0.3185
+  eng                   english              +0.0000
+  deu                   germanic             +0.0000
+  slv                   slavic               +0.0000
+  ita                   italian              +0.0000
+  scn                   italo_romance        -0.1224
+  spa                   romance              -0.2459
+  sc                    italo_romance        -0.3122
+  fur                   italo_romance        -0.3935
+  lmo                   italo_romance        -0.4117
+  lij                   italo_romance        -0.7003
+  vec                   italo_romance        -0.8083

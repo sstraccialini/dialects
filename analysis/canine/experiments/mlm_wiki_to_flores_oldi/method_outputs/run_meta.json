@@ -1,0 +1,41 @@
+{
+  "method": "canine",
+  "experiment": "mlm_wiki_to_flores_oldi",
+  "timestamp": "2026-05-05T10:40:45Z",
+  "git_commit": "95d5bafd315ac70f591eba5a1de4fc97baa61a1d",
+  "python": "3.11.15",
+  "platform": "Linux-5.14.0-570.12.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "params": {
+    "sample_size": 100000,
+    "random_state": 42,
+    "base_model": "google/canine-c",
+    "epochs": 3,
+    "train_batch_size": 8,
+    "grad_accumulation": 8,
+    "lr": 3e-05,
+    "max_length": 512,
+    "training_codes": [
+      "fur",
+      "lij",
+      "lmo",
+      "sc",
+      "scn",
+      "vec"
+    ],
+    "eval_codes": [
+      "fur",
+      "lij",
+      "lmo",
+      "sc",
+      "scn",
+      "vec",
+      "ita",
+      "spa",
+      "fra",
+      "cat",
+      "deu",
+      "slv",
+      "eng"
+    ]
+  }
+}

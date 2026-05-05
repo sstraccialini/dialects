@@ -1,0 +1,44 @@
+{
+  "method": "canine",
+  "experiment": "mlm_wiki_then_tlm_oldi_to_flores",
+  "timestamp": "2026-05-05T11:21:11Z",
+  "git_commit": "95d5bafd315ac70f591eba5a1de4fc97baa61a1d",
+  "python": "3.11.15",
+  "platform": "Linux-5.14.0-570.12.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "params": {
+    "base_model": "google/canine-c",
+    "sample_size": 100000,
+    "mlm_epochs": 3,
+    "tlm_epochs": 5,
+    "mlm_batch": 8,
+    "mlm_grad_accum": 8,
+    "tlm_batch": 4,
+    "tlm_grad_accum": 16,
+    "lr": 3e-05,
+    "max_length": 512,
+    "max_length_tlm": 1024,
+    "stage1_codes": [
+      "fur",
+      "lij",
+      "lmo",
+      "sc",
+      "scn",
+      "vec"
+    ],
+    "eval_codes": [
+      "fur",
+      "lij",
+      "lmo",
+      "sc",
+      "scn",
+      "vec",
+      "ita",
+      "spa",
+      "fra",
+      "cat",
+      "deu",
+      "slv",
+      "eng"
+    ]
+  }
+}

@@ -2,8 +2,8 @@ Silhouette report (XLM-R adapted (FLORES centroid))
 ============================================================
   n_varieties           = 13
   linkage_method        = average
-  silhouette (family)   = +0.1344
-  silhouette (romance)  = +0.1040
+  silhouette (family)   = -0.1568
+  silhouette (romance)  = +0.1128
 
 Notes:
   Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
@@ -11,16 +11,16 @@ Notes:
 Per-variety silhouette scores (sorted descending):
   variety               family            silhouette
   ----------------------------------------------------
-  lmo                   italo_romance        +0.4233
-  sc                    italo_romance        +0.3337
-  fur                   italo_romance        +0.2677
-  lij                   italo_romance        +0.2138
-  cat                   romance              +0.2055
-  vec                   italo_romance        +0.1779
-  scn                   italo_romance        +0.1732
-  spa                   romance              +0.0124
   eng                   english              +0.0000
   slv                   slavic               +0.0000
   deu                   germanic             +0.0000
   ita                   italian              +0.0000
-  fra                   romance              -0.0600
+  cat                   romance              -0.0679
+  sc                    italo_romance        -0.0851
+  lmo                   italo_romance        -0.1111
+  fur                   italo_romance        -0.1779
+  spa                   romance              -0.2652
+  scn                   italo_romance        -0.2722
+  lij                   italo_romance        -0.3445
+  fra                   romance              -0.3494
+  vec                   italo_romance        -0.3649
