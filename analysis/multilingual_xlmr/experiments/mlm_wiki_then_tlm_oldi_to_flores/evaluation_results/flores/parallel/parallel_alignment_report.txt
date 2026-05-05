@@ -1,0 +1,101 @@
+Parallel alignment report (XLM-R MLM-Wiki→TLM-OLDI (FLORES parallel))
+============================================================
+  n_varieties  = 13
+  n_sentences  = 2009
+
+Top 20 most-aligned variety pairs:
+variety_A variety_B  mean_similarity      family_A family_B
+      spa       cat           0.6836       romance  romance
+      fra       eng           0.6644       romance  english
+      fra       cat           0.6558       romance  romance
+      spa       eng           0.6529       romance  english
+      deu       eng           0.6452      germanic  english
+      ita       spa           0.6430       italian  romance
+      cat       eng           0.6419       romance  english
+      ita       fra           0.6408       italian  romance
+      ita       cat           0.6399       italian  romance
+      spa       fra           0.6395       romance  romance
+      ita       eng           0.6395       italian  english
+      vec       ita           0.6394 italo_romance  italian
+      vec       cat           0.5934 italo_romance  romance
+      fra       deu           0.5876       romance germanic
+      ita       deu           0.5758       italian germanic
+      spa       deu           0.5757       romance germanic
+      vec       fra           0.5756 italo_romance  romance
+      vec       spa           0.5738 italo_romance  romance
+      vec       eng           0.5707 italo_romance  english
+      cat       deu           0.5701       romance germanic
+
+Bottom 10 least-aligned pairs:
+variety_A variety_B  mean_similarity      family_A family_B
+      lmo       eng           0.4406 italo_romance  english
+      lij       deu           0.4392 italo_romance germanic
+      fur       eng           0.4367 italo_romance  english
+      scn       deu           0.4334 italo_romance germanic
+      lij       slv           0.4156 italo_romance   slavic
+      fur       deu           0.4120 italo_romance germanic
+      scn       slv           0.4110 italo_romance   slavic
+      lmo       deu           0.4107 italo_romance germanic
+      fur       slv           0.3952 italo_romance   slavic
+      lmo       slv           0.3925 italo_romance   slavic
+
+Per-variety mean alignment to all others (desc.):
+variety        family  mean_sim_to_others  max_sim  min_sim  std_sim
+    ita       italian              0.5696   0.6430   0.4681   0.0655
+    cat       romance              0.5678   0.6836   0.4785   0.0710
+    fra       romance              0.5598   0.6644   0.4571   0.0745
+    eng       english              0.5581   0.6644   0.4367   0.0862
+    spa       romance              0.5543   0.6836   0.4411   0.0833
+    vec italo_romance              0.5495   0.6394   0.4956   0.0410
+    deu      germanic              0.5144   0.6452   0.4107   0.0762
+     sc italo_romance              0.4998   0.5421   0.4418   0.0297
+    lij italo_romance              0.4849   0.5534   0.4156   0.0359
+    slv        slavic              0.4840   0.5622   0.3925   0.0641
+    scn italo_romance              0.4694   0.5183   0.4110   0.0296
+    lmo italo_romance              0.4602   0.5242   0.3925   0.0334
+    fur italo_romance              0.4562   0.4993   0.3952   0.0289
+
+Dialect-to-reference alignment:
+dialect reference ref_family  mean_similarity
+    fur       cat    romance           0.4794
+    fur       fra    romance           0.4681
+    fur       ita    italian           0.4681
+    fur       spa    romance           0.4411
+    fur       eng    english           0.4367
+    fur       deu   germanic           0.4120
+    fur       slv     slavic           0.3952
+    lij       ita    italian           0.5297
+    lij       cat    romance           0.5065
+    lij       fra    romance           0.5005
+    lij       spa    romance           0.4793
+    lij       eng    english           0.4791
+    lij       deu   germanic           0.4392
+    lij       slv     slavic           0.4156
+    lmo       cat    romance           0.4785
+    lmo       ita    italian           0.4772
+    lmo       fra    romance           0.4571
+    lmo       spa    romance           0.4438
+    lmo       eng    english           0.4406
+    lmo       deu   germanic           0.4107
+    lmo       slv     slavic           0.3925
+     sc       cat    romance           0.5421
+     sc       spa    romance           0.5225
+     sc       fra    romance           0.5225
+     sc       ita    italian           0.5207
+     sc       eng    english           0.5049
+     sc       deu   germanic           0.4661
+     sc       slv     slavic           0.4418
+    scn       ita    italian           0.5176
+    scn       cat    romance           0.4851
+    scn       fra    romance           0.4705
+    scn       spa    romance           0.4604
+    scn       eng    english           0.4590
+    scn       deu   germanic           0.4334
+    scn       slv     slavic           0.4110
+    vec       ita    italian           0.6394
+    vec       cat    romance           0.5934
+    vec       fra    romance           0.5756
+    vec       spa    romance           0.5738
+    vec       eng    english           0.5707
+    vec       deu   germanic           0.5141
+    vec       slv     slavic           0.4956

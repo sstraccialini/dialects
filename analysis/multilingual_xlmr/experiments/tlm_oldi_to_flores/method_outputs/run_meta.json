@@ -1,0 +1,32 @@
+{
+  "method": "multilingual_xlmr",
+  "experiment": "tlm_oldi_to_flores",
+  "timestamp": "2026-05-04T22:41:51Z",
+  "git_commit": "e422b4e9fff4d5d5475316021953e75d21d9d017",
+  "python": "3.11.15",
+  "platform": "Linux-5.14.0-570.12.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "params": {
+    "base_model": "xlm-roberta-base",
+    "n_pairs": 37158,
+    "epochs": 5,
+    "train_batch_size": 16,
+    "grad_accumulation": 4,
+    "lr": 3e-05,
+    "max_length_tlm": 256,
+    "varieties": [
+      "fur",
+      "lij",
+      "lmo",
+      "sc",
+      "scn",
+      "vec",
+      "ita",
+      "spa",
+      "fra",
+      "cat",
+      "deu",
+      "slv",
+      "eng"
+    ]
+  }
+}

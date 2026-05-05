@@ -1,0 +1,26 @@
+Silhouette report (Sentence-MiniLM MNRL-OLDI (FLORES centroid))
+============================================================
+  n_varieties           = 13
+  linkage_method        = average
+  silhouette (family)   = -0.0160
+  silhouette (romance)  = +0.2272
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  cat                   romance              +0.5475
+  fra                   romance              +0.4754
+  spa                   romance              +0.2970
+  deu                   germanic             +0.0000
+  eng                   english              +0.0000
+  slv                   slavic               +0.0000
+  ita                   italian              +0.0000
+  vec                   italo_romance        -0.0225
+  lmo                   italo_romance        -0.1780
+  lij                   italo_romance        -0.1938
+  fur                   italo_romance        -0.2255
+  sc                    italo_romance        -0.4180
+  scn                   italo_romance        -0.4900
