@@ -1,13 +1,15 @@
 """
 Multilingual XLM-R: sequential MLM-on-Wiki then TLM-on-OLDI, eval on FLORES+.
 
-Stage 1 — MLM continued pretraining on Wiki (13 varieties): adapts the
-encoder to dialects + comparison languages.
+Stage 1 — MLM continued pretraining on Wiki for the 6 dialects ONLY
+(fur/lij/lmo/sc/scn/vec). XLM-R already knows the 7 standard languages
+from pre-training, so retraining on them would dilute the signal.
+Each dialect contributes its natural Wikipedia footprint.
 
 Stage 2 — TLM on OLDI (italian, dialect) pairs starting FROM the
 Stage 1 checkpoint: adds cross-lingual alignment on top.
 
-Stage 3 — Eval on FLORES+ (centroid + parallel).
+Stage 3 — Eval on FLORES+ (centroid + parallel) over all 13 varieties.
 
 Outputs:
     method_outputs/
@@ -36,7 +38,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from analysis._shared.run_meta import write_run_meta
 from analysis.multilingual_xlmr.core.config import (
-    VARIETY_CODES, SAMPLE_SIZE, RANDOM_STATE,
+    VARIETY_CODES, DIALECT_CODES, SAMPLE_SIZE, RANDOM_STATE,
     MODEL_NAME, MAX_LENGTH, BATCH_SIZE, experiment_dirs,
 )
 from analysis.multilingual_xlmr.core.data_loader import (
@@ -117,19 +119,20 @@ def main():
     stage2_dir = mo_root / "models" / "stage2_tlm_oldi"
 
     # ------------------------------------------------------------------ #
-    # STAGE 1: MLM on Wiki (13 varieties)
+    # STAGE 1: MLM on Wiki — 6 dialects ONLY
     # ------------------------------------------------------------------ #
-    print("\n[STAGE 1/3] MLM on Wiki")
+    print(f"\n[STAGE 1/3] MLM on Wiki ({len(DIALECT_CODES)} dialects only)")
     if args.skip_train and (stage1_dir / "config.json").exists():
         print(f"  [skip-train] Reusing stage1 checkpoint {stage1_dir}")
     else:
         wiki_data, wiki_stats = load_wiki_for_training(
+            codes=DIALECT_CODES,
             sample_size=args.sample_size, random_state=args.random_state,
         )
         wiki_stats["sample_size_param"] = args.sample_size
         wiki_stats["random_state"]      = args.random_state
         wiki_stats.to_csv(mo_root / "run_stats.csv", index=False)
-        sents, _ = iter_labeled_sentences(wiki_data)
+        sents, _ = iter_labeled_sentences(wiki_data, codes=DIALECT_CODES)
         print(f"  total Wiki sentences: {len(sents):,}")
         run_mlm_training(
             base_model=MODEL_NAME, texts=sents, output_dir=stage1_dir,
@@ -170,7 +173,8 @@ def main():
             "lr":                args.lr,
             "max_length":        MAX_LENGTH,
             "max_length_tlm":    args.max_length_tlm,
-            "varieties":         VARIETY_CODES,
+            "stage1_codes":      DIALECT_CODES,
+            "eval_codes":        VARIETY_CODES,
         },
     )
 

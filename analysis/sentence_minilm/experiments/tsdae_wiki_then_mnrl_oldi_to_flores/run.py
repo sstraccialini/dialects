@@ -1,9 +1,11 @@
 """
 sentence-MiniLM: sequential TSDAE-on-Wiki then MNRL-on-OLDI, eval on FLORES+.
 
-Stage 1 — TSDAE unsupervised on Wiki (13 varieties).
+Stage 1 — TSDAE unsupervised on Wiki for the 6 dialects ONLY
+(fur/lij/lmo/sc/scn/vec). The base model already covers the 7 standard
+languages; each dialect contributes its natural Wikipedia footprint.
 Stage 2 — MNRL contrastive on OLDI (italian, dialect) pairs FROM stage 1.
-Stage 3 — Eval on FLORES+ (centroid + parallel).
+Stage 3 — Eval on FLORES+ (centroid + parallel) over all 13 varieties.
 
 Launch (HPC):
     sbatch slurm/jobs/sentence_minilm__tsdae_wiki_then_mnrl_oldi_to_flores.slurm
@@ -24,7 +26,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from analysis._shared.run_meta import write_run_meta
 from analysis.sentence_minilm.core.config import (
-    VARIETY_CODES, SAMPLE_SIZE, RANDOM_STATE,
+    VARIETY_CODES, DIALECT_CODES, SAMPLE_SIZE, RANDOM_STATE,
     SENTENCE_MODEL, MAX_LENGTH, BATCH_SIZE, experiment_dirs,
 )
 from analysis.sentence_minilm.core.data_loader import (
@@ -104,20 +106,21 @@ def main():
     stage2_dir = mo_root / "models" / "stage2_mnrl_oldi"
 
     # ------------------------------------------------------------------ #
-    # STAGE 1: TSDAE on Wiki
+    # STAGE 1: TSDAE on Wiki — 6 dialects ONLY
     # ------------------------------------------------------------------ #
-    print("\n[STAGE 1/3] TSDAE on Wiki")
+    print(f"\n[STAGE 1/3] TSDAE on Wiki ({len(DIALECT_CODES)} dialects only)")
     if args.skip_train and (stage1_dir / "modules.json").exists():
         print(f"  [skip-train] Reusing stage1 checkpoint {stage1_dir}")
     else:
         wiki_data, wiki_stats = load_wiki_for_training(
+            codes=DIALECT_CODES,
             sample_size=args.sample_size, random_state=args.random_state,
         )
         wiki_stats["sample_size_param"] = args.sample_size
         wiki_stats["random_state"]      = args.random_state
         wiki_stats.to_csv(mo_root / "run_stats.csv", index=False)
         all_sents = []
-        for code in VARIETY_CODES:
+        for code in DIALECT_CODES:
             if code in wiki_data:
                 all_sents.extend(wiki_data[code])
         print(f"  total Wiki sentences: {len(all_sents):,}")
@@ -155,7 +158,8 @@ def main():
             "mnrl_batch":     args.mnrl_batch,
             "lr":             args.lr,
             "max_length":     MAX_LENGTH,
-            "varieties":      VARIETY_CODES,
+            "stage1_codes":   DIALECT_CODES,
+            "eval_codes":     VARIETY_CODES,
         },
     )
 

@@ -1,11 +1,17 @@
 """
-sentence-MiniLM: continued TSDAE pretraining on Wiki (13 varieties),
-then evaluation on FLORES+ and OLDI.
+sentence-MiniLM: continued TSDAE pretraining on Wiki (6 dialects only),
+then evaluation on FLORES+ and OLDI (all 13 varieties).
+
+paraphrase-multilingual-MiniLM-L12-v2 already covers the 7 standard
+languages (ita/spa/fra/cat/deu/slv/eng) from its multilingual base, so
+we retrain ONLY on the 6 Italo-Romance dialects (fur/lij/lmo/sc/scn/vec).
+Each dialect contributes its natural Wikipedia footprint — no balanced
+down-sampling.
 
 Pipeline:
-    1. Sample Wiki for all 13 varieties.
+    1. Sample Wiki for the 6 dialects.
     2. TSDAE unsupervised pretraining of paraphrase-multilingual-MiniLM
-       on the concatenated Wiki corpus.
+       on that corpus.
     3. Save adapted SentenceTransformer under method_outputs/models/.
     4. Embed FLORES+ and OLDI with the adapted model and compute
        centroid + parallel-alignment evaluations.
@@ -31,7 +37,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from analysis._shared.run_meta import write_run_meta
 from analysis.sentence_minilm.core.config import (
-    VARIETY_CODES, SAMPLE_SIZE, RANDOM_STATE,
+    VARIETY_CODES, DIALECT_CODES, SAMPLE_SIZE, RANDOM_STATE,
     SENTENCE_MODEL, MAX_LENGTH, BATCH_SIZE,
     experiment_dirs,
 )
@@ -106,8 +112,9 @@ def main():
     print(f"{METHOD} — {EXPERIMENT}")
     print("=" * 60)
     print(f"  base_model   = {SENTENCE_MODEL}")
-    print(f"  varieties    = {VARIETY_CODES} (training on all 13)")
-    print(f"  sample_size  = {args.sample_size}")
+    print(f"  train codes  = {DIALECT_CODES}  (only the 6 dialects)")
+    print(f"  eval codes   = {VARIETY_CODES}  (all 13 varieties)")
+    print(f"  sample_size  = {args.sample_size}  (natural cap per dialect)")
     print(f"  epochs       = {args.epochs}")
     print(f"  train batch  = {args.train_batch_size}")
     print(f"  lr           = {args.lr}")
@@ -115,13 +122,14 @@ def main():
 
     mo_root = SCRIPT_DIR / "method_outputs"
     mo_root.mkdir(parents=True, exist_ok=True)
-    model_dir = mo_root / "models" / "tsdae_wiki_13"
+    model_dir = mo_root / "models" / "tsdae_wiki_dialects"
 
     # ------------------------------------------------------------------ #
-    # Step 1: load Wiki training corpus
+    # Step 1: load Wiki training corpus (6 dialects only)
     # ------------------------------------------------------------------ #
-    print("Loading Wiki (training) ...")
+    print(f"Loading Wiki (training, {len(DIALECT_CODES)} dialects only) ...")
     wiki_data, wiki_stats = load_wiki_for_training(
+        codes=DIALECT_CODES,
         sample_size=args.sample_size, random_state=args.random_state,
     )
     wiki_stats["sample_size_param"] = args.sample_size
@@ -130,7 +138,7 @@ def main():
 
     # Flatten all sentences (TSDAE doesn't need labels)
     all_sents: list[str] = []
-    for code in VARIETY_CODES:
+    for code in DIALECT_CODES:
         if code in wiki_data:
             all_sents.extend(wiki_data[code])
     print(f"  total Wiki sentences for TSDAE: {len(all_sents):,}")
@@ -161,7 +169,8 @@ def main():
             "train_batch_size": args.train_batch_size,
             "lr":               args.lr,
             "max_length":       MAX_LENGTH,
-            "varieties":        VARIETY_CODES,
+            "training_codes":   DIALECT_CODES,
+            "eval_codes":       VARIETY_CODES,
         },
     )
 

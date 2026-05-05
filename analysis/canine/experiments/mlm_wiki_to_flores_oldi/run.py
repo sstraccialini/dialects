@@ -1,11 +1,15 @@
 """
-CANINE: continued MLM pretraining on Wiki (13 varieties), then
-evaluation on FLORES+ and OLDI.
+CANINE: continued MLM pretraining on Wiki (6 dialects only), then
+evaluation on FLORES+ and OLDI (all 13 varieties).
 
-CANINE is a tokenizer-free char-level encoder. The continued pretraining
-adapts its character-level representations to all 13 varieties (6
-dialects + 7 standard languages), so dialect-specific orthographic /
-morphological patterns are captured.
+CANINE is a tokenizer-free char-level encoder. We only fine-tune on the
+6 Italo-Romance dialects (fur/lij/lmo/sc/scn/vec) since the model
+already has decent character-level coverage of the 7 standard languages
+from pre-training. Each dialect contributes its natural Wikipedia
+footprint — no balanced down-sampling.
+
+Note: CANINE has no native MaskedLM head in HuggingFace; the trainer
+adds a custom char-level prediction head (see core/trainer.py).
 
 Outputs mirror the multilingual_xlmr fine-tune experiment structure.
 
@@ -28,7 +32,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from analysis._shared.run_meta import write_run_meta
 from analysis.canine.core.config import (
-    VARIETY_CODES, SAMPLE_SIZE, RANDOM_STATE,
+    VARIETY_CODES, DIALECT_CODES, SAMPLE_SIZE, RANDOM_STATE,
     DEFAULT_MODEL_NAME, MAX_LENGTH, BATCH_SIZE,
     experiment_dirs,
 )
@@ -104,8 +108,9 @@ def main():
     print(f"{METHOD} — {EXPERIMENT}")
     print("=" * 60)
     print(f"  base_model   = {DEFAULT_MODEL_NAME}")
-    print(f"  varieties    = {VARIETY_CODES} (training on all 13)")
-    print(f"  sample_size  = {args.sample_size}")
+    print(f"  train codes  = {DIALECT_CODES}  (only the 6 dialects)")
+    print(f"  eval codes   = {VARIETY_CODES}  (all 13 varieties)")
+    print(f"  sample_size  = {args.sample_size}  (natural cap per dialect)")
     print(f"  epochs       = {args.epochs}")
     print(f"  train batch  = {args.train_batch_size} × grad_acc {args.grad_accumulation}")
     print(f"  lr           = {args.lr}")
@@ -113,20 +118,21 @@ def main():
 
     mo_root = SCRIPT_DIR / "method_outputs"
     mo_root.mkdir(parents=True, exist_ok=True)
-    model_dir = mo_root / "models" / "mlm_wiki_13"
+    model_dir = mo_root / "models" / "mlm_wiki_dialects"
 
     # ------------------------------------------------------------------ #
-    # Step 1: Wiki training corpus
+    # Step 1: Wiki training corpus (6 dialects only)
     # ------------------------------------------------------------------ #
-    print("Loading Wiki (training) ...")
+    print(f"Loading Wiki (training, {len(DIALECT_CODES)} dialects only) ...")
     wiki_data, wiki_stats = load_wiki_for_training(
+        codes=DIALECT_CODES,
         sample_size=args.sample_size, random_state=args.random_state,
     )
     wiki_stats["sample_size_param"] = args.sample_size
     wiki_stats["random_state"]      = args.random_state
     wiki_stats.to_csv(mo_root / "run_stats.csv", index=False)
 
-    sents, _ = iter_labeled_sentences(wiki_data)
+    sents, _ = iter_labeled_sentences(wiki_data, codes=DIALECT_CODES)
     print(f"  total Wiki sentences for MLM: {len(sents):,}")
 
     # ------------------------------------------------------------------ #
@@ -157,7 +163,8 @@ def main():
             "grad_accumulation": args.grad_accumulation,
             "lr":                args.lr,
             "max_length":        MAX_LENGTH,
-            "varieties":         VARIETY_CODES,
+            "training_codes":    DIALECT_CODES,
+            "eval_codes":        VARIETY_CODES,
         },
     )
 

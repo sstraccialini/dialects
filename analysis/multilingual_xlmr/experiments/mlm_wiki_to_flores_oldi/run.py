@@ -1,11 +1,16 @@
 """
-Multilingual XLM-R: continued MLM pretraining on Wiki (13 varieties),
-then evaluation on FLORES+ and OLDI.
+Multilingual XLM-R: continued MLM pretraining on Wiki (6 dialects only),
+then evaluation on FLORES+ and OLDI (all 13 varieties).
+
+XLM-R already knows the 7 standard languages (ita/spa/fra/cat/deu/slv/eng)
+from its original multilingual pre-training, so we retrain ONLY on the 6
+Italo-Romance dialects (fur/lij/lmo/sc/scn/vec). Each dialect contributes
+its natural amount of Wiki text — no balanced down-sampling — so the
+relative data weight reflects each dialect's true Wikipedia footprint.
 
 Pipeline:
-    1. Sample Wiki for all 13 varieties (6 dialects + 7 standard languages).
-    2. Continued MLM pretraining of xlm-roberta-base on the concatenated
-       Wiki corpus (the model sees the entire linguistic space).
+    1. Sample Wiki for the 6 dialects.
+    2. Continued MLM pretraining of xlm-roberta-base on that corpus.
     3. Save the adapted encoder under method_outputs/models/.
     4. Embed FLORES+ and OLDI sentences with the adapted encoder and
        compute centroid + parallel-alignment evaluations on each.
@@ -40,7 +45,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from analysis._shared.run_meta import write_run_meta
 from analysis.multilingual_xlmr.core.config import (
-    VARIETY_CODES, SAMPLE_SIZE, RANDOM_STATE,
+    VARIETY_CODES, DIALECT_CODES, SAMPLE_SIZE, RANDOM_STATE,
     MODEL_NAME, MAX_LENGTH, BATCH_SIZE,
     experiment_dirs,
 )
@@ -119,8 +124,9 @@ def main():
     print(f"{METHOD} — {EXPERIMENT}")
     print("=" * 60)
     print(f"  base_model   = {MODEL_NAME}")
-    print(f"  varieties    = {VARIETY_CODES} (training on all 13)")
-    print(f"  sample_size  = {args.sample_size}")
+    print(f"  train codes  = {DIALECT_CODES}  (only the 6 dialects)")
+    print(f"  eval codes   = {VARIETY_CODES}  (all 13 varieties)")
+    print(f"  sample_size  = {args.sample_size}  (natural cap per dialect)")
     print(f"  epochs       = {args.epochs}")
     print(f"  train batch  = {args.train_batch_size} × grad_acc {args.grad_accumulation}")
     print(f"  lr           = {args.lr}")
@@ -128,21 +134,25 @@ def main():
 
     mo_root = SCRIPT_DIR / "method_outputs"
     mo_root.mkdir(parents=True, exist_ok=True)
-    model_dir = mo_root / "models" / "mlm_wiki_13"
+    model_dir = mo_root / "models" / "mlm_wiki_dialects"
     model_dir.mkdir(parents=True, exist_ok=True)
 
     # ------------------------------------------------------------------ #
-    # Step 1: load training corpus (Wiki, 13 varieties)
+    # Step 1: load training corpus — Wiki for the 6 dialects ONLY.
+    # XLM-R already knows ita/spa/fra/cat/deu/slv/eng from pre-training,
+    # so retraining on them would just dilute the gradient signal.
+    # Each dialect uses its natural amount of data (no balanced down-sampling).
     # ------------------------------------------------------------------ #
-    print("Loading Wiki (training) ...")
+    print(f"Loading Wiki (training, {len(DIALECT_CODES)} dialects only) ...")
     wiki_data, wiki_stats = load_wiki_for_training(
+        codes=DIALECT_CODES,
         sample_size=args.sample_size, random_state=args.random_state,
     )
     wiki_stats["sample_size_param"] = args.sample_size
     wiki_stats["random_state"]      = args.random_state
     wiki_stats.to_csv(mo_root / "run_stats.csv", index=False)
 
-    sents, _ = iter_labeled_sentences(wiki_data)
+    sents, _ = iter_labeled_sentences(wiki_data, codes=DIALECT_CODES)
     print(f"  total Wiki sentences for MLM: {len(sents):,}")
 
     # ------------------------------------------------------------------ #
@@ -173,7 +183,8 @@ def main():
             "grad_accumulation": args.grad_accumulation,
             "lr":                args.lr,
             "max_length":        MAX_LENGTH,
-            "varieties":         VARIETY_CODES,
+            "training_codes":    DIALECT_CODES,
+            "eval_codes":        VARIETY_CODES,
         },
     )
 
