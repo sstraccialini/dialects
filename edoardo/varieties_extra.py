@@ -40,31 +40,34 @@ LANG2VEC_CODE: Dict[str, str] = {
 # so a hand-coded tree at this granularity is a useful sanity check).
 #
 # Source: https://glottolog.org/resource/languoid/id/<glottocode>
-# These paths follow Glottolog 5.x (May 2026 snapshot).  Where Glottolog
-# disagrees with the proposal's grouping, we annotate the choice in-line.
+# These paths follow Glottolog 5.x (May 2026 snapshot).  Each path ends with
+# a DISTINCT LEAF for the language itself; without this, sister varieties
+# (e.g. lmo / lij / vec all under "Padanian") would have tree distance 0,
+# artificially collapsing them.
 # --------------------------------------------------------------------------- #
 GLOTTOLOG_PATH: Dict[str, List[str]] = {
     # Indo-European > Italic > Romance
-    "ita": ["IE", "Italic", "Romance", "Italo-Western", "Italo-Dalmatian", "Italo-Romance"],
-    "fra": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Oil"],
-    "spa": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Ibero-Romance", "West Iberian", "Castilic"],
-    "cat": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Pyrenaic"],
+    "ita": ["IE", "Italic", "Romance", "Italo-Western", "Italo-Dalmatian", "Italo-Romance", "Italian"],
+    "fra": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Oil", "French"],
+    "spa": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Ibero-Romance", "West Iberian", "Castilic", "Spanish"],
+    "cat": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Pyrenaic", "Catalan"],
 
-    # Italo-Romance dialects covered by FLORES+/OLDI
-    "lmo": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Padanian"],
-    "lij": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Padanian"],
-    "vec": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Padanian"],
+    # Italo-Romance dialects covered by FLORES+/OLDI — distinct leaves under
+    # the same "Padanian" Gallo-Italic sub-branch.
+    "lmo": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Padanian", "Lombard"],
+    "lij": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Padanian", "Ligurian"],
+    "vec": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Padanian", "Venetian"],
     # Friulian: Glottolog places it under Rhaeto-Romance, distinct from Padanian
-    "fur": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Rhaetian"],
+    "fur": ["IE", "Italic", "Romance", "Italo-Western", "Western Romance", "Gallo-Iberian", "Gallo-Romance", "Gallo-Rhaetian", "Rhaetian", "Friulian"],
     # Sicilian: Italo-Dalmatian like ita but separate sub-branch (Extreme Southern Italo-Romance)
-    "scn": ["IE", "Italic", "Romance", "Italo-Western", "Italo-Dalmatian", "Extreme-Southern-Italo-Romance"],
-    # Sardinian: separate Romance branch outside Italo-Western
-    "sc":  ["IE", "Italic", "Romance", "Sardinian"],
+    "scn": ["IE", "Italic", "Romance", "Italo-Western", "Italo-Dalmatian", "Extreme-Southern-Italo-Romance", "Sicilian"],
+    # Sardinian: separate Romance branch outside Italo-Western (umbrella → leaf "Sardinian")
+    "sc":  ["IE", "Italic", "Romance", "Sardinian", "Logudorese-Campidanese", "Sardinian-Common"],
 
     # Non-Romance
-    "deu": ["IE", "Germanic", "West Germanic", "High German"],
+    "deu": ["IE", "Germanic", "West Germanic", "High German", "German"],
     "eng": ["IE", "Germanic", "West Germanic", "Anglo-Frisian", "English"],
-    "slv": ["IE", "Balto-Slavic", "Slavic", "South Slavic", "Western South Slavic"],
+    "slv": ["IE", "Balto-Slavic", "Slavic", "South Slavic", "Western South Slavic", "Slovenian"],
 }
 
 # Sanity check: every code in VARIETY_CODES must appear above.
