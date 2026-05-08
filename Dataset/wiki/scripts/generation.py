@@ -143,7 +143,10 @@ GROUP_LANGUAGES = {"ita_texts", "spa_texts", "fra_texts", "eng_texts",
 
 
 def _output_subdir_for(folder: str) -> Path:
-    base = Path(__file__).resolve().parents[1]   # Dataset/wiki/
+    # Dataset/wiki/normalized/  — this script applies aggressive normalize
+    # (Stage 6).  The native-text counterpart lives at Dataset/wiki/not_normalized/
+    # produced by generation_native.py.
+    base = Path(__file__).resolve().parents[1] / "normalized"
     if folder in GROUP_A:
         return base / "dialects_in_both_OLDI_and_Flores"
     if folder in GROUP_B:

@@ -1,0 +1,11 @@
+{
+  "raw_articles": 176204,
+  "after_article_clean": 167418,
+  "after_article_dedup": 166503,
+  "raw_sentences": 385088,
+  "after_sentence_filter": 359578,
+  "after_sentence_dedup": 225802,
+  "after_prefix_dedup": 212755,
+  "final_sentences": 212526,
+  "final_articles": 164320
+}

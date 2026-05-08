@@ -81,9 +81,29 @@ normalize step** that strips digits, punctuation, symbols, diacritics,
 and case to produce lowercase-ASCII-only text. This makes Wiki output
 directly comparable to FLORES+ and OLDI normalized variants (parallel
 files at `Dataset/flores/normalized/` and `Dataset/oldi/normalized/`,
-produced by `Dataset/{flores,oldi}/scripts/normalize.py`). The original
-text is NOT preserved in the Wiki CSV — only the normalized form. For
-FLORES/OLDI the original files are kept under `not_normalized/`.
+produced by `Dataset/{flores,oldi}/scripts/normalize.py`).
+
+**FOLLOW-UP (May 2026)**: we also keep a parallel **not_normalized**
+Wiki — native text with diacritics, case, punctuation, digits, and
+non-ASCII (Arabic, Greek) preserved. Pretrained encoders (XLM-R, CANINE,
+Sentence-MiniLM, LaBSE) need cased and accented input because their
+sub-word tokenizers were pretrained on natural text; feeding them
+lowercase-ASCII destroys sub-word identity (e.g. `città` becomes the
+sub-word sequence of `cita` which is not in the vocab). The two
+variants live side by side:
+
+- `Dataset/wiki/normalized/`     — output of `scripts/generation.py`
+                                   (active aggressive-normalize pipeline)
+- `Dataset/wiki/not_normalized/` — output of `scripts/generation_native.py`
+                                   (native text, restored from git
+                                   commit 2c641d9, Apr 2026)
+
+Choose the directory matching the method's input requirements, via the
+`WIKI_VARIETY_DIR` (normalized) and `WIKI_VARIETY_DIR_NATIVE`
+(not_normalized) mappings in `analysis._shared.varieties`.
+
+For FLORES/OLDI the original files are kept under `not_normalized/` too,
+following the same pattern.
 
 Pipeline summary (10 stages):
 
@@ -360,20 +380,28 @@ The legacy folder has since been deleted to avoid confusion.
 
 ```text
 Dataset/wiki/
-├── dialects_in_both_OLDI_and_Flores/   → Group A (fur, lij, lmo, sc, scn, vec)
-│   ├── <code>.csv         → columns: text, label, article_id
-│   ├── <code>_meta.csv    → columns: article_id, title, url, n_sentences
-│   └── <code>_stats.json  → per-stage line counts
-├── others_dialects/                    → Group B (lld, nap, pms, roa_tara)
-│   └── (same three files per code)
-├── languages/                          → comparison languages (ita/eng/fra/spa/cat/deu/slv)
-│   ├── <iso>.csv          → columns: text, label, article_id (legacy Camposampiero)
-│   └── <iso>_meta.csv     → columns: article_id, title, url, ...
-├── _cache/                             → wikiextractor *_texts/ + .xml.bz2 (gitignored)
+├── normalized/                              → aggressive-normalize variant
+│   ├── dialects_in_both_OLDI_and_Flores/    → Group A (fur, lij, lmo, sc, scn, vec)
+│   │   ├── <code>.csv         → columns: text, label, article_id
+│   │   ├── <code>_meta.csv    → columns: article_id, title, url, n_sentences
+│   │   └── <code>_stats.json  → per-stage line counts
+│   ├── others_dialects/                     → Group B (lld, nap, pms; roa_tara archived)
+│   │   └── (same three files per code)
+│   └── languages/                           → comparison languages (ita/eng/fra/spa/cat/deu/slv)
+│       ├── <iso>.csv          → columns: text, label, article_id (legacy Camposampiero)
+│       └── <iso>_meta.csv     → columns: article_id, title, url, ...
+│
+├── not_normalized/                          → native-text variant (pretrained encoders)
+│   ├── dialects_in_both_OLDI_and_Flores/    → 6 Group A dialects, native text
+│   ├── others_dialects/                     → 4 Group B + roa_tara (Tarantino) restored
+│   └── languages/                           → 9 langs incl. ara (Arabic) and ell (Greek)
+│
+├── _cache/                                  → wikiextractor *_texts/ + .xml.bz2 (gitignored)
 ├── scripts/
-│   ├── create.py                       → download + extract + invoke generation
-│   └── generation.py                   → cleaning pipeline (§4)
-└── PIPELINE.md                         → this file
+│   ├── create.py                            → download + extract + invoke generation*
+│   ├── generation.py                        → aggressive-normalize pipeline → normalized/
+│   └── generation_native.py                 → native pipeline → not_normalized/
+└── PIPELINE.md                              → this file
 ```
 
 `label` is a small integer defined in `scripts/generation.py:FOLD_LABEL`:

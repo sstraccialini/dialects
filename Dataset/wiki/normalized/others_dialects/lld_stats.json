@@ -1,0 +1,13 @@
+{
+  "raw_articles": 176204,
+  "after_article_clean": 167418,
+  "after_article_dedup": 166503,
+  "raw_sentences": 385088,
+  "after_pre_norm_filter": 360330,
+  "after_normalize": 360330,
+  "after_post_norm_filter": 289525,
+  "after_sentence_dedup": 146553,
+  "after_prefix_dedup": 142356,
+  "final_sentences": 142356,
+  "final_articles": 102367
+}
