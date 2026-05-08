@@ -40,10 +40,14 @@ Dataset/wiki/_cache/
 Dataset/manzini_savoia/
 Dataset/asjp/
 Dataset/typology/
+Dataset/minority_languages/
 
 # Exploratory comparison scripts (one-off analyses, not part of pipeline)
-analysis/_comparisons/asjp_distances.py
-analysis/_comparisons/results/
+# whole _comparisons/ tree is local-only.
+analysis/_comparisons/
+
+# Audit / report scratchpad — local-only.
+AUDIT_REPORT.md
 
 # Method-specific binary artefacts (too large for GitHub).
 # Vectors / models live under method_outputs/; evaluation outputs are kept.
