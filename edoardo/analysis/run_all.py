@@ -106,6 +106,8 @@ def _write_summary(out_dir: Path) -> None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out-dir", type=Path, default=RESULTS_DIR_DEFAULT)
+    ap.add_argument("--gold-dir", type=Path, default=None,
+                    help="Override the directory with gold .npz matrices.")
     ap.add_argument("--include-old", action="store_true")
     ap.add_argument("--baseline-experiment", type=str, default=None)
     ap.add_argument("--permutations", type=int, default=999)
@@ -116,6 +118,9 @@ def main(argv: list[str] | None = None) -> int:
     common = []
     if args.include_old:
         common.append("--include-old")
+    gold_args = []
+    if args.gold_dir:
+        gold_args = ["--gold-dir", str(args.gold_dir)]
 
     errors = 0
     if "inventory" not in args.skip:
@@ -123,7 +128,7 @@ def main(argv: list[str] | None = None) -> int:
                        common + ["--csv", str(args.out_dir / "hpc_inventory.csv")])
     if "correlate" not in args.skip:
         errors += _run("correlate", correlate_with_gold.main,
-                       common + ["--out-dir", str(args.out_dir),
+                       common + gold_args + ["--out-dir", str(args.out_dir),
                                  "--permutations", str(args.permutations)])
     if "cluster" not in args.skip:
         errors += _run("cluster", cluster_agreement.main,

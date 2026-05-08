@@ -124,6 +124,8 @@ def correlate_one(model, gold, target_codes: List[str],
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out-dir", type=Path, default=RESULTS_DIR_DEFAULT)
+    ap.add_argument("--gold-dir", type=Path, default=None,
+                    help="Override the directory with gold .npz matrices.")
     ap.add_argument("--include-old", action="store_true",
                     help="Also compare models from old_experiments/.")
     ap.add_argument("--permutations", type=int, default=999)
@@ -133,7 +135,7 @@ def main(argv: list[str] | None = None) -> int:
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
     models = discover_models(include_old=args.include_old)
-    golds = discover_golds()
+    golds = discover_golds(args.gold_dir)
     if not models:
         print("No models found (no distances.csv under analysis/).", file=sys.stderr)
         return 1
