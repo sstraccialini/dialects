@@ -2,13 +2,22 @@
 #SBATCH --job-name=edoardo_compare
 #SBATCH --output=slurm/logs/edoardo_compare_%j.out
 #SBATCH --error=slurm/logs/edoardo_compare_%j.err
-#SBATCH --time=01:00:00
-#SBATCH --mem=8G
-#SBATCH --cpus-per-task=2
+#SBATCH --partition=medium_cpu
+#SBATCH --qos=normal
+#SBATCH --time=00:30:00
+#SBATCH --mem=4G
+#SBATCH --cpus-per-task=1
 #
-# Build all gold-reference matrices and run the full edoardo/ pipeline.
+# CPU-only job: lang2vec feature lookup + correlations (Spearman, Mantel,
+# CKA, Procrustes) on tiny matrices.  No GPU needed.  Total runtime
+# expected ~1-3 minutes; 30-minute wall is for the lang2vec import +
+# safety margin.
+#
 # Submit from the repo root:
 #     sbatch edoardo/slurm/run_edoardo.slurm
+#
+# To use a different partition (e.g. debug_cpu for fastest turnaround):
+#     sbatch -p debug_cpu --qos=debug --time=00:15:00 edoardo/slurm/run_edoardo.slurm
 #
 # Optional environment variables:
 #     EDOARDO_INCLUDE_OLD=1            also walk old_experiments/
