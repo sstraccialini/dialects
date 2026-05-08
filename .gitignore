@@ -15,6 +15,7 @@ analysis/zeroshot_ppl/
 analysis/steering/
 analysis/multilingual_xlmr_adapted/
 analysis/sentence_labse/
+analysis/xphonebert/
 
 # macOS
 .DS_Store
