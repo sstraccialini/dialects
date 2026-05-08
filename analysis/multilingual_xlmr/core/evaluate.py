@@ -31,6 +31,11 @@ def variety_eval(X, codes, out_dir: Union[str, Path], *, method_label: str = "XL
         family_display_names=GROUP_NAMES,
         display_names=VARIETY_NAMES,
         romance_families=ROMANCE_FAMILIES,
+        # Anisotropy correction at variety level (Mu & Viswanath 2018):
+        # standard for all transformer-derived embeddings to mitigate the
+        # anisotropic cone of pretrained encoders (Ethayarajh 2019).
+        isotropy=True,
+        isotropy_top_k_pc=1,
     )
 
 

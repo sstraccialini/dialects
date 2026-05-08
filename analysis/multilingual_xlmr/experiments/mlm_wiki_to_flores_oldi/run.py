@@ -124,9 +124,9 @@ def main():
     print(f"{METHOD} — {EXPERIMENT}")
     print("=" * 60)
     print(f"  base_model   = {MODEL_NAME}")
-    print(f"  train codes  = {DIALECT_CODES}  (only the 6 dialects)")
+    print(f"  train codes  = {VARIETY_CODES}  (all 13 varieties — rehearsal-style)")
     print(f"  eval codes   = {VARIETY_CODES}  (all 13 varieties)")
-    print(f"  sample_size  = {args.sample_size}  (natural cap per dialect)")
+    print(f"  sample_size  = {args.sample_size}  (cap per variety, balanced sampling)")
     print(f"  epochs       = {args.epochs}")
     print(f"  train batch  = {args.train_batch_size} × grad_acc {args.grad_accumulation}")
     print(f"  lr           = {args.lr}")
@@ -138,21 +138,22 @@ def main():
     model_dir.mkdir(parents=True, exist_ok=True)
 
     # ------------------------------------------------------------------ #
-    # Step 1: load training corpus — Wiki for the 6 dialects ONLY.
-    # XLM-R already knows ita/spa/fra/cat/deu/slv/eng from pre-training,
-    # so retraining on them would just dilute the gradient signal.
-    # Each dialect uses its natural amount of data (no balanced down-sampling).
+    # Step 1: load training corpus — Wiki for ALL 13 varieties (rehearsal).
+    # Including standards (ita/spa/fra/cat/deu/slv/eng) alongside dialects
+    # prevents catastrophic forgetting and avoids asymmetric distance
+    # scaling between adapted (dialect) and unchanged (standard) regions
+    # of the embedding space. Each variety capped at sample_size=100k.
     # ------------------------------------------------------------------ #
-    print(f"Loading Wiki (training, {len(DIALECT_CODES)} dialects only) ...")
+    print(f"Loading Wiki (training, {len(VARIETY_CODES)} varieties — rehearsal) ...")
     wiki_data, wiki_stats = load_wiki_for_training(
-        codes=DIALECT_CODES,
+        codes=VARIETY_CODES,
         sample_size=args.sample_size, random_state=args.random_state,
     )
     wiki_stats["sample_size_param"] = args.sample_size
     wiki_stats["random_state"]      = args.random_state
     wiki_stats.to_csv(mo_root / "run_stats.csv", index=False)
 
-    sents, _ = iter_labeled_sentences(wiki_data, codes=DIALECT_CODES)
+    sents, _ = iter_labeled_sentences(wiki_data, codes=VARIETY_CODES)
     print(f"  total Wiki sentences for MLM: {len(sents):,}")
 
     # ------------------------------------------------------------------ #
@@ -183,7 +184,7 @@ def main():
             "grad_accumulation": args.grad_accumulation,
             "lr":                args.lr,
             "max_length":        MAX_LENGTH,
-            "training_codes":    DIALECT_CODES,
+            "training_codes":    VARIETY_CODES,
             "eval_codes":        VARIETY_CODES,
         },
     )

@@ -47,13 +47,17 @@ class MultilingualEmbedder:
         sum_mask = torch.clamp(input_mask_expanded.sum(1), min=1e-9)
         return sum_embeddings / sum_mask
 
-    def encode(self, texts: List[str], batch_size: int = 32, centre: bool = True) -> np.ndarray:
+    def encode(self, texts: List[str], batch_size: int = 32, centre: bool = False) -> np.ndarray:
         """Encode a list of sentences into L2-normalised vectors.
 
-        ``centre=True`` subtracts the corpus mean from the raw pooled vectors
-        before L2-normalisation. This corrects the anisotropy of BERT-style
-        models (all token embeddings tend to occupy a narrow cone), spreading
-        representations so that cosine distances become meaningful.
+        ``centre`` (default False since May 2026 refactor): if True, subtracts
+        the batch mean from the raw pooled vectors before L2-normalisation.
+        Default disabled because anisotropy correction is now handled
+        uniformly at the variety level inside ``run_evaluation`` via
+        ``isotropy=True`` (Mu & Viswanath 2018), so that all transformer
+        methods (XLM-R, CANINE, Sentence-MiniLM, LaBSE) receive the same
+        treatment. The legacy sentence-level centering is kept available
+        for ablation but should not be combined with the variety-level fix.
         """
         raw_chunks: List[np.ndarray] = []
         for i in tqdm(range(0, len(texts), batch_size), desc="Encoding"):

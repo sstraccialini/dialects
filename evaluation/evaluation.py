@@ -75,6 +75,34 @@ def _l2_normalise(X: np.ndarray) -> np.ndarray:
     return X / norm
 
 
+def isotropy_correction(X: np.ndarray, top_k_pc: int = 1) -> np.ndarray:
+    """
+    Mu & Viswanath 2018 "all-but-the-top" post-processing for embedding
+    spaces. Removes (i) the global mean, then (ii) the top-K principal
+    components of the centered data. Mitigates the well-documented
+    anisotropy of transformer-derived embeddings (Ethayarajh 2019).
+
+    Parameters
+    ----------
+    X         (N, D) input matrix (rows are variety/sentence vectors).
+    top_k_pc  Number of leading PCs to remove. Pass 0 for centering only.
+
+    Returns
+    -------
+    (N, D) corrected matrix, same shape.
+    """
+    Xc = X - X.mean(axis=0, keepdims=True)
+    if top_k_pc <= 0:
+        return Xc
+    n_components = min(top_k_pc, min(Xc.shape) - 1)
+    if n_components <= 0:
+        return Xc
+    U, S, Vt = np.linalg.svd(Xc, full_matrices=False)
+    pcs = Vt[:n_components]                            # (k, D)
+    projection = (Xc @ pcs.T) @ pcs                    # (N, D)
+    return Xc - projection
+
+
 def cosine_distance_matrix(X: np.ndarray) -> np.ndarray:
     """Symmetric, zero-diagonal cosine distance matrix in [0, 2]."""
     sim = cosine_similarity(X)
@@ -586,6 +614,8 @@ def run_sentence_evaluation(
     display_names: Optional[Mapping[str, str]] = None,
     romance_families: Optional[Set[str]] = None,
     normalise: bool = True,
+    isotropy: bool = False,
+    isotropy_top_k_pc: int = 1,
     random_state: int = 42,
     n_sample: Optional[int] = 5000,
     tsne_perplexity: float = 30.0,
@@ -613,6 +643,8 @@ def run_sentence_evaluation(
 
     V = np.asarray(sentence_vectors, dtype=np.float32)
     labels = list(sentence_labels)
+    if isotropy:
+        V = isotropy_correction(V, top_k_pc=isotropy_top_k_pc)
     if normalise:
         V = _l2_normalise(V)
 
@@ -752,6 +784,8 @@ def run_evaluation(
     nearest_k: int = 3,
     random_state: int = 42,
     normalise: bool = True,
+    isotropy: bool = False,
+    isotropy_top_k_pc: int = 1,
 ) -> Dict[str, object]:
     """
     Compute and dump all evaluation artefacts for a method.
@@ -788,6 +822,16 @@ def run_evaluation(
         Seed for MDS / t-SNE / UMAP reproducibility.
     normalise
         L2-normalise rows before computing cosine distances (recommended).
+    isotropy
+        If True, apply Mu & Viswanath (2018) "all-but-the-top" post-processing
+        before distance computation: subtract the global mean and remove the
+        top-K principal components. Mitigates anisotropy of transformer-
+        derived embeddings (Ethayarajh, 2019). Default False to preserve
+        backward-compat with existing runs; turn on for any pretrained
+        encoder evaluation (XLM-R, CANINE, Sentence-MiniLM, LaBSE).
+    isotropy_top_k_pc
+        Number of leading principal components to remove if ``isotropy=True``.
+        1 is the standard choice. Larger values (2-3) over-correct.
 
     Returns
     -------
@@ -804,6 +848,8 @@ def run_evaluation(
         raise ValueError(
             f"variety_codes length {len(variety_codes)} != n_rows {X.shape[0]}"
         )
+    if isotropy:
+        X = isotropy_correction(X, top_k_pc=isotropy_top_k_pc)
     if normalise:
         X = _l2_normalise(X)
 
