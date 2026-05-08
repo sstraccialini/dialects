@@ -39,6 +39,7 @@ Dataset/wiki/_cache/
 # Exploratory side-datasets — kept local-only
 Dataset/manzini_savoia/
 Dataset/asjp/
+Dataset/typology/
 
 # Exploratory comparison scripts (one-off analyses, not part of pipeline)
 analysis/_comparisons/asjp_distances.py
