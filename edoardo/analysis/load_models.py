@@ -92,6 +92,23 @@ def _matching_method_outputs(distances_csv: Path) -> Path:
     return Path(*parts).parent
 
 
+def _find_variety_vectors(method_outputs_dir: Path) -> Optional[Path]:
+    """Climb upward from method_outputs_dir to the method_outputs/ root,
+    looking for variety_vectors.npz.  Most methods save it at
+    method_outputs/<test>/variety_vectors.npz, even when their distance
+    matrices live one level deeper (.../<test>/centroid/distances.csv).
+    """
+    cur = method_outputs_dir
+    while True:
+        candidate = cur / "variety_vectors.npz"
+        if candidate.exists():
+            return candidate
+        if cur.name == "method_outputs" or cur.parent == cur:
+            break
+        cur = cur.parent
+    return None
+
+
 def _load_run_meta(method_outputs_dir: Path) -> Dict:
     for cand in (method_outputs_dir / "run_meta.json",
                  method_outputs_dir.parent / "run_meta.json"):
@@ -120,14 +137,14 @@ def discover_models(include_old: bool = False) -> List[ModelOutput]:
                 if not experiment:
                     continue
                 mo = _matching_method_outputs(dist_csv)
-                vv = mo / "variety_vectors.npz"
+                vv = _find_variety_vectors(mo)
                 out.append(ModelOutput(
                     method=method,
                     root_kind=root_kind,
                     experiment=experiment,
                     variant_path=variant,
                     distances_csv=dist_csv,
-                    variety_vectors_npz=vv if vv.exists() else None,
+                    variety_vectors_npz=vv,
                     run_meta=_load_run_meta(mo),
                 ))
     return out

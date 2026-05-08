@@ -90,6 +90,23 @@ def _matching_method_outputs(distances_csv: Path) -> Path:
     return Path(*parts).parent
 
 
+def _find_variety_vectors(method_outputs_dir: Path) -> Path | None:
+    """Walk upward from ``method_outputs_dir`` (inclusive) to ``method_outputs/``
+    looking for variety_vectors.npz.  Methods save it under ``method_outputs/<test>/``
+    even when their evaluation lives under ``evaluation_results/<test>/<variant>/``,
+    so we need to climb one level above the eval-side variant path.
+    """
+    cur = method_outputs_dir
+    while True:
+        candidate = cur / "variety_vectors.npz"
+        if candidate.exists():
+            return candidate
+        if cur.name == "method_outputs" or cur.parent == cur:
+            break
+        cur = cur.parent
+    return None
+
+
 def _checkpoint_size_bytes(method_outputs_dir: Path) -> int:
     """Heuristic: size in bytes of any model checkpoint we recognise."""
     if not method_outputs_dir.exists():
@@ -123,7 +140,7 @@ def build_inventory(include_old: bool = False) -> pd.DataFrame:
     for dist_csv in _iter_distances_csv(include_old):
         info = _parse_eval_path(dist_csv)
         mo = _matching_method_outputs(dist_csv)
-        vv = mo / "variety_vectors.npz"
+        vv_path = _find_variety_vectors(mo)
         rm = _read_run_meta(mo)
         ckpt_bytes = _checkpoint_size_bytes(mo)
         try:
@@ -137,7 +154,7 @@ def build_inventory(include_old: bool = False) -> pd.DataFrame:
             "variant_path": info["variant_path"],
             "n_varieties": n,
             "distances_csv": str(dist_csv.relative_to(REPO_ROOT)),
-            "variety_vectors_npz": str(vv.relative_to(REPO_ROOT)) if vv.exists() else "",
+            "variety_vectors_npz": str(vv_path.relative_to(REPO_ROOT)) if vv_path else "",
             "method_outputs_dir": str(mo.relative_to(REPO_ROOT)) if mo.exists() else "",
             "checkpoint_size_mb": round(ckpt_bytes / (1024 * 1024), 1),
             "git_commit": (rm or {}).get("git_commit", "")[:8] if rm else "",
