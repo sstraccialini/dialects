@@ -139,12 +139,13 @@ FOLD_LABEL = {
     "nap_texts":      7,   # Napoletano
     "pms_texts":      8,   # Piemontese
     "roa_tara_texts": 9,   # Tarantino (sub-variety of nap, separate Wiki edition)
+    "eml_texts":     10,   # Emiliano-Romagnolo (added for edoardo/exp1_uriel_native)
 }
 DIAL_LABEL = {v: k.replace("_texts", "").upper() for k, v in FOLD_LABEL.items()}
 
 # Group routing: where each variety's CSV ends up under wiki/.
 GROUP_A = {"fur_texts", "lij_texts", "lmo_texts", "sc_texts", "scn_texts", "vec_texts"}
-GROUP_B = {"lld_texts", "nap_texts", "pms_texts", "roa_tara_texts"}
+GROUP_B = {"lld_texts", "nap_texts", "pms_texts", "roa_tara_texts", "eml_texts"}
 
 
 def _output_subdir_for(folder: str) -> Path:

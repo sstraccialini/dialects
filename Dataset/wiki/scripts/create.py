@@ -43,6 +43,13 @@ dumps = [
     ('https://dumps.wikimedia.org/other/mediawiki_content_current/lldwiki/2026-04-01/xml/bzip2/lldwiki-2026-04-01-p1p189680.xml.bz2',    'lld_texts'),       # Ladino (in FLORES but not OLDI)
     ('https://dumps.wikimedia.org/other/mediawiki_content_current/napwiki/2026-04-01/xml/bzip2/napwiki-2026-04-01-p1p66122.xml.bz2',     'nap_texts'),       # Napoletano
     ('https://dumps.wikimedia.org/other/mediawiki_content_current/pmswiki/2026-04-01/xml/bzip2/pmswiki-2026-04-01-p1p111428.xml.bz2',    'pms_texts'),       # Piemontese
+    # eml (Emiliano-Romagnolo) — added for edoardo/exp1_uriel_native.
+    # emlwiki is small (~13k articles) and is NOT chunked under the
+    # `other/mediawiki_content_current/` mirror like the other URLs above.
+    # We use the standard `dumps.wikimedia.org/emlwiki/<YYYYMMDD>/` full
+    # dump URL (single .xml.bz2, no pXpY chunks).  Date 20260401 matches
+    # the rest of the corpus's snapshot.
+    ('https://dumps.wikimedia.org/emlwiki/20260401/emlwiki-20260401-pages-articles.xml.bz2', 'eml_texts'),
     # --- Comparison languages (UNCOMMENT to re-extract; update pXpY page ranges) ---
     # ('https://dumps.wikimedia.org/other/mediawiki_content_current/itwiki/2026-04-01/xml/bzip2/itwiki-2026-04-01-pXpY.xml.bz2',         'ita_texts'),       # Italian (large dump, multi-part)
     # ('https://dumps.wikimedia.org/other/mediawiki_content_current/eswiki/2026-04-01/xml/bzip2/eswiki-2026-04-01-pXpY.xml.bz2',         'spa_texts'),       # Spanish
