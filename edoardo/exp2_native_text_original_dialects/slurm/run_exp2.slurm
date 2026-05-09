@@ -34,9 +34,12 @@ RESULTS_DIR=$PROJECT_ROOT/edoardo/exp2_native_text_original_dialects/results
 
 # 1. Build every gold matrix (URIEL + Glottolog + Grambank + PHOIBLE +
 #    Lexibank + ASJP-lexical + ASJP-genealogy + Geographic).
+#    Use ``|| true`` so partial failures (e.g. one source missing for our
+#    varieties) do not abort the job — the analysis step uses whatever
+#    matrices were successfully written.
 python -m edoardo._shared_gold_builders.build_all \
     --varieties-module "$VARIETIES_MOD" \
-    --out-dir "$GOLD_DIR"
+    --out-dir "$GOLD_DIR" || true
 
 # 2. Run the analysis pipeline against the new gold dir.
 python -m edoardo.analysis.run_all \

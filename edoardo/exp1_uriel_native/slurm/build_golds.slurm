@@ -27,7 +27,7 @@ GOLD_DIR=$PROJECT_ROOT/edoardo/exp1_uriel_native/gold_references/matrices
 
 python -m edoardo._shared_gold_builders.build_all \
     --varieties-module "$VARIETIES_MOD" \
-    --out-dir "$GOLD_DIR"
+    --out-dir "$GOLD_DIR" || true
 
 echo
 echo "Gold matrices in: $GOLD_DIR"

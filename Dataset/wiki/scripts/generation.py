@@ -123,6 +123,7 @@ FOLD_LABEL = {
     "lld_texts":      6,   # Ladino (in FLORES but NOT in OLDI)
     "nap_texts":      7,   # Napoletano
     "pms_texts":      8,   # Piemontese
+    "eml_texts":     16,   # Emiliano-Romagnolo (added for edoardo/exp1_uriel_native)
     # Comparison languages (re-extract pending — see create.py)
     "ita_texts":      9,   # Italian
     "spa_texts":     10,   # Spanish
@@ -137,7 +138,7 @@ DIAL_LABEL = {v: k.replace("_texts", "").upper() for k, v in FOLD_LABEL.items()}
 # Group routing: where each variety's CSV ends up under wiki/.
 GROUP_A = {"fur_texts", "lij_texts", "lmo_texts",
            "sc_texts", "scn_texts", "vec_texts"}
-GROUP_B = {"lld_texts", "nap_texts", "pms_texts"}
+GROUP_B = {"lld_texts", "nap_texts", "pms_texts", "eml_texts"}
 GROUP_LANGUAGES = {"ita_texts", "spa_texts", "fra_texts", "eng_texts",
                    "deu_texts", "cat_texts", "slv_texts"}
 
