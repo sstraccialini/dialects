@@ -31,9 +31,15 @@ def variety_eval(X, codes, out_dir: Union[str, Path], *, method_label: str = "CA
         family_display_names=GROUP_NAMES,
         display_names=VARIETY_NAMES,
         romance_families=ROMANCE_FAMILIES,
-        # Anisotropy correction at variety level (Mu & Viswanath 2018):
-        # standard for all transformer-derived embeddings.
-        isotropy=True,
+        # Anisotropy correction (Mu & Viswanath 2018) is DISABLED by default:
+        # for our 13 variety centroids, the top-1 PC encodes Romance vs
+        # non-Romance separation itself, so removing it would cancel the
+        # very signal we aim to measure (we verified: top-1 PC removal drops
+        # CANINE silhouette_romance from +0.62 to -0.07). The original
+        # Mu & Viswanath fix targets token-level anisotropy, not the
+        # cross-language structure of variety-level centroids.
+        # Pass isotropy=True explicitly if you ever want the legacy behavior.
+        isotropy=False,
         isotropy_top_k_pc=1,
     )
 
