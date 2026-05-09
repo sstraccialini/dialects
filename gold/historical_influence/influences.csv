@@ -1,7 +1,7 @@
 dialect,influence_1,influence_2,influence_3,notes
-fur,deu,slv,fra,"Friulian: heavy contact with German (Habsburg domination) and Slovene (eastern border zone). Third slot is the weakest — French is a marginal influence via Romance koiné and Napoleonic period."
-lij,fra,spa,cat,"Ligurian (Genoese): mediterranean trade contacts — Provençal-French via Liguria, Spanish ports, and Catalan trade routes (Mediterranean commercial empire of the Crown of Aragon)."
-lmo,deu,fra,spa,"Lombard: Habsburg rule of Lombardy + French (Cisalpine Republic, Napoleonic period) + Spanish rule of Milan (1535-1714)."
-sc,spa,cat,fra,"Sardinian: long Aragonese/Spanish rule (1297-1714) — strong Catalan + Spanish substrate. Third slot French is weaker (post-Savoy/Piedmontese influence and brief Napoleonic period)."
-scn,spa,fra,cat,"Sicilian: Norman rule (French) + Aragonese rule (Spanish/Catalan). Historical Greek and Arabic substrate are NOT in our candidate set so cannot be tested."
-vec,deu,slv,fra,"Venetan: Habsburg rule of Veneto (1815-1866) + Slovene contact along eastern border + French influence via Napoleonic Italian Republic (1797-1814)."
+fur,deu,slv,hr,Preferred: slv
+lij,oc,spa,fra,Preferred: oc
+lmo,deu,oc,spa,Preferred: oc
+sc,spa,cat,fra,Preferred: cat
+scn,spa,fra,ar,Preferred: spa
+vec,hr,slv,deu,Preferred: deu

@@ -1,39 +1,36 @@
 # Correlations against gold reference matrices
 
-This folder contains one CSV per gold reference matrix.  Each CSV reports
-how well every model output (under ``analysis/<method>/experiments/<exp>/...``)
-matches that gold, using two Spearman rank correlations:
+One CSV per gold reference matrix.  Columns:
 
-| Column | What it measures |
+| Column | Meaning |
 |---|---|
-| `Spearman ρ (full matrix)` | Spearman correlation on the FULL upper triangle of the shared distance matrix.  For 13 varieties this is 78 unordered pairs; it summarises how well the model recovers ALL pairwise relationships at once. |
-| `Spearman ρ (dialect ↔ external)` | Spearman restricted to the cross-block of (dialect × external-non-Italian) pairs.  For 6 dialects × 6 external languages this is 36 pairs.  It excludes intra-dialect pairs and pairs involving standard Italian, isolating the harder genealogical-boundary-crossing signal. |
+| `Spearman ρ (full matrix)` | Spearman on the full upper triangle of the shared distance matrix. |
+| `Spearman ρ (dialect ↔ external)` | Spearman on the cross-block (dialect × external-non-Italian) only. |
 
-Range for both: −1 (anti-correlated) … 0 (random) … +1 (identical ordering).
-ρ ≥ 0.7 is strong, 0.4–0.7 moderate, < 0.3 weak / noise.
+Range −1 … +1.  Per-experiment versions of the same metrics are written
+inside every method's `evaluation_results/.../gold_correlations.csv`.
 
-Sub-variety roles are defined in ``gold/lexicostatistical/varieties.py``:
+## Reading per gold type
+
+* **Lexicostatistical (LDND on Swadesh-207).**  High ρ = the model
+  recovers lexical-cognate similarity.  Central metric for language
+  similarity.
+
+* **Geographic (Haversine).**  A *language-aware* model is expected to
+  score MODERATELY on the full matrix and NEAR-ZERO or NEGATIVELY on the
+  dialect↔external block — Slovenian is geographically near Veneto but
+  linguistically Slavic.  A negative ρ on dialect↔external for the geo
+  gold is a positive signal that the model captures language rather
+  than geography.
+
+## Sub-variety roles
+
+Defined in ``gold/lexicostatistical/varieties.py``:
 ``dialect`` ∈ {fur, lij, lmo, sc, scn, vec};
 ``italian`` = {ita} (excluded from the dialect↔external column);
 ``external`` ∈ {fra, spa, cat, deu, slv, eng}.
-
-When the variety set grows (more Wikipedia languages added), update
-``varieties.py``, regenerate the gold matrices via the ``rebuild_*.slurm``
-jobs, and rerun ``correlate_against_gold`` — the metric definitions and
-column names stay the same.
 
 ## Files
 
 * `correlation_geographic_haversine.csv`
 * `correlation_lexicostat_ldnd.csv`
-
-## How to interpret a result
-
-Look at one model row.  If `Spearman ρ (full matrix)` is high (e.g. 0.8)
-the model captures the OVERALL similarity structure well.  If
-`Spearman ρ (dialect ↔ external)` is also high, the model handles the
-dialect-to-external-language relations specifically.  A model can score
-high on the full matrix but low on the dialect↔external column when it
-is good at intra-dialect distinctions but poor at relating dialects to
-the standard languages around them — that is precisely the kind of
-imbalance worth flagging in the paper.
