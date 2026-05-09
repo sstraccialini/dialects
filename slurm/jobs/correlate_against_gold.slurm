@@ -19,13 +19,16 @@ set -euo pipefail
 source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 cd "$PROJECT_ROOT"
 
-GOLD_DIR=$PROJECT_ROOT/gold/lexicostatistical/matrices
-OUT_DIR=$PROJECT_ROOT/gold/lexicostatistical/results
+OUT_DIR=$PROJECT_ROOT/gold/_correlations
 
 mkdir -p "$OUT_DIR"
 
+# All gold dirs we want to correlate against; add new ones here when more
+# gold matrix families are added under gold/<family>/matrices/.
 python -u -m evaluation.correlate_against_gold \
-    --gold-dir "$GOLD_DIR" \
+    --gold-dir \
+        "$PROJECT_ROOT/gold/lexicostatistical/matrices" \
+        "$PROJECT_ROOT/gold/geographic/matrices" \
     --analysis-root "$PROJECT_ROOT/analysis" \
     --out-dir "$OUT_DIR"
 

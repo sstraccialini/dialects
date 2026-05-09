@@ -240,8 +240,8 @@ imbalance worth flagging in the paper.
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--gold-dir", type=Path, required=True,
-                    help="Folder with one or more <name>.npz gold matrices.")
+    ap.add_argument("--gold-dir", type=Path, nargs="+", required=True,
+                    help="One or more folders containing <name>.npz gold matrices.")
     ap.add_argument("--analysis-root", type=Path, default=REPO_ROOT / "analysis",
                     help="Root of the analysis/ tree to scan for models.")
     ap.add_argument("--out-dir", type=Path, required=True,
@@ -259,7 +259,9 @@ def main(argv: list[str] | None = None) -> int:
     dialect_codes: List[str] = list(roles.DIALECT_CODES)
     external_codes: List[str] = list(roles.EXTERNAL_CODES)
 
-    gold_paths = sorted(args.gold_dir.glob("*.npz"))
+    gold_paths: List[Path] = []
+    for d in args.gold_dir:
+        gold_paths.extend(sorted(d.glob("*.npz")))
     if not gold_paths:
         print(f"No .npz gold found in {args.gold_dir}", file=sys.stderr)
         return 1
