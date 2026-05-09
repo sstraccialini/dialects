@@ -54,14 +54,24 @@ VARIETIES = [
     ("vec", "italo_romance"),
     # Standard Italian
     ("ita", "italian"),
-    # Other Romance
+    # Other Romance (original 3 + 4 new)
     ("spa", "romance"),
     ("fra", "romance"),
     ("cat", "romance"),
-    # Non-Romance
+    ("por", "romance"),       # Portuguese (NEW)
+    ("ron", "romance"),       # Romanian (NEW)
+    ("oci", "romance"),       # Occitan (NEW)
+    ("glg", "romance"),       # Galician (NEW)
+    # Germanic
     ("deu", "germanic"),
-    ("slv", "slavic"),
     ("eng", "english"),
+    # Slavic (original 1 + 1 new)
+    ("slv", "slavic"),
+    ("hrv", "slavic"),        # Croatian (NEW)
+    # Other Indo-European (NEW)
+    ("sqi", "albanian"),      # Albanian Tosk standard (NEW)
+    # Non-Indo-European (NEW)
+    ("hun", "uralic"),        # Hungarian (NEW)
 ]
 
 VARIETY_CODES = [code for code, _ in VARIETIES]
@@ -69,30 +79,32 @@ VARIETY_GROUP = dict(VARIETIES)
 
 # Convenience subsets
 DIALECT_CODES = ["fur", "lij", "lmo", "sc", "scn", "vec"]
-MODERN_LANGUAGE_CODES = ["ita", "spa", "fra", "cat", "deu", "slv", "eng"]
+MODERN_LANGUAGE_CODES = [
+    "ita", "spa", "fra", "cat", "por", "ron", "oci", "glg",   # Romance
+    "deu", "eng",                                               # Germanic
+    "slv", "hrv",                                               # Slavic
+    "sqi",                                                      # Albanian
+    "hun",                                                      # Uralic
+]
 
 
 # --------------------------------------------------------------------------- #
 # Per-corpus path resolvers
 # --------------------------------------------------------------------------- #
+# Languages routed to wiki/{normalized,not_normalized}/languages/.
+_LANG_CODES = ["ita", "spa", "fra", "cat", "por", "ron", "oci", "glg",
+               "deu", "eng", "slv", "hrv", "sqi", "hun"]
+
 WIKI_VARIETY_DIR = {
-    "fur": WIKI_GROUP_A_DIR, "lij": WIKI_GROUP_A_DIR, "lmo": WIKI_GROUP_A_DIR,
-    "sc":  WIKI_GROUP_A_DIR, "scn": WIKI_GROUP_A_DIR, "vec": WIKI_GROUP_A_DIR,
-    "ita": WIKI_LANGUAGES_DIR, "spa": WIKI_LANGUAGES_DIR, "fra": WIKI_LANGUAGES_DIR,
-    "cat": WIKI_LANGUAGES_DIR, "deu": WIKI_LANGUAGES_DIR, "slv": WIKI_LANGUAGES_DIR,
-    "eng": WIKI_LANGUAGES_DIR,
+    **{c: WIKI_GROUP_A_DIR for c in DIALECT_CODES},
+    **{c: WIKI_LANGUAGES_DIR for c in _LANG_CODES},
 }
 
 # Same mapping for the native (not_normalized) variant.  Use this for
 # pretrained-encoder methods (XLM-R, CANINE, Sentence-MiniLM, LaBSE).
 WIKI_VARIETY_DIR_NATIVE = {
-    "fur": WIKI_NATIVE_GROUP_A_DIR, "lij": WIKI_NATIVE_GROUP_A_DIR,
-    "lmo": WIKI_NATIVE_GROUP_A_DIR, "sc":  WIKI_NATIVE_GROUP_A_DIR,
-    "scn": WIKI_NATIVE_GROUP_A_DIR, "vec": WIKI_NATIVE_GROUP_A_DIR,
-    "ita": WIKI_NATIVE_LANGUAGES_DIR, "spa": WIKI_NATIVE_LANGUAGES_DIR,
-    "fra": WIKI_NATIVE_LANGUAGES_DIR, "cat": WIKI_NATIVE_LANGUAGES_DIR,
-    "deu": WIKI_NATIVE_LANGUAGES_DIR, "slv": WIKI_NATIVE_LANGUAGES_DIR,
-    "eng": WIKI_NATIVE_LANGUAGES_DIR,
+    **{c: WIKI_NATIVE_GROUP_A_DIR for c in DIALECT_CODES},
+    **{c: WIKI_NATIVE_LANGUAGES_DIR for c in _LANG_CODES},
 }
 
 # FLORES filenames use the Italian-name slug.
@@ -101,9 +113,14 @@ FLORES_SLUG = {
     "scn": "siciliano", "vec": "veneto",
     "ita": "italiano", "spa": "spagnolo", "fra": "francese", "cat": "catalano",
     "deu": "tedesco", "slv": "sloveno", "eng": "inglese",
+    # NEW (FLORES+ downloaded May 2026)
+    "por": "portoghese", "ron": "rumeno", "oci": "occitano", "glg": "galiziano",
+    "hrv": "croato", "sqi": "albanese", "hun": "ungherese",
 }
 
 # OLDI parquet filenames use BCP47 ("<iso>_<script>"); Sardinian uses "srd".
+# NOTE: the 7 new standards (por/ron/oci/glg/hrv/sqi/hun) are NOT in OLDI.
+# They get OLDI-eval skipped via the missing-key check in data loaders.
 OLDI_PARQUET = {
     "fur": "fur_Latn", "lij": "lij_Latn", "lmo": "lmo_Latn",
     "sc":  "srd_Latn", "scn": "scn_Latn", "vec": "vec_Latn",
@@ -135,18 +152,27 @@ VARIETY_NAMES = {
     "spa": "Spanish",
     "fra": "French",
     "cat": "Catalan",
+    "por": "Portuguese",
+    "ron": "Romanian",
+    "oci": "Occitan",
+    "glg": "Galician",
     "deu": "German",
-    "slv": "Slovenian",
     "eng": "English",
+    "slv": "Slovenian",
+    "hrv": "Croatian",
+    "sqi": "Albanian",
+    "hun": "Hungarian",
 }
 
 GROUP_NAMES = {
     "italo_romance": "Italo-Romance",
     "italian":       "Italian (standard)",
-    "romance":       "Romance (ES, FR, CA)",
-    "germanic":      "Germanic (German)",
+    "romance":       "Romance (other)",
+    "germanic":      "Germanic",
     "english":       "English",
-    "slavic":        "Slovenian",
+    "slavic":        "Slavic",
+    "albanian":      "Albanian",
+    "uralic":        "Uralic (non-IE)",
 }
 
 GROUP_COLORS = {
@@ -156,9 +182,16 @@ GROUP_COLORS = {
     "germanic":      "#1f77b4",  # blue
     "english":       "#17becf",  # cyan
     "slavic":        "#e377c2",  # pink
+    "albanian":      "#9467bd",  # purple
+    "uralic":        "#8c564b",  # brown
 }
 
 ROMANCE_FAMILIES = {"italo_romance", "italian", "romance"}
+# Families to EXCLUDE for the "romance no-dialects" silhouette: probes how
+# well the standard Romance languages (ita/spa/fra/cat) cluster against
+# non-Romance after the model has been adapted on dialects.  Useful as a
+# catastrophic-forgetting check.
+DIALECT_FAMILIES = {"italo_romance"}
 
 
 # --------------------------------------------------------------------------- #

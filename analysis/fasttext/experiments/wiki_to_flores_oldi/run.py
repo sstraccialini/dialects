@@ -111,10 +111,10 @@ def main():
     wiki_data, wiki_stats = load_wiki_for_training(
         sample_size=args.sample_size, random_state=args.random_state,
     )
-    print("\nLoading OLDI ...")
-    oldi_data, _ = load_oldi_parallel(verbose=False)
     print("\nLoading FLORES ...")
     flores_data, _ = load_flores_parallel(verbose=False)
+    # Test ONLY on FLORES (extended setup with 14 standards: the 7 new ones
+    # have no OLDI counterparts — see analysis/_shared/varieties.OLDI_PARQUET).
 
     mo_root = SCRIPT_DIR / "method_outputs"
     mo_root.mkdir(parents=True, exist_ok=True)
@@ -147,7 +147,6 @@ def main():
     )
 
     evaluate_on("flores", flores_data, model, VARIETY_CODES)
-    evaluate_on("oldi",   oldi_data,   model, VARIETY_CODES)
 
     print("\nDone.")
 

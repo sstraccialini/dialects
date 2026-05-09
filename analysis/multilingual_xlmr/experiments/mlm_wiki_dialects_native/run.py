@@ -56,7 +56,7 @@ DEFAULT_EPOCHS      = 3
 DEFAULT_TRAIN_BATCH = 16
 DEFAULT_GRAD_ACCUM  = 4
 DEFAULT_LR          = 3e-5
-DEFAULT_SAMPLE_SIZE = 50_000
+DEFAULT_SAMPLE_SIZE = 100_000
 
 
 def _save_variety_vectors(X: np.ndarray, codes, out_dir: Path) -> None:
@@ -167,16 +167,14 @@ def main():
         },
     )
 
-    print("\nLoading OLDI native ...")
-    oldi_data, _ = load_oldi_parallel(verbose=False)
     print("Loading FLORES native ...")
     flores_data, _ = load_flores_parallel(verbose=False)
+    # Test ONLY on FLORES (the 7 new standards have no OLDI counterparts).
 
     embedder = MultilingualEmbedder(
         model_name=str(model_dir), device=args.device, max_length=MAX_LENGTH,
     )
     evaluate_on("flores", flores_data, embedder, VARIETY_CODES)
-    evaluate_on("oldi",   oldi_data,   embedder, VARIETY_CODES)
 
     print("\nDone.")
 

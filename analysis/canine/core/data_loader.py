@@ -94,6 +94,10 @@ def load_oldi_parallel(
     data: Dict[str, List[str]] = {}
     rows = []
     for code in codes:
+        if code not in OLDI_PARQUET:
+            if verbose:
+                print(f"  [oldi   {code:>4}] not in OLDI dataset — skipping")
+            continue
         path = _oldi_parquet_path(code)
         if not path.exists():
             print(f"  [oldi   {code:>4}] WARNING: {path} not found — skipping")
