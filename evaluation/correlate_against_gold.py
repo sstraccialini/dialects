@@ -1,39 +1,46 @@
 """
-Correlate every embedding-method output under ``analysis/`` against the
-team-curated lexicostatistical LDND gold matrix.
+Correlate every embedding-method output under ``analysis/`` against each
+gold-reference distance matrix found under ``--gold-dir``.
 
-Two correlation metrics are reported per (model, gold) pair:
+Two correlation metrics are reported per (model, gold) pair, written
+into separate CSVs (one per gold):
 
-    rho   — Spearman rank correlation on the FULL upper triangle of the
-            shared distance matrix.  Captures ALL pairwise relationships
-            between varieties.
-    rho2  — Spearman correlation restricted to the cross-block of pairs
-            where one variety is a "dialect" and the other is an "external"
-            (non-Italian, non-dialect) language.  Excludes intra-dialect
-            pairs and pairs involving standard Italian.  Tells you how
-            well the model recovers the *dialect ↔ external-language*
-            relationships specifically — the hardest signal because it
-            crosses the genealogical boundary.
+    Spearman ρ (full matrix)       — Spearman rank correlation on the
+        FULL upper triangle of the shared distance matrix.  Captures ALL
+        pairwise relationships between the varieties present in both
+        the model output and the gold (so for our 13-variety setup, on
+        the 13×12/2 = 78 unordered pairs).
+
+    Spearman ρ (dialect ↔ external) — Spearman correlation restricted to
+        the cross-block of pairs where one variety is a "dialect" and the
+        other is an "external" (non-Italian, non-dialect) language.
+        Excludes intra-dialect pairs (e.g. lij↔vec) and pairs involving
+        standard Italian.  This is the harder signal because it crosses
+        the genealogical boundary; for our 6 dialects × 6 external
+        languages it is computed on 36 pairs.
 
 Roles are read from ``gold/lexicostatistical/varieties.py``.  When the
-variety set grows (more Wikipedia languages added), update that file and
-the script adapts automatically.
+variety set grows (more Wikipedia languages added), update that file
+and this script adapts automatically.
 
-Models are discovered by globbing ``analysis/*/experiments/*/evaluation_results/**/distances.csv``.
-We work on the SHARED label set between each (model, gold), so model
-runs that include extra varieties (e.g. 16-variety legacy runs) are
-restricted to the gold's labels before correlation.
+Models are discovered by globbing
+``analysis/*/experiments/*/evaluation_results/**/distances.csv``.
+For each (model, gold), the analysis works on the SHARED label set so
+that legacy 16-variety runs are correctly restricted to the gold's
+codes before correlation.
 
-Output: a single CSV ``<out>/correlation_with_gold_pivot.csv`` with one
-row per (model, gold) pair and columns:
-    model_id, method, experiment, variant, gold_name,
-    n_shared_full, rho, n_shared_dial_ext, rho2
+Output: under ``--out-dir`` one CSV per gold:
+    correlation_<gold_name>.csv     columns:
+        method, experiment, variant, model_id,
+        Spearman ρ (full matrix),
+        Spearman ρ (dialect ↔ external)
+plus a ``README.md`` explaining the metrics.
 
 CLI:
     python -m evaluation.correlate_against_gold \\
         --gold-dir gold/lexicostatistical/matrices \\
         --analysis-root analysis \\
-        --out gold/lexicostatistical/results/correlation_with_gold_pivot.csv
+        --out-dir gold/lexicostatistical/results
 """
 from __future__ import annotations
 
@@ -156,43 +163,80 @@ def _cross_block(matrix: np.ndarray, labels: List[str],
     return matrix[np.ix_(rows, cols)].flatten()
 
 
+# Column names — descriptive, used directly as CSV headers.
+COL_RHO_FULL   = "Spearman ρ (full matrix)"
+COL_RHO_DIAEXT = "Spearman ρ (dialect ↔ external)"
+
+
 def correlate_one(model_dist: np.ndarray, model_labels: List[str],
                   gold_dist: np.ndarray,  gold_labels:  List[str],
                   dialect_codes: List[str],
                   external_codes: List[str]) -> Dict[str, float]:
-    """Compute rho (full) and rho2 (dialect × external) for one (model, gold)."""
+    """Compute the two correlation metrics for one (model, gold) pair."""
     shared = [c for c in gold_labels if c in model_labels]
     if len(shared) < 4:
-        return {"n_shared_full": len(shared), "rho": float("nan"),
-                "n_shared_dial_ext": 0, "rho2": float("nan")}
+        return {COL_RHO_FULL: float("nan"), COL_RHO_DIAEXT: float("nan")}
 
     md, _ = _restrict(model_dist, model_labels, shared)
     gd, _ = _restrict(gold_dist,  gold_labels,  shared)
 
-    # rho: full upper triangle
-    a_full = _full_triangle(md)
-    b_full = _full_triangle(gd)
-    rho = _spearman(a_full, b_full)
+    rho_full = _spearman(_full_triangle(md), _full_triangle(gd))
 
-    # rho2: dialect × external cross-block
     d_set = [c for c in dialect_codes if c in shared]
     e_set = [c for c in external_codes if c in shared]
-    a_cross = _cross_block(md, shared, d_set, e_set)
-    b_cross = _cross_block(gd, shared, d_set, e_set)
-    rho2 = _spearman(a_cross, b_cross)
+    rho_diaext = _spearman(
+        _cross_block(md, shared, d_set, e_set),
+        _cross_block(gd, shared, d_set, e_set),
+    )
 
-    return {
-        "n_shared_full": len(shared),
-        "rho": rho,
-        "n_shared_dial_ext": int(min(len(d_set), len(e_set))) * (
-            int(max(len(d_set), len(e_set))) if (d_set and e_set) else 0),
-        "rho2": rho2,
-    }
+    return {COL_RHO_FULL: rho_full, COL_RHO_DIAEXT: rho_diaext}
 
 
 # --------------------------------------------------------------------------- #
 # CLI
 # --------------------------------------------------------------------------- #
+
+README_TEMPLATE = """\
+# Correlations against gold reference matrices
+
+This folder contains one CSV per gold reference matrix.  Each CSV reports
+how well every model output (under ``analysis/<method>/experiments/<exp>/...``)
+matches that gold, using two Spearman rank correlations:
+
+| Column | What it measures |
+|---|---|
+| `Spearman ρ (full matrix)` | Spearman correlation on the FULL upper triangle of the shared distance matrix.  For 13 varieties this is 78 unordered pairs; it summarises how well the model recovers ALL pairwise relationships at once. |
+| `Spearman ρ (dialect ↔ external)` | Spearman restricted to the cross-block of (dialect × external-non-Italian) pairs.  For 6 dialects × 6 external languages this is 36 pairs.  It excludes intra-dialect pairs and pairs involving standard Italian, isolating the harder genealogical-boundary-crossing signal. |
+
+Range for both: −1 (anti-correlated) … 0 (random) … +1 (identical ordering).
+ρ ≥ 0.7 is strong, 0.4–0.7 moderate, < 0.3 weak / noise.
+
+Sub-variety roles are defined in ``gold/lexicostatistical/varieties.py``:
+``dialect`` ∈ {{fur, lij, lmo, sc, scn, vec}};
+``italian`` = {{ita}} (excluded from the dialect↔external column);
+``external`` ∈ {{fra, spa, cat, deu, slv, eng}}.
+
+When the variety set grows (more Wikipedia languages added), update
+``varieties.py``, regenerate the gold matrices via the ``rebuild_*.slurm``
+jobs, and rerun ``correlate_against_gold`` — the metric definitions and
+column names stay the same.
+
+## Files
+
+{file_list}
+
+## How to interpret a result
+
+Look at one model row.  If `Spearman ρ (full matrix)` is high (e.g. 0.8)
+the model captures the OVERALL similarity structure well.  If
+`Spearman ρ (dialect ↔ external)` is also high, the model handles the
+dialect-to-external-language relations specifically.  A model can score
+high on the full matrix but low on the dialect↔external column when it
+is good at intra-dialect distinctions but poor at relating dialects to
+the standard languages around them — that is precisely the kind of
+imbalance worth flagging in the paper.
+"""
+
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
@@ -200,33 +244,33 @@ def main(argv: list[str] | None = None) -> int:
                     help="Folder with one or more <name>.npz gold matrices.")
     ap.add_argument("--analysis-root", type=Path, default=REPO_ROOT / "analysis",
                     help="Root of the analysis/ tree to scan for models.")
-    ap.add_argument("--out", type=Path, required=True,
-                    help="Path of the pivot CSV to write.")
+    ap.add_argument("--out-dir", type=Path, required=True,
+                    help="Folder where one CSV per gold is written.")
     ap.add_argument("--varieties-module", type=str,
                     default="gold.lexicostatistical.varieties",
                     help="Module exporting DIALECT_CODES + EXTERNAL_CODES.")
     args = ap.parse_args(argv)
 
-    # Roles for rho2
+    args.out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Roles for the dialect↔external metric
     import importlib
     roles = importlib.import_module(args.varieties_module)
     dialect_codes: List[str] = list(roles.DIALECT_CODES)
     external_codes: List[str] = list(roles.EXTERNAL_CODES)
 
-    # Discover golds
     gold_paths = sorted(args.gold_dir.glob("*.npz"))
     if not gold_paths:
         print(f"No .npz gold found in {args.gold_dir}", file=sys.stderr)
         return 1
-
-    # Discover models
     dist_csvs = _iter_distance_csvs(args.analysis_root)
     print(f"Golds  : {[p.stem for p in gold_paths]}")
     print(f"Models : {len(dist_csvs)} distances.csv files found under {args.analysis_root}")
 
-    rows: List[Dict] = []
+    written: List[str] = []
     for gp in gold_paths:
         gold_mat, gold_labels, _ = _load_gold(gp)
+        rows: List[Dict] = []
         for dc in dist_csvs:
             try:
                 model_mat, model_labels = _load_distance_matrix(dc)
@@ -237,30 +281,32 @@ def main(argv: list[str] | None = None) -> int:
             res = correlate_one(model_mat, model_labels,
                                 gold_mat, gold_labels,
                                 dialect_codes, external_codes)
-            rows.append({**info, "gold_name": gp.stem, **res,
-                         "distances_csv": str(dc.relative_to(REPO_ROOT))})
+            rows.append({
+                "method":     info["method"],
+                "experiment": info["experiment"],
+                "variant":    info["variant"],
+                "model_id":   info["model_id"],
+                COL_RHO_FULL:   res[COL_RHO_FULL],
+                COL_RHO_DIAEXT: res[COL_RHO_DIAEXT],
+            })
 
-    df = pd.DataFrame(rows)
-    if df.empty:
-        print("No (model, gold) pairs computed.", file=sys.stderr)
-        return 1
+        if not rows:
+            print(f"  no valid (model, gold) pairs for {gp.stem}", file=sys.stderr)
+            continue
 
-    # Order columns
-    cols = ["gold_name", "method", "experiment", "variant", "model_id",
-            "n_shared_full", "rho",
-            "n_shared_dial_ext", "rho2",
-            "root_kind", "distances_csv"]
-    df = df[cols].sort_values(["gold_name", "rho"], ascending=[True, False])
+        df = pd.DataFrame(rows)
+        df = df.sort_values(COL_RHO_FULL, ascending=False)
+        out_csv = args.out_dir / f"correlation_{gp.stem}.csv"
+        df.to_csv(out_csv, index=False, float_format="%.4f")
+        written.append(out_csv.name)
+        print(f"\n→ {out_csv}  ({len(df)} rows)")
+        print(df.head(10).to_string(index=False))
 
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(args.out, index=False, float_format="%.4f")
-    print(f"\nWrote {len(df)} rows → {args.out}")
-
-    # Console preview: top by rho per gold
-    for gn, sub in df.groupby("gold_name"):
-        print(f"\n--- {gn} : top 10 by rho ---")
-        cols_pre = ["model_id", "n_shared_full", "rho", "n_shared_dial_ext", "rho2"]
-        print(sub[cols_pre].head(10).to_string(index=False))
+    # Write a README in the out dir explaining the columns
+    readme_path = args.out_dir / "README.md"
+    file_list = "\n".join(f"* `{n}`" for n in sorted(written))
+    readme_path.write_text(README_TEMPLATE.format(file_list=file_list or "(none)"))
+    print(f"\n→ {readme_path}")
 
     return 0
 

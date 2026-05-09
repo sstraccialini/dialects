@@ -20,19 +20,15 @@ source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 cd "$PROJECT_ROOT"
 
 GOLD_DIR=$PROJECT_ROOT/gold/lexicostatistical/matrices
-OUT_CSV=$PROJECT_ROOT/gold/lexicostatistical/results/correlation_with_gold_pivot.csv
+OUT_DIR=$PROJECT_ROOT/gold/lexicostatistical/results
 
-mkdir -p "$(dirname "$OUT_CSV")"
+mkdir -p "$OUT_DIR"
 
 python -u -m evaluation.correlate_against_gold \
     --gold-dir "$GOLD_DIR" \
     --analysis-root "$PROJECT_ROOT/analysis" \
-    --out "$OUT_CSV"
+    --out-dir "$OUT_DIR"
 
 echo
-echo "Top 10 models by rho (against lex LDND):"
-python3 -c "
-import pandas as pd
-df = pd.read_csv('$OUT_CSV')
-print(df.sort_values('rho', ascending=False).head(10)[['model_id','n_shared_full','rho','rho2']].to_string(index=False))
-"
+echo "Files produced:"
+ls -la "$OUT_DIR"
