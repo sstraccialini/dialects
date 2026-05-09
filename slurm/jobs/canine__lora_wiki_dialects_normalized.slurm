@@ -20,8 +20,13 @@
 set -uo pipefail
 source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 
-# Make sure peft is installed in the venv (no-op if already present)
-pip install -q "peft>=0.7.0" 2>&1 | tail -3 || true
+# NOTA: peft deve essere installato MANUALMENTE dal login node prima del job.
+# I compute nodes HPC non hanno accesso internet, pip install qui fallirebbe.
+# Da login node:  source slurm/tools/env.sh && pip install "peft>=0.7.0"
+python -c "import peft; print('peft', peft.__version__)" || {
+    echo "ERROR: peft not installed in venv. Install from login node first."
+    exit 1
+}
 
 nvidia-smi || true
 df -h "$HOME" || true
