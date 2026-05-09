@@ -12,6 +12,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import os
+import shutil
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -47,17 +48,29 @@ DATASETS: Dict[str, Dict[str, str]] = {
 
 
 def ensure_dataset(key: str, cache: Path = CACHE_DEFAULT) -> Path:
-    """Download (once) + unpack a dataset; return the unpacked root directory."""
+    """Download (once) + unpack a dataset; return the unpacked root directory.
+
+    If a previous extraction failed and left debris, clean it before
+    retrying.  We treat an extract_dir as "valid" only if a ``languages.csv``
+    file is reachable beneath it (the universal CLDF marker).
+    """
     cfg = DATASETS[key]
     cache.mkdir(parents=True, exist_ok=True)
     url = cfg["url"]
     extract_dir = cache / cfg["name"]
-    if extract_dir.exists() and any(extract_dir.iterdir()):
-        return _find_inner_root(extract_dir)
+
+    if extract_dir.exists():
+        if any(extract_dir.rglob("languages.csv")):
+            return _find_inner_root(extract_dir)
+        # partial / broken extract — wipe and retry
+        print(f"[cldf] cleaning partial extract at {extract_dir}")
+        shutil.rmtree(extract_dir)
+
     zip_path = cache / f"{cfg['name']}.zip"
     if not zip_path.exists():
         print(f"[cldf] downloading {url} -> {zip_path}")
         urllib.request.urlretrieve(url, zip_path)
+    extract_dir.mkdir(parents=True, exist_ok=True)
     print(f"[cldf] unpacking {zip_path} -> {extract_dir}")
     with zipfile.ZipFile(zip_path) as z:
         z.extractall(extract_dir)
