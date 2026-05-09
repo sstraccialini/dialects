@@ -1,4 +1,0 @@
-# Generated output files — ignore everything except the .gitkeep marker.
-*
-!.gitignore
-!.gitkeep
