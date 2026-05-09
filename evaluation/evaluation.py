@@ -993,6 +993,24 @@ def run_evaluation(
                     f"  {sil_samples_arr[idx]:>+10.4f}\n"
                 )
 
+    # ---- gold-matrix correlations -----------------------------------------
+    # If gold matrices are present under gold/<family>/matrices/ at the
+    # repo root, write a small per-experiment correlations CSV next to
+    # the silhouette report.  Failures are swallowed so they cannot break
+    # any existing run.py.
+    gold_corr_path: Optional[Path] = None
+    try:
+        from evaluation._gold_correlation import write_per_experiment_gold_csv
+        gold_corr_path = out_dir / "gold_correlations.csv"
+        df_gold = write_per_experiment_gold_csv(
+            gold_corr_path, dist, codes,
+        )
+        if df_gold is None:
+            gold_corr_path = None
+    except Exception as exc:
+        warnings.warn(f"gold-correlation write skipped: {exc}", stacklevel=2)
+        gold_corr_path = None
+
     return {
         "distances_path": str(dist_path),
         "similarity_path": str(sim_path),
@@ -1007,6 +1025,7 @@ def run_evaluation(
         "family_stats_path": str(fam_stats_path) if fam_stats_path else None,
         "clustering_metrics_path": str(cluster_path) if cluster_path else None,
         "silhouette_path": str(sil_path),
+        "gold_correlations_path": str(gold_corr_path) if gold_corr_path else None,
         "silhouette_family": sil_family,
         "silhouette_romance_vs_rest": sil_romance,
         "n_varieties": n,
