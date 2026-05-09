@@ -6,7 +6,7 @@
 #SBATCH --qos=normal
 #SBATCH --time=01:30:00
 #SBATCH --mem=8G
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=16
 #
 # Compute mean Levenshtein (LD) + LDND distance matrices on the
 # Wiktionary Swadesh-207 wordlist (split into m/f for gendered concepts),
