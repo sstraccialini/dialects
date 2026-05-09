@@ -174,14 +174,18 @@ def main(argv: list[str] | None = None) -> int:
                     default=REPO_ROOT / "gold" / "historical_influence" / "results")
     ap.add_argument("--varieties-module", type=str,
                     default="gold.lexicostatistical.varieties",
-                    help="Module exporting DIALECT_CODES + EXTERNAL_CODES + ITALIAN_CODES.")
+                    help="Module exporting DIALECT_CODES + EXTERNAL_CODES.")
     args = ap.parse_args(argv)
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
     roles = importlib.import_module(args.varieties_module)
     dialect_codes: List[str] = list(roles.DIALECT_CODES)
-    candidate_codes: List[str] = list(roles.EXTERNAL_CODES) + list(roles.ITALIAN_CODES)
+    # Italian is intentionally EXCLUDED from the candidate pool — it is not
+    # listed among any dialect's documented historical influences, and we
+    # do not want a model to score on the trivial "ita is closest to every
+    # dialect" answer.  Candidates are only the non-Italian external codes.
+    candidate_codes: List[str] = list(roles.EXTERNAL_CODES)
 
     gold = _load_gold(args.gold_csv)
     if not gold:

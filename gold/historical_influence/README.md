@@ -15,9 +15,12 @@ top-3 set-overlap metric (see below).
 ``dialect, influence_1, influence_2, influence_3, notes``.
 
 The three "influence" columns are codes from
-``gold/lexicostatistical/varieties.py::EXTERNAL_CODES`` ∪ ``ITALIAN_CODES``
-— i.e. anything in our 13-variety set that is *not* a dialect.  Order
-of the three columns is irrelevant (sets, not lists).
+``gold/lexicostatistical/varieties.py::EXTERNAL_CODES`` only —
+{{fra, spa, cat, deu, slv, eng}}.  Standard Italian (``ita``) is
+**deliberately excluded** from both the gold and the candidate pool: it
+is the standard reference for every dialect, so including it would
+collapse the metric onto a trivial "is ita the closest?" question.
+Order of the three columns is irrelevant (sets, not lists).
 
 When a dialect has historical influences that are NOT in our 13-variety
 set (e.g. Greek and Arabic for Sicilian), document them in the ``notes``
@@ -29,17 +32,19 @@ tested by any of our models.
 For a given model:
 
 1. For each dialect *d*, take the model's distance row, exclude all
-   other dialects (we measure dialect-vs-rest), sort the remaining
-   external codes ascending by distance, and take the **top 3 closest**.
+   other dialects AND standard Italian (we measure
+   dialect-vs-non-Italian-rest), sort the remaining external codes
+   ascending by distance, and take the **top 3 closest**.
 2. Compute ``|gold(d) ∩ model_top3(d)| / 3`` — fraction of the gold
    set recovered by the model's top-3 predictions.  This is precision
    = recall = F1 since both sets have size 3.
 3. Average across the 6 dialects → ``Mean Precision@3``.
 
 Range: 0 (no overlap on any dialect) … 1 (every model top-3 matches
-gold exactly).  **Random-chance baseline**: with 7 candidates
-({{ita, fra, spa, cat, deu, slv, eng}}) and 3 picks, expected overlap
-under uniform random is 3/7 ≈ 0.429.  Beat this to demonstrate signal.
+gold exactly).  **Random-chance baseline**: with 6 non-Italian
+candidates ({{fra, spa, cat, deu, slv, eng}}) and 3 picks, expected
+overlap under uniform random is 3/6 = 0.500.  Beat this clearly to
+demonstrate the model captures historical-contact signal beyond chance.
 
 ## Output of the evaluator
 
