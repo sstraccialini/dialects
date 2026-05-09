@@ -70,3 +70,6 @@ analysis/**/models/
 
 # Misc
 .claude/
+
+# Legacy / removed scaffolding — should never come back into the repo.
+edoardo/
