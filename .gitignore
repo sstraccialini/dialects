@@ -37,6 +37,14 @@ Dataset/wiki/*_texts/
 Dataset/wiki/*.xml.bz2
 Dataset/wiki/_cache/
 
+# Wiki extracted CSVs are too big for git (~7 GB total).
+# Distributed via external storage (Google Drive / HF Datasets).
+# Folder structure preserved with .gitkeep files.
+Dataset/wiki/normalized/**/*.csv
+Dataset/wiki/normalized/**/*.json
+Dataset/wiki/not_normalized/**/*.csv
+Dataset/wiki/not_normalized/**/*.json
+
 # Exploratory side-datasets — kept local-only
 Dataset/manzini_savoia/
 Dataset/asjp/
