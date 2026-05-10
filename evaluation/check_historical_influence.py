@@ -59,11 +59,10 @@ def _iter_distance_csvs(analysis_root: Path) -> List[Path]:
     for method_dir in sorted(p for p in analysis_root.iterdir() if p.is_dir()):
         if method_dir.name.startswith("_"):
             continue
-        for er_kind in ("experiments", "old_experiments"):
-            er_root = method_dir / er_kind
-            if not er_root.exists():
-                continue
-            out.extend(sorted(er_root.rglob("distances.csv")))
+        er_root = method_dir / "experiments"
+        if not er_root.exists():
+            continue
+        out.extend(sorted(er_root.rglob("distances.csv")))
     return out
 
 
