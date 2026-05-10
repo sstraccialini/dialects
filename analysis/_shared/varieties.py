@@ -69,29 +69,32 @@ OLDI_NATIVE_DIR   = REPO_ROOT / "Dataset_archive" / "oldi"   / "not_normalized"
 # Variety registry — 13 varieties (ISO 639-3).
 # --------------------------------------------------------------------------- #
 VARIETIES = [
-    # Italo-Romance dialects (Group A — OLDI ∩ FLORES)
-    ("fur", "italo_romance"),
-    ("lij", "italo_romance"),
-    ("lmo", "italo_romance"),
-    ("sc",  "italo_romance"),
-    ("scn", "italo_romance"),
-    ("vec", "italo_romance"),
-    # Standard Italian
-    ("ita", "italian"),
-    # Other Romance (original 3 + 2 new — ron/glg dropped from logic)
-    ("spa", "romance"),
-    ("fra", "romance"),
-    ("cat", "romance"),
-    ("por", "romance"),       # Portuguese (NEW)
-    ("oci", "romance"),       # Occitan (NEW)
+    # Italo-Romance dialects: macro-divisione Nord vs Sud (Pellegrini-derived).
+    # North dialects: Cisalpine (Gallo-Italic + Venetian) + Rhaeto-Romance (Friulian)
+    ("fur", "north_dialects"),
+    ("lij", "north_dialects"),
+    ("lmo", "north_dialects"),
+    ("vec", "north_dialects"),
+    # South dialects: Middle/extreme-southern + Sardinian (insular Romance)
+    ("scn", "south_dialects"),
+    ("sc",  "south_dialects"),
+    # Tuscan System (Standard Italian) — separato perché è il riferimento
+    ("ita", "tuscan"),
+    # Iberian Romance
+    ("spa", "iberian_rom"),
+    ("cat", "iberian_rom"),
+    ("por", "iberian_rom"),
+    # Gallo-Romance
+    ("fra", "gallo_romance"),
+    ("oci", "gallo_romance"),
     # Germanic
     ("deu", "germanic"),
     ("eng", "english"),
-    # Slavic (original 1 + 1 new)
+    # Slavic
     ("slv", "slavic"),
-    ("hrv", "slavic"),        # Croatian (NEW)
-    # Non-Indo-European (NEW)
-    ("hun", "uralic"),        # Hungarian (NEW)
+    ("hrv", "slavic"),
+    # Non-Indo-European
+    ("hun", "uralic"),
 ]
 
 VARIETY_CODES = [code for code, _ in VARIETIES]
@@ -181,31 +184,45 @@ VARIETY_NAMES = {
 }
 
 GROUP_NAMES = {
-    "italo_romance": "Italo-Romance",
-    "italian":       "Italian (standard)",
-    "romance":       "Romance (other)",
-    "germanic":      "Germanic",
-    "english":       "English",
-    "slavic":        "Slavic",
-    "uralic":        "Uralic (non-IE)",
+    # Italo-Romance dialects: macro Nord vs Sud
+    "north_dialects": "North dialects (Cisalpine + Friulian)",
+    "south_dialects": "South dialects (Sicilian + Sardinian)",
+    "tuscan":         "Tuscan (Standard Italian)",
+    # Other Romance branches
+    "iberian_rom":    "Iberian Romance",
+    "gallo_romance":  "Gallo-Romance",
+    # Non-Romance
+    "germanic":       "Germanic",
+    "english":        "English",
+    "slavic":         "Slavic",
+    "uralic":         "Uralic (non-IE)",
 }
 
 GROUP_COLORS = {
-    "italo_romance": "#d62728",  # red
-    "italian":       "#ff7f0e",  # orange
-    "romance":       "#2ca02c",  # green
-    "germanic":      "#1f77b4",  # blue
-    "english":       "#17becf",  # cyan
-    "slavic":        "#e377c2",  # pink
-    "uralic":        "#8c564b",  # brown
+    # Italo-Romance dialects
+    "north_dialects": "#d62728",  # red
+    "south_dialects": "#e377c2",  # pink
+    "tuscan":         "#ff7f0e",  # orange
+    # Other Romance: greens
+    "iberian_rom":    "#2ca02c",  # green
+    "gallo_romance":  "#bcbd22",  # olive
+    # Non-Romance
+    "germanic":       "#1f77b4",  # blue
+    "english":        "#17becf",  # cyan
+    "slavic":         "#7f7f7f",  # grey
+    "uralic":         "#aec7e8",  # light blue
 }
 
-ROMANCE_FAMILIES = {"italo_romance", "italian", "romance"}
-# Families to EXCLUDE for the "romance no-dialects" silhouette: probes how
-# well the standard Romance languages (ita/spa/fra/cat) cluster against
-# non-Romance after the model has been adapted on dialects.  Useful as a
-# catastrophic-forgetting check.
-DIALECT_FAMILIES = {"italo_romance"}
+# Families considered "Romance" for the romance-vs-rest silhouette
+ROMANCE_FAMILIES = {
+    "north_dialects", "south_dialects", "tuscan",
+    "iberian_rom", "gallo_romance",
+}
+
+# Families containing dialects (excluded for the catastrophic-forgetting check).
+DIALECT_FAMILIES = {
+    "north_dialects", "south_dialects",
+}
 
 
 # --------------------------------------------------------------------------- #

@@ -283,10 +283,18 @@ def run_parallel_alignment(
     )
 
     # ---- dialect-specific sub-analysis ------------------------------------
+    # Identify "dialect" varieties via DIALECT_FAMILIES from the shared registry,
+    # falling back to the legacy "italo_romance" label for backward compatibility.
+    try:
+        from analysis._shared.varieties import DIALECT_FAMILIES as _DIAL_FAMS
+    except Exception:
+        _DIAL_FAMS = {"italo_romance"}
+    _DIAL_FAMS = set(_DIAL_FAMS) | {"italo_romance"}  # always include legacy name
+
     dialect_rows = []
     if family_groups:
-        dialect_codes = [c for c in codes if family_groups.get(c) == "italo_romance"]
-        ref_codes = [c for c in codes if family_groups.get(c) != "italo_romance"]
+        dialect_codes = [c for c in codes if family_groups.get(c) in _DIAL_FAMS]
+        ref_codes     = [c for c in codes if family_groups.get(c) not in _DIAL_FAMS]
         for d in dialect_codes:
             di = codes.index(d)
             for r in ref_codes:
@@ -297,11 +305,16 @@ def run_parallel_alignment(
                     "ref_family": family_groups.get(r, ""),
                     "mean_similarity": float(sim_matrix[di, ri]),
                 })
-    dialect_df = (
-        pd.DataFrame(dialect_rows)
-        .sort_values(["dialect", "mean_similarity"], ascending=[True, False])
-        .reset_index(drop=True)
-    )
+    if dialect_rows:
+        dialect_df = (
+            pd.DataFrame(dialect_rows)
+            .sort_values(["dialect", "mean_similarity"], ascending=[True, False])
+            .reset_index(drop=True)
+        )
+    else:
+        dialect_df = pd.DataFrame(
+            columns=["dialect", "reference", "ref_family", "mean_similarity"]
+        )
     dialect_csv = out_dir / "parallel_alignment_dialects.csv"
     dialect_df.to_csv(dialect_csv, index=False, float_format="%.6f")
 

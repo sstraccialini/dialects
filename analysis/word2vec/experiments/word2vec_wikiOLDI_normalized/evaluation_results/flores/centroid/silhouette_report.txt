@@ -1,0 +1,31 @@
+Silhouette report (Word2Vec (word2vec_wikiOLDI_normalized, flores centroid))
+============================================================
+  n_varieties           = 17
+  linkage_method        = average
+  silhouette (family)            = +0.0800
+  silhouette (romance vs rest)   = +0.3069
+  silhouette (romance, no dial.) = +0.2476
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  hrv                   slavic               +0.5057
+  slv                   slavic               +0.4998
+  spa                   iberian_rom          +0.3215
+  lmo                   north_dialects       +0.3107
+  por                   iberian_rom          +0.2659
+  fur                   north_dialects       +0.2564
+  fra                   gallo_romance        +0.1389
+  lij                   north_dialects       +0.0830
+  ita                   tuscan               +0.0000
+  hun                   uralic               +0.0000
+  deu                   germanic             +0.0000
+  eng                   english              +0.0000
+  sc                    south_dialects       -0.1126
+  cat                   iberian_rom          -0.1726
+  vec                   north_dialects       -0.1835
+  oci                   gallo_romance        -0.2638
+  scn                   south_dialects       -0.2895

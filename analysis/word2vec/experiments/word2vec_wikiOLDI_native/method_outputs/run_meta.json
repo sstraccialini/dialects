@@ -1,0 +1,19 @@
+{
+  "method": "word2vec",
+  "experiment": "word2vec_wikiOLDI_native",
+  "timestamp": "2026-05-10T22:00:07Z",
+  "git_commit": "7db99accc1fc51625551fd8ea9e491b56bb813f5",
+  "python": "3.9.6",
+  "platform": "macOS-26.3-arm64-arm-64bit",
+  "params": {
+    "sample_size": 100000,
+    "random_state": 42,
+    "text_variant": "native",
+    "vector_size": 100,
+    "window": 5,
+    "min_count": 2,
+    "sg": 1,
+    "epochs": 15,
+    "seed": 42
+  }
+}
