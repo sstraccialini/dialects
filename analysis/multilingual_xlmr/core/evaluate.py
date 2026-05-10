@@ -14,7 +14,8 @@ if str(_REPO_ROOT) not in sys.path:
 from evaluation import run_evaluation, run_parallel_alignment
 
 from .config import (
-    VARIETY_GROUP, GROUP_NAMES, GROUP_COLORS, VARIETY_NAMES, ROMANCE_FAMILIES,
+    VARIETY_GROUP, GROUP_NAMES, GROUP_COLORS, VARIETY_NAMES,
+    ROMANCE_FAMILIES, DIALECT_FAMILIES,
 )
 
 
@@ -31,6 +32,7 @@ def variety_eval(X, codes, out_dir: Union[str, Path], *, method_label: str = "XL
         family_display_names=GROUP_NAMES,
         display_names=VARIETY_NAMES,
         romance_families=ROMANCE_FAMILIES,
+        dialect_families=DIALECT_FAMILIES,
         # Anisotropy correction (Mu & Viswanath 2018) is DISABLED by default:
         # for our 13 variety centroids, the top-1 PC encodes Romance vs
         # non-Romance separation itself, so removing it would cancel the

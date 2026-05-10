@@ -37,7 +37,8 @@ import numpy as np
 from pathlib import Path
 from evaluation import run_evaluation
 from analysis._shared.varieties import (
-    VARIETY_GROUP, GROUP_NAMES, GROUP_COLORS, VARIETY_NAMES, ROMANCE_FAMILIES,
+    VARIETY_GROUP, GROUP_NAMES, GROUP_COLORS, VARIETY_NAMES,
+    ROMANCE_FAMILIES, DIALECT_FAMILIES,
 )
 
 CELLS = [
@@ -68,6 +69,7 @@ for method, experiment in CELLS:
             family_groups=VARIETY_GROUP, family_colors=GROUP_COLORS,
             family_display_names=GROUP_NAMES, display_names=VARIETY_NAMES,
             romance_families=ROMANCE_FAMILIES,
+            dialect_families=DIALECT_FAMILIES,
             isotropy=False,
         )
         sil_path = out_dir / "silhouette_report.txt"

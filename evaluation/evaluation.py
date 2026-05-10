@@ -779,6 +779,7 @@ def run_evaluation(
     family_display_names: Optional[Mapping[str, str]] = None,
     display_names: Optional[Mapping[str, str]] = None,
     romance_families: Optional[Set[str]] = None,
+    dialect_families: Optional[Set[str]] = None,
     linkage_method: str = "average",
     tsne_perplexity: float = 4.0,
     nearest_k: int = 3,
@@ -958,6 +959,7 @@ def run_evaluation(
     # ---- silhouette -------------------------------------------------------
     sil_family: Optional[float] = None
     sil_romance: Optional[float] = None
+    sil_romance_no_dial: Optional[float] = None
     sil_samples_arr = None
     labels_family = None
 
@@ -970,6 +972,28 @@ def run_evaluation(
             labels_rom = [1 if family_groups.get(c) in romance_families else 0 for c in codes]
             if len(set(labels_rom)) > 1:
                 sil_romance = float(silhouette_score(dist, labels_rom, metric="precomputed"))
+            # Silhouette restricted to STANDARD-Romance vs non-Romance: drops
+            # the dialects (italo-romance) so we measure how cleanly the
+            # standard Romance languages (e.g. ita+spa+fra+cat) cluster
+            # against non-Romance (deu/eng/slv).  Useful as a catastrophic-
+            # forgetting probe: did fine-tuning on dialects damage the
+            # standard Romance structure that was already in the base model?
+            if dialect_families:
+                keep_idx = [
+                    i for i, c in enumerate(codes)
+                    if family_groups.get(c) not in dialect_families
+                ]
+                if len(keep_idx) >= 2:
+                    dist_nd = dist[np.ix_(keep_idx, keep_idx)]
+                    codes_nd = [codes[i] for i in keep_idx]
+                    labels_nd = [
+                        1 if family_groups.get(c) in romance_families else 0
+                        for c in codes_nd
+                    ]
+                    if len(set(labels_nd)) > 1:
+                        sil_romance_no_dial = float(silhouette_score(
+                            dist_nd, labels_nd, metric="precomputed"
+                        ))
 
     sil_path = out_dir / "silhouette_report.txt"
     with sil_path.open("w", encoding="utf-8") as fh:
@@ -977,10 +1001,12 @@ def run_evaluation(
         fh.write("=" * 60 + "\n")
         fh.write(f"  n_varieties           = {n}\n")
         fh.write(f"  linkage_method        = {linkage_method}\n")
-        fh.write(f"  silhouette (family)   = "
+        fh.write(f"  silhouette (family)            = "
                  f"{f'{sil_family:+.4f}' if sil_family is not None else 'n/a'}\n")
-        fh.write(f"  silhouette (romance)  = "
+        fh.write(f"  silhouette (romance vs rest)   = "
                  f"{f'{sil_romance:+.4f}' if sil_romance is not None else 'n/a'}\n")
+        fh.write(f"  silhouette (romance, no dial.) = "
+                 f"{f'{sil_romance_no_dial:+.4f}' if sil_romance_no_dial is not None else 'n/a'}\n")
         fh.write("\nNotes:\n")
         fh.write("  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.\n")
         if sil_samples_arr is not None and labels_family is not None:
@@ -1028,6 +1054,7 @@ def run_evaluation(
         "gold_correlations_path": str(gold_corr_path) if gold_corr_path else None,
         "silhouette_family": sil_family,
         "silhouette_romance_vs_rest": sil_romance,
+        "silhouette_romance_no_dialects": sil_romance_no_dial,
         "n_varieties": n,
         "method_label": method_label,
     }
