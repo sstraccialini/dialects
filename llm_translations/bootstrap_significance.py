@@ -23,8 +23,8 @@ for Machine Translation Evaluation*:
             p_two = min(2 * p_one, 1.0)
     4. 95% CI on the delta from the bootstrap percentiles (2.5, 97.5).
 
-We also compute Bonferroni-corrected p-values per dialect, since a single
-target generates many pairwise tests.
+We also compute Bonferroni-corrected p-values per (target, metric), since
+a single target generates many pairwise tests.
 
 File / naming convention mirrors compute_metrics.py:
     {SOURCE}-to-{DIALECT}.txt
@@ -35,16 +35,13 @@ Run:
         --gold     path/to/gold_table.csv \
         --out      bootstrap_chrf_significance.csv \
         --n_bootstrap 1000 \
+        --n_jobs -1 \
         --seed 42
-
-Important: by design we only compare systems that share the same target
-dialect (same reference column).  Cross-target comparisons are not valid.
 """
 from __future__ import annotations
 
 import argparse
 import sys
-import concurrent.futures
 from itertools import combinations
 from pathlib import Path
 from typing import Dict, List, Tuple
@@ -75,41 +72,49 @@ except ImportError:
     def tqdm(it, **kw):  # type: ignore
         return it
 
+try:
+    import joblib
+    _HAS_JOBLIB = True
+except ImportError:
+    _HAS_JOBLIB = False
+    joblib = None  # type: ignore
+
 
 # --------------------------------------------------------------------------- #
-# Paired bootstrap
+# Bootstrap primitives
 # --------------------------------------------------------------------------- #
-def _corpus_chrf(metric: CHRF, preds: List[str], refs: List[str]) -> float:
-    return metric.corpus_score(preds, [refs]).score
-
-
-def _corpus_bleu(metric: BLEU, preds: List[str], refs: List[str]) -> float:
-    return metric.corpus_score(preds, [refs]).score
-
-
-def _bootstrap_worker(args):
-    seed, n_iter, preds_a, preds_b, refs, metric = args
-    n = len(refs)
+def _make_metric(metric: str):
     if metric == "chrfpp":
-        m = CHRF(word_order=2)
-        score_fn = lambda p, r: _corpus_chrf(m, p, r)
-    elif metric == "bleu":
-        m = BLEU()
-        score_fn = lambda p, r: _corpus_bleu(m, p, r)
-    else:
-        raise ValueError(f"unknown metric '{metric}'")
+        return CHRF(word_order=2)
+    if metric == "bleu":
+        return BLEU()
+    raise ValueError(f"unknown metric '{metric}'")
 
-    rng = np.random.default_rng(seed)
-    deltas = np.empty(n_iter, dtype=np.float64)
-    for i in range(n_iter):
-        idx = rng.integers(0, n, size=n)
-        pa = [preds_a[j] for j in idx]
-        pb = [preds_b[j] for j in idx]
-        rr = [refs[j]    for j in idx]
-        sa = score_fn(pa, rr)
-        sb = score_fn(pb, rr)
-        deltas[i] = sa - sb
-    return deltas
+
+def _corpus_score(m, preds: List[str], refs: List[str]) -> float:
+    return m.corpus_score(preds, [refs]).score
+
+
+def _one_bootstrap_iter(
+    preds_a: List[str],
+    preds_b: List[str],
+    refs: List[str],
+    metric: str,
+    iter_seed: int,
+) -> float:
+    """Single paired bootstrap iteration; returns delta = score_A - score_B
+    on a resampled (with replacement) index set of size N. Recreates the
+    metric object inside so it is picklable / safe across worker processes."""
+    n = len(refs)
+    rng = np.random.default_rng(iter_seed)
+    idx = rng.integers(0, n, size=n)
+    pa = [preds_a[j] for j in idx]
+    pb = [preds_b[j] for j in idx]
+    rr = [refs[j]    for j in idx]
+    m = _make_metric(metric)
+    sa = _corpus_score(m, pa, rr)
+    sb = _corpus_score(m, pb, rr)
+    return float(sa - sb)
 
 
 def paired_bootstrap(
@@ -120,28 +125,12 @@ def paired_bootstrap(
     metric: str = "chrfpp",
     n_iter: int = 1000,
     seed: int = 42,
+    n_jobs: int = 1,
 ) -> Dict[str, float]:
     """
     Paired bootstrap test on a corpus-level metric (chrF++ or BLEU).
 
-    Parameters
-    ----------
-    preds_a, preds_b : aligned predictions for two systems on the SAME refs.
-    refs             : reference sentences (length N).
-    metric           : "chrfpp" or "bleu".
-    n_iter           : number of bootstrap resamples (default 1000).
-    seed             : RNG seed.
-
-    Returns
-    -------
-    dict with keys:
-        score_a        observed corpus score of system A on full N
-        score_b        observed corpus score of system B on full N
-        delta          score_a - score_b
-        ci_low, ci_high  95 % percentile CI on delta
-        p_value        two-sided bootstrap p-value (Koehn 2004)
-        n_sentences    N
-        n_bootstrap    n_iter
+    n_jobs : 1 = sequential; -1 = all CPU cores; k = k cores. Requires joblib.
     """
     n = len(refs)
     if not (len(preds_a) == len(preds_b) == n):
@@ -150,39 +139,39 @@ def paired_bootstrap(
             f"|preds_b|={len(preds_b)}, |refs|={n}"
         )
 
-    if metric == "chrfpp":
-        m = CHRF(word_order=2)
-        score_fn = lambda p, r: _corpus_chrf(m, p, r)
-    elif metric == "bleu":
-        m = BLEU()
-        score_fn = lambda p, r: _corpus_bleu(m, p, r)
-    else:
-        raise ValueError(f"unknown metric '{metric}'")
-
-    score_a = score_fn(preds_a, refs)
-    score_b = score_fn(preds_b, refs)
+    m = _make_metric(metric)
+    score_a = _corpus_score(m, preds_a, refs)
+    score_b = _corpus_score(m, preds_b, refs)
     delta_obs = score_a - score_b
 
     rng = np.random.default_rng(seed)
-    deltas = np.empty(n_iter, dtype=np.float64)
+    iter_seeds = rng.integers(0, 2**31 - 1, size=n_iter).tolist()
 
-    iterator = range(n_iter)
-    if _HAS_TQDM:
-        iterator = tqdm(iterator, desc=f"  bootstrap[{metric}]", leave=False)
+    use_parallel = (n_jobs != 1) and _HAS_JOBLIB
+    if use_parallel:
+        # Joblib loky backend handles process spawning + pickling.
+        deltas = joblib.Parallel(n_jobs=n_jobs, backend="loky", verbose=0)(
+            joblib.delayed(_one_bootstrap_iter)(
+                preds_a, preds_b, refs, metric, int(s)
+            )
+            for s in iter_seeds
+        )
+    else:
+        if n_jobs != 1 and not _HAS_JOBLIB:
+            print("[warn] joblib not installed; falling back to sequential. "
+                  "pip install joblib for parallel bootstrap.", file=sys.stderr)
+        deltas = []
+        iterator = iter_seeds
+        if _HAS_TQDM:
+            iterator = tqdm(iter_seeds, desc=f"  bootstrap[{metric}]",
+                            leave=False)
+        for s in iterator:
+            deltas.append(_one_bootstrap_iter(
+                preds_a, preds_b, refs, metric, int(s)))
 
-    for i in iterator:
-        idx = rng.integers(0, n, size=n)        # with replacement
-        pa = [preds_a[j] for j in idx]
-        pb = [preds_b[j] for j in idx]
-        rr = [refs[j]    for j in idx]
-        sa = score_fn(pa, rr)
-        sb = score_fn(pb, rr)
-        deltas[i] = sa - sb
-
+    deltas = np.asarray(deltas, dtype=np.float64)
     ci_low, ci_high = np.percentile(deltas, [2.5, 97.5])
 
-    # Two-sided p-value (Koehn 2004): fraction of bootstrap deltas with the
-    # opposite sign from the observed delta, doubled (capped at 1.0).
     if delta_obs > 0:
         p_one = float(np.mean(deltas <= 0))
     elif delta_obs < 0:
@@ -208,7 +197,6 @@ def paired_bootstrap(
 # --------------------------------------------------------------------------- #
 def _align_to_min(systems: Dict[str, List[str]], refs: List[str]
                   ) -> Tuple[Dict[str, List[str]], List[str], int]:
-    """If systems / refs differ in length, truncate everyone to the min."""
     n = min(len(refs), *(len(v) for v in systems.values()))
     if any(len(v) != n for v in systems.values()) or len(refs) != n:
         systems = {k: v[:n] for k, v in systems.items()}
@@ -219,11 +207,6 @@ def _align_to_min(systems: Dict[str, List[str]], refs: List[str]
 def _drop_empty_pairs(
     systems: Dict[str, List[str]], refs: List[str]
 ) -> Tuple[Dict[str, List[str]], List[str]]:
-    """Drop sentence indices where any system pred OR the ref is empty.
-
-    This guarantees every (system, ref) pair used in bootstrap is non-empty,
-    which keeps BLEU well-defined and keeps chrF++ on a comparable basis.
-    """
     n = len(refs)
     keep = [i for i in range(n)
             if refs[i] and all(systems[s][i] for s in systems)]
@@ -260,8 +243,7 @@ def main():
                    help="Random seed (a per-pair seed is derived from this).")
     p.add_argument("--metrics", nargs="+", choices=["chrfpp", "bleu"],
                    default=["chrfpp"],
-                   help="Which metric(s) to bootstrap.  chrF++ is primary; "
-                        "BLEU is added as a secondary cross-check.")
+                   help="Which metric(s) to bootstrap. chrF++ is primary.")
     p.add_argument("--alpha", type=float, default=0.05,
                    help="Significance threshold for the printed flags.")
     p.add_argument("--on_mismatch", choices=["skip", "truncate"], default="truncate",
@@ -269,11 +251,18 @@ def main():
                         "and the reference column for one dialect.")
     p.add_argument("--include_pairs", nargs="*", default=None,
                    help="Optional explicit list of source pairs to test, "
-                        "format src_a:src_b.  If omitted, ALL pairs are run.")
+                        "format src_a:src_b. If omitted, ALL pairs are run.")
     p.add_argument("--restrict_targets", nargs="*", default=None,
                    help="Optional list of target dialects to restrict to "
                         "(default: every target found in pred_dir).")
+    p.add_argument("--n_jobs", type=int, default=1,
+                   help="CPU cores for parallel bootstrap. 1 = sequential, "
+                        "-1 = all cores. Requires joblib.")
     args = p.parse_args()
+
+    if args.n_jobs != 1 and not _HAS_JOBLIB:
+        print("[warn] --n_jobs requested but joblib not installed; sequential.",
+              file=sys.stderr)
 
     # ---- gold ---------------------------------------------------------- #
     if not args.gold.exists():
@@ -281,6 +270,9 @@ def main():
     gold_df = load_gold_table(args.gold)
     print(f"[info] gold table       = {args.gold}  shape={gold_df.shape}")
     print(f"[info] gold columns     = {list(gold_df.columns)}")
+    print(f"[info] n_bootstrap      = {args.n_bootstrap}")
+    print(f"[info] n_jobs           = {args.n_jobs}"
+          f"{'  (joblib OK)' if _HAS_JOBLIB else '  (joblib MISSING)'}")
 
     # ---- group prediction files by target dialect ---------------------- #
     if not args.pred_dir.is_dir():
@@ -289,7 +281,6 @@ def main():
     if not files:
         sys.exit(f"ERROR: no .txt files in {args.pred_dir}")
 
-    # by_target[tgt][src] = List[str] of cleaned predictions
     by_target: Dict[str, Dict[str, List[str]]] = {}
     for fpath in files:
         parsed = parse_filename(fpath)
@@ -315,7 +306,6 @@ def main():
     if not by_target:
         sys.exit("ERROR: no usable prediction files found.")
 
-    # Optional restriction of pairs
     explicit_pairs = None
     if args.include_pairs:
         explicit_pairs = set()
@@ -323,10 +313,8 @@ def main():
             try:
                 a, b = s.split(":")
             except ValueError:
-                sys.exit(f"ERROR: bad --include_pairs entry: {s} "
-                         f"(expected 'src_a:src_b')")
-            a, b = a.strip().lower(), b.strip().lower()
-            explicit_pairs.add(frozenset({a, b}))
+                sys.exit(f"ERROR: bad --include_pairs entry: {s}")
+            explicit_pairs.add(frozenset({a.strip().lower(), b.strip().lower()}))
 
     # ---- run bootstrap per (target, src_a, src_b) --------------------- #
     rows: List[dict] = []
@@ -335,26 +323,21 @@ def main():
     for tgt in sorted(by_target):
         sources = sorted(by_target[tgt])
         if len(sources) < 2:
-            print(f"[info] target {tgt}: only {len(sources)} source(s) — "
-                  f"no pair to compare, skipping.")
+            print(f"[info] target {tgt}: only {len(sources)} source(s) — skipping.")
             continue
 
         refs_full = [str(r).strip() for r in gold_df[tgt].tolist()]
         sys_dict = {s: by_target[tgt][s] for s in sources}
 
-        # Length reconciliation across {refs, every system for this target}
         n_pre = len(refs_full)
         sys_dict, refs, n = _align_to_min(sys_dict, refs_full)
         if any(len(by_target[tgt][s]) != n_pre for s in sources) or len(refs_full) != n_pre:
             if args.on_mismatch == "skip":
-                print(f"[warn] target {tgt}: length mismatch (refs={n_pre}, "
-                      f"systems={[len(by_target[tgt][s]) for s in sources]}) "
-                      f"— skipping (--on_mismatch=skip).", file=sys.stderr)
+                print(f"[warn] target {tgt}: length mismatch — skipping.",
+                      file=sys.stderr)
                 continue
-            else:
-                print(f"[warn] target {tgt}: length mismatch reconciled by "
-                      f"truncation to N={n}.", file=sys.stderr)
-        # Drop empty rows (any system) so all comparisons share the same n.
+            print(f"[warn] target {tgt}: length mismatch reconciled → N={n}.",
+                  file=sys.stderr)
         sys_dict, refs = _drop_empty_pairs(sys_dict, refs)
         n = len(refs)
         if n < 5:
@@ -364,7 +347,6 @@ def main():
 
         print(f"\n=== TARGET: {tgt}   sources={sources}   N={n} ===")
 
-        # Pairs
         pair_list = list(combinations(sources, 2))
         if explicit_pairs is not None:
             pair_list = [p for p in pair_list if frozenset(p) in explicit_pairs]
@@ -372,12 +354,9 @@ def main():
             print(f"  (no pairs after --include_pairs filtering)")
             continue
 
-        # Pre-collect rows for this target so we can apply Bonferroni later.
         per_target_rows: List[dict] = []
-
         for src_a, src_b in pair_list:
             for metric in args.metrics:
-                # Per-pair seed derived from the global one for full reproducibility
                 pair_seed = int(base_rng.integers(0, 2**31 - 1))
                 print(f"  [{metric}] {src_a} vs {src_b}  (seed={pair_seed})")
                 res = paired_bootstrap(
@@ -387,14 +366,15 @@ def main():
                     metric=metric,
                     n_iter=args.n_bootstrap,
                     seed=pair_seed,
+                    n_jobs=args.n_jobs,
                 )
                 row = {
                     "target_dialect": tgt,
                     "metric":         metric,
                     "source_a":       src_a,
                     "source_b":       src_b,
-                    f"score_a":       round(res["score_a"], 4),
-                    f"score_b":       round(res["score_b"], 4),
+                    "score_a":        round(res["score_a"], 4),
+                    "score_b":        round(res["score_b"], 4),
                     "delta":          round(res["delta"], 4),
                     "ci_low":         round(res["ci_low"], 4),
                     "ci_high":        round(res["ci_high"], 4),
@@ -410,7 +390,6 @@ def main():
                       f"Δ={res['delta']:+6.2f}  CI95={ci_str}  "
                       f"p={res['p_value']:.4f} {star}")
 
-        # ---- Bonferroni correction PER (target, metric) ---------------- #
         for metric in args.metrics:
             sub = [r for r in per_target_rows if r["metric"] == metric]
             if not sub:
@@ -434,7 +413,6 @@ def main():
     df.to_csv(args.out, index=False, encoding="utf-8")
     print(f"\n[ok] wrote {len(df)} rows -> {args.out}")
 
-    # ---- summary -------------------------------------------------------- #
     print("\n" + "=" * 96)
     print(f"PAIRED BOOTSTRAP SUMMARY  (alpha={args.alpha}, "
           f"B={args.n_bootstrap}, paired by sentence index)")
@@ -448,30 +426,6 @@ def main():
                            "display.max_columns", None,
                            "display.width", 220):
         print(df[cols].to_string(index=False))
-
-    # Compact "winners" table for chrF++
-    if "chrfpp" in args.metrics:
-        chrf_rows = df[df["metric"] == "chrfpp"]
-        print("\n" + "-" * 96)
-        print("chrF++ winners per pair  (>=  means significant at Bonferroni-alpha)")
-        print("-" * 96)
-        for _, r in chrf_rows.iterrows():
-            d = r["delta"]
-            if r.get("significant_bonf", False):
-                rel = ">=" if d > 0 else "<="
-            elif r.get("significant_alpha", False):
-                rel = ">"  if d > 0 else "<"
-            else:
-                rel = "~"
-            print(f"  {r['target_dialect']:>4}: "
-                  f"{r['source_a']:>3} ({r['score_a']:5.2f})  "
-                  f"{rel}  "
-                  f"{r['source_b']:>3} ({r['score_b']:5.2f})    "
-                  f"Δ={d:+5.2f}   p={r['p_value']:.4f}   "
-                  f"p_bonf={r.get('p_value_bonferroni', float('nan')):.4f}")
-
-    print("\nLegend: '>=' / '<=' Bonferroni-significant, "
-          "'>' / '<' significant at alpha (uncorrected), '~' not significant.")
 
 
 if __name__ == "__main__":
