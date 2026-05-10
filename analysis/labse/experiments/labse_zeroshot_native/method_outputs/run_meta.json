@@ -1,0 +1,15 @@
+{
+  "method": "labse",
+  "experiment": "labse_zeroshot_native",
+  "timestamp": "2026-05-10T18:28:48Z",
+  "git_commit": "dde8166ac01322d0f7f17a2872fab2964622594b",
+  "python": "3.11.15",
+  "platform": "Linux-5.14.0-570.12.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "params": {
+    "base_model": "sentence-transformers/LaBSE",
+    "text_variant": "native",
+    "fine_tuning": "none",
+    "max_length": 128,
+    "batch_size": 64
+  }
+}

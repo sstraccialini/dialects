@@ -1,0 +1,8 @@
+dialect,gold_top3,model_top3,overlap_count,precision_at_3
+fur,"deu,hrv,slv","eng,oci,spa",0,0.0000
+lij,"fra,oci,spa","eng,oci,spa",2,0.6667
+lmo,"deu,oci,spa","eng,oci,spa",2,0.6667
+sc,"cat,fra,spa","eng,oci,spa",1,0.3333
+scn,"cat,fra,spa","cat,eng,oci",1,0.3333
+vec,"deu,hrv,slv","cat,eng,oci",0,0.0000
+MEAN,,,,0.3333

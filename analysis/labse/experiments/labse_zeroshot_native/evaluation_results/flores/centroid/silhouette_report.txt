@@ -1,0 +1,31 @@
+Silhouette report (LaBSE zero-shot (FLORES centroid))
+============================================================
+  n_varieties           = 17
+  linkage_method        = average
+  silhouette (family)            = -0.0611
+  silhouette (romance vs rest)   = +0.0157
+  silhouette (romance, no dial.) = +0.0507
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  lmo                   italo_romance        +0.4871
+  lij                   italo_romance        +0.3905
+  fur                   italo_romance        +0.3603
+  hrv                   slavic               +0.3268
+  slv                   slavic               +0.3109
+  sc                    italo_romance        +0.2812
+  hun                   uralic               +0.0000
+  eng                   english              +0.0000
+  deu                   germanic             +0.0000
+  ita                   italian              +0.0000
+  vec                   italo_romance        -0.0874
+  scn                   italo_romance        -0.0980
+  oci                   romance              -0.2980
+  cat                   romance              -0.4642
+  fra                   romance              -0.6409
+  por                   romance              -0.7993
+  spa                   romance              -0.8071
