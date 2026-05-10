@@ -21,10 +21,11 @@ from analysis._shared.varieties import (  # noqa: F401
 
 
 # --------------------------------------------------------------------------- #
-# Preprocessing
+# Preprocessing flags. FINAL batch 2026-05-10: variant is decided by the
+# dataset path (cleaned vs cleaned_normalized), so we leave the text alone.
 # --------------------------------------------------------------------------- #
-LOWERCASE = True               # idempotent on aggressive-normalized text
-MASK_NUMBERS = False           # already stripped at extraction
+LOWERCASE = False
+MASK_NUMBERS = False
 NUMBER_TOKEN = " "
 
 

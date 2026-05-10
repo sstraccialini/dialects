@@ -1,0 +1,26 @@
+Silhouette report (CANINE adapted (OLDI centroid, dialects-norm))
+============================================================
+  n_varieties           = 13
+  linkage_method        = average
+  silhouette (family)   = -0.1225
+  silhouette (romance)  = -0.0588
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  cat                   romance              +0.4412
+  fra                   romance              +0.3999
+  spa                   romance              +0.0385
+  deu                   germanic             +0.0000
+  eng                   english              +0.0000
+  slv                   slavic               +0.0000
+  ita                   italian              +0.0000
+  fur                   italo_romance        -0.2119
+  lmo                   italo_romance        -0.3297
+  sc                    italo_romance        -0.3468
+  scn                   italo_romance        -0.3906
+  lij                   italo_romance        -0.5574
+  vec                   italo_romance        -0.6356

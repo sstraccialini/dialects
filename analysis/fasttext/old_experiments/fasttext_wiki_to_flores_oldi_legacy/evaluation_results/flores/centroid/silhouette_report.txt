@@ -1,0 +1,34 @@
+Silhouette report (FastText (FLORES centroid))
+============================================================
+  n_varieties           = 20
+  linkage_method        = average
+  silhouette (family)            = +0.0143
+  silhouette (romance vs rest)   = +0.4084
+  silhouette (romance, no dial.) = n/a
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  slv                   slavic               +0.8111
+  hrv                   slavic               +0.8100
+  spa                   romance              +0.2900
+  oci                   romance              +0.2850
+  cat                   romance              +0.2692
+  glg                   romance              +0.1734
+  fra                   romance              +0.0563
+  por                   romance              +0.0395
+  sqi                   albanian             +0.0000
+  ita                   italian              +0.0000
+  hun                   uralic               +0.0000
+  deu                   germanic             +0.0000
+  eng                   english              +0.0000
+  sc                    italo_romance        -0.1902
+  scn                   italo_romance        -0.2571
+  lmo                   italo_romance        -0.2742
+  fur                   italo_romance        -0.3115
+  ron                   romance              -0.3148
+  lij                   italo_romance        -0.5084
+  vec                   italo_romance        -0.5913

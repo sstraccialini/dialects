@@ -29,6 +29,8 @@ if str(_REPO_ROOT) not in sys.path:
 
 from evaluation import run_evaluation, run_parallel_alignment
 
+from analysis._shared.varieties import DIALECT_FAMILIES
+
 from .config import (
     VARIETY_GROUP, GROUP_NAMES, GROUP_COLORS, VARIETY_NAMES, ROMANCE_FAMILIES,
 )
@@ -54,6 +56,9 @@ def variety_eval(
         family_display_names=GROUP_NAMES,
         display_names=VARIETY_NAMES,
         romance_families=ROMANCE_FAMILIES,
+        dialect_families=DIALECT_FAMILIES,
+        isotropy=False,
+        isotropy_top_k_pc=1,
     )
 
 

@@ -1,0 +1,34 @@
+Silhouette report (TF-IDF word (Wiki))
+============================================================
+  n_varieties           = 20
+  linkage_method        = average
+  silhouette (family)            = +0.0146
+  silhouette (romance vs rest)   = +0.0198
+  silhouette (romance, no dial.) = n/a
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  slv                   slavic               +0.0755
+  hrv                   slavic               +0.0753
+  glg                   romance              +0.0598
+  oci                   romance              +0.0449
+  spa                   romance              +0.0446
+  por                   romance              +0.0424
+  cat                   romance              +0.0377
+  fra                   romance              +0.0117
+  sqi                   albanian             +0.0000
+  ita                   italian              +0.0000
+  hun                   uralic               +0.0000
+  deu                   germanic             +0.0000
+  eng                   english              +0.0000
+  ron                   romance              -0.0006
+  fur                   italo_romance        -0.0010
+  lmo                   italo_romance        -0.0037
+  sc                    italo_romance        -0.0055
+  lij                   italo_romance        -0.0140
+  scn                   italo_romance        -0.0297
+  vec                   italo_romance        -0.0447

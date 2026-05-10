@@ -1,0 +1,27 @@
+Silhouette report (canine (FLORES, norm + 6 dial, no-iso))
+============================================================
+  n_varieties           = 13
+  linkage_method        = average
+  silhouette (family)            = -0.1807
+  silhouette (romance vs rest)   = +0.6186
+  silhouette (romance, no dial.) = +0.6529
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  fra                   romance              +0.5350
+  cat                   romance              +0.3653
+  eng                   english              +0.0000
+  slv                   slavic               +0.0000
+  deu                   germanic             +0.0000
+  ita                   italian              +0.0000
+  spa                   romance              -0.1262
+  scn                   italo_romance        -0.2276
+  sc                    italo_romance        -0.3653
+  fur                   italo_romance        -0.4991
+  lmo                   italo_romance        -0.5390
+  lij                   italo_romance        -0.7098
+  vec                   italo_romance        -0.7823

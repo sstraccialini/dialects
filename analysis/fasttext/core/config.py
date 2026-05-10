@@ -25,13 +25,17 @@ from analysis._shared.varieties import (  # noqa: F401
 
 
 # --------------------------------------------------------------------------- #
-# Preprocessing — text already aggressive-normalized at extraction time.
+# Preprocessing flags. The new experiments (FINAL batch 2026-05-10) read text
+# from the cleaned single-CSV format and choose the variant via dataset path
+# (cleaned vs cleaned_normalized). Lowercasing is idempotent on normalized,
+# but case is a distinguishing feature for native — so we leave the input
+# untouched here and let the dataset path decide.
 # --------------------------------------------------------------------------- #
-LOWERCASE = True
+LOWERCASE = False
 MASK_NUMBERS = False
 NUMBER_TOKEN = " "
 STRIP_PUNCT_FOR_WORD = False
-KEEP_DIACRITICS = False
+KEEP_DIACRITICS = True
 
 
 # --------------------------------------------------------------------------- #
