@@ -84,6 +84,14 @@ analysis/**/method_outputs/**/variety_vectors.npz
 # Fine-tuned model checkpoints (saved directly under analysis/<method>/models/).
 analysis/**/models/
 
+# Local run logs (terminal output piped via tee) — kept local-only
+fasttext_*.log
+xlmr_*.log
+canine_*.log
+labse_*.log
+tfidf_*.log
+word2vec_*.log
+
 # Misc
 .claude/
 

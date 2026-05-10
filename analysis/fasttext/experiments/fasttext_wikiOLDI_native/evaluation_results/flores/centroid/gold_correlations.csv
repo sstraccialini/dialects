@@ -1,0 +1,4 @@
+gold,Spearman ρ (full matrix),Spearman ρ (dialect ↔ external),n_shared_with_gold
+lexicostat_ldnd,0.8673,0.7758,17
+lexicostat_lev_mean,0.8696,0.7792,17
+geographic_haversine,0.2535,-0.2203,17

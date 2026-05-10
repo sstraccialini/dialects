@@ -1,0 +1,21 @@
+{
+  "method": "fasttext",
+  "experiment": "fasttext_wikiOLDI_native",
+  "timestamp": "2026-05-10T15:42:25Z",
+  "git_commit": "70fba00bdf4f92d475a358008283b04ef1f8227d",
+  "python": "3.9.6",
+  "platform": "macOS-26.3-arm64-arm-64bit",
+  "params": {
+    "sample_size": 100000,
+    "random_state": 42,
+    "text_variant": "native",
+    "vector_size": 200,
+    "window": 5,
+    "min_count": 2,
+    "min_n": 3,
+    "max_n": 6,
+    "epochs": 10,
+    "sg": 1,
+    "workers": 4
+  }
+}
