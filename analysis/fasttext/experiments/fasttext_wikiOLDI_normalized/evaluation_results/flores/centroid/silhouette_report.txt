@@ -1,0 +1,31 @@
+Silhouette report (FastText fasttext_wikiOLDI_normalized (re-eval))
+============================================================
+  n_varieties           = 17
+  linkage_method        = average
+  silhouette (family)            = +0.0465
+  silhouette (romance vs rest)   = +0.4408
+  silhouette (romance, no dial.) = +0.3367
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  hrv                   slavic               +0.8344
+  slv                   slavic               +0.8325
+  oci                   romance              +0.4429
+  cat                   romance              +0.4367
+  spa                   romance              +0.3557
+  fra                   romance              +0.2048
+  ita                   italian              +0.0000
+  hun                   uralic               +0.0000
+  deu                   germanic             +0.0000
+  eng                   english              +0.0000
+  por                   romance              -0.0969
+  sc                    italo_romance        -0.1967
+  scn                   italo_romance        -0.2555
+  fur                   italo_romance        -0.2950
+  lmo                   italo_romance        -0.3502
+  lij                   italo_romance        -0.5272
+  vec                   italo_romance        -0.5952
