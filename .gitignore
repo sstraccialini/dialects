@@ -37,13 +37,21 @@ Dataset/wiki/*_texts/
 Dataset/wiki/*.xml.bz2
 Dataset/wiki/_cache/
 
-# Wiki extracted CSVs are too big for git (~7 GB total).
-# Distributed via external storage (Google Drive / HF Datasets).
-# Folder structure preserved with .gitkeep files.
-Dataset/wiki/normalized/**/*.csv
-Dataset/wiki/normalized/**/*.json
-Dataset/wiki/not_normalized/**/*.csv
-Dataset/wiki/not_normalized/**/*.json
+# Wiki — only the 100k-sampled <code>.csv files are tracked (~10 MB each,
+# 17 varieties × 2 variants = 34 files, ~450 MB total). The full corpora
+# (`<code>_complete.csv`, ~7 GB), per-article metadata (`<code>_meta.csv`)
+# and corpus stats (`<code>_stats.json`) stay gitignored — distributed via
+# Drive/HF.
+Dataset/wiki/normalized/**/*_complete.csv
+Dataset/wiki/normalized/**/*_meta.csv
+Dataset/wiki/normalized/**/*_stats.json
+Dataset/wiki/not_normalized/**/*_complete.csv
+Dataset/wiki/not_normalized/**/*_meta.csv
+Dataset/wiki/not_normalized/**/*_stats.json
+# others_dialects/ are exploratory side-varieties (lld, nap, pms) not part
+# of the 17-variety final registry — keep them entirely local.
+Dataset/wiki/normalized/others_dialects/
+Dataset/wiki/not_normalized/others_dialects/
 
 # Exploratory side-datasets — kept local-only
 Dataset/manzini_savoia/
