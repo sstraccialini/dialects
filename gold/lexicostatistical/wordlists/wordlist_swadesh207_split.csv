@@ -1,215 +1,215 @@
-n,concept_en,ita,fra,spa,cat,deu,slv,eng,fur,lij,lmo,sc,scn,vec
-1,I (1sg),io,je,yo,jo,ich,jaz,I,jo,mi,mì,deo,jù,mi
-2,you (2sg),tu,tu,tú,tu,du,ti,you,tu,ti,tì,tue,tu,ti
-3_m,"he, she, it (3sg) (m)",egli,il,él,ell,er,on,he,lui,lê,lù,issu,iḍḍu,lu
-3_f,"he, she, it (3sg) (f)",lui,il,él,ell,sie,ona,she,lui,lê,lüü,issu,iḍḍu,el
-4,we (1pl),noi,nous,nosotros,nosaltres,wir,mi,we,noaltris,noî,nun,nois,nuautri,noaltri
-5,you (2pl),voi,vous,vosotros,vosaltres,ihr,vi,you,vô,voî,violter,bois,vuautri,voaltri
-6_m,they (3pl) (m),loro,ils,ellos,ells,sie,oni,they,lôr,lô,luur,issos,iḍḍi,lori
-6_f,they (3pl) (f),essi,elles,ellas,elles,sie,one,they,lôr,liâtri,luur,issos,iḍḍi,i
-7_m,this (m),questo,ce/cet,éste,este,dieser,ta,this,chest,quésto,quell … chì,custu,chistu,sto qua
-7_f,this (f),questo,cette,ésta,esta,diese,to,this,chest,sto,cal … ché,custu,chistu,sto qua
-8_m,that (m),quello,ce/cet,ése,eixe,der,tisti,that,chel,quéllo,quell … lì,cuddu,chiḍḍu,sto la
-8_f,that (f),quello,cette,ése,eixa,die,tista,that,chel,quéllo,cal … lé,cuddu,chiḍḍu,sto la
-9,here,qui,ici,aquí,aquí,hier,tu,here,ca,chi,chì,inoghe,cca,qua
-10,there,lì,là,allí,allà,da,tam,there,là,la,lì,addaeche,ḍḍà,là
-11,who,chi,qui,quién sg,qui,wer,kdo,who,cui,chi,chiè,chie,cui,chi
-12,what,che,quoi,qué,que,was,kaj,what,ce,cöse,cosè,itte,chi,cossa
-13,where,dove,où,dónde,on,wo,kje,where,dulà,dôve,indoè,ube,unni,ndove
-14,when,quando,quand,cuándo,quan,wann,kdaj,when,cuant,quànde,quaant,cando,quannu,cuando
-15,how,come,comment,cómo,com,wie,kako,how,cemût,cómme,comè,comente,comu,come
-16,not,non,ne pas,no,no,nicht,ne,not,no,no,minga,nono,no,no
-17,all,tutto,tout,todo,tot,alle,vse,all,dut,tùtto,tutt,totu,tuttu,tuto
-18,many,tanto,beaucoup,mucho,molt,viele,veliko,many,tancj,tànto,paricc,tantu,assai,sai
-19,some,alcuni,quelques,algunos,alguns,einige,nekoliko,some,cetancj,quàrche,on quaj,carchi,quarchi,cualche
-20,few,poco,peu,poco,poc,wenig,malo,few,pôc,pöco,pòcch,pacu,picca,poco
-21_m,other (m),altro,autre/f,otro,altre,anderer,drugi,other,altri,âtro,olter,àtteru,autru,altro
-21_f,other (f),altro,autre/f,otra,altra,anderer,drugi,other,altri,âtro,òltar,àtteru,autru,altro
-22_m,one (m),un,un,uno,un,eins,ena,one,un,un,vun,unu,unu,un
-22_f,one (f),uno,une,una,una,eins,ena,one,un,un,vün,unu,unu,un
-23_m,two (m),due,deux,dos,dos,zwei,dva,two,doi*,doî*,duu,duos,dui,do
-23_f,two (f),due,deux,dos,dues,zwo,dve,two,dôs*,dôe*,düü,duos,dui,do
-24,three,tre,trois,tres,tres,drei,tri,three,trê,tréi*,trii,tres,tri,tre
-25,four,quattro,quatre,cuatro,quatre,vier,štiri,four,cuatri,quàttro,quater,battor,quattru,cuatro
-26,five,cinque,cinq,cinco,cinc,fünf,pet,five,cinc,çìnque,ciinch,chimbe,cincu,zinque
-27,big,grande,grand,grande,gros,groß,velik,big,grant,grànde,graant,mannu,granni,grando
-28,long,lungo,long,largo,llarg,lang,dolg,long,lunc,lóngo,luunch,longu,longu,longo
-29,wide,largo,large,ancho,ample,breit,širok,wide,larc,làrgo,laarch,làrgu,largu,largo
-30,thick,spesso,gros,grueso,gruixut,dick,debel,thick,penç,drûo,èrtegh,ispìssu,nfutu,groso
-31,heavy,pesante,lourd,pesado,pesat,schwer,težek,heavy,pesant,pezànte,gréef,pesante,pisanti,pesanto
-32,small,piccolo,petit,pequeño,petit,klein,majhen,small,piçul,picìn,pinìn,pitzinnu,nicu,picio
-33,short,corto,court,corto,curt,kurz,kratek,short,curt,cùrto,cüürt,curtu,curtu,corto
-34,narrow,stretto,étroit,estrecho,estret,eng,ozek,narrow,stret,stréito,stréeng,istrintu,strittu,strento
-35,thin,sottile,maigre,delgado,prim,dünn,tanek,thin,fin,sotî,fin,suttile,màguru,magro
-36,woman,donna,femme,mujer,dona,Frau,ženska,woman,femine,dònna,dòna,femina,fìmmina,dona
-37,man (adult male),uomo,homme,hombre,home,Mann,moški,man,om,òmmo,óm,omine,omu,omo
-38,man (human being),persona,humain,humano,humà,Mensch,človek,man,persone,persónn-a,persóna,persona,omu,omo
-39,child,bambino,enfant,niño,nen,Kind,otrok,child,frut,figeu,bagaj,pitzinnu,picciriḍḍu,mulo
-40,wife,moglie,épouse,esposa,esposa,Frau,žena,wife,femine,mogê,miée,pobidda,mugghieri,mujer
-41,husband,marito,mari,marido,marit,Mann,mož,husband,marît,màio,marii,maridu,maritu,omo
-42,mother,madre,mère,madre,mare,Mutter,mati,mother,mari,moæ,mamm,mama,matri,mare
-43,father,padre,père,padre,pare,Vater,oče,father,pari,poæ,pà,babbu,patri,pare
-44,animal,animale,animal,animal,animal,Tier,žival,animal,animâl,animâ,bèstia,animale,armalu,bestia
-45,fish,pesce,poisson,pez,peix,Fisch,riba,fish,pes,péscio,pèss,pische,pisci,pese
-46,bird,uccello,oiseau,ave,ocell,Vogel,ptič,bird,ucel,öxéllo,üsèl,puzone,aceḍḍu,usel
-47,dog,cane,chien,perro,gos,Hund,pes,dog,cjan,càn,caŋ,cane,cani,can
-48,louse,pidocchio,pou,piojo,poll,Laus,uš,louse,pedoli,pighéuggio,piöcc,peugu,pidocchiu,pedocio
-49,snake,serpente,serpent,serpiente,serp,Schlange,kača,snake,serpint,serpénte,biss,serpente,sirpenti,bisa
-50,worm,verme,ver,gusano,cuc,Wurm,črv,worm,vier,verme,giuanìŋ,berme,vermi,verme
-51,tree,albero,arbre,árbol,arbre,Baum,drevo,tree,arbul,èrbo,piànta,alvure,chianta,pianta
-52,forest,foresta,forêt,bosque,bosc,Forst,gozd,forest,bosc,bosco,busch,buscu,voscu,bosco
-53,stick,bastone,bâton,palo,bastó,Stock,palica,stick,baston,bacco,bastùŋ,bastone,vastuni,baston
-54,fruit,frutta,fruit,fruto,fruit,Frucht,plod,fruit,pome,frûta,früt,frutta,fruttu,fruto
-55,seed,seme,semence,semilla,llavor,Samen,seme,seed,samence,armella,soménza,semene,simenza,seme
-56,leaf,foglia,feuille,hoja,fulla,Blatt,list,leaf,fuee,féuggia,föja,foza,fogghia,foja
-57,root,radice,racine,raíz,arrel,Wurzel,koren,root,lidrîs,réixe,sciocch,raighina,ràdica,radise
-58,bark (of a tree),corteccia,écorce,corteza,escorça,Borke,skorja,bark,scuarce,scorsa,scòrza,iscortza,scorcia,scorza
-59,flower,fiore,fleur,flor,flor,Blume,roža,flower,flôr,sciô,fiuur,flore,ciuri,fior
-60,grass,erba,herbe,hierba,herba,Gras,trava,grass,jerbe,erba,èrba,erva,erba,erba
-61,rope,corda,corde,cuerda,corda,Leine,vrv,rope,cuarde,corda,còrda,corda,corda,corda
-62,skin,pelle,peau,piel,pell,Haut,koža,skin,piel,pelle,pèll,pedde,peḍḍi,pele
-63,meat,carne,chair,carne,carn,Fleisch,meso,meat,cjar,carne,càrna,petta,carni,carne
-64,blood,sangue,sang,sangre,sang,Blut,kri,blood,sanc,sàngoe,sàanch,sambene,sangu,sangue
-65,bone,osso,os,hueso,os,Knochen,kost,bone,vues,osso,òss,ossu,ossu,oso
-66,fat (noun),grasso,gras,grasa,greix,Fett,maščoba,fat,gras,grascia,grass,grassu,grassu,graso
-67,egg,uovo,œuf,huevo,ou,Ei,jajce,egg,ûf,êuvo,ööf,ou,ovu,ovo
-68,horn,corno,corne,cuerno,banya,Horn,rog,horn,cuar,corno,còrnu,corru,cornu,corno
-69,tail,coda,queue,cola,cua,Schwanz,rep,tail,code,côa,cùa,coa,cuda,coda
-70,feather,penna,plume,pluma,ploma,Feder,pero,feather,plume,penna,pèna,pinna,pinna,pena
-71,hair,capello,cheveu,cabello,cabell,Haar,lasje,hair,cjavel,cavello,cavèj,pilos,capiḍḍu,cavel
-72,head,testa,tête,cabeza,cap,Haupt,glava,head,cjâf,testa,coo,conca,capu,crapa
-73,ear,orecchio,oreille,oreja,orella,Ohr,uho,ear,orele,oêgia,urégia,orija,aricchia,recia
-74,eye,occhio,œil,ojo,ull,Auge,oko,eye,voli,éuggio,oeugg,oju,occhiu,ocio
-75,nose,naso,nez,nariz,nas,Nase,nos,nose,nâs,nâzo,naas,nasu,nasu,naso
-76,mouth,bocca,bouche,boca,boca,Mund,usta,mouth,bocje,bocca,buca,bucca,vucca,boca
-77,tooth,dente,dent,diente,dent,Zahn,zob,tooth,dint,dente,dinc,dente,denti,dente
-78,tongue (organ),lingua,langue,lengua,llengua,Zunge,jezik,tongue,lenghe,léngoa,léngua,limba,lingua,lingua
-79,fingernail,unghia,ongle,uña,ungla,Fingernagel,noht,fingernail,ongule,ongia,üngia,ugna,ugna,ongia
-80,foot,piede,pied,pie,peu,Fuß,noga,foot,pît,pê,pè,pe’,pedi,pie
-81,leg,gamba,jambe,pierna,cama,Bein,noga,leg,gjambe,ganba,gàmba,camba,gamma,gamba
-82,knee,ginocchio,genou,rodilla,genoll,Knie,koleno,knee,zenoli,zenoggio,genoeugg,benuju,dinocchiu,genocio
-83,hand,mano,main,mano,mà,Hand,roka,hand,man,man,maŋ,manu,manu,man
-84,wing,ala,aile,ala,ala,Fittich,krilo,wing,ale,âa,àla,ala,ala,ala
-85,belly,pancia,ventre,vientre,ventre,Bauch,trebuh,belly,panze,pansa,borigia,panza,panza,panza
-86,guts,intestino,entrailles pl,tripas pl,budells pl,Eingeweide,drobovje,guts,intestin,intestin,büèl,bolloros,vureḍḍu,budela
-87,neck,collo,cou,cuello,coll,Hals,vrat,neck,cuel,collo,còl,collu,coḍḍu,colo
-88,back,schiena,dos,espalda,esquena,Rücken,hrbet,back,schene,schénn-a,s'céna,ischina,carina,schena
-89,breast,petto,poitrine,pecho,pit,Brust,prsi,breast,pet,pêto,pecc,pettus,pettu,peto
-90,heart,cuore,cœur,corazón,cor,Herz,srce,heart,cûr,cheu,cöör,coro,cori,cor
-91,liver,fegato,foie,hígado,fetge,Leber,jetra,liver,fiât,figæto,fidegh,fidigu,fìcatu,fedigo
-92,to drink,bere,boire,beber,beure,trinken,piti,to drink,bevi,béive,béef,biere,vìviri,bever
-93,to eat,mangiare,manger,comer,menjar,essen,jesti,to eat,mangjâ,mangiâ,mangià,pappare,manciari,magnar
-94,to bite,mordere,mordre,morder,mossegar,beißen,gristi,to bite,muardi,adentâ,cagnà,mordere,muzzicari,morsigar
-95,to suck,succhiare,sucer,chupar,xuclar,lutschen,sesati,to suck,supâ,susâ,sciüscià,suere,sucari,ciuciar
-96,to spit,sputare,cracher,escupir,escopir,speien,pljuvati,to spit,spudâ,spuâ,spüà,istuppiare,sputari,spudar
-97,to vomit,vomitare,vomir,vomitar,vomitar,brechen,bruhati,to vomit,gomitâ,vomitâ,trà sù,istercorare,sbummicari,vometar
-98,to blow,soffiare,souffler,soplar,bufar,blasen,pihati,to blow,soflâ,sciusciâ,boffà,buffare,ciusciari,sofiar
-99,to breathe,respirare,respirer,respirar,respirar,atmen,dihati,to breathe,respirâ,respiâ,fiadà,respirare,ciatari,respirar
-100,to laugh,ridere,rire,reír,riure,lachen,smejati se,to laugh,ridi,rîe,ghignà,riere,rìdiri,rider
-101,to see,vedere,voir,ver,veure,sehen,videti,to see,viodi,védde,vedè,vìdere,vìdiri,veder
-102,to hear,sentire,entendre,oír,sentir,hören,slišati,to hear,sintî,sentî,sentì,sentire,sèntiri,sentir
-103,to know,sapere,savoir,saber,saber,kennen,vedeti,to know,savê,savéi,savè,ischire,sapiri,saver
-104,to think,pensare,penser,pensar,pensar,denken,misliti,to think,pensâ,pensâ,pensà,pensare,pinzari,creder
-105,to smell,odorare,sentir,oler,olorar,riechen,vohati,to smell,nasâ,ödoâ,spuzà,annajare,ciagurari,spuzar
-106,to fear,temere,craindre,temer,témer,fürchten,bati se,to fear,temi,témme,vecch pagüra,timere,scantàrisi,gaver paura
-107,to sleep,dormire,dormir,dormir,dormir,schlafen,spati,to sleep,durmî,dormî,durmì,dormire,dòrmiri,dormir
-108,to live,vivere,vivre,vivir,viure,leben,živeti,to live,vivi,vîve,viif,vivere,campari,viver
-109,to die,morire,mourir,morir,morir,sterben,umreti,to die,murî,moî,murì,morrere,mòriri,morir
-110,to kill,uccidere,tuer,matar,matar,töten,ubiti,to kill,copâ,amasâ,mazà,occhiere,accìdiri,mazar
-111,to fight,combattere,lutter,luchar,lluitar,fechten,boriti se,to fight,lotâ,conbatte,fà guèra,cumbattere,cummàttiri,lotar
-112,to hunt,cacciare,chasser,cazar,caçar,jagen,loviti,to hunt,cjaçâ,cacciâ,cascià,catzare,cacciari,cazare
-113,to hit,colpire,frapper,golpear,colpejar,schlagen,udariti,to hit,colpî,batte,trüssà,colpare,cafuḍḍari,bater
-114,to cut,tagliare,couper,cortar,tallar,schneiden,rezati,to cut,taiâ,tagiâ,tajà,tagliare,tagghiari,tajar
-115,to split,dividere,fendre,partir,partir,spalten,razcepiti,to split,dividi,dividde,spartì,dividire,spàrtiri,divider
-116,to stab,pugnalare,poignarder,apuñalar,punyir,stechen,zabosti,to stab,scurtissâ,cotelâ,sbögià,pugnalare,tagghiari,sbusar
-117,to scratch,graffiare,gratter,rascar,rascar,kratzen,praskati,to scratch,sgrafâ,gratâ,sfrisà,iscarrafare,grattari,sgrafare
-118,to dig,scavare,creuser,cavar,cavar,graben,kopati,to dig,scavà,scavâ,scavà,iscavare,scavari,scavar
-119,to swim,nuotare,nager,nadar,nedar,schwimmen,plavati,to swim,nadâ,nuâ,nudà,nadare,natari,nuotar
-120,to fly,volare,voler,volar,volar,fliegen,leteti,to fly,svolâ,xoâ,sgorà,bolare,vulari,svolar
-121,to walk,camminare,marcher,caminar,caminar,gehen,hoditi,to walk,cjaminâ,caminâ,caminà,caminare,caminari,caminar
-122,to come,venire,venir,venir,venir,kommen,priti,to come,vignî,vegnî,vegnì,bennere,vèniri,vegnir
-123,to lie (as in a bed),distendersi,gésir,yacer,jeure,liegen,ležati,to lie,distirâsi,destendise,stravacass giò,giacchire,curcàrisi,stravacar
-124,to sit,sedersi,s'asseoir,sentarse,asseure's,sitzen,sedeti,to sit,sintâsi,asetâse,setass giò,sentare,assittàrisi,sentar
-125,to stand,stare in piedi,être,estar,estar,stehen,stati,to stand,stâ impins,stâ in piêi,vess in pee,istare in cambas,stari  â dritta,star
-126,to turn (intransitive),girare,tourner,girar,girar,drehen,obrniti,to turn,zirâ,gjâ,voltass,boltare,girari,girar
-127,to fall,cadere,tomber,caer,caure,fallen,pasti,to fall,colâ,càzze,burlà giò,ruere,càdiri,cascar
-128,to give,dare,donner,dar,donar,geben,dati,to give,dâ,dâ,dà,dare,dari,dar
-129,to hold,tenere,tenir,tener,tenir,halten,držati,to hold,tignî,tegnî,tegnì,tennere,tèniri,tener
-130,to squeeze,spremere,presser,apretar,estrènyer,quetschen,stiskati,to squeeze,struça,spremme,schiscià,ispremere,mùnciri,strucar
-131,to rub,strofinare,frotter,frotar,fregar,reiben,drgniti,to rub,russâ,fretâ,strusà,frigare,stricari,fregar
-132,to wash,lavare,laver,lavar,rentar,waschen,umivati,to wash,lavâ,lavâ,lavà,illoddiare,lavari,lavar
-133,to wipe,asciugare,essuyer,restregar,eixugar,wischen,brisati,to wipe,suiâ,sciugâ,sügà,assugare,asciucari,netar
-134,to pull,tirare,tirer,tirar,estirar,ziehen,vleči,to pull,tirâ,tiâ,tirà in scià,tirare,tirari,tirar
-135,to push,spingere,pousser,empujar,empènyer,drücken,potisniti,to push,sburtâ,spinze,rüzà,ispinghere,ammuttari,spinger
-136,to throw,lanciare,jeter,lanzar,llançar,werfen,vreči,to throw,lançâ,tiâ,slanzà,frundire,jittari,butar
-137,to tie,legare,lier,atar,lligar,binden,vezati,to tie,leâ,ligâ,ligà sü,ligare,attaccari,ligar
-138,to sew,cucire,coudre,coser,cosir,nähen,šivati,to sew,cusî,cuxî,cüsì,cosire,cùsiri,cusire
-139,to count,contare,compter,contar,comptar,rechnen,šteti,to count,contâ,contâ,cüntà,contare,cuntari,contar
-140,to say,dire,dire,decir,dir,sagen,reči,to say,dî,dî,dì,narrere,cuntari,diser
-141,to sing,cantare,chanter,cantar,cantar,singen,peti,to sing,cjantâ,cantâ,cantà,cantare,cantari,cantar
-142,to play,giocare,jouer,jugar,jugar,spielen,igrati,to play,zuiâ,zugâ,giügà,giogare,jucari,zogar
-143,to float,galleggiare,flotter,flotar,flotar,schweben,plavati,to float,vongolâ,galezâ,stà dessoravìa,gallizare,galliggiari,galejare
-144,to flow,fluire,couler,fluir,fluir,fließen,teči,to flow,scolâ,scorre,sculà,iscurrere,scùrriri,scolar
-145,to freeze,gelare,geler,congelar,gelar,frieren,zamrzniti,to freeze,glaçâ,zeâ,gelà,astragare,gnilari,jazar
-146,to swell,gonfiare,gonfler,hincharse,inflar,schwellen,oteči,to swell,sglonfâ,gonfiâ,sgonfià,abburvuddare,vunchiari,sgionfar
-147,sun,sole,soleil,sol,sol,Sonne,sonce,sun,soreli,sô,suu,sole,suli,sol
-148,moon,luna,lune,luna,lluna,Mond,luna,moon,lune,lùnn-a,lüna,luna,luna,luna
-149,star,stella,étoile,estrella,estel,Stern,zvezda,star,stele,stélla,stéla,isteddu,stiḍḍa,stela
-150,water,acqua,eau,agua,aigua,Wasser,voda,water,aghe,ægoa,aqua,abba,acqua,acua
-151,rain,pioggia,pluie,lluvia,pluja,Regen,dež,rain,ploie,ægoa,pioèuva,pioza,chiuvia,piova
-152,river,fiume,fleuve,río,riu,Fluss,reka,river,flum,sciùmme,fjüm,flumene,ciumi,fiume
-153,lake,lago,lac,lago,llac,See,jezero,lake,lâc,lâgo,laach,lagu,lacu,lago
-154,sea,mare,mer,mar,mar,Meer,morje,sea,mâr,mâ,maar,mare,mari,mar
-155,salt,sale,sel,sal,sal,Salz,sol,salt,sâl,sâ,saa,sale,sali,sal
-156,stone,sasso,pierre,piedra,pedra,Stein,kamen,stone,piere,prîa,sass,pedra,petra,piera
-157,sand,sabbia,sable,arena,sorra,Sand,pesek,sand,savalon,ænn-a,gèra,rena,rina,rena
-158,dust,polvere,poussière,polvo,pols,Staub,prah,dust,polvar,pûa,pùlvura,pruine,pùrbiri,polvere
-159,earth,terra,terre,tierra,terra,Erde,zemlja,earth,tiere,tæra,tèra,terra,munnu,tera
-160,cloud,nuvola,nuage,nube,núvol,Wolke,oblak,cloud,nûl,nûvia,nìgula,nue,nèvula,nuvola
-161,fog,nebbia,brume,niebla,boira,Nebel,megla,fog,fumate,nêgia,nèbia,neula,negghia,caligine
-162,sky,cielo,ciel,cielo,cel,Himmel,nebo,sky,cîl,çê,cél,chelu,celu,cel
-163,wind,vento,vent,viento,vent,Wind,veter,wind,vint,vento,veent,bentu,ventu,vento
-164,snow,neve,neige,nieve,neu,Schnee,sneg,snow,nêf,néive,neef,nie,nivi,neve
-165,ice,ghiaccio,glace,hielo,glaç,Eis,led,ice,glaç,giassa,giàz,ghiatzu,jelu,jazo
-166,smoke,fumo,fumée,humo,fum,Rauch,dim,smoke,fum,fumme,fumèra,fumu,fumu,fumo
-167,fire,fuoco,feu,fuego,foc,Feuer,ogenj,fire,fûc,fêugo,föög,fogu,focu,fogo
-168,ash,cenere,cendre,ceniza,cendra,Asche,pepel,ash,cinise,çeine,scindra,chisina,cìnniri,cendre
-169,to burn,bruciare,brûler,arder,cremar,brennen,žgati,to burn,brusâ,brüxâ,brüsà,fogulare,abbruciari,brusar
-170,road,strada,route,carretera,carretera,Straße,cesta,road,strade,stradda,strada,istrada,strata,strada
-171,mountain,montagna,montagne,montaña,muntanya,Berg,gora,mountain,montagne,montagna,muunt,monte,muntagna,monte
-172,red,rosso,rouge,rojo,vermell,rot,rdeč,red,ros,rosso,rós,ruiu,russu,roso
-173,green,verde,vert,verde,verd,grün,zelen,green,vert,verde,veert,birde,virdi,verde
-174,yellow,giallo,jaune,amarillo,groc,gelb,rumen,yellow,zâl,giâno,giàalt,grogu,giarnu,gialo
-175,white,bianco,blanc,blanco,blanc,weiß,bel,white,blanc,gianco,biàanch,arvu,jancu,bianco
-176,black,nero,noir,negro,negre,schwarz,črn,black,neri,néigro,négar,nieddu,nìguru,negro
-177,night,notte,nuit,noche,nit,Nacht,noč,night,gnot,néutte,nòcc,notte,notti,note
-178,day,giorno,jour,día,dia,Tag,dan,day,dì,giorno,dì,die,jornu,giorno
-179,year,anno,année,año,any,Jahr,leto,year,an,anno,aŋ,annu,annu,ano
-180,warm,caldo,chaud,caliente,calent,warm,topel,warm,cjalt,câdo,caalt,calidu,càudu,caldo
-181,cold,freddo,froid,frío,fred,kalt,hladen,cold,frêt,fréido,frecc,frittu,friddu,fredo
-182,full,pieno,plein,lleno,ple,voll,poln,full,plen,pìn,piéŋ,pienu,chinu,pien
-183,new,nuovo,nouveau,nuevo,nou,neu,nov,new,gnûf,nêuvo,nööf,nou,novu,novo
-184,old,vecchio,vieux,viejo,vell,alt,star,old,vieli,vêgio,vécc,betzu,vecchiu,vecio
-185,good,buono,bon,bueno,bo,gut,dober,good,bon,bon,bóŋ,bonu,bonu,bon
-186,bad,cattivo,mauvais adj.,malo adj.,dolent adj.,schlecht,slab,bad,trist,catîvo,catìif,malosu,malu,cativo
-187,rotten,marcio,pourri,podrido,podrit,faul,gnil,rotten,vuast,marso,mars,martzu,purritu,marzo
-188,dirty,sporco,sale,sucio,brut,schmutzig,umazan,dirty,soç,sücido,tenc,isporcu,lurdu,sludro
-189,straight,dritto,droit,recto,recte,gerade,raven,straight,dret,drîto,driss,drittu,drittu,drito
-190,round,rotondo,rond,redondo,rodó,rund,okrogel,round,taront,rióndo,rudùund,redundu,tunnu,tondo
-191,sharp (as a knife),affilato,affilé,afilado,esmolat,scharf,oster,sharp,uçât,afilòu,güz,arrodadu,affilatu,spizo
-192,dull (as a knife),smussato,émoussé,sin filo,esmussat,stumpf,top,dull,asiât,smusòu,mucch,atturussu,smanciatu,spizato
-193,smooth,liscio,lisse,liso,llis,glatt,gladek,smooth,lis,lìscio,liss,liju,lisciu,lisier
-194,wet,bagnato,mouillé,húmedo,humit,nass,moker,wet,umit,bagnòu,ümit,bagnadu,moḍḍu,bagnà
-195,dry,secco,sec,seco,sec,dürr,suh,dry,sec,sécco,sech,siccu,siccu,seco
-196,correct,giusto,correct,correcto,correcte,richtig,pravilen,correct,just,giùsto,giüst,giustu,giustu,giusto
-197,near,vicino,près,cerca,prop,nah,bližnji,near,dongje,arénte,visìŋ,affacca,vicinu,vizin
-198,far,lontano,loin,lejos,lluny,fern,oddaljen,far,luntano,lontàn,luntàŋ,addae,luntanu,lontan
-199,right,destra,droit,derecho,dret,rechts,desni,right,drete,drîta,dèstra,dresta,ritta,destro
-200,left,sinistra,gauche,izquierdo,esquerre,links,levi,left,çambe,mancìnn-a,sinistra,manca,manca,sinistro
-201,at,a,en,en,en,an,pri,at,a,a,a,a,nne,a
-202,in,in,en,en,en,in,v,in,in,in,in,in,'n,in
-203,with,con,avec,con,amb,mit,s,with,cun,con,con,cun,cu,con
-204,and,e,et,y,i,und,in,and,e,e,e,e,e,e
-205,if,se,si,si,si,ob,če,if,se,se,se,si,si,se
-206,because,perché,parce que,porque,perquè,weil,ker,because,parcè,perché,parchè,pro itte,pirchì,parché
-207,name,nome,nom,nombre,nom,Name,ime,name,non,nómme,nóm,nomene,nomu,nome
+n,concept_en,fur,lij,lmo,sc,scn,vec,ita,fra,spa,cat,por,oci,deu,eng,slv,hrv,hun
+1,I (1sg),jo,mi,mì,deo,jù,mi,io,je,yo,jo,eu,ieu,ich,I,jaz,ja,én
+2,you (2sg),tu,ti,tì,tue,tu,ti,tu,tu,tú,tu,tu,tu,du,you,ti,ti,te
+3_m,"he, she, it (3sg) (m)",lui,lê,lù,issu,iḍḍu,lu,egli,il,él,ell,ele,el,er,he,on,on,ő
+3_f,"he, she, it (3sg) (f)",lui,lê,lüü,issu,iḍḍu,el,lui,il,él,ell,ele,el,sie,she,ona,ona,ő
+4,we (1pl),noaltris,noî,nun,nois,nuautri,noaltri,noi,nous,nosotros,nosaltres,nós,nosautres,wir,we,mi,mi,mi
+5,you (2pl),vô,voî,violter,bois,vuautri,voaltri,voi,vous,vosotros,vosaltres,vós,vosautres,ihr,you,vi,vi,ti
+6_m,they (3pl) (m),lôr,lô,luur,issos,iḍḍi,lori,loro,ils,ellos,ells,eles,eles,sie,they,oni,oni,ők
+6_f,they (3pl) (f),lôr,liâtri,luur,issos,iḍḍi,i,essi,elles,ellas,elles,elas,elas,sie,they,one,one,ők
+7_m,this (m),chest,quésto,quell … chì,custu,chistu,sto qua,questo,ce/cet,éste,este,este,aqueste,dieser,this,ta,ovaj,ez
+7_f,this (f),chest,sto,cal … ché,custu,chistu,sto qua,questo,cette,ésta,esta,esta,~a,diese,this,to,taj,ez
+8_m,that (m),chel,quéllo,quell … lì,cuddu,chiḍḍu,sto la,quello,ce/cet,ése,eixe,esse,aquel,der,that,tisti,taj,az
+8_f,that (f),chel,quéllo,cal … lé,cuddu,chiḍḍu,sto la,quello,cette,ése,eixa,esse,~a,die,that,tista,onaj,az
+9,here,ca,chi,chì,inoghe,cca,qua,qui,ici,aquí,aquí,aqui,aicí,hier,here,tu,ovde,itt
+10,there,là,la,lì,addaeche,ḍḍà,là,lì,là,allí,allà,ali,ailà,da,there,tam,tamo,ott
+11,who,cui,chi,chiè,chie,cui,chi,chi,qui,quién sg,qui,quem,quin,wer,who,kdo,ko,ki
+12,what,ce,cöse,cosè,itte,chi,cossa,che,quoi,qué,que,que,qué,was,what,kaj,što,mi
+13,where,dulà,dôve,indoè,ube,unni,ndove,dove,où,dónde,on,onde,ont,wo,where,kje,gde,hol
+14,when,cuant,quànde,quaant,cando,quannu,cuando,quando,quand,cuándo,quan,quando,quand,wann,when,kdaj,kada,mikor
+15,how,cemût,cómme,comè,comente,comu,come,come,comment,cómo,com,como,consí,wie,how,kako,kako,hogy
+16,not,no,no,minga,nono,no,no,non,ne pas,no,no,não,pas,nicht,not,ne,ne,nem
+17,all,dut,tùtto,tutt,totu,tuttu,tuto,tutto,tout,todo,tot,todo,tot,alle,all,vse,sav,mind
+18,many,tancj,tànto,paricc,tantu,assai,sai,tanto,beaucoup,mucho,molt,muito,fòrça,viele,many,veliko,mnogo,sok
+19,some,cetancj,quàrche,on quaj,carchi,quarchi,cualche,alcuni,quelques,algunos,alguns,alguns,qualque,einige,some,nekoliko,nekoliko,néhány
+20,few,pôc,pöco,pòcch,pacu,picca,poco,poco,peu,poco,poc,pouco,pauc,wenig,few,malo,malo,kevés
+21_m,other (m),altri,âtro,olter,àtteru,autru,altro,altro,autre/f,otro,altre,outro,autre,anderer,other,drugi,drugi,más
+21_f,other (f),altri,âtro,òltar,àtteru,autru,altro,altro,autre/f,otra,altra,outra,autre,anderer,other,drugi,drugi,más
+22_m,one (m),un,un,vun,unu,unu,un,un,un,uno,un,um,un,eins,one,ena,jedan,egy
+22_f,one (f),un,un,vün,unu,unu,un,uno,une,una,una,uma,una,eins,one,ena,jedan,egy
+23_m,two (m),doi*,doî*,duu,duos,dui,do,due,deux,dos,dos,dois,dos,zwei,two,dva,dva,kettő
+23_f,two (f),dôs*,dôe*,düü,duos,dui,do,due,deux,dos,dues,duas,doas,zwo,two,dve,dva,kettő
+24,three,trê,tréi*,trii,tres,tri,tre,tre,trois,tres,tres,três,tres,drei,three,tri,tri,három
+25,four,cuatri,quàttro,quater,battor,quattru,cuatro,quattro,quatre,cuatro,quatre,quatro,quatre,vier,four,štiri,četiri,négy
+26,five,cinc,çìnque,ciinch,chimbe,cincu,zinque,cinque,cinq,cinco,cinc,cinco,cinc,fünf,five,pet,pet,öt
+27,big,grant,grànde,graant,mannu,granni,grando,grande,grand,grande,gros,grande,bèl,groß,big,velik,velik,nagy
+28,long,lunc,lóngo,luunch,longu,longu,longo,lungo,long,largo,llarg,longo,long,lang,long,dolg,dug,hosszú
+29,wide,larc,làrgo,laarch,làrgu,largu,largo,largo,large,ancho,ample,largo,larg,breit,wide,širok,širok,széles
+30,thick,penç,drûo,èrtegh,ispìssu,nfutu,groso,spesso,gros,grueso,gruixut,grosso,espés,dick,thick,debel,debeo,vastag
+31,heavy,pesant,pezànte,gréef,pesante,pisanti,pesanto,pesante,lourd,pesado,pesat,pesado,pesuc,schwer,heavy,težek,težak,nehéz
+32,small,piçul,picìn,pinìn,pitzinnu,nicu,picio,piccolo,petit,pequeño,petit,pequeno,pichòt/pichon,klein,small,majhen,mali,kis
+33,short,curt,cùrto,cüürt,curtu,curtu,corto,corto,court,corto,curt,curto,cort,kurz,short,kratek,kratak,rövid
+34,narrow,stret,stréito,stréeng,istrintu,strittu,strento,stretto,étroit,estrecho,estret,estreito,estrech,eng,narrow,ozek,uzak,szűk
+35,thin,fin,sotî,fin,suttile,màguru,magro,sottile,maigre,delgado,prim,magro,fin,dünn,thin,tanek,tanak,vékony
+36,woman,femine,dònna,dòna,femina,fìmmina,dona,donna,femme,mujer,dona,mulher,femna,Frau,woman,ženska,žena,nő
+37,man (adult male),om,òmmo,óm,omine,omu,omo,uomo,homme,hombre,home,homem,òme,Mann,man,moški,muškarac,férfi
+38,man (human being),persone,persónn-a,persóna,persona,omu,omo,persona,humain,humano,humà,humano,òme,Mensch,man,človek,čovek,ember
+39,child,frut,figeu,bagaj,pitzinnu,picciriḍḍu,mulo,bambino,enfant,niño,nen,criança,enfant,Kind,child,otrok,dete,gyerek
+40,wife,femine,mogê,miée,pobidda,mugghieri,mujer,moglie,épouse,esposa,esposa,mulher,esposa,Frau,wife,žena,žena,feleség
+41,husband,marît,màio,marii,maridu,maritu,omo,marito,mari,marido,marit,marido,espós,Mann,husband,mož,muž,férj
+42,mother,mari,moæ,mamm,mama,matri,mare,madre,mère,madre,mare,mãe,maire,Mutter,mother,mati,mati,anya
+43,father,pari,poæ,pà,babbu,patri,pare,padre,père,padre,pare,pai,paire,Vater,father,oče,otac,apa
+44,animal,animâl,animâ,bèstia,animale,armalu,bestia,animale,animal,animal,animal,animal,animal,Tier,animal,žival,životinja,állat
+45,fish,pes,péscio,pèss,pische,pisci,pese,pesce,poisson,pez,peix,peixe,peis,Fisch,fish,riba,riba,hal
+46,bird,ucel,öxéllo,üsèl,puzone,aceḍḍu,usel,uccello,oiseau,ave,ocell,ave,aucèl,Vogel,bird,ptič,ptica,madár
+47,dog,cjan,càn,caŋ,cane,cani,can,cane,chien,perro,gos,cão,gos,Hund,dog,pes,pas,kutya
+48,louse,pedoli,pighéuggio,piöcc,peugu,pidocchiu,pedocio,pidocchio,pou,piojo,poll,piolho,pesolh,Laus,louse,uš,uš,tetű
+49,snake,serpint,serpénte,biss,serpente,sirpenti,bisa,serpente,serpent,serpiente,serp,serpe,sèrp,Schlange,snake,kača,zmija,kígyó
+50,worm,vier,verme,giuanìŋ,berme,vermi,verme,verme,ver,gusano,cuc,verme,vèrm,Wurm,worm,črv,crv,féreg
+51,tree,arbul,èrbo,piànta,alvure,chianta,pianta,albero,arbre,árbol,arbre,árvore,aubre,Baum,tree,drevo,drvo,fa
+52,forest,bosc,bosco,busch,buscu,voscu,bosco,foresta,forêt,bosque,bosc,floresta,bòsc,Forst,forest,gozd,šuma,erdő
+53,stick,baston,bacco,bastùŋ,bastone,vastuni,baston,bastone,bâton,palo,bastó,bastão,baston,Stock,stick,palica,štap,bot
+54,fruit,pome,frûta,früt,frutta,fruttu,fruto,frutta,fruit,fruto,fruit,fruto,fruch,Frucht,fruit,plod,voće,gyümölcs
+55,seed,samence,armella,soménza,semene,simenza,seme,seme,semence,semilla,llavor,semente,semen,Samen,seed,seme,seme,mag
+56,leaf,fuee,féuggia,föja,foza,fogghia,foja,foglia,feuille,hoja,fulla,folha,fuèlha,Blatt,leaf,list,list,levél
+57,root,lidrîs,réixe,sciocch,raighina,ràdica,radise,radice,racine,raíz,arrel,raiz,rasiga,Wurzel,root,koren,koren,gyökér
+58,bark (of a tree),scuarce,scorsa,scòrza,iscortza,scorcia,scorza,corteccia,écorce,corteza,escorça,casca,rusca,Borke,bark,skorja,kora,kéreg
+59,flower,flôr,sciô,fiuur,flore,ciuri,fior,fiore,fleur,flor,flor,flor,flor,Blume,flower,roža,cvet,virág
+60,grass,jerbe,erba,èrba,erva,erba,erba,erba,herbe,hierba,herba,erva,èrba,Gras,grass,trava,trava,fű
+61,rope,cuarde,corda,còrda,corda,corda,corda,corda,corde,cuerda,corda,corda,còrda,Leine,rope,vrv,uže,kötél
+62,skin,piel,pelle,pèll,pedde,peḍḍi,pele,pelle,peau,piel,pell,pele,pèl,Haut,skin,koža,koža,bőr
+63,meat,cjar,carne,càrna,petta,carni,carne,carne,chair,carne,carn,carne,carn,Fleisch,meat,meso,meso,hús
+64,blood,sanc,sàngoe,sàanch,sambene,sangu,sangue,sangue,sang,sangre,sang,sangue,sang,Blut,blood,kri,krv,vér
+65,bone,vues,osso,òss,ossu,ossu,oso,osso,os,hueso,os,osso,òs,Knochen,bone,kost,kost,csont
+66,fat (noun),gras,grascia,grass,grassu,grassu,graso,grasso,gras,grasa,greix,gordura,grais,Fett,fat,maščoba,mast,háj
+67,egg,ûf,êuvo,ööf,ou,ovu,ovo,uovo,œuf,huevo,ou,ovo,uòu,Ei,egg,jajce,jaje,tojás
+68,horn,cuar,corno,còrnu,corru,cornu,corno,corno,corne,cuerno,banya,corno,bana,Horn,horn,rog,rog,szarv
+69,tail,code,côa,cùa,coa,cuda,coda,coda,queue,cola,cua,cauda,coá,Schwanz,tail,rep,rep,farok
+70,feather,plume,penna,pèna,pinna,pinna,pena,penna,plume,pluma,ploma,pluma,pluma,Feder,feather,pero,pero,toll
+71,hair,cjavel,cavello,cavèj,pilos,capiḍḍu,cavel,capello,cheveu,cabello,cabell,cabelo,pel,Haar,hair,lasje,kosa,haj
+72,head,cjâf,testa,coo,conca,capu,crapa,testa,tête,cabeza,cap,cabeça,cap,Haupt,head,glava,glava,fej
+73,ear,orele,oêgia,urégia,orija,aricchia,recia,orecchio,oreille,oreja,orella,orelha,aurelha,Ohr,ear,uho,uho,fül
+74,eye,voli,éuggio,oeugg,oju,occhiu,ocio,occhio,œil,ojo,ull,olho,uèlh,Auge,eye,oko,oko,szem
+75,nose,nâs,nâzo,naas,nasu,nasu,naso,naso,nez,nariz,nas,nariz,nas,Nase,nose,nos,nos,orr
+76,mouth,bocje,bocca,buca,bucca,vucca,boca,bocca,bouche,boca,boca,boca,boca,Mund,mouth,usta,usta,száj
+77,tooth,dint,dente,dinc,dente,denti,dente,dente,dent,diente,dent,dente,dent,Zahn,tooth,zob,zub,fog
+78,tongue (organ),lenghe,léngoa,léngua,limba,lingua,lingua,lingua,langue,lengua,llengua,língua,lenga,Zunge,tongue,jezik,jezik,nyelv
+79,fingernail,ongule,ongia,üngia,ugna,ugna,ongia,unghia,ongle,uña,ungla,unha,ongla,Fingernagel,fingernail,noht,nokat,köröm
+80,foot,pît,pê,pè,pe’,pedi,pie,piede,pied,pie,peu,pé,pè,Fuß,foot,noga,stopa,lábfej
+81,leg,gjambe,ganba,gàmba,camba,gamma,gamba,gamba,jambe,pierna,cama,perna,camba,Bein,leg,noga,noga,láb
+82,knee,zenoli,zenoggio,genoeugg,benuju,dinocchiu,genocio,ginocchio,genou,rodilla,genoll,joelho,genolh,Knie,knee,koleno,koleno,térd
+83,hand,man,man,maŋ,manu,manu,man,mano,main,mano,mà,mão,man,Hand,hand,roka,ruka,kéz
+84,wing,ale,âa,àla,ala,ala,ala,ala,aile,ala,ala,asa,ala,Fittich,wing,krilo,krilo,szárny
+85,belly,panze,pansa,borigia,panza,panza,panza,pancia,ventre,vientre,ventre,ventre,ventre,Bauch,belly,trebuh,stomak,has
+86,guts,intestin,intestin,büèl,bolloros,vureḍḍu,budela,intestino,entrailles pl,tripas pl,budells pl,tripas pl,tripa,Eingeweide,guts,drobovje,crevo,bél
+87,neck,cuel,collo,còl,collu,coḍḍu,colo,collo,cou,cuello,coll,pescoço,còl,Hals,neck,vrat,vrat,nyak
+88,back,schene,schénn-a,s'céna,ischina,carina,schena,schiena,dos,espalda,esquena,costas pl /,esquina,Rücken,back,hrbet,leđa,hát
+89,breast,pet,pêto,pecc,pettus,pettu,peto,petto,poitrine,pecho,pit,peito,pièch,Brust,breast,prsi,grudi,mell
+90,heart,cûr,cheu,cöör,coro,cori,cor,cuore,cœur,corazón,cor,coração,còr,Herz,heart,srce,srce,szív
+91,liver,fiât,figæto,fidegh,fidigu,fìcatu,fedigo,fegato,foie,hígado,fetge,fígado,fetge,Leber,liver,jetra,jetra,máj
+92,to drink,bevi,béive,béef,biere,vìviri,bever,bere,boire,beber,beure,beber,beure,trinken,to drink,piti,piti,iszik
+93,to eat,mangjâ,mangiâ,mangià,pappare,manciari,magnar,mangiare,manger,comer,menjar,comer,manjar,essen,to eat,jesti,jesti,eszik
+94,to bite,muardi,adentâ,cagnà,mordere,muzzicari,morsigar,mordere,mordre,morder,mossegar,morder,mossegar,beißen,to bite,gristi,ujesti,harap
+95,to suck,supâ,susâ,sciüscià,suere,sucari,ciuciar,succhiare,sucer,chupar,xuclar,chupar,chucar,lutschen,to suck,sesati,sisati,szop
+96,to spit,spudâ,spuâ,spüà,istuppiare,sputari,spudar,sputare,cracher,escupir,escopir,cuspir,escopir,speien,to spit,pljuvati,pljuvati,köp
+97,to vomit,gomitâ,vomitâ,trà sù,istercorare,sbummicari,vometar,vomitare,vomir,vomitar,vomitar,vomitar,racar,brechen,to vomit,bruhati,povraćati,hány
+98,to blow,soflâ,sciusciâ,boffà,buffare,ciusciari,sofiar,soffiare,souffler,soplar,bufar,soprar,bofar,blasen,to blow,pihati,duvati,fúj
+99,to breathe,respirâ,respiâ,fiadà,respirare,ciatari,respirar,respirare,respirer,respirar,respirar,respirar,alenar,atmen,to breathe,dihati,disati,lélegzik
+100,to laugh,ridi,rîe,ghignà,riere,rìdiri,rider,ridere,rire,reír,riure,rir,rire,lachen,to laugh,smejati se,smejati se,nevet
+101,to see,viodi,védde,vedè,vìdere,vìdiri,veder,vedere,voir,ver,veure,ver,veire,sehen,to see,videti,videti,lát
+102,to hear,sintî,sentî,sentì,sentire,sèntiri,sentir,sentire,entendre,oír,sentir,ouvir,ausir,hören,to hear,slišati,čuti,hall
+103,to know,savê,savéi,savè,ischire,sapiri,saver,sapere,savoir,saber,saber,saber,saber,kennen,to know,vedeti,znati,tud
+104,to think,pensâ,pensâ,pensà,pensare,pinzari,creder,pensare,penser,pensar,pensar,pensar,pensar,denken,to think,misliti,misliti,gondol
+105,to smell,nasâ,ödoâ,spuzà,annajare,ciagurari,spuzar,odorare,sentir,oler,olorar,cheirar,sentir,riechen,to smell,vohati,njušiti,szagol
+106,to fear,temi,témme,vecch pagüra,timere,scantàrisi,gaver paura,temere,craindre,temer,témer,temer,crénher,fürchten,to fear,bati se,plašiti,fél
+107,to sleep,durmî,dormî,durmì,dormire,dòrmiri,dormir,dormire,dormir,dormir,dormir,dormir,dormir,schlafen,to sleep,spati,spavati,alszik
+108,to live,vivi,vîve,viif,vivere,campari,viver,vivere,vivre,vivir,viure,viver,viure,leben,to live,živeti,živeti,él
+109,to die,murî,moî,murì,morrere,mòriri,morir,morire,mourir,morir,morir,morrer,morir,sterben,to die,umreti,umreti,meghal
+110,to kill,copâ,amasâ,mazà,occhiere,accìdiri,mazar,uccidere,tuer,matar,matar,matar,tuar,töten,to kill,ubiti,ubiti,öl
+111,to fight,lotâ,conbatte,fà guèra,cumbattere,cummàttiri,lotar,combattere,lutter,luchar,lluitar,lutar,se batre,fechten,to fight,boriti se,tući,harcol
+112,to hunt,cjaçâ,cacciâ,cascià,catzare,cacciari,cazare,cacciare,chasser,cazar,caçar,caçar,caçar,jagen,to hunt,loviti,loviti,vadászik
+113,to hit,colpî,batte,trüssà,colpare,cafuḍḍari,bater,colpire,frapper,golpear,colpejar,golpear,trucar,schlagen,to hit,udariti,udarati,üt
+114,to cut,taiâ,tagiâ,tajà,tagliare,tagghiari,tajar,tagliare,couper,cortar,tallar,cortar,talhar,schneiden,to cut,rezati,seći,vág
+115,to split,dividi,dividde,spartì,dividire,spàrtiri,divider,dividere,fendre,partir,partir,partir,partir,spalten,to split,razcepiti,deliti,hasít
+116,to stab,scurtissâ,cotelâ,sbögià,pugnalare,tagghiari,sbusar,pugnalare,poignarder,apuñalar,punyir,apunhalar,estocar,stechen,to stab,zabosti,ubosti,szúr
+117,to scratch,sgrafâ,gratâ,sfrisà,iscarrafare,grattari,sgrafare,graffiare,gratter,rascar,rascar,rascar,rascar,kratzen,to scratch,praskati,češati,vakar
+118,to dig,scavà,scavâ,scavà,iscavare,scavari,scavar,scavare,creuser,cavar,cavar,cavar,cavar,graben,to dig,kopati,kopati,ás
+119,to swim,nadâ,nuâ,nudà,nadare,natari,nuotar,nuotare,nager,nadar,nedar,nadar,nadar,schwimmen,to swim,plavati,plivati,úszik
+120,to fly,svolâ,xoâ,sgorà,bolare,vulari,svolar,volare,voler,volar,volar,voar,volar,fliegen,to fly,leteti,leteti,repül
+121,to walk,cjaminâ,caminâ,caminà,caminare,caminari,caminar,camminare,marcher,caminar,caminar,andar,anar,gehen,to walk,hoditi,hodati,jár
+122,to come,vignî,vegnî,vegnì,bennere,vèniri,vegnir,venire,venir,venir,venir,vir,venir,kommen,to come,priti,dolaziti,jön
+123,to lie (as in a bed),distirâsi,destendise,stravacass giò,giacchire,curcàrisi,stravacar,distendersi,gésir,yacer,jeure,jazer,jaire,liegen,to lie,ležati,ležati,fekszik
+124,to sit,sintâsi,asetâse,setass giò,sentare,assittàrisi,sentar,sedersi,s'asseoir,sentarse,asseure's,sentar,se sèire,sitzen,to sit,sedeti,sedeti,ül
+125,to stand,stâ impins,stâ in piêi,vess in pee,istare in cambas,stari  â dritta,star,stare in piedi,être,estar,estar,estar,estar drech,stehen,to stand,stati,stajati,áll
+126,to turn (intransitive),zirâ,gjâ,voltass,boltare,girari,girar,girare,tourner,girar,girar,girar,virar,drehen,to turn,obrniti,skrenuti,fordul
+127,to fall,colâ,càzze,burlà giò,ruere,càdiri,cascar,cadere,tomber,caer,caure,cair,caire,fallen,to fall,pasti,pasti,esik
+128,to give,dâ,dâ,dà,dare,dari,dar,dare,donner,dar,donar,dar,bailar,geben,to give,dati,dati,ad
+129,to hold,tignî,tegnî,tegnì,tennere,tèniri,tener,tenere,tenir,tener,tenir,ter,tenir,halten,to hold,držati,držati,tart
+130,to squeeze,struça,spremme,schiscià,ispremere,mùnciri,strucar,spremere,presser,apretar,estrènyer,apertar,pressar,quetschen,to squeeze,stiskati,stisnuti,sajtol
+131,to rub,russâ,fretâ,strusà,frigare,stricari,fregar,strofinare,frotter,frotar,fregar,esfregar,fretar,reiben,to rub,drgniti,trljati,dörgöl
+132,to wash,lavâ,lavâ,lavà,illoddiare,lavari,lavar,lavare,laver,lavar,rentar,lavar,lavar,waschen,to wash,umivati,prati,mos
+133,to wipe,suiâ,sciugâ,sügà,assugare,asciucari,netar,asciugare,essuyer,restregar,eixugar,enxugar,eissugar,wischen,to wipe,brisati,brisati,töröl
+134,to pull,tirâ,tiâ,tirà in scià,tirare,tirari,tirar,tirare,tirer,tirar,estirar,tirar,tirar,ziehen,to pull,vleči,vući,húz
+135,to push,sburtâ,spinze,rüzà,ispinghere,ammuttari,spinger,spingere,pousser,empujar,empènyer,empurrar,butar,drücken,to push,potisniti,gurati,tol
+136,to throw,lançâ,tiâ,slanzà,frundire,jittari,butar,lanciare,jeter,lanzar,llançar,lançar,lançar,werfen,to throw,vreči,baciti,hajít
+137,to tie,leâ,ligâ,ligà sü,ligare,attaccari,ligar,legare,lier,atar,lligar,atar,estacar,binden,to tie,vezati,vezati,köt
+138,to sew,cusî,cuxî,cüsì,cosire,cùsiri,cusire,cucire,coudre,coser,cosir,coser,coire,nähen,to sew,šivati,šiti,varr
+139,to count,contâ,contâ,cüntà,contare,cuntari,contar,contare,compter,contar,comptar,contar,comptar,rechnen,to count,šteti,brojati,számol
+140,to say,dî,dî,dì,narrere,cuntari,diser,dire,dire,decir,dir,dizer,dire,sagen,to say,reči,reći,mond
+141,to sing,cjantâ,cantâ,cantà,cantare,cantari,cantar,cantare,chanter,cantar,cantar,cantar,cantar,singen,to sing,peti,pevati,énekel
+142,to play,zuiâ,zugâ,giügà,giogare,jucari,zogar,giocare,jouer,jugar,jugar,jogar,jogar,spielen,to play,igrati,igrati,játszik
+143,to float,vongolâ,galezâ,stà dessoravìa,gallizare,galliggiari,galejare,galleggiare,flotter,flotar,flotar,flutuar,flotar,schweben,to float,plavati,plutati,lebeg
+144,to flow,scolâ,scorre,sculà,iscurrere,scùrriri,scolar,fluire,couler,fluir,fluir,fluir,rajar,fließen,to flow,teči,teći,folyik
+145,to freeze,glaçâ,zeâ,gelà,astragare,gnilari,jazar,gelare,geler,congelar,gelar,gelar,gelar,frieren,to freeze,zamrzniti,zalediti,megfagy
+146,to swell,sglonfâ,gonfiâ,sgonfià,abburvuddare,vunchiari,sgionfar,gonfiare,gonfler,hincharse,inflar,inchar-se,coflar,schwellen,to swell,oteči,oteći,dagad
+147,sun,soreli,sô,suu,sole,suli,sol,sole,soleil,sol,sol,sol,solelh,Sonne,sun,sonce,sunce,nap
+148,moon,lune,lùnn-a,lüna,luna,luna,luna,luna,lune,luna,lluna,lua,luna,Mond,moon,luna,mesec,hold
+149,star,stele,stélla,stéla,isteddu,stiḍḍa,stela,stella,étoile,estrella,estel,estrela,estela,Stern,star,zvezda,zvezda,csillag
+150,water,aghe,ægoa,aqua,abba,acqua,acua,acqua,eau,agua,aigua,água,aiga,Wasser,water,voda,voda,víz
+151,rain,ploie,ægoa,pioèuva,pioza,chiuvia,piova,pioggia,pluie,lluvia,pluja,chuva,pluèja,Regen,rain,dež,dažd,eső
+152,river,flum,sciùmme,fjüm,flumene,ciumi,fiume,fiume,fleuve,río,riu,rio,riu,Fluss,river,reka,reka,folyó
+153,lake,lâc,lâgo,laach,lagu,lacu,lago,lago,lac,lago,llac,lago,lac,See,lake,jezero,jezero,tó
+154,sea,mâr,mâ,maar,mare,mari,mar,mare,mer,mar,mar,mar,mar,Meer,sea,morje,more,tenger
+155,salt,sâl,sâ,saa,sale,sali,sal,sale,sel,sal,sal,sal,sal,Salz,salt,sol,sol,só
+156,stone,piere,prîa,sass,pedra,petra,piera,sasso,pierre,piedra,pedra,pedra,pèira,Stein,stone,kamen,kamen,kő
+157,sand,savalon,ænn-a,gèra,rena,rina,rena,sabbia,sable,arena,sorra,areia,sabla,Sand,sand,pesek,pesak,homok
+158,dust,polvar,pûa,pùlvura,pruine,pùrbiri,polvere,polvere,poussière,polvo,pols,pó,polvèra,Staub,dust,prah,prah,por
+159,earth,tiere,tæra,tèra,terra,munnu,tera,terra,terre,tierra,terra,terra,tèrra,Erde,earth,zemlja,zemlja,föld
+160,cloud,nûl,nûvia,nìgula,nue,nèvula,nuvola,nuvola,nuage,nube,núvol,nuvem,nívol,Wolke,cloud,oblak,oblak,felhő
+161,fog,fumate,nêgia,nèbia,neula,negghia,caligine,nebbia,brume,niebla,boira,névoa,bruma,Nebel,fog,megla,magla,köd
+162,sky,cîl,çê,cél,chelu,celu,cel,cielo,ciel,cielo,cel,céu,cèl,Himmel,sky,nebo,nebo,ég
+163,wind,vint,vento,veent,bentu,ventu,vento,vento,vent,viento,vent,vento,vent,Wind,wind,veter,vetar,szél
+164,snow,nêf,néive,neef,nie,nivi,neve,neve,neige,nieve,neu,neve,nèu,Schnee,snow,sneg,sneg,hó
+165,ice,glaç,giassa,giàz,ghiatzu,jelu,jazo,ghiaccio,glace,hielo,glaç,gelo,glaç,Eis,ice,led,led,jég
+166,smoke,fum,fumme,fumèra,fumu,fumu,fumo,fumo,fumée,humo,fum,fumo,fum,Rauch,smoke,dim,dim,füst
+167,fire,fûc,fêugo,föög,fogu,focu,fogo,fuoco,feu,fuego,foc,fogo,fuòc,Feuer,fire,ogenj,vatra,tűz
+168,ash,cinise,çeine,scindra,chisina,cìnniri,cendre,cenere,cendre,ceniza,cendra,cinza,cendre,Asche,ash,pepel,pepeo,hamu
+169,to burn,brusâ,brüxâ,brüsà,fogulare,abbruciari,brusar,bruciare,brûler,arder,cremar,arder,cremar,brennen,to burn,žgati,goreti,ég
+170,road,strade,stradda,strada,istrada,strata,strada,strada,route,carretera,carretera,estrada,camin,Straße,road,cesta,put,út
+171,mountain,montagne,montagna,muunt,monte,muntagna,monte,montagna,montagne,montaña,muntanya,montanha,montanha,Berg,mountain,gora,gora,hegy
+172,red,ros,rosso,rós,ruiu,russu,roso,rosso,rouge,rojo,vermell,vermelho,roge,rot,red,rdeč,crven,piros
+173,green,vert,verde,veert,birde,virdi,verde,verde,vert,verde,verd,verde,verd,grün,green,zelen,zelen,zöld
+174,yellow,zâl,giâno,giàalt,grogu,giarnu,gialo,giallo,jaune,amarillo,groc,amarelo,jaune,gelb,yellow,rumen,žut,sárga
+175,white,blanc,gianco,biàanch,arvu,jancu,bianco,bianco,blanc,blanco,blanc,branco,blanc,weiß,white,bel,beo,fehér
+176,black,neri,néigro,négar,nieddu,nìguru,negro,nero,noir,negro,negre,negro,negre,schwarz,black,črn,crn,fekete
+177,night,gnot,néutte,nòcc,notte,notti,note,notte,nuit,noche,nit,noite,nuèch,Nacht,night,noč,noć,éj
+178,day,dì,giorno,dì,die,jornu,giorno,giorno,jour,día,dia,dia,jorn,Tag,day,dan,dan,nap
+179,year,an,anno,aŋ,annu,annu,ano,anno,année,año,any,ano,an,Jahr,year,leto,godina,év
+180,warm,cjalt,câdo,caalt,calidu,càudu,caldo,caldo,chaud,caliente,calent,quente,caud,warm,warm,topel,topao,meleg
+181,cold,frêt,fréido,frecc,frittu,friddu,fredo,freddo,froid,frío,fred,frio,freg,kalt,cold,hladen,hladan,hideg
+182,full,plen,pìn,piéŋ,pienu,chinu,pien,pieno,plein,lleno,ple,cheio,plen,voll,full,poln,pun,teli
+183,new,gnûf,nêuvo,nööf,nou,novu,novo,nuovo,nouveau,nuevo,nou,novo,nòu,neu,new,nov,nov,új
+184,old,vieli,vêgio,vécc,betzu,vecchiu,vecio,vecchio,vieux,viejo,vell,velho,vièlh,alt,old,star,star,öreg
+185,good,bon,bon,bóŋ,bonu,bonu,bon,buono,bon,bueno,bo,bom,bon,gut,good,dober,dobar,jó
+186,bad,trist,catîvo,catìif,malosu,malu,cativo,cattivo,mauvais adj.,malo adj.,dolent adj.,mau adj.,marrit,schlecht,bad,slab,loš,rossz
+187,rotten,vuast,marso,mars,martzu,purritu,marzo,marcio,pourri,podrido,podrit,podre,poirit,faul,rotten,gnil,truo,rohadt
+188,dirty,soç,sücido,tenc,isporcu,lurdu,sludro,sporco,sale,sucio,brut,sujo,lord,schmutzig,dirty,umazan,prljav,piszkos
+189,straight,dret,drîto,driss,drittu,drittu,drito,dritto,droit,recto,recte,reto,drech/drèit,gerade,straight,raven,prav,egyenes
+190,round,taront,rióndo,rudùund,redundu,tunnu,tondo,rotondo,rond,redondo,rodó,redondo,redond,rund,round,okrogel,obao,kerek
+191,sharp (as a knife),uçât,afilòu,güz,arrodadu,affilatu,spizo,affilato,affilé,afilado,esmolat,afiado,agusat,scharf,sharp,oster,oštar,éles
+192,dull (as a knife),asiât,smusòu,mucch,atturussu,smanciatu,spizato,smussato,émoussé,sin filo,esmussat,rombo,[[]],stumpf,dull,top,tup,tompa
+193,smooth,lis,lìscio,liss,liju,lisciu,lisier,liscio,lisse,liso,llis,liso,doç,glatt,smooth,gladek,gladak,sima
+194,wet,umit,bagnòu,ümit,bagnadu,moḍḍu,bagnà,bagnato,mouillé,húmedo,humit,molhado,trempe,nass,wet,moker,mokar,nedves
+195,dry,sec,sécco,sech,siccu,siccu,seco,secco,sec,seco,sec,seco,sec,dürr,dry,suh,suh,száraz
+196,correct,just,giùsto,giüst,giustu,giustu,giusto,giusto,correct,correcto,correcte,correto,corrècte,richtig,correct,pravilen,tačan,helyes
+197,near,dongje,arénte,visìŋ,affacca,vicinu,vizin,vicino,près,cerca,prop,perto,prèp,nah,near,bližnji,blizak,közel
+198,far,luntano,lontàn,luntàŋ,addae,luntanu,lontan,lontano,loin,lejos,lluny,longe,luènh,fern,far,oddaljen,dalek,távol
+199,right,drete,drîta,dèstra,dresta,ritta,destro,destra,droit,derecho,dret,direito,drecha/drèita,rechts,right,desni,desni,jobb
+200,left,çambe,mancìnn-a,sinistra,manca,manca,sinistro,sinistra,gauche,izquierdo,esquerre,esquerdo,esquèrra,links,left,levi,levi,bal
+201,at,a,a,a,a,nne,a,a,en,en,en,em,a,an,at,pri,kod,-nál
+202,in,in,in,in,in,'n,in,in,en,en,en,em,dins,in,in,v,u,-ban
+203,with,cun,con,con,cun,cu,con,con,avec,con,amb,com,amb,mit,with,s,s,-val
+204,and,e,e,e,e,e,e,e,et,y,i,e,e,und,and,in,i,és
+205,if,se,se,se,si,si,se,se,si,si,si,se,se,ob,if,če,ako,ha
+206,because,parcè,perché,parchè,pro itte,pirchì,parché,perché,parce que,porque,perquè,porque,perque,weil,because,ker,zato,mert
+207,name,non,nómme,nóm,nomene,nomu,nome,nome,nom,nombre,nom,nome,nom,Name,name,ime,ime,név

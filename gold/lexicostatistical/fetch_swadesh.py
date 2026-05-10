@@ -1,18 +1,28 @@
 """
-Download and merge Swadesh-207 lists from Wiktionary for our 13 varieties.
+Download and merge Swadesh-207 lists from Wiktionary for our 17 varieties.
 
 Sources (all from English Wiktionary):
-    - Appendix:Swadesh_lists_for_Italian_languages    (ita, lmo, fur, vec, scn, lij, sc + nap, pms)
-    - Appendix:Swadesh_lists_for_Romance_languages    (table 0: fra, spa, cat + ita reference)
-    - Appendix:Swadesh_lists_for_Germanic_languages   (deu, eng + others)
-    - Appendix:Swadesh_lists_for_Slavic_languages     (slv + others)
+    - Appendix:Swadesh_lists_for_Italian_languages    italo-romance + ita
+        Tables: 0 = main comparative.
+        Yields: ita, lmo, fur, vec, scn, lij, sc.
+    - Appendix:Swadesh_lists_for_Romance_languages    multiple Romance tables
+        Yields:
+            fra, spa, cat, por          (table 0)
+            oci                         (table 1, "Lengadocian Occitan")
+    - Appendix:Swadesh_lists_for_Germanic_languages   modern English + German
+        Yields: deu, eng.
+    - Appendix:Swadesh_lists_for_Slavic_languages     slovene + serbo-croatian
+        Yields: slv, hrv (Serbo-Croatian column).
+    - Appendix:Hungarian_Swadesh_list                 single-language appendix
+        Yields: hun.
 
 The 207 concepts are aligned by Swadesh row number across all appendices,
 since they follow the same canonical Swadesh-207 ordering.
 
 Output: ``wordlist_swadesh207.csv`` with columns
-    n, concept_en, ita, fra, spa, cat, deu, slv, eng, fur, lij, lmo, sc, scn, vec
-    + raw_<code> = original Wiktionary cell (with all alternate forms)
+    n, concept_en, ita, fra, spa, cat, por, oci,
+                   deu, eng, slv, hrv, hun,
+                   fur, lij, lmo, sc, scn, vec
 
 Run:
     python -m gold.lexicostatistical.fetch_swadesh \
@@ -25,41 +35,44 @@ import csv
 import re
 import sys
 import urllib.request
-from html.parser import HTMLParser
 from pathlib import Path
 from typing import Dict, List, Tuple
 
 
 URLS = {
-    "italian": "https://en.wiktionary.org/wiki/Appendix:Swadesh_lists_for_Italian_languages",
-    "romance": "https://en.wiktionary.org/wiki/Appendix:Swadesh_lists_for_Romance_languages",
-    "germanic": "https://en.wiktionary.org/wiki/Appendix:Swadesh_lists_for_Germanic_languages",
-    "slavic": "https://en.wiktionary.org/wiki/Appendix:Swadesh_lists_for_Slavic_languages",
+    "italian":   "https://en.wiktionary.org/wiki/Appendix:Swadesh_lists_for_Italian_languages",
+    "romance":   "https://en.wiktionary.org/wiki/Appendix:Swadesh_lists_for_Romance_languages",
+    "germanic":  "https://en.wiktionary.org/wiki/Appendix:Swadesh_lists_for_Germanic_languages",
+    "slavic":    "https://en.wiktionary.org/wiki/Appendix:Swadesh_lists_for_Slavic_languages",
+    "hungarian": "https://en.wiktionary.org/wiki/Appendix:Hungarian_Swadesh_list",
 }
+
+# Final column order for the merged CSV.
+COL_ORDER = [
+    "n", "concept_en",
+    # standards / external
+    "ita", "fra", "spa", "cat", "por", "oci",
+    "deu", "eng", "slv", "hrv", "hun",
+    # italo-romance dialects
+    "fur", "lij", "lmo", "sc", "scn", "vec",
+]
 
 
 def fetch(url: str) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": "edoardo-lex-matrix/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "ltp-lex-matrix/1.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return r.read().decode("utf-8")
 
 
 def _clean(text: str) -> str:
-    """Strip HTML, NBSP, surrounding whitespace."""
-    text = re.sub(r"<sup[^>]*>.*?</sup>", "", text, flags=re.DOTALL)  # footnotes
+    text = re.sub(r"<sup[^>]*>.*?</sup>", "", text, flags=re.DOTALL)
     text = re.sub(r"<[^>]+>", "", text)
     text = text.replace("&nbsp;", " ").replace("&#160;", " ")
     text = text.replace("&amp;", "&").replace("&quot;", '"').replace("&#39;", "'")
     return text.strip()
 
 
-def _parse_table(html: str, table_index: int = 0) -> List[Tuple[List[str], List[List[str]]]]:
-    """Return (headers, rows) for the table_index-th <table> in html.
-
-    The Romance appendix mixes <td>/<th> in its header row (the № column
-    is a <td>, the rest are <th>).  We treat any <th>-or-<td> in the first
-    <tr> as a header cell so column indices align with data rows.
-    """
+def _parse_table(html: str, table_index: int = 0) -> Tuple[List[str], List[List[str]]]:
     tables = re.findall(r"<table[^>]*>.*?</table>", html, re.DOTALL)
     if table_index >= len(tables):
         return [], []
@@ -67,37 +80,28 @@ def _parse_table(html: str, table_index: int = 0) -> List[Tuple[List[str], List[
     trs = re.findall(r"<tr[^>]*>(.*?)</tr>", tbl, re.DOTALL)
     if not trs:
         return [], []
-    hdr_html = trs[0]
-    headers = [_clean(h) for h in re.findall(r"<t[hd][^>]*>(.*?)</t[hd]>", hdr_html, re.DOTALL)]
+    headers = [_clean(h) for h in re.findall(r"<t[hd][^>]*>(.*?)</t[hd]>", trs[0], re.DOTALL)]
     rows = []
     for tr in trs[1:]:
         cells = re.findall(r"<t[hd][^>]*>(.*?)</t[hd]>", tr, re.DOTALL)
-        cells = [_clean(c) for c in cells]
-        rows.append(cells)
+        rows.append([_clean(c) for c in cells])
     return headers, rows
 
 
-def _strip_concept_label(s: str) -> str:
-    """Header cells look like 'Italianitalianoedit (207)' — keep the language code."""
-    return s
-
-
-def _column_index(headers: List[str], substr: str, case_sensitive: bool = False) -> int:
-    if not case_sensitive:
-        substr_lower = substr.lower()
-        for i, h in enumerate(headers):
-            if substr_lower in h.lower():
-                return i
-    else:
-        for i, h in enumerate(headers):
-            if substr in h:
-                return i
+def _column_index(headers: List[str], substr: str) -> int:
+    s = substr.lower()
+    for i, h in enumerate(headers):
+        if s in h.lower():
+            return i
     return -1
 
 
+# --------------------------------------------------------------------------- #
+# Appendix-specific parsers
+# --------------------------------------------------------------------------- #
+
 def parse_italian_languages(html: str) -> Dict[int, Dict[str, str]]:
-    """Returns {concept_n: {variety_code: form}}.  Pulls ita, lmo, fur, vec, scn, lij, sc."""
-    # Table 0 in this page is the comparative one
+    """Returns {n: {variety: form}}.  Pulls ita, lmo, fur, vec, scn, lij, sc."""
     headers, rows = _parse_table(html, 0)
     cols = {
         "concept_en": _column_index(headers, "english"),
@@ -126,23 +130,44 @@ def parse_italian_languages(html: str) -> Dict[int, Dict[str, str]]:
 
 
 def parse_romance(html: str) -> Dict[int, Dict[str, str]]:
-    """Romance Table 0: English, Latin, Portuguese, Spanish, Catalan, French, Italian, Romanian."""
-    headers, rows = _parse_table(html, 0)
-    cols = {
-        "fra": _column_index(headers, "french"),
-        "spa": _column_index(headers, "spanish"),
-        "cat": _column_index(headers, "catalan"),
-    }
-    print(f"  romance columns: {cols}")
-    # Romance table doesn't number rows; use 1-based positional index
+    """Pulls from multiple Romance tables:
+        Table 0: fra, spa, cat, por, ita (reference)
+        Table 1: oci   (Lengadocian Occitan)
+    """
     out: Dict[int, Dict[str, str]] = {}
-    for n, row in enumerate(rows, start=1):
+
+    # ----- Table 0: main Romance comparison -----
+    headers0, rows0 = _parse_table(html, 0)
+    cols0 = {
+        "fra": _column_index(headers0, "french"),
+        "spa": _column_index(headers0, "spanish"),
+        "cat": _column_index(headers0, "catalan"),
+        "por": _column_index(headers0, "portuguese"),
+    }
+    print(f"  romance table-0 columns: {cols0}")
+    for n, row in enumerate(rows0, start=1):
         if not row:
             continue
-        rec = {}
-        for code in ("fra", "spa", "cat"):
-            rec[code] = row[cols[code]] if cols[code] >= 0 and cols[code] < len(row) else ""
-        out[n] = rec
+        rec = out.setdefault(n, {})
+        for code, idx in cols0.items():
+            if 0 <= idx < len(row):
+                rec[code] = row[idx]
+            else:
+                rec.setdefault(code, "")
+
+    # ----- Table 1: Occitan (Lengadocian) -----
+    headers1, rows1 = _parse_table(html, 1)
+    # Match both 'occitan' and 'lengadocian' to find the column
+    oci_idx = _column_index(headers1, "lengadocian")
+    if oci_idx < 0:
+        oci_idx = _column_index(headers1, "occitan")
+    print(f"  romance table-1 occitan column: {oci_idx}")
+    for n, row in enumerate(rows1, start=1):
+        if not row or oci_idx < 0:
+            continue
+        rec = out.setdefault(n, {})
+        rec["oci"] = row[oci_idx] if oci_idx < len(row) else ""
+
     return out
 
 
@@ -150,9 +175,8 @@ def parse_germanic(html: str) -> Dict[int, Dict[str, str]]:
     headers, rows = _parse_table(html, 0)
     cols = {
         "deu": _column_index(headers, "german"),
-        "eng": _column_index(headers, "english"),  # try modern English column
+        "eng": _column_index(headers, "english"),
     }
-    # If "English" only matches "Old English", drop it
     if cols["eng"] >= 0 and "old" in headers[cols["eng"]].lower():
         cols["eng"] = -1
     print(f"  germanic columns: {cols}")
@@ -173,7 +197,11 @@ def parse_germanic(html: str) -> Dict[int, Dict[str, str]]:
 
 def parse_slavic(html: str) -> Dict[int, Dict[str, str]]:
     headers, rows = _parse_table(html, 0)
-    cols = {"slv": _column_index(headers, "slovene")}
+    cols = {
+        "slv": _column_index(headers, "slovene"),
+        # Serbo-Croatian (umbrella for hrv/srp/bos) — treat as Croatian for our purposes
+        "hrv": _column_index(headers, "serbo-croatian"),
+    }
     print(f"  slavic columns: {cols}")
     out: Dict[int, Dict[str, str]] = {}
     for row in rows:
@@ -184,55 +212,100 @@ def parse_slavic(html: str) -> Dict[int, Dict[str, str]]:
         except ValueError:
             continue
         rec = {}
-        rec["slv"] = row[cols["slv"]] if cols["slv"] >= 0 and cols["slv"] < len(row) else ""
+        for code in ("slv", "hrv"):
+            rec[code] = row[cols[code]] if cols[code] >= 0 and cols[code] < len(row) else ""
         out[n] = rec
     return out
 
 
+def parse_single_language_appendix(html: str, code: str, header_substr: str
+                                   ) -> Dict[int, Dict[str, str]]:
+    """Single-language Swadesh appendices (Albanian, Hungarian, ...).
+
+    Layout: a single table whose first column is № and second column is
+    English; subsequent columns are the language form(s).  We grab the
+    first language column whose header contains ``header_substr``.
+    """
+    headers, rows = _parse_table(html, 0)
+    if not headers or not rows:
+        print(f"  {code}: NO table found")
+        return {}
+    lang_idx = _column_index(headers, header_substr)
+    if lang_idx < 0:
+        # fallback: take the third column if exists (after № + English)
+        lang_idx = 2 if len(headers) > 2 else -1
+    print(f"  {code}: header '{header_substr}' resolved to column {lang_idx}")
+    out: Dict[int, Dict[str, str]] = {}
+    for row in rows:
+        if len(row) < 2:
+            continue
+        try:
+            n = int(row[0])
+        except ValueError:
+            continue
+        if lang_idx < 0 or lang_idx >= len(row):
+            continue
+        out[n] = {code: row[lang_idx]}
+    return out
+
+
+# --------------------------------------------------------------------------- #
+# Merge
+# --------------------------------------------------------------------------- #
+
 def merge_all() -> Tuple[List[Dict[str, str]], List[str]]:
-    print("[1/4] downloading Italian-languages appendix")
-    it_html = fetch(URLS["italian"])
-    italian = parse_italian_languages(it_html)
+    print("[1/5] downloading Italian-languages appendix")
+    italian = parse_italian_languages(fetch(URLS["italian"]))
     print(f"   parsed {len(italian)} Swadesh rows")
 
-    print("[2/4] downloading Romance appendix")
-    rm_html = fetch(URLS["romance"])
-    romance = parse_romance(rm_html)
+    print("[2/5] downloading Romance appendix")
+    romance = parse_romance(fetch(URLS["romance"]))
     print(f"   parsed {len(romance)} rows")
 
-    print("[3/4] downloading Germanic appendix")
-    ge_html = fetch(URLS["germanic"])
-    germanic = parse_germanic(ge_html)
+    print("[3/5] downloading Germanic appendix")
+    germanic = parse_germanic(fetch(URLS["germanic"]))
     print(f"   parsed {len(germanic)} rows")
 
-    print("[4/4] downloading Slavic appendix")
-    sl_html = fetch(URLS["slavic"])
-    slavic = parse_slavic(sl_html)
+    print("[4/5] downloading Slavic appendix")
+    slavic = parse_slavic(fetch(URLS["slavic"]))
     print(f"   parsed {len(slavic)} rows")
 
-    # English fallback: use the concept_en column from italian
-    # (it's the canonical English Swadesh form)
+    print("[5/5] downloading Hungarian appendix")
+    try:
+        hungarian = parse_single_language_appendix(
+            fetch(URLS["hungarian"]), "hun", "hungarian")
+    except Exception as exc:
+        print(f"   warning: Hungarian appendix failed ({exc}); hun will be empty")
+        hungarian = {}
+    print(f"   parsed {len(hungarian)} rows for hun")
+
     rows_out: List[Dict[str, str]] = []
-    all_n = sorted(set(italian) | set(romance) | set(germanic) | set(slavic))
-    for n in all_n:
+    all_n = (set(italian) | set(romance) | set(germanic) | set(slavic)
+             | set(hungarian))
+    for n in sorted(all_n):
         rec: Dict[str, str] = {"n": str(n)}
         rec["concept_en"] = italian.get(n, {}).get("concept_en", "")
+
+        # italo-romance dialects + ita
         for code in ("ita", "lmo", "fur", "vec", "scn", "lij", "sc"):
             rec[code] = italian.get(n, {}).get(code, "")
-        for code in ("fra", "spa", "cat"):
+        # other Romance
+        for code in ("fra", "spa", "cat", "por", "oci"):
             rec[code] = romance.get(n, {}).get(code, "")
+        # Germanic
         for code in ("deu", "eng"):
             rec[code] = germanic.get(n, {}).get(code, "")
-        # If germanic didn't give us eng, fallback to concept_en
         if not rec.get("eng"):
             rec["eng"] = rec["concept_en"]
-        rec["slv"] = slavic.get(n, {}).get("slv", "")
+        # Slavic
+        for code in ("slv", "hrv"):
+            rec[code] = slavic.get(n, {}).get(code, "")
+        # Hungarian (single-language)
+        rec["hun"] = hungarian.get(n, {}).get("hun", "")
+
         rows_out.append(rec)
 
-    columns = ["n", "concept_en",
-               "ita", "fra", "spa", "cat", "deu", "slv", "eng",
-               "fur", "lij", "lmo", "sc", "scn", "vec"]
-    return rows_out, columns
+    return rows_out, COL_ORDER
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -248,19 +321,16 @@ def main(argv: list[str] | None = None) -> int:
         for r in rows:
             wr.writerow({c: r.get(c, "") for c in cols})
 
-    # Coverage stats
     print(f"\nWrote {len(rows)} rows × {len(cols)} columns to {args.out}")
     print("\nNon-empty cells per language:")
     for code in cols[2:]:
         n_filled = sum(1 for r in rows if r.get(code))
         print(f"  {code:<5}  {n_filled}/{len(rows)} rows filled")
 
-    # Show common-rows where ALL 13 are non-empty
-    common = [r for r in rows
-              if all(r.get(c) for c in
-                     ("ita","fra","spa","cat","deu","slv","eng",
-                      "fur","lij","lmo","sc","scn","vec"))]
-    print(f"\nRows where ALL 13 varieties have a non-empty form: {len(common)}/{len(rows)}")
+    needed = [c for c in cols if c not in ("n", "concept_en")]
+    common = [r for r in rows if all(r.get(c) for c in needed)]
+    print(f"\nRows where ALL {len(needed)} varieties have a non-empty form: "
+          f"{len(common)}/{len(rows)}")
     return 0
 
 

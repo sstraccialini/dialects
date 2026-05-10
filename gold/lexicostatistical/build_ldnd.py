@@ -43,8 +43,9 @@ from typing import Dict, List, Tuple
 import numpy as np
 
 
-VARIETIES = ["ita", "fra", "spa", "cat", "deu", "slv", "eng",
-             "fur", "lij", "lmo", "sc", "scn", "vec"]
+# Read the full variety set from the central varieties module so this
+# script automatically picks up new languages added there.
+from gold.lexicostatistical.varieties import VARIETY_CODES as VARIETIES  # noqa: E402
 
 
 # --------------------------------------------------------------------------- #

@@ -57,8 +57,9 @@ SEMANTICALLY_GENDERED_RE = re.compile(
 )
 
 
-VARIETY_COLS = ["ita", "fra", "spa", "cat", "deu", "slv", "eng",
-                "fur", "lij", "lmo", "sc", "scn", "vec"]
+# Read the variety set from the central registry so this script picks up
+# new languages added there automatically.
+from gold.lexicostatistical.varieties import VARIETY_CODES as VARIETY_COLS  # noqa: E402
 
 
 def _split_alternates(cell: str) -> List[str]:

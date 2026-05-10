@@ -54,22 +54,18 @@ VARIETIES = [
     ("vec", "italo_romance"),
     # Standard Italian
     ("ita", "italian"),
-    # Other Romance (original 3 + 4 new)
+    # Other Romance (original 3 + 2 new — ron/glg dropped from logic)
     ("spa", "romance"),
     ("fra", "romance"),
     ("cat", "romance"),
     ("por", "romance"),       # Portuguese (NEW)
-    ("ron", "romance"),       # Romanian (NEW)
     ("oci", "romance"),       # Occitan (NEW)
-    ("glg", "romance"),       # Galician (NEW)
     # Germanic
     ("deu", "germanic"),
     ("eng", "english"),
     # Slavic (original 1 + 1 new)
     ("slv", "slavic"),
     ("hrv", "slavic"),        # Croatian (NEW)
-    # Other Indo-European (NEW)
-    ("sqi", "albanian"),      # Albanian Tosk standard (NEW)
     # Non-Indo-European (NEW)
     ("hun", "uralic"),        # Hungarian (NEW)
 ]
@@ -80,11 +76,10 @@ VARIETY_GROUP = dict(VARIETIES)
 # Convenience subsets
 DIALECT_CODES = ["fur", "lij", "lmo", "sc", "scn", "vec"]
 MODERN_LANGUAGE_CODES = [
-    "ita", "spa", "fra", "cat", "por", "ron", "oci", "glg",   # Romance
-    "deu", "eng",                                               # Germanic
-    "slv", "hrv",                                               # Slavic
-    "sqi",                                                      # Albanian
-    "hun",                                                      # Uralic
+    "ita", "spa", "fra", "cat", "por", "oci",   # Romance
+    "deu", "eng",                                # Germanic
+    "slv", "hrv",                                # Slavic
+    "hun",                                       # Uralic
 ]
 
 
@@ -92,8 +87,8 @@ MODERN_LANGUAGE_CODES = [
 # Per-corpus path resolvers
 # --------------------------------------------------------------------------- #
 # Languages routed to wiki/{normalized,not_normalized}/languages/.
-_LANG_CODES = ["ita", "spa", "fra", "cat", "por", "ron", "oci", "glg",
-               "deu", "eng", "slv", "hrv", "sqi", "hun"]
+_LANG_CODES = ["ita", "spa", "fra", "cat", "por", "oci",
+               "deu", "eng", "slv", "hrv", "hun"]
 
 WIKI_VARIETY_DIR = {
     **{c: WIKI_GROUP_A_DIR for c in DIALECT_CODES},
@@ -114,8 +109,8 @@ FLORES_SLUG = {
     "ita": "italiano", "spa": "spagnolo", "fra": "francese", "cat": "catalano",
     "deu": "tedesco", "slv": "sloveno", "eng": "inglese",
     # NEW (FLORES+ downloaded May 2026)
-    "por": "portoghese", "ron": "rumeno", "oci": "occitano", "glg": "galiziano",
-    "hrv": "croato", "sqi": "albanese", "hun": "ungherese",
+    "por": "portoghese", "oci": "occitano",
+    "hrv": "croato", "hun": "ungherese",
 }
 
 # OLDI parquet filenames use BCP47 ("<iso>_<script>"); Sardinian uses "srd".
@@ -153,14 +148,11 @@ VARIETY_NAMES = {
     "fra": "French",
     "cat": "Catalan",
     "por": "Portuguese",
-    "ron": "Romanian",
     "oci": "Occitan",
-    "glg": "Galician",
     "deu": "German",
     "eng": "English",
     "slv": "Slovenian",
     "hrv": "Croatian",
-    "sqi": "Albanian",
     "hun": "Hungarian",
 }
 
@@ -171,7 +163,6 @@ GROUP_NAMES = {
     "germanic":      "Germanic",
     "english":       "English",
     "slavic":        "Slavic",
-    "albanian":      "Albanian",
     "uralic":        "Uralic (non-IE)",
 }
 
@@ -182,7 +173,6 @@ GROUP_COLORS = {
     "germanic":      "#1f77b4",  # blue
     "english":       "#17becf",  # cyan
     "slavic":        "#e377c2",  # pink
-    "albanian":      "#9467bd",  # purple
     "uralic":        "#8c564b",  # brown
 }
 

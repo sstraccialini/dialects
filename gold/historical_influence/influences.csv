@@ -1,7 +1,7 @@
 dialect,influence_1,influence_2,influence_3,notes
-fur,deu,slv,hr,Preferred: slv
-lij,oc,spa,fra,Preferred: oc
-lmo,deu,oc,spa,Preferred: oc
+fur,deu,slv,hrv,Preferred: slv
+lij,oci,spa,fra,Preferred: oci
+lmo,deu,oci,spa,Preferred: oci
 sc,spa,cat,fra,Preferred: cat
-scn,spa,fra,ar,Preferred: spa
-vec,hr,slv,deu,Preferred: deu
+scn,spa,fra,cat,Preferred: spa
+vec,hrv,slv,deu,Preferred: deu
