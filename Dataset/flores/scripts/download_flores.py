@@ -46,22 +46,29 @@ LANGS = [
     ("scn_Latn", "dialetto_italiano", "siciliano",  "Siciliano"),
     ("lmo_Latn", "dialetto_italiano", "lombardo",   "Lombardo"),
     ("srd_Latn", "dialetto_italiano", "sardo",      "Sardo"),
+    
     # varieta' italiane extra (possono mancare: errore loggato, non blocca)
     ("lij_Latn", "dialetto_italiano", "ligure",     "Ligure (Genovese)"),
     ("fur_Latn", "dialetto_italiano", "friulano",   "Friulano"),
-    ("lld_Latn", "dialetto_italiano", "ladino",     "Ladino"),
-    ("nap_Latn", "dialetto_italiano", "napoletano", "Napoletano"),
+    # ("lld_Latn", "dialetto_italiano", "ladino",     "Ladino"),
+    # ("nap_Latn", "dialetto_italiano", "napoletano", "Napoletano"),
+    
     # italiano standard
     ("ita_Latn", "italiano",           "italiano",  "Italiano"),
+    
     # lingue esterne
     ("eng_Latn", "esterna",            "inglese",   "Inglese"),
     ("spa_Latn", "esterna",            "spagnolo",  "Spagnolo"),
     ("fra_Latn", "esterna",            "francese",  "Francese"),
     ("cat_Latn", "esterna",            "catalano",  "Catalano"),
+    ("oci_Latn", "esterna",            "occitano",  "Occitano"),
+    ("por_Latn", "esterna",            "portoghese", "Portoghese"),
     ("deu_Latn", "esterna",            "tedesco",   "Tedesco"),
-    ("ell_Grek", "esterna",            "greco",     "Greco"),
-    ("arb_Arab", "esterna",            "arabo",     "Arabo"),
+    ("hrv_Latn", "esterna",            "croato",    "Croato"),
+    # ("ell_Grek", "esterna",            "greco",     "Greco"),
+    # ("arb_Arab", "esterna",            "arabo",     "Arabo"),
     ("slv_Latn", "esterna",            "sloveno",   "Sloveno"),
+    ("hun_Latn", "esterna",            "ungherese", "Ungherese"),
 ]
 
 
