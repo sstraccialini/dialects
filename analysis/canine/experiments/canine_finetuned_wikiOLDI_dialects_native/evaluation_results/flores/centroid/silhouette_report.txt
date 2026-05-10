@@ -1,0 +1,31 @@
+Silhouette report (CANINE FT (canine_finetuned_wikiOLDI_dialects_native, flores centroid))
+============================================================
+  n_varieties           = 17
+  linkage_method        = average
+  silhouette (family)            = -0.0156
+  silhouette (romance vs rest)   = +0.5674
+  silhouette (romance, no dial.) = +0.5693
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  hrv                   slavic               +0.9535
+  slv                   slavic               +0.9494
+  oci                   romance              +0.4580
+  cat                   romance              +0.3942
+  fra                   romance              +0.3929
+  hun                   uralic               +0.0000
+  eng                   english              +0.0000
+  deu                   germanic             +0.0000
+  ita                   italian              +0.0000
+  spa                   romance              -0.1133
+  scn                   italo_romance        -0.1510
+  por                   romance              -0.2443
+  lmo                   italo_romance        -0.4998
+  sc                    italo_romance        -0.5027
+  fur                   italo_romance        -0.5192
+  lij                   italo_romance        -0.6214
+  vec                   italo_romance        -0.7622

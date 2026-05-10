@@ -1,0 +1,31 @@
+Silhouette report (CANINE zero-shot (flores centroid))
+============================================================
+  n_varieties           = 17
+  linkage_method        = average
+  silhouette (family)            = +0.2299
+  silhouette (romance vs rest)   = +0.2905
+  silhouette (romance, no dial.) = +0.2974
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  hrv                   slavic               +0.8685
+  slv                   slavic               +0.8606
+  lmo                   italo_romance        +0.3847
+  fra                   romance              +0.3497
+  cat                   romance              +0.3232
+  spa                   romance              +0.3057
+  oci                   romance              +0.3029
+  por                   romance              +0.2962
+  scn                   italo_romance        +0.1950
+  lij                   italo_romance        +0.0956
+  fur                   italo_romance        +0.0584
+  hun                   uralic               +0.0000
+  deu                   germanic             +0.0000
+  eng                   english              +0.0000
+  ita                   italian              +0.0000
+  sc                    italo_romance        -0.0635
+  vec                   italo_romance        -0.0680

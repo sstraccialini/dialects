@@ -1,0 +1,15 @@
+{
+  "method": "multilingual_xlmr",
+  "experiment": "xlmr_zeroshot_native",
+  "timestamp": "2026-05-10T17:49:48Z",
+  "git_commit": "ac99d1ab81373260140732a7b199ca546ce959ef",
+  "python": "3.11.15",
+  "platform": "Linux-5.14.0-570.12.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "params": {
+    "base_model": "xlm-roberta-base",
+    "text_variant": "native",
+    "fine_tuning": "none",
+    "max_length": 128,
+    "batch_size": 32
+  }
+}

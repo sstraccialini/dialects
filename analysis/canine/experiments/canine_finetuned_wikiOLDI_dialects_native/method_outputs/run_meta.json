@@ -1,0 +1,46 @@
+{
+  "method": "canine",
+  "experiment": "canine_finetuned_wikiOLDI_dialects_native",
+  "timestamp": "2026-05-10T18:09:04Z",
+  "git_commit": "ac99d1ab81373260140732a7b199ca546ce959ef",
+  "python": "3.11.15",
+  "platform": "Linux-5.14.0-570.12.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "params": {
+    "sample_size": 100000,
+    "random_state": 42,
+    "base_model": "google/canine-c",
+    "text_variant": "native",
+    "training_codes": [
+      "fur",
+      "lij",
+      "lmo",
+      "sc",
+      "scn",
+      "vec"
+    ],
+    "eval_codes": [
+      "fur",
+      "lij",
+      "lmo",
+      "sc",
+      "scn",
+      "vec",
+      "ita",
+      "spa",
+      "fra",
+      "cat",
+      "por",
+      "oci",
+      "deu",
+      "eng",
+      "slv",
+      "hrv",
+      "hun"
+    ],
+    "epochs": 3,
+    "train_batch_size": 8,
+    "grad_accumulation": 8,
+    "lr": 3e-05,
+    "max_length": 512
+  }
+}
