@@ -1,0 +1,31 @@
+Silhouette report (LaBSE MNRL-OLDI (FLORES centroid))
+============================================================
+  n_varieties           = 17
+  linkage_method        = average
+  silhouette (family)            = -0.1021
+  silhouette (romance vs rest)   = +0.1253
+  silhouette (romance, no dial.) = -0.0293
+
+Notes:
+  Silhouette range [-1, 1].  >0.5 excellent, >0.2 good, ~0 no structure.
+
+Per-variety silhouette scores (sorted descending):
+  variety               family            silhouette
+  ----------------------------------------------------
+  sc                    italo_romance        +0.5086
+  lij                   italo_romance        +0.4674
+  lmo                   italo_romance        +0.4120
+  vec                   italo_romance        +0.3574
+  fur                   italo_romance        +0.3512
+  scn                   italo_romance        +0.2917
+  hun                   uralic               +0.0000
+  deu                   germanic             +0.0000
+  eng                   english              +0.0000
+  ita                   italian              +0.0000
+  hrv                   slavic               -0.1675
+  cat                   romance              -0.5112
+  slv                   slavic               -0.5788
+  oci                   romance              -0.6019
+  fra                   romance              -0.6962
+  por                   romance              -0.7166
+  spa                   romance              -0.8520

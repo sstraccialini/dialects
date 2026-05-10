@@ -1,0 +1,18 @@
+{
+  "method": "labse",
+  "experiment": "labse_finetuned_oldi_dialects_native",
+  "timestamp": "2026-05-10T18:45:27Z",
+  "git_commit": "88c981a09691f8d9514bcf09c436cec9c358e1db",
+  "python": "3.11.15",
+  "platform": "Linux-5.14.0-570.12.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "params": {
+    "base_model": "sentence-transformers/LaBSE",
+    "text_variant": "native",
+    "loss": "MNRL",
+    "n_pairs": 31002,
+    "epochs": 5,
+    "train_batch_size": 64,
+    "lr": 2e-05,
+    "max_length": 128
+  }
+}
