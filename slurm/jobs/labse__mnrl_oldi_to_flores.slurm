@@ -21,6 +21,10 @@
 set -uo pipefail
 source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 
+# Compute nodes have no internet. Force HF offline mode.
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+
 nvidia-smi || true
 df -h "$HOME" || true
 echo ""

@@ -19,11 +19,17 @@
 set -uo pipefail
 source "$SLURM_SUBMIT_DIR/slurm/tools/env.sh"
 
+# Compute nodes have no internet. Force HF offline mode so transformers
+# does NOT try to call huggingface.co (the new transformers version makes
+# a network call inside _patch_mistral_regex which fails without internet).
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+
 nvidia-smi || true
 df -h "$HOME" || true
 echo ""
 date
-python -u analysis/canine/experiments/mlm_wiki_dialects_native/run.py
+python -u analysis/canine/experiments/mlm_wiki_dialects_native/run.py --skip-train
 status=$?
 date
 echo "exit status: $status"
