@@ -1,0 +1,25 @@
+{
+  "method": "tfidf",
+  "experiment": "tfidf_wikiOLDI_normalized",
+  "timestamp": "2026-05-10T15:44:54Z",
+  "git_commit": "70fba00bdf4f92d475a358008283b04ef1f8227d",
+  "python": "3.11.15",
+  "platform": "macOS-15.6.1-arm64-arm-64bit",
+  "params": {
+    "sample_size": 100000,
+    "random_state": 42,
+    "text_variant": "normalized",
+    "pipeline": "both",
+    "word_ngram_range": [
+      1,
+      2
+    ],
+    "char_ngram_range": [
+      3,
+      5
+    ],
+    "char_analyzer": "char_wb",
+    "sublinear_tf": true,
+    "norm": "l2"
+  }
+}
