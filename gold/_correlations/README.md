@@ -34,3 +34,4 @@ Defined in ``gold/lexicostatistical/varieties.py``:
 
 * `correlation_geographic_haversine.csv`
 * `correlation_lexicostat_ldnd.csv`
+* `correlation_lexicostat_lev_mean.csv`
