@@ -1,8 +1,8 @@
-Silhouette report (3. fasttext-norm (Pellegrini))
+Silhouette report (fasttext-norm (tassonomia originale))
 ============================================================
   n_varieties           = 17
   linkage_method        = average
-  silhouette (family)            = +0.0603
+  silhouette (family)            = +0.0465
   silhouette (romance vs rest)   = +0.4408
   silhouette (romance, no dial.) = +0.3367
 
@@ -12,20 +12,20 @@ Notes:
 Per-variety silhouette scores (sorted descending):
   variety               family            silhouette
   ----------------------------------------------------
-  hrv                   slavic               +0.8192
-  slv                   slavic               +0.8127
-  spa                   iberian_rom          +0.3975
-  por                   iberian_rom          +0.1597
+  hrv                   slavic               +0.8344
+  slv                   slavic               +0.8325
+  oci                   romance              +0.4429
+  cat                   romance              +0.4367
+  spa                   romance              +0.3557
+  fra                   romance              +0.2048
+  ita                   italian              +0.0000
   hun                   uralic               +0.0000
-  sc                    sardinian            +0.0000
-  scn                   south_italo          +0.0000
-  ita                   tuscan               +0.0000
-  fur                   rhaeto_romance       +0.0000
   deu                   germanic             +0.0000
   eng                   english              +0.0000
-  fra                   gallo_romance        -0.0316
-  lmo                   cisalpine            -0.1389
-  cat                   iberian_rom          -0.2161
-  lij                   cisalpine            -0.2457
-  vec                   cisalpine            -0.2564
-  oci                   gallo_romance        -0.2748
+  por                   romance              -0.0969
+  sc                    italo_romance        -0.1967
+  scn                   italo_romance        -0.2555
+  fur                   italo_romance        -0.2950
+  lmo                   italo_romance        -0.3502
+  lij                   italo_romance        -0.5272
+  vec                   italo_romance        -0.5952

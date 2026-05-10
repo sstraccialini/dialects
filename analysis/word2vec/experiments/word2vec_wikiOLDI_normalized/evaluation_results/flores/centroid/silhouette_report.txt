@@ -1,8 +1,8 @@
-Silhouette report (Word2Vec (word2vec_wikiOLDI_normalized, flores centroid))
+Silhouette report (word2vec-norm (tassonomia originale))
 ============================================================
   n_varieties           = 17
   linkage_method        = average
-  silhouette (family)            = +0.0800
+  silhouette (family)            = +0.0870
   silhouette (romance vs rest)   = +0.3069
   silhouette (romance, no dial.) = +0.2476
 
@@ -12,20 +12,20 @@ Notes:
 Per-variety silhouette scores (sorted descending):
   variety               family            silhouette
   ----------------------------------------------------
-  hrv                   slavic               +0.5057
-  slv                   slavic               +0.4998
-  spa                   iberian_rom          +0.3215
-  lmo                   north_dialects       +0.3107
-  por                   iberian_rom          +0.2659
-  fur                   north_dialects       +0.2564
-  fra                   gallo_romance        +0.1389
-  lij                   north_dialects       +0.0830
-  ita                   tuscan               +0.0000
-  hun                   uralic               +0.0000
+  hrv                   slavic               +0.5246
+  slv                   slavic               +0.5219
+  spa                   romance              +0.3044
+  oci                   romance              +0.2854
+  cat                   romance              +0.2633
+  sc                    italo_romance        +0.1051
+  lmo                   italo_romance        +0.0881
+  por                   romance              +0.0701
+  fra                   romance              +0.0619
+  fur                   italo_romance        +0.0050
+  ita                   italian              +0.0000
   deu                   germanic             +0.0000
   eng                   english              +0.0000
-  sc                    south_dialects       -0.1126
-  cat                   iberian_rom          -0.1726
-  vec                   north_dialects       -0.1835
-  oci                   gallo_romance        -0.2638
-  scn                   south_dialects       -0.2895
+  hun                   uralic               +0.0000
+  lij                   italo_romance        -0.1492
+  scn                   italo_romance        -0.1823
+  vec                   italo_romance        -0.4189
