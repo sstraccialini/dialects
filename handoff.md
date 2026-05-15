@@ -127,7 +127,7 @@ A short results subsection, before any deep analysis, can look like this:
 > genealogy-crossing relationships from the trivial "Italian-anchored"
 > baseline.
 
-### Skeleton of the results table (12 model_id × variant)
+### Skeleton of the results table (14 model_id × variant)
 
 | Model | ρ LDND (full / d↔e) | ρ LEV (full / d↔e) | ρ Geo (full / d↔e) | P@3 |
 |---|---|---|---|---|
@@ -137,16 +137,17 @@ A short results subsection, before any deep analysis, can look like this:
 | TF-IDF word wikiOLDI normalized | 0.788 / 0.734 | 0.805 / 0.770 | 0.363 / 0.126 | 0.444 |
 | fastText wikiOLDI native | 0.867 / 0.776 | 0.870 / 0.779 | 0.254 / −0.220 | 0.389 |
 | fastText wikiOLDI normalized | 0.874 / 0.812 | 0.872 / 0.806 | 0.244 / −0.230 | 0.389 |
+| word2vec wikiOLDI native | 0.841 / 0.703 | 0.844 / 0.711 | 0.383 / −0.012 | 0.389 |
+| word2vec wikiOLDI normalized | 0.851 / 0.778 | 0.853 / 0.786 | 0.372 / −0.112 | 0.444 |
 | CANINE zero-shot | 0.665 / 0.700 | 0.686 / 0.751 | 0.164 / −0.027 | 0.389 |
 | CANINE fine-tuned (MLM wikiOLDI) | 0.725 / 0.803 | 0.738 / 0.826 | 0.140 / −0.206 | 0.333 |
 | XLM-R zero-shot | 0.244 / 0.263 | 0.274 / 0.313 | 0.095 / −0.166 | 0.333 |
 | XLM-R fine-tuned (MLM wikiOLDI) | 0.055 / 0.382 | 0.089 / 0.427 | 0.012 / 0.286 | 0.278 |
-| LaBSE zero-shot | −0.070 / 0.266 | n/a | −0.110 / −0.106 | 0.333 |
-| LaBSE fine-tuned (MNRL OLDI) | −0.021 / 0.327 | n/a | 0.006 / 0.139 | 0.222 |
+| LaBSE zero-shot | −0.070 / 0.266 | −0.049 / 0.296 | −0.110 / −0.106 | 0.333 |
+| LaBSE fine-tuned (MNRL OLDI) | −0.021 / 0.327 | −0.012 / 0.295 | 0.006 / 0.139 | 0.222 |
 
 (numbers from `gold/_correlations/correlation_*.csv` and
-`gold/historical_influence/results/historical_influence_summary.csv` at HEAD —
-fill in the LaBSE LEV cells from the CSV).
+`gold/historical_influence/results/historical_influence_summary.csv` at HEAD.)
 
 ### Three observations to make the paper draft
 
