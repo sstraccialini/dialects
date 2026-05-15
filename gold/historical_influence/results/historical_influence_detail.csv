@@ -71,3 +71,15 @@ tfidf,tfidf_wikiOLDI_normalized,flores/word,tfidf__tfidf_wikiOLDI_normalized__fl
 tfidf,tfidf_wikiOLDI_normalized,flores/word,tfidf__tfidf_wikiOLDI_normalized__flores_word,sc,"cat,fra,spa","fra,oci,spa",2,0.6667
 tfidf,tfidf_wikiOLDI_normalized,flores/word,tfidf__tfidf_wikiOLDI_normalized__flores_word,scn,"cat,fra,spa","cat,fra,slv",2,0.6667
 tfidf,tfidf_wikiOLDI_normalized,flores/word,tfidf__tfidf_wikiOLDI_normalized__flores_word,vec,"deu,hrv,slv","cat,oci,spa",0,0.0000
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,fur,"deu,hrv,slv","cat,fra,oci",0,0.0000
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,lij,"fra,oci,spa","cat,por,spa",1,0.3333
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,lmo,"deu,oci,spa","cat,oci,spa",2,0.6667
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,sc,"cat,fra,spa","cat,por,spa",2,0.6667
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,scn,"cat,fra,spa","cat,por,spa",2,0.6667
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,vec,"deu,hrv,slv","cat,por,spa",0,0.0000
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,fur,"deu,hrv,slv","cat,fra,oci",0,0.0000
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,lij,"fra,oci,spa","oci,por,spa",2,0.6667
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,lmo,"deu,oci,spa","cat,oci,spa",2,0.6667
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,sc,"cat,fra,spa","cat,por,spa",2,0.6667
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,scn,"cat,fra,spa","cat,oci,spa",2,0.6667
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,vec,"deu,hrv,slv","cat,por,spa",0,0.0000

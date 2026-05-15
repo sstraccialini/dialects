@@ -1,4 +1,6 @@
 method,experiment,variant,model_id,Spearman ρ (full matrix),Spearman ρ (dialect ↔ external)
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,0.3826,-0.0119
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,0.3722,-0.1123
 tfidf,tfidf_wikiOLDI_native,flores/word,tfidf__tfidf_wikiOLDI_native__flores_word,0.3686,0.1366
 tfidf,tfidf_wikiOLDI_normalized,flores/word,tfidf__tfidf_wikiOLDI_normalized__flores_word,0.3633,0.1264
 tfidf,tfidf_wikiOLDI_normalized,flores/char,tfidf__tfidf_wikiOLDI_normalized__flores_char,0.3226,-0.0870
