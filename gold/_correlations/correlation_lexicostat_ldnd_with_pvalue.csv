@@ -1,0 +1,15 @@
+method,experiment,variant,model_id,Spearman ρ (full matrix),Mantel p (full matrix),Spearman ρ (dialect ↔ external),Mantel p (dialect ↔ external)
+tfidf,tfidf_wikiOLDI_native,flores/char,tfidf__tfidf_wikiOLDI_native__flores_char,0.9054,0.0001,0.8507,0.0001
+tfidf,tfidf_wikiOLDI_normalized,flores/char,tfidf__tfidf_wikiOLDI_normalized__flores_char,0.8809,0.0001,0.8126,0.0001
+fasttext,fasttext_wikiOLDI_normalized,flores/centroid,fasttext__fasttext_wikiOLDI_normalized__flores_centroid,0.8744,0.0001,0.8122,0.0001
+fasttext,fasttext_wikiOLDI_native,flores/centroid,fasttext__fasttext_wikiOLDI_native__flores_centroid,0.8673,0.0001,0.7758,0.0005
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,0.8510,0.0001,0.7778,0.0004
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,0.8413,0.0001,0.7032,0.0007
+tfidf,tfidf_wikiOLDI_native,flores/word,tfidf__tfidf_wikiOLDI_native__flores_word,0.7945,0.0001,0.7198,0.0004
+tfidf,tfidf_wikiOLDI_normalized,flores/word,tfidf__tfidf_wikiOLDI_normalized__flores_word,0.7881,0.0001,0.7342,0.0004
+canine,canine_finetuned_wikiOLDI_dialects_native,flores/centroid,canine__canine_finetuned_wikiOLDI_dialects_native__flores_centroid,0.7254,0.0001,0.8025,0.0002
+canine,canine_zeroshot_native,flores/centroid,canine__canine_zeroshot_native__flores_centroid,0.6646,0.0001,0.6995,0.0001
+multilingual_xlmr,xlmr_zeroshot_native,flores/centroid,multilingual_xlmr__xlmr_zeroshot_native__flores_centroid,0.2441,0.0193,0.2629,0.0697
+multilingual_xlmr,xlmr_finetuned_wikiOLDI_dialects_native,flores/centroid,multilingual_xlmr__xlmr_finetuned_wikiOLDI_dialects_native__flores_centroid,0.0546,0.7797,0.3822,0.0685
+labse,labse_finetuned_oldi_dialects_native,flores/centroid,labse__labse_finetuned_oldi_dialects_native__flores_centroid,-0.0210,0.8516,0.3269,0.0317
+labse,labse_zeroshot_native,flores/centroid,labse__labse_zeroshot_native__flores_centroid,-0.0703,0.6547,0.2663,0.1203
