@@ -47,7 +47,7 @@ def _iter_bootstrap_csvs(analysis_root: Path) -> List[Path]:
         if not er_root.exists():
             continue
         out.extend(sorted(er_root.rglob(
-            "evaluation_results/flores/centroid/bootstrap_results.csv"
+            "evaluation_results/flores/**/bootstrap_results.csv"
         )))
     return out
 
