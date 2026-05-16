@@ -1,0 +1,15 @@
+method,experiment,variant,model_id,Spearman ρ (full matrix),CI 2.5% (full),CI 97.5% (full),Mantel p (full matrix),Spearman ρ (dialect ↔ external),CI 2.5% (d↔e),CI 97.5% (d↔e),Mantel p (dialect ↔ external),n_boot
+tfidf,tfidf_wikiOLDI_native,flores/char,tfidf__tfidf_wikiOLDI_native__flores_char,0.9054,0.9028,0.9083,0.0001,0.8507,0.8455,0.8574,0.0001,1000
+tfidf,tfidf_wikiOLDI_normalized,flores/char,tfidf__tfidf_wikiOLDI_normalized__flores_char,0.8809,0.8781,0.8859,0.0001,0.8126,0.8066,0.8205,0.0001,1000
+fasttext,fasttext_wikiOLDI_normalized,flores/centroid,fasttext__fasttext_wikiOLDI_normalized__flores_centroid,0.8744,0.8723,0.8753,0.0001,0.8122,0.8081,0.8133,0.0001,1000
+fasttext,fasttext_wikiOLDI_native,flores/centroid,fasttext__fasttext_wikiOLDI_native__flores_centroid,0.8673,0.8649,0.8694,0.0001,0.7758,0.7701,0.7811,0.0005,1000
+word2vec,word2vec_wikiOLDI_normalized,flores/centroid,word2vec__word2vec_wikiOLDI_normalized__flores_centroid,0.8510,0.8499,0.8536,0.0001,0.7778,0.7727,0.7827,0.0004,1000
+word2vec,word2vec_wikiOLDI_native,flores/centroid,word2vec__word2vec_wikiOLDI_native__flores_centroid,0.8413,0.8387,0.8432,0.0001,0.7032,0.6974,0.7104,0.0007,1000
+tfidf,tfidf_wikiOLDI_native,flores/word,tfidf__tfidf_wikiOLDI_native__flores_word,0.7945,0.7907,0.8003,0.0001,0.7198,0.7069,0.7274,0.0004,1000
+tfidf,tfidf_wikiOLDI_normalized,flores/word,tfidf__tfidf_wikiOLDI_normalized__flores_word,0.7881,0.7847,0.7938,0.0001,0.7342,0.7270,0.7439,0.0004,1000
+canine,canine_finetuned_wikiOLDI_dialects_native,flores/centroid,canine__canine_finetuned_wikiOLDI_dialects_native__flores_centroid,0.7254,0.7215,0.7290,0.0001,0.8025,0.7972,0.8055,0.0002,1000
+canine,canine_zeroshot_native,flores/centroid,canine__canine_zeroshot_native__flores_centroid,0.6644,0.6579,0.6707,0.0001,0.6995,0.6931,0.7129,0.0001,1000
+multilingual_xlmr,xlmr_zeroshot_native,flores/centroid,multilingual_xlmr__xlmr_zeroshot_native__flores_centroid,0.2439,0.2389,0.2492,0.0193,0.2613,0.2467,0.2748,0.0697,1000
+multilingual_xlmr,xlmr_finetuned_wikiOLDI_dialects_native,flores/centroid,multilingual_xlmr__xlmr_finetuned_wikiOLDI_dialects_native__flores_centroid,0.0546,0.0481,0.0600,0.7797,0.3822,0.3714,0.3941,0.0685,1000
+labse,labse_finetuned_oldi_dialects_native,flores/centroid,labse__labse_finetuned_oldi_dialects_native__flores_centroid,-0.0210,-0.0437,0.0018,0.8516,0.3269,0.2718,0.3669,0.0317,1000
+labse,labse_zeroshot_native,flores/centroid,labse__labse_zeroshot_native__flores_centroid,-0.0702,-0.0817,-0.0622,0.6547,0.2663,0.2446,0.2860,0.1203,1000
