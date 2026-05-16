@@ -49,12 +49,14 @@ def _cosine_distance_matrix(X: np.ndarray) -> np.ndarray:
     return d
 
 
-def _spearman_pair(
-    cent: np.ndarray, codes: Sequence[str],
+def _spearman_pair_from_dist(
+    dist: np.ndarray, codes: Sequence[str],
     gold_mat: np.ndarray, gold_labels: Sequence[str],
     dialect_codes: Sequence[str], external_codes: Sequence[str],
 ) -> Tuple[float, float]:
-    dist = _cosine_distance_matrix(cent)
+    """Like ``_spearman_pair`` but takes a pre-computed 17×17 distance
+    matrix.  Hoisting the cosine out of the per-gold loop gives a 3×
+    speedup when there are 3 gold matrices (LDND, LEV, Geo)."""
     shared = [c for c in gold_labels if c in codes]
     if len(shared) < 4:
         return float("nan"), float("nan")
@@ -75,6 +77,17 @@ def _spearman_pair(
     else:
         rho_dia = float("nan")
     return rho_full, rho_dia
+
+
+def _spearman_pair(
+    cent: np.ndarray, codes: Sequence[str],
+    gold_mat: np.ndarray, gold_labels: Sequence[str],
+    dialect_codes: Sequence[str], external_codes: Sequence[str],
+) -> Tuple[float, float]:
+    return _spearman_pair_from_dist(
+        _cosine_distance_matrix(cent), codes,
+        gold_mat, gold_labels, dialect_codes, external_codes,
+    )
 
 
 # --------------------------------------------------------------------------- #
@@ -116,10 +129,11 @@ def bootstrap_from_sentence_vectors(
     obs_rows = [sent_vecs[per_code_indices[c]].mean(axis=0) for c in codes_present]
     obs_cent = _l2_normalise(np.vstack(obs_rows).astype(np.float32))
 
+    obs_dist = _cosine_distance_matrix(obs_cent)
     observed: Dict[str, Tuple[float, float]] = {}
     for name, mat, labels in golds:
-        observed[name] = _spearman_pair(
-            obs_cent, codes_present, mat, labels,
+        observed[name] = _spearman_pair_from_dist(
+            obs_dist, codes_present, mat, labels,
             dialect_codes, external_codes,
         )
 
@@ -131,10 +145,11 @@ def bootstrap_from_sentence_vectors(
             sample = rng.choice(idx, size=len(idx), replace=True)
             rows.append(sent_vecs[sample].mean(axis=0))
         cent = _l2_normalise(np.vstack(rows).astype(np.float32))
+        dist = _cosine_distance_matrix(cent)
         for name, mat, labels in golds:
             samples[name].append(
-                _spearman_pair(cent, codes_present, mat, labels,
-                               dialect_codes, external_codes)
+                _spearman_pair_from_dist(dist, codes_present, mat, labels,
+                                         dialect_codes, external_codes)
             )
 
     lo_q, hi_q = alpha / 2.0, 1.0 - alpha / 2.0

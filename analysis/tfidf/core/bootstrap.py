@@ -50,7 +50,8 @@ from analysis.tfidf.core.config import (
     SUBLINEAR_TF, NORM,
 )
 from evaluation._bootstrap_core import (
-    _l2_normalise, _spearman_pair, default_gold_paths,
+    _cosine_distance_matrix, _l2_normalise,
+    _spearman_pair_from_dist, default_gold_paths,
 )
 from evaluation._gold_correlation import default_roles, load_gold
 
@@ -150,11 +151,12 @@ def _bootstrap_sparse(
         m = per_variety[c].mean(axis=0)               # 1×D dense matrix
         obs_rows.append(np.asarray(m).ravel())
     obs_cent = _l2_normalise(np.vstack(obs_rows).astype(np.float32))
+    obs_dist = _cosine_distance_matrix(obs_cent)
 
     observed = {}
     for name, mat, labels in golds:
-        observed[name] = _spearman_pair(
-            obs_cent, codes_present, mat, labels,
+        observed[name] = _spearman_pair_from_dist(
+            obs_dist, codes_present, mat, labels,
             dialect_codes, external_codes,
         )
 
@@ -168,10 +170,11 @@ def _bootstrap_sparse(
             m = X_c[idx].mean(axis=0)
             rows.append(np.asarray(m).ravel())
         cent = _l2_normalise(np.vstack(rows).astype(np.float32))
+        dist = _cosine_distance_matrix(cent)
         for name, mat, labels in golds:
             samples[name].append(
-                _spearman_pair(cent, codes_present, mat, labels,
-                               dialect_codes, external_codes)
+                _spearman_pair_from_dist(dist, codes_present, mat, labels,
+                                         dialect_codes, external_codes)
             )
 
     lo_q, hi_q = alpha / 2.0, 1.0 - alpha / 2.0
