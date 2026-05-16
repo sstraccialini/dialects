@@ -1,0 +1,7 @@
+gold,block,rho_observed,rho_mean,rho_lo,rho_hi,n_boot
+lexicostat_ldnd,full,0.2439,0.2440,0.2389,0.2492,1000
+lexicostat_ldnd,dialect_external,0.2613,0.2612,0.2467,0.2748,1000
+lexicostat_lev_mean,full,0.2739,0.2740,0.2688,0.2792,1000
+lexicostat_lev_mean,dialect_external,0.3118,0.3122,0.2978,0.3263,1000
+geographic_haversine,full,0.0949,0.0968,0.0907,0.1032,1000
+geographic_haversine,dialect_external,-0.1663,-0.1600,-0.1776,-0.1376,1000
