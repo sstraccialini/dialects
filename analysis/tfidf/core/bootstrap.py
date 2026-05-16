@@ -49,9 +49,10 @@ from analysis.tfidf.core.config import (
     CHAR_NGRAM_RANGE, CHAR_ANALYZER, CHAR_MIN_DF, CHAR_MAX_DF, CHAR_MAX_FEATURES,
     SUBLINEAR_TF, NORM,
 )
+from sklearn.preprocessing import normalize as sk_normalize
+
 from evaluation._bootstrap_core import (
-    _cosine_distance_matrix, _l2_normalise,
-    _spearman_pair_from_dist, default_gold_paths,
+    _cosine_distance_matrix, _spearman_pair_from_dist, default_gold_paths,
 )
 from evaluation._gold_correlation import default_roles, load_gold
 
@@ -133,6 +134,38 @@ def _per_variety_sentences(data: dict, codes) -> Dict[str, List[str]]:
     return out
 
 
+def _sparse_resampled_centroids(
+    per_variety: Dict[str, sp.csr_matrix],
+    codes_present: List[str],
+    rng: np.random.Generator | None,
+) -> sp.csr_matrix:
+    """Build the 17×D sparse centroid stack for one bootstrap iteration.
+
+    Trick: instead of ``X_c[idx].mean(axis=0)`` (which densifies a (1, D)
+    matrix per variety — for TF-IDF D≈10⁷ that is 60 MB × 17 = 1 GB per
+    iter and dominates the runtime), we count how many times each row was
+    drawn and build a 1×N sparse weight vector ``W``; then ``W @ X_c``
+    is a sparse-sparse product whose 1×D result inherits TF-IDF's per-row
+    sparsity (~10⁵ nnz, 0.6% density).  ~100× speedup at D=15M.
+
+    When ``rng`` is None we compute the no-resample observed centroid
+    instead (W is the all-ones vector).
+    """
+    rows: List[sp.csr_matrix] = []
+    for c in codes_present:
+        X_c = per_variety[c]
+        n_var = X_c.shape[0]
+        if rng is None:
+            weights = np.ones(n_var, dtype=np.float32)
+        else:
+            idx = rng.integers(0, n_var, size=n_var)
+            weights = np.bincount(idx, minlength=n_var).astype(np.float32)
+        W = sp.csr_matrix(weights.reshape(1, -1))
+        rows.append((W @ X_c) / n_var)
+    cent = sp.vstack(rows).tocsr()
+    return sk_normalize(cent, norm="l2", axis=1, copy=False)
+
+
 def _bootstrap_sparse(
     per_variety: Dict[str, sp.csr_matrix],
     variety_codes: List[str],
@@ -146,11 +179,7 @@ def _bootstrap_sparse(
     golds = [(p.stem, *load_gold(p)[:2]) for p in gold_paths]
 
     # Observed centroids (no resample).
-    obs_rows = []
-    for c in codes_present:
-        m = per_variety[c].mean(axis=0)               # 1×D dense matrix
-        obs_rows.append(np.asarray(m).ravel())
-    obs_cent = _l2_normalise(np.vstack(obs_rows).astype(np.float32))
+    obs_cent = _sparse_resampled_centroids(per_variety, codes_present, rng=None)
     obs_dist = _cosine_distance_matrix(obs_cent)
 
     observed = {}
@@ -161,21 +190,17 @@ def _bootstrap_sparse(
         )
 
     samples = {n: [] for n, _, _ in golds}
-    for _ in range(n_boot):
-        rows = []
-        for c in codes_present:
-            X_c = per_variety[c]
-            n_var = X_c.shape[0]
-            idx = rng.integers(0, n_var, size=n_var)
-            m = X_c[idx].mean(axis=0)
-            rows.append(np.asarray(m).ravel())
-        cent = _l2_normalise(np.vstack(rows).astype(np.float32))
+    log_every = max(1, n_boot // 10)
+    for it in range(n_boot):
+        cent = _sparse_resampled_centroids(per_variety, codes_present, rng)
         dist = _cosine_distance_matrix(cent)
         for name, mat, labels in golds:
             samples[name].append(
                 _spearman_pair_from_dist(dist, codes_present, mat, labels,
                                          dialect_codes, external_codes)
             )
+        if (it + 1) % log_every == 0:
+            print(f"    bootstrap {it+1}/{n_boot}", flush=True)
 
     lo_q, hi_q = alpha / 2.0, 1.0 - alpha / 2.0
     rows_out = []
@@ -209,7 +234,12 @@ def _run_one_pipeline(
     variant: str, factory: Callable[[], TfidfVectorizer],
     train_sents: List[str], flores_per_variety: Dict[str, List[str]],
     experiment: str, n_boot: int, seed: int,
+    skip_existing: bool = True,
 ) -> Path:
+    out = _output_csv(experiment, variant)
+    if skip_existing and out.exists():
+        print(f"\n--- pipeline: {variant} — already done at {out.relative_to(REPO_ROOT)}, skipping")
+        return out
     print(f"\n--- pipeline: {variant} ---")
     vec = factory()
     vec.fit(train_sents)
@@ -240,12 +270,26 @@ def _run_one_pipeline(
 
 
 def run(experiment: str, pipeline: str, n_boot: int, seed: int,
-        sample_size: int, random_state: int) -> List[Path]:
+        sample_size: int, random_state: int,
+        skip_existing: bool = True) -> List[Path]:
     if experiment not in EXPERIMENTS:
         raise SystemExit(f"Unknown experiment {experiment!r}. "
                          f"Choose from {list(EXPERIMENTS)}.")
     text_variant = EXPERIMENTS[experiment]
     print(f"=== {experiment}  (text_variant={text_variant}) ===")
+
+    # Short-circuit: if every requested pipeline already has its output we
+    # don't even need to load training data.
+    requested = []
+    if pipeline in ("word", "both"):
+        requested.append(("word", _build_word_vectorizer))
+    if pipeline in ("char", "both"):
+        requested.append(("char", _build_char_vectorizer))
+    missing = [(v, f) for v, f in requested
+               if not (skip_existing and _output_csv(experiment, v).exists())]
+    if not missing:
+        print(f"  all requested pipelines already done — nothing to do")
+        return [_output_csv(experiment, v) for v, _ in requested]
 
     print(f"  loading Wiki + OLDI ({text_variant}) ...")
     train_data, _ = load_wiki_plus_oldi_dialect(
@@ -260,15 +304,10 @@ def run(experiment: str, pipeline: str, n_boot: int, seed: int,
     flores_pv = _per_variety_sentences(flores_data, VARIETY_CODES)
 
     outs: List[Path] = []
-    if pipeline in ("word", "both"):
+    for variant, factory in missing:
         outs.append(_run_one_pipeline(
-            "word", _build_word_vectorizer, train_sents, flores_pv,
-            experiment, n_boot, seed,
-        ))
-    if pipeline in ("char", "both"):
-        outs.append(_run_one_pipeline(
-            "char", _build_char_vectorizer, train_sents, flores_pv,
-            experiment, n_boot, seed,
+            variant, factory, train_sents, flores_pv,
+            experiment, n_boot, seed, skip_existing=skip_existing,
         ))
     return outs
 
@@ -281,9 +320,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--seed",   type=int, default=42)
     ap.add_argument("--sample-size",  type=int, default=SAMPLE_SIZE)
     ap.add_argument("--random-state", type=int, default=RANDOM_STATE)
+    ap.add_argument("--force", action="store_true",
+                    help="Re-run pipelines even if bootstrap_results.csv already exists.")
     args = ap.parse_args(argv)
     run(args.experiment, args.pipeline, args.n_boot, args.seed,
-        args.sample_size, args.random_state)
+        args.sample_size, args.random_state,
+        skip_existing=not args.force)
     return 0
 
 
