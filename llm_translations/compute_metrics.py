@@ -204,12 +204,14 @@ def compute_bertscore(
     model_name: str,
     device: str,
     batch_size: int = 32,
+    num_layers: int = 17,
 ) -> Tuple[float, float, float]:
     """Return (mean P, mean R, mean F1) on bert-score's 0-1 scale."""
     P, R, F = bert_score_fn(
         cands=preds,
         refs=refs,
         model_type=model_name,
+        num_layers=num_layers,
         lang=None,                  # let model_type drive tokenization
         device=device,
         batch_size=batch_size,
@@ -240,8 +242,11 @@ def main():
     p.add_argument("--device", default=None,
                    help="cuda / cpu / mps. Default: auto.")
     p.add_argument("--bertscore_batch_size", type=int, default=32)
+    p.add_argument("--bertscore_num_layers", type=int, default=17,
+                help="Number of transformer layers for BERTScore. "
+                        "Use 17 for xlm-roberta-large, especially when using a local snapshot path.")
     p.add_argument("--skip_bertscore", action="store_true",
-                   help="Skip BERTScore (faster sanity runs).")
+                help="Skip BERTScore (faster sanity runs).")
     args = p.parse_args()
 
     # ---- device --------------------------------------------------------- #
@@ -351,6 +356,7 @@ def main():
                     model_name=args.bertscore_model,
                     device=device,
                     batch_size=args.bertscore_batch_size,
+                    num_layers=args.bertscore_num_layers,
                 )
             except Exception as e:
                 print(f"[warn] bert-score failed for {fpath.name}: {e}",
