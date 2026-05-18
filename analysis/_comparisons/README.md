@@ -7,6 +7,28 @@ under `analysis/<method>/experiments/<experiment>/evaluation_results/flores/`.
 The scripts read the saved `distances.csv` files and print findings to stdout;
 they do not retrain anything. Re-running them is fast (seconds).
 
+## "Trustworthy" methods
+
+Following the paper's "Kept" column in Table 2 (silhouette over four
+typological macro-families), the analyses below restrict the cross-method
+counts to the methods whose representation space recovers the four
+macro-families at all. Two cardinalities are used:
+
+- **10 methods** — the 8 surface methods (TF-IDF char/word × normalized/native,
+  FastText normalized/native, Word2Vec normalized/native) plus the two
+  fine-tuned encoders that retain macro-family structure (`CANINE-MLM`,
+  `XLM-R MLM`). Used by `01_trustworthy_consensus.py`, which checks
+  qualitative paper claims.
+- **9 methods** — same as above without `XLM-R MLM`, which has a
+  near-zero (negative) macro-family silhouette and a Mantel-insignificant
+  LDND correlation. Used by `02-04`, where finer per-pair comparisons
+  require methods that pass both checks.
+
+Per-experiment silhouette scores live at
+`analysis/<m>/experiments/<exp>/evaluation_results/flores/.../silhouette_report.txt`;
+Mantel p-values for the LDND correlation are in
+`gold/_correlations/correlation_lexicostat_ldnd_with_bootstrap.csv`.
+
 ## Scripts
 
 | Script | Question it answers |

@@ -5,15 +5,19 @@ on Italian-dialect varieties.
 
 ## Method
 
-1. Pull the Swadesh-207 wordlist for our 13 varieties from English
-   Wiktionary appendices (Italian-languages, Romance, Germanic, Slavic).
+1. Pull the Swadesh-207 wordlist for our 17 varieties from English
+   Wiktionary appendices (Italian-languages, Romance, Germanic, Slavic,
+   Uralic).
 2. Split rows that are semantically gendered (he/she/it, this, that,
    they, his/her) into masculine + feminine entries.  Other multi-form
    cells reduce to the first form.
 3. Map each form to a simplified phonetic alphabet (ASJPcode, Wichmann
    et al. 2009) — 7 vowels and 27 consonants on ASCII.
-4. Compute LDND (Levenshtein Distance Normalised Divided) per pair of
-   varieties, with bootstrap CI on the per-pair distance.
+4. Compute two pairwise distance matrices: the mean per-concept
+   normalised Levenshtein distance (`lev_mean`) and its chance-baseline
+   normalisation LDND (Levenshtein Distance Normalised Divided), each
+   with bootstrap CIs on the per-pair distance. LDND is the gold cited
+   in the paper.
 
 LDND is the chance-baseline-normalised version of mean Levenshtein
 distance:
@@ -35,11 +39,13 @@ fetch_swadesh.py             scrape Wiktionary appendices → wordlists/
 expand_gendered.py           split rows into masc/fem versions
 build_ldnd.py                ASJPcode + Levenshtein + LDND + bootstrap
 wordlists/
-    wordlist_swadesh207.csv         207×13 raw Wiktionary table
-    wordlist_swadesh207_split.csv   214×13 with m/f rows expanded
+    wordlist_swadesh207.csv         207-row raw Wiktionary table (17 variety cols + 2 meta)
+    wordlist_swadesh207_split.csv   214 rows after expanding m/f-gendered concepts
 matrices/
-    lexicostat_ldnd.npz             LDND distance matrix (13×13) — the gold
+    lexicostat_ldnd.npz             LDND distance matrix (17×17) — the gold cited in the paper
     lexicostat_ldnd.csv             same, human-readable
+    lexicostat_lev_mean.npz         mean per-concept normalised Levenshtein distance (17×17)
+    lexicostat_lev_mean.csv         same, human-readable
     lexicostat_asjpcode.csv         audit: native orth → ASJPcode per cell
 ```
 
@@ -65,13 +71,13 @@ python -m gold.lexicostatistical.build_ldnd \
     --n-jobs   8
 ```
 
-For reproducibility on HPC, a SLURM job is provided at
-`slurm/jobs/rebuild_lex_ldnd.slurm`.
+The full rebuild takes ~10 minutes on 8 cores; the bootstrap dominates
+the cost.
 
 ## When the variety set grows
 
-Update `varieties.py` and re-run all three steps.  The gold matrix
-shape will grow (e.g. 13×13 → 16×16), but the correlation pipeline in
+Update `varieties.py` and re-run all three steps. The gold matrix
+shape will grow accordingly, and the correlation pipeline in
 `evaluation/correlate_against_gold.py` adapts automatically because it
 restricts every model output to the codes present in the gold's labels.
 

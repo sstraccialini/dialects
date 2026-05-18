@@ -43,7 +43,7 @@ LaBSE). The surface methods (TF-IDF, FastText, Word2Vec) run on CPU.
 Language-Technology-Project/
 ├── Dataset/                       Raw and cleaned data sources
 │   ├── flores/                      FLORES+ parallel evaluation set
-│   │   ├── before_cleaning/         Raw FLORES+ devtest, one .txt per variety
+│   │   ├── before_cleaning/         Raw FLORES+ (dev+devtest union, 2009 sentences), one .txt per variety
 │   │   ├── cleaned/flores.csv         Single CSV (1827 sentences × 17 varieties)
 │   │   ├── cleaned_normalized/...     Same, with lowercase-ASCII normalization
 │   │   ├── scripts/                   download + normalize + cell-completion notebook
@@ -74,16 +74,15 @@ Language-Technology-Project/
 │   ├── _bootstrap_core.py           Bootstrap CIs on Spearman gold correlations
 │   ├── aggregate_bootstrap.py       Aggregate per-experiment bootstraps + Mantel p-values
 │   ├── mantel_pvalues.py            Mantel permutation test
-│   ├── correlate_against_gold.py    Spearman ρ vs. lexicostatistical / geographic gold
+│   ├── correlate_against_gold.py    Spearman ρ vs. the lexicostatistical (LDND) gold
 │   ├── _gold_correlation.py         Helpers for the above
 │   ├── parallel_alignment.py        Aligned-sentence similarity on FLORES+
 │   ├── compare_methods.py           Cross-method distance-matrix comparison
-│   ├── cli.py                       CLI front-end
-│   └── USAGE.md                     Detailed evaluation-suite documentation
+│   └── cli.py                       CLI front-end
 │
 ├── gold/                          Reference distance matrices
-│   ├── lexicostatistical/           LDND on Swadesh-100 (Wichmann 2010)
-│   └── _correlations/               Per-method Spearman ρ vs. lexicostat / geographic gold
+│   ├── lexicostatistical/           LDND on Swadesh-207 (Wichmann 2010)
+│   └── _correlations/               Per-method Spearman ρ vs. the lexicostat gold
 │
 ├── llm_translations/              LLM (ChatGPT, Gemini) dialect-translation evaluation
 │   ├── oldi-selector.py             Interactive sentence selection
@@ -111,8 +110,8 @@ analysis/<method>/
     ├── run.py             Entry point — train (or load), embed, evaluate.
     ├── method_outputs/    Vectors, models, run metadata.
     └── evaluation_results/<source>/<aggregator>/
-                            distances.csv, similarity.csv, nearest_neighbours.csv,
-                            silhouette.csv, dendrogram.png, projection_*.png,
+                            distances.csv, similarity_matrix.csv, nearest_neighbors.csv,
+                            silhouette_report.txt, dendrogram.png, projection_*.png,
                             bootstrap_results.csv, gold_correlations.csv,
                             run_meta.json
 ```
@@ -241,7 +240,7 @@ python -m evaluation.mantel_pvalues \
 ## 5. Evaluation against gold
 
 ```bash
-# Spearman ρ vs. lexicostatistical (LDND) and geographic (Haversine) gold
+# Spearman ρ vs. the lexicostatistical (LDND) gold
 python -m evaluation.correlate_against_gold \
     --analysis-root analysis/ \
     --gold-root gold/

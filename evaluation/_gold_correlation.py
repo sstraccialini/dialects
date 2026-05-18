@@ -49,12 +49,11 @@ def repo_root() -> Path:
 
 
 def default_gold_roots() -> List[Path]:
-    """Standard places where gold matrices live.  Extend here when adding
-    new gold families (e.g. typological)."""
+    """Standard places where gold matrices live. Extend here when adding
+    new gold families."""
     root = repo_root() / "gold"
     return [
         root / "lexicostatistical" / "matrices",
-        root / "geographic"        / "matrices",
     ]
 
 

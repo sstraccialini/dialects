@@ -28,7 +28,7 @@ Writes one CSV per gold to ``--out-dir``:
 
 CLI:
     python -m evaluation.mantel_pvalues \\
-        --gold-dir gold/lexicostatistical/matrices gold/geographic/matrices \\
+        --gold-dir gold/lexicostatistical/matrices \\
         --analysis-root analysis \\
         --out-dir gold/_correlations \\
         --n-perm 10000 --seed 42

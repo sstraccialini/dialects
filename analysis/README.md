@@ -1,103 +1,84 @@
-# `analysis/` — methods, experiments, comparisons
+# `analysis/` — methods, experiments, cross-method scripts
 
-This directory holds the comparative analysis: 8 active methods, each
-with its own self-contained sub-package, plus two cross-cutting
-support folders.
+Six embedding-method families. Each method is a self-contained sub-package
+with shared `core/` logic and one folder per experiment under `experiments/`.
 
 ## Layout
 
 ```
 analysis/
-├── _shared/                    single source of truth for the variety
-│                               registry, paths, sampling defaults, and
-│                               the `experiment_dirs` / `write_run_meta`
-│                               helpers. Imported by every method's
-│                               `core/config.py`.
+├── _shared/                Single source of truth for the variety registry,
+│                             dataset paths, sampling defaults, and the
+│                             canonical dataset loaders (load_flores, load_oldi,
+│                             load_wiki, load_wiki_plus_oldi_dialect, ...).
+│                             Imported by every method's core/config.py.
 │
-├── _comparisons/               scripts that read multiple methods' outputs
-│                               and produce cross-method tables / plots.
+├── _comparisons/           Scripts that read multiple methods' distance
+│                             matrices and recompute the cross-method findings
+│                             reported in the paper.
 │
-└── <method>/                   one folder per method (tfidf, word2vec,
-    │                           fasttext, sentence_minilm, sentence_labse,
-    │                           multilingual_xlmr, multilingual_xlmr_adapted,
-    │                           canine).
+└── <method>/               One folder per method family:
+    │                         tfidf, fasttext, word2vec, canine,
+    │                         multilingual_xlmr, labse.
     │
-    ├── core/                   shared logic for ALL experiments of this
-    │                           method: config (re-exports `_shared` +
-    │                           method-specific knobs), data_loader,
-    │                           embedder/vectorize, evaluate (taxonomy
-    │                           injection over the central `evaluation/`).
+    ├── core/                 Shared logic for every experiment of this method:
+    │                           config (re-exports _shared + method-specific
+    │                           knobs), embedder/preprocessor, evaluate
+    │                           (wraps the central evaluation/ suite), and
+    │                           bootstrap (Spearman gold-correlation CIs).
     │
-    ├── experiments/            one sub-folder per experiment.
-    │   └── <experiment>/       autonomous: run.py + outputs.
-    │       ├── run.py
-    │       ├── method_outputs/
-    │       │   ├── variety_vectors.{npz,csv}
-    │       │   ├── run_stats.csv
-    │       │   └── run_meta.json
-    │       └── evaluation_results/
-    │           ├── distances.csv
-    │           ├── dendrogram*.png
-    │           └── ...
-    │
-    └── old_experiments/        historical work to keep for reference,
-                                will be removed once the new experiments
-                                fully replace them.
+    └── experiments/<exp>/    One sub-folder per cell of the experimental
+        ├── run.py              matrix. Each contains a self-contained run.py.
+        ├── method_outputs/    Vectors, models, run metadata.
+        └── evaluation_results/<source>/<aggregator>/
+                                Standard outputs produced by
+                                evaluation/run_evaluation: distances.csv,
+                                similarity_matrix.csv, nearest_neighbors.csv,
+                                silhouette_report.txt, dendrogram.png,
+                                projection_*.png, gold_correlations.csv,
+                                bootstrap_results.csv, run_meta.json.
 ```
+
+## Experimental matrix
+
+12 cells total:
+
+| Method | Cells |
+|---|---|
+| TF-IDF | `tfidf_wikiOLDI_{normalized,native}` (× word + char vectorizer = 4 outputs) |
+| FastText | `fasttext_wikiOLDI_{normalized,native}` |
+| Word2Vec | `word2vec_wikiOLDI_{normalized,native}` |
+| XLM-R | `xlmr_zeroshot_native`, `xlmr_finetuned_wikiOLDI_dialects_native` |
+| CANINE | `canine_zeroshot_native`, `canine_finetuned_wikiOLDI_dialects_native` |
+| LaBSE | `labse_zeroshot_native`, `labse_finetuned_oldi_dialects_native` |
 
 ## Conventions
 
-### Experiment naming
-
-Experiments under `analysis/<m>/experiments/<exp>/` should follow one of
-two patterns:
-
-| Pattern | When to use | Example |
-|---|---|---|
-| `<train>_to_<eval>` | when the experiment differs by which corpora are used for training vs evaluation | `wiki_to_flores`, `flores_only`, `wiki_to_oldi_and_flores` |
-| `<adapt_strategy>` | when the experiment differs by training/adaptation strategy of the model itself | `mlm_wiki`, `tlm_oldi`, `tsdae_then_mnrl` |
-
-Pick the pattern that makes the contrast between experiments most
-explicit.
-
 ### Output uniformity
 
-Each experiment **must** write at least:
+Every experiment writes:
 
-- `method_outputs/variety_vectors.npz`  — `{matrix: (n_varieties, D),
-                                            labels: (n_varieties,)}`
-- `method_outputs/run_stats.csv`         — per-variety load/sampling stats
-- `method_outputs/run_meta.json`         — produced by
-                                           `analysis._shared.run_meta.write_run_meta`
-                                           (timestamp, git commit, params)
-- `evaluation_results/`                  — produced by
-                                           `evaluation.run_evaluation(...)`
-                                           via the method's
-                                           `core/evaluate.variety_eval`.
+- `method_outputs/variety_vectors.npz` — `{matrix: (n_varieties, D), labels: (n_varieties,)}`
+- `method_outputs/run_meta.json` — produced by `analysis._shared.run_meta.write_run_meta`
+- `evaluation_results/...` — produced by the central `evaluation.run_evaluation` via the method's `core/evaluate.variety_eval`.
 
 Cross-method scripts in `_comparisons/` rely on these files being there
-under exactly these names, so don't rename them.
+under exactly these names.
 
-### Where method-specific helpers live
+### Where helpers live
 
-- **Shared between every experiment of the method** → `core/`.
-- **Specific to a single experiment** → inside that experiment's folder
-  alongside its `run.py` (e.g. an experiment that fine-tunes can have
-  its own `trainer.py`, `pipeline.py`, `models/` checkpoint subfolder
-  next to `run.py`).
+- **Shared between every experiment of a method** → `core/`.
+- **Specific to a single experiment** → next to that experiment's `run.py`
+  (e.g. fine-tuning trainers live under their own experiment folder).
 - **Shared across all methods** → `analysis/_shared/`.
-
-The two `old_experiments/<m>/old_experiments/finetuned_flores/` folders
-already follow this pattern: every artefact of the legacy fine-tuning
-work lives inside the experiment's own folder, not at method level.
 
 ## Quick reference
 
 | Module | Imported as | Use |
 |---|---|---|
-| `_shared.varieties` | `from analysis._shared.varieties import VARIETY_CODES, ...` | variety registry, paths |
-| `_shared.run_meta` | `from analysis._shared.run_meta import write_run_meta` | reproducibility |
-| `<m>.core.config` | `from analysis.<m>.core.config import ...` | method config (re-exports `_shared` + adds knobs) |
-| `<m>.core.data_loader` | `from analysis.<m>.core.data_loader import load_*` | wiki/flores/oldi loaders |
-| `<m>.core.evaluate` | `from analysis.<m>.core.evaluate import variety_eval, parallel_eval` | wraps central `evaluation/` with this method's taxonomy |
-| `evaluation` | `from evaluation import run_evaluation, run_parallel_alignment` | central evaluation primitives, shared by every method |
+| `_shared.varieties` | `from analysis._shared.varieties import VARIETY_CODES, FLORES_SLUG, ...` | Variety registry + paths |
+| `_shared.dataset_loaders` | `from analysis._shared.dataset_loaders import load_flores, load_oldi, load_wiki, load_wiki_plus_oldi_dialect` | Canonical data loaders |
+| `_shared.run_meta` | `from analysis._shared.run_meta import write_run_meta` | Reproducibility metadata |
+| `<m>.core.config` | `from analysis.<m>.core.config import ...` | Method config (re-exports `_shared` + adds knobs) |
+| `<m>.core.evaluate` | `from analysis.<m>.core.evaluate import variety_eval` | Wraps central `evaluation/` with the method's taxonomy |
+| `evaluation` | `from evaluation.evaluation import run_evaluation` | Central evaluation primitives, shared by every method |

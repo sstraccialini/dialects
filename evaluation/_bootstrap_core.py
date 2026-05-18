@@ -198,12 +198,10 @@ def flatten_per_variety(
 
 
 def default_gold_paths(repo_root: Path) -> List[Path]:
-    """Standard locations for the 2 matrix golds (lex + geo).  Historical
-    influence gold is set-based, not matrix, so excluded here."""
+    """Standard locations for the matrix gold(s)."""
     out: List[Path] = []
     for d in (
         repo_root / "gold" / "lexicostatistical" / "matrices",
-        repo_root / "gold" / "geographic"        / "matrices",
     ):
         if d.is_dir():
             out.extend(sorted(d.glob("*.npz")))

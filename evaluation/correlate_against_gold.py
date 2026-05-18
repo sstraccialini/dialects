@@ -17,8 +17,7 @@ Output: under ``--out-dir`` one CSV per gold:
         method, experiment, variant, model_id,
         Spearman ρ (full matrix),
         Spearman ρ (dialect ↔ external)
-plus a ``README.md`` explaining the metrics and how to read them per
-gold type (lex vs geo).
+plus a ``README.md`` explaining the metrics and how to read them.
 
 By default no row filtering is applied; pass ``--min-shared-fraction``
 > 0 to drop legacy experiments that share fewer than that fraction of
@@ -26,7 +25,7 @@ the gold's varieties (those produce fake-high ρ on tiny subsets).
 
 CLI:
     python -m evaluation.correlate_against_gold \\
-        --gold-dir gold/lexicostatistical/matrices gold/geographic/matrices \\
+        --gold-dir gold/lexicostatistical/matrices \\
         --analysis-root analysis \\
         --out-dir gold/_correlations
 """
@@ -71,7 +70,7 @@ def _iter_distance_csvs(analysis_root: Path) -> List[Path]:
 def _parse_model_path(distances_csv: Path, analysis_root: Path) -> Dict[str, str]:
     rel = distances_csv.relative_to(analysis_root).parts
     method = rel[0]
-    root_kind = rel[1] if len(rel) > 1 and rel[1] in ("experiments", "old_experiments") else "?"
+    root_kind = rel[1] if len(rel) > 1 and rel[1] == "experiments" else "?"
     experiment = rel[2] if root_kind != "?" and len(rel) > 2 else "?"
     try:
         er_idx = rel.index("evaluation_results")
@@ -111,25 +110,18 @@ One CSV per gold reference matrix.  Columns:
 Range −1 … +1.  Per-experiment versions of the same metrics are written
 inside every method's `evaluation_results/.../gold_correlations.csv`.
 
-## Reading per gold type
+## Reading the gold
 
-* **Lexicostatistical (LDND on Swadesh-207).**  High ρ = the model
-  recovers lexical-cognate similarity.  Central metric for language
-  similarity.
-
-* **Geographic (Haversine).**  A *language-aware* model is expected to
-  score MODERATELY on the full matrix and NEAR-ZERO or NEGATIVELY on the
-  dialect↔external block — Slovenian is geographically near Veneto but
-  linguistically Slavic.  A negative ρ on dialect↔external for the geo
-  gold is a positive signal that the model captures language rather
-  than geography.
+**Lexicostatistical (LDND on Swadesh-207).** High ρ = the model recovers
+lexical-cognate similarity. This is the central metric for language
+similarity and the one cited in the paper.
 
 ## Sub-variety roles
 
 Defined in ``gold/lexicostatistical/varieties.py``:
 ``dialect`` ∈ {{fur, lij, lmo, sc, scn, vec}};
 ``italian`` = {{ita}} (excluded from the dialect↔external column);
-``external`` ∈ {{fra, spa, cat, deu, slv, eng}}.
+``external`` ∈ {{fra, spa, cat, por, oci, deu, eng, slv, hrv, hun}}.
 
 ## Files
 
