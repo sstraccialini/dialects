@@ -1,7 +1,0 @@
-family,n_members,mean_intra_dist,std_intra_dist,mean_inter_dist,std_inter_dist,cohesion_ratio
-romance,3,0.009153,0.002498,0.036927,0.023310,4.034251
-italo_romance,6,0.040650,0.015519,0.055155,0.038799,1.356851
-english,1,,,0.058430,0.020801,
-germanic,1,,,0.091250,0.034153,
-italian,1,,,0.035434,0.030514,
-slavic,1,,,0.074201,0.022954,

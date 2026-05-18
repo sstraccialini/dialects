@@ -36,16 +36,17 @@ WIKI_NATIVE_LANGUAGES_DIR = WIKI_NATIVE_DIR / "languages"
 WIKI_NATIVE_OTHERS_DIR    = WIKI_NATIVE_DIR / "others_dialects"
 
 # --------------------------------------------------------------------------- #
-# Cleaned single-CSV format (FINAL experiments — 2026-05-10).
+# Cleaned single-CSV format used by every experiment.
 # Each CSV has 3 metadata cols (unique_id, dataset, original_id) + one column
 # per variety using the FLORES_SLUG name (italiano, friulano, ...).
-#   FLORES cleaned:            1827 × 20  (3 meta + 17 lang)
-#   FLORES cleaned_normalized: same (aggressive_normalize applied)
-#   OLDI   cleaned:            5167 × 10  (3 meta + ita + 6 dialects)
+#   FLORES cleaned:            1827 sentences × 17 varieties (parallel evaluation set)
+#   FLORES cleaned_normalized: same (lowercase ASCII normalization applied)
+#   OLDI   cleaned:            5167 sentences × (ita + 6 dialects)
 #   OLDI   cleaned_normalized: same
-# Use these for the FINAL experiments. The old per-language tree
-# (Dataset/flores/normalized/, Dataset/oldi/normalized/, etc.) was archived
-# under Dataset_archive/ on 2026-05-10.
+# The raw per-language originals, before our cleaning step, live under
+# Dataset/{flores,oldi}/before_cleaning/ and are kept only for reproducibility
+# of the cleaning pipeline. Every experiment loads through
+# analysis/_shared/dataset_loaders.py, which reads the cleaned CSVs below.
 # --------------------------------------------------------------------------- #
 FLORES_CLEANED_DIR       = DATASET_DIR / "flores" / "cleaned"
 FLORES_CLEANED_NORM_DIR  = DATASET_DIR / "flores" / "cleaned_normalized"
@@ -56,13 +57,6 @@ FLORES_CLEANED_CSV       = FLORES_CLEANED_DIR      / "flores.csv"
 FLORES_CLEANED_NORM_CSV  = FLORES_CLEANED_NORM_DIR / "flores.csv"
 OLDI_CLEANED_CSV         = OLDI_CLEANED_DIR        / "oldi.csv"
 OLDI_CLEANED_NORM_CSV    = OLDI_CLEANED_NORM_DIR   / "oldi.csv"
-
-# Legacy constants — point to the archived locations so any leftover code
-# fails LOUDLY rather than silently picking up partial data.
-FLORES_DIR        = REPO_ROOT / "Dataset_archive" / "flores" / "normalized"
-FLORES_NATIVE_DIR = REPO_ROOT / "Dataset_archive" / "flores" / "not_normalized"
-OLDI_DIR          = REPO_ROOT / "Dataset_archive" / "oldi"   / "normalized"
-OLDI_NATIVE_DIR   = REPO_ROOT / "Dataset_archive" / "oldi"   / "not_normalized"
 
 
 # --------------------------------------------------------------------------- #

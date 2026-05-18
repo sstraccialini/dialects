@@ -1,0 +1,344 @@
+{
+  "top1_variety_per_method": {
+    "CANINE zero-shot": {
+      "fur": "oci",
+      "lij": "oci",
+      "lmo": "oci",
+      "sc": "oci",
+      "scn": "ita",
+      "vec": "oci"
+    },
+    "CANINE-MLM": {
+      "fur": "fra",
+      "lij": "ita",
+      "lmo": "oci",
+      "sc": "spa",
+      "scn": "oci",
+      "vec": "ita"
+    },
+    "XLM-R zero-shot": {
+      "fur": "oci",
+      "lij": "oci",
+      "lmo": "oci",
+      "sc": "oci",
+      "scn": "oci",
+      "vec": "oci"
+    },
+    "XLM-R MLM": {
+      "fur": "fra",
+      "lij": "por",
+      "lmo": "oci",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "spa"
+    },
+    "LaBSE zero-shot": {
+      "fur": "eng",
+      "lij": "oci",
+      "lmo": "oci",
+      "sc": "oci",
+      "scn": "eng",
+      "vec": "oci"
+    },
+    "LaBSE MNRL": {
+      "fur": "cat",
+      "lij": "cat",
+      "lmo": "cat",
+      "sc": "oci",
+      "scn": "cat",
+      "vec": "oci"
+    },
+    "FastText (norm)": {
+      "fur": "cat",
+      "lij": "ita",
+      "lmo": "cat",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "FastText (native)": {
+      "fur": "fra",
+      "lij": "ita",
+      "lmo": "oci",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "Word2Vec (norm)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "cat",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "Word2Vec (native)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "cat",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "TF-IDF char (norm)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "ita",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "TF-IDF char (native)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "ita",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "TF-IDF word (norm)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "cat",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "TF-IDF word (native)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "cat",
+      "sc": "spa",
+      "scn": "ita",
+      "vec": "ita"
+    }
+  },
+  "top1_family_per_method": {
+    "CANINE zero-shot": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "gal",
+      "sc": "gal",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "CANINE-MLM": {
+      "fur": "gal",
+      "lij": "ita",
+      "lmo": "gal",
+      "sc": "ibe",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "XLM-R zero-shot": {
+      "fur": "gal",
+      "lij": "gal",
+      "lmo": "gal",
+      "sc": "gal",
+      "scn": "gal",
+      "vec": "gal"
+    },
+    "XLM-R MLM": {
+      "fur": "gal",
+      "lij": "ita",
+      "lmo": "gal",
+      "sc": "ibe",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "LaBSE zero-shot": {
+      "fur": "gal",
+      "lij": "gal",
+      "lmo": "gal",
+      "sc": "gal",
+      "scn": "gal",
+      "vec": "gal"
+    },
+    "LaBSE MNRL": {
+      "fur": "gal",
+      "lij": "gal",
+      "lmo": "sla",
+      "sc": "gal",
+      "scn": "gal",
+      "vec": "gal"
+    },
+    "FastText (norm)": {
+      "fur": "gal",
+      "lij": "ita",
+      "lmo": "ibe",
+      "sc": "ibe",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "FastText (native)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "gal",
+      "sc": "ibe",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "Word2Vec (norm)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "gal",
+      "sc": "ibe",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "Word2Vec (native)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "ita",
+      "sc": "ibe",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "TF-IDF char (norm)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "ita",
+      "sc": "ibe",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "TF-IDF char (native)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "ita",
+      "sc": "ibe",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "TF-IDF word (norm)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "ita",
+      "sc": "gal",
+      "scn": "ita",
+      "vec": "ita"
+    },
+    "TF-IDF word (native)": {
+      "fur": "ita",
+      "lij": "ita",
+      "lmo": "ita",
+      "sc": "gal",
+      "scn": "ita",
+      "vec": "ita"
+    }
+  },
+  "isolation_rank_per_method": {
+    "CANINE zero-shot": {
+      "fur": 4,
+      "lij": 3,
+      "lmo": 5,
+      "sc": 2,
+      "scn": 6,
+      "vec": 1
+    },
+    "CANINE-MLM": {
+      "fur": 1,
+      "lij": 5,
+      "lmo": 3,
+      "sc": 4,
+      "scn": 6,
+      "vec": 2
+    },
+    "XLM-R zero-shot": {
+      "fur": 5,
+      "lij": 2,
+      "lmo": 3,
+      "sc": 4,
+      "scn": 6,
+      "vec": 1
+    },
+    "XLM-R MLM": {
+      "fur": 3,
+      "lij": 4,
+      "lmo": 2,
+      "sc": 5,
+      "scn": 6,
+      "vec": 1
+    },
+    "LaBSE zero-shot": {
+      "fur": 5,
+      "lij": 3,
+      "lmo": 6,
+      "sc": 4,
+      "scn": 2,
+      "vec": 1
+    },
+    "LaBSE MNRL": {
+      "fur": 2,
+      "lij": 4,
+      "lmo": 3,
+      "sc": 5,
+      "scn": 1,
+      "vec": 6
+    },
+    "FastText (norm)": {
+      "fur": 4,
+      "lij": 3,
+      "lmo": 1,
+      "sc": 5,
+      "scn": 6,
+      "vec": 2
+    },
+    "FastText (native)": {
+      "fur": 4,
+      "lij": 5,
+      "lmo": 1,
+      "sc": 3,
+      "scn": 6,
+      "vec": 2
+    },
+    "Word2Vec (norm)": {
+      "fur": 4,
+      "lij": 2,
+      "lmo": 1,
+      "sc": 5,
+      "scn": 6,
+      "vec": 3
+    },
+    "Word2Vec (native)": {
+      "fur": 4,
+      "lij": 3,
+      "lmo": 1,
+      "sc": 5,
+      "scn": 6,
+      "vec": 2
+    },
+    "TF-IDF char (norm)": {
+      "fur": 4,
+      "lij": 3,
+      "lmo": 2,
+      "sc": 5,
+      "scn": 6,
+      "vec": 1
+    },
+    "TF-IDF char (native)": {
+      "fur": 4,
+      "lij": 2,
+      "lmo": 5,
+      "sc": 3,
+      "scn": 6,
+      "vec": 1
+    },
+    "TF-IDF word (norm)": {
+      "fur": 4,
+      "lij": 3,
+      "lmo": 1,
+      "sc": 5,
+      "scn": 6,
+      "vec": 2
+    },
+    "TF-IDF word (native)": {
+      "fur": 4,
+      "lij": 2,
+      "lmo": 1,
+      "sc": 5,
+      "scn": 6,
+      "vec": 3
+    }
+  }
+}

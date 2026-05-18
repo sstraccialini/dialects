@@ -1,73 +1,49 @@
 # Python virtualenvs
 venv/
-venv_steering/
 .venv/
 env/
 __pycache__/
 *.pyc
 *.pyo
 
-# Per-user steering experiments (local-only, not committed)
-steering_local/
-
-# Analysis pipelines kept local-only (not part of the shared repo).
-analysis/zeroshot_ppl/
-analysis/steering/
-analysis/multilingual_xlmr_adapted/
-analysis/sentence_labse/
-analysis/xphonebert/
-
-# macOS
+# Editor / IDE / OS metadata
 .DS_Store
-
-# Editor / IDE
 .vscode/
 .idea/
 *.swp
 
-# Per-user SLURM paths (each group member edits their own copy on HPC).
-slurm/tools/env.local.sh
+# Hugging Face / Transformers download cache (used by deep-model runs)
+.cache/
 
-# SLURM job logs
-slurm/logs/*
-!slurm/logs/.gitkeep
-
-# Wikipedia dump intermediates and bz2 archives (heavy)
+# ---------------------------------------------------------------------------
+# Data — Wikipedia
+# ---------------------------------------------------------------------------
+# The Wiki dump intermediates (~50 GB) are never committed. The pipeline at
+# Dataset/wiki/PIPELINE.md regenerates them from public sources.
 Dataset/wiki/*_texts/
 Dataset/wiki/*.xml.bz2
 Dataset/wiki/_cache/
 
-# Wiki — only the 100k-sampled <code>.csv files are tracked (~10 MB each,
-# 17 varieties × 2 variants = 34 files, ~450 MB total). The full corpora
-# (`<code>_complete.csv`, ~7 GB), per-article metadata (`<code>_meta.csv`)
-# and corpus stats (`<code>_stats.json`) stay gitignored — distributed via
-# Drive/HF.
+# Only the 100k-sampled <code>.csv files are tracked. The full corpora
+# (`<code>_complete.csv`), per-article metadata (`<code>_meta.csv`) and
+# corpus stats (`<code>_stats.json`) stay local.
 Dataset/wiki/normalized/**/*_complete.csv
 Dataset/wiki/normalized/**/*_meta.csv
 Dataset/wiki/normalized/**/*_stats.json
 Dataset/wiki/not_normalized/**/*_complete.csv
 Dataset/wiki/not_normalized/**/*_meta.csv
 Dataset/wiki/not_normalized/**/*_stats.json
-# others_dialects/ are exploratory side-varieties (lld, nap, pms) not part
-# of the 17-variety final registry — keep them entirely local.
+
+# Exploratory side-varieties (lld, nap, pms) not in the 17-variety registry.
 Dataset/wiki/normalized/others_dialects/
 Dataset/wiki/not_normalized/others_dialects/
 
-# Exploratory side-datasets — kept local-only
-Dataset/manzini_savoia/
-Dataset/asjp/
-Dataset/typology/
-Dataset/minority_languages/
-
-# Exploratory comparison scripts (one-off analyses, not part of pipeline)
-# whole _comparisons/ tree is local-only.
-analysis/_comparisons/
-
-# Audit / report scratchpad — local-only.
-AUDIT_REPORT.md
-
-# Method-specific binary artefacts (too large for GitHub).
-# Vectors / models live under method_outputs/; evaluation outputs are kept.
+# ---------------------------------------------------------------------------
+# Method outputs
+# ---------------------------------------------------------------------------
+# Vectors and trained models live under method_outputs/ and are reproducible
+# from the run.py scripts. Light evaluation_results/ artefacts (distances.csv,
+# silhouette.csv, plots, ...) stay tracked.
 analysis/**/method_outputs/models/
 analysis/**/method_outputs/**/*.bin
 analysis/**/method_outputs/**/*.bin.*
@@ -75,25 +51,11 @@ analysis/**/method_outputs/**/*.safetensors
 analysis/**/method_outputs/**/*.npy
 analysis/**/method_outputs/**/sentence_vectors.npz
 analysis/**/method_outputs/**/combined_corpus.csv
-# variety_vectors are reproducible artefacts of a run, kept local-only.
-# Light evaluation results (distances.csv, family_stats.csv, plots, ...)
-# stay tracked; heavy / binary outputs do not.
 analysis/**/method_outputs/**/variety_vectors.csv
 analysis/**/method_outputs/**/variety_vectors.npz
 
-# Fine-tuned model checkpoints (saved directly under analysis/<method>/models/).
+# Fine-tuned encoder checkpoints
 analysis/**/models/
 
-# Local run logs (terminal output piped via tee) — kept local-only
-fasttext_*.log
-xlmr_*.log
-canine_*.log
-labse_*.log
-tfidf_*.log
-word2vec_*.log
-
-# Misc
-.claude/
-
-# Legacy / removed scaffolding — should never come back into the repo.
-edoardo/
+# Run logs piped to local files
+*_run.log

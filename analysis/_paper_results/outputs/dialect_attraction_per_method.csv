@@ -1,0 +1,505 @@
+method,dialect,family,attraction
+CANINE zero-shot,fur,Italian,-0.0584
+CANINE zero-shot,fur,Iberian,-0.1970
+CANINE zero-shot,fur,Gallo-Romance,-0.1026
+CANINE zero-shot,fur,Germanic,-0.4043
+CANINE zero-shot,fur,Slavic,-0.3960
+CANINE zero-shot,fur,Uralic,-0.5796
+CANINE zero-shot,lij,Italian,-0.0956
+CANINE zero-shot,lij,Iberian,-0.2417
+CANINE zero-shot,lij,Gallo-Romance,-0.1504
+CANINE zero-shot,lij,Germanic,-0.5199
+CANINE zero-shot,lij,Slavic,-0.5554
+CANINE zero-shot,lij,Uralic,-0.6319
+CANINE zero-shot,lmo,Italian,-0.3847
+CANINE zero-shot,lmo,Iberian,-0.4918
+CANINE zero-shot,lmo,Gallo-Romance,-0.3055
+CANINE zero-shot,lmo,Germanic,-0.5857
+CANINE zero-shot,lmo,Slavic,-0.6287
+CANINE zero-shot,lmo,Uralic,-0.6083
+CANINE zero-shot,sc,Italian,-0.1067
+CANINE zero-shot,sc,Iberian,-0.0479
+CANINE zero-shot,sc,Gallo-Romance,0.2341
+CANINE zero-shot,sc,Germanic,-0.3061
+CANINE zero-shot,sc,Slavic,-0.5073
+CANINE zero-shot,sc,Uralic,-0.5612
+CANINE zero-shot,scn,Italian,-0.1950
+CANINE zero-shot,scn,Iberian,-0.4457
+CANINE zero-shot,scn,Gallo-Romance,-0.3574
+CANINE zero-shot,scn,Germanic,-0.5180
+CANINE zero-shot,scn,Slavic,-0.4916
+CANINE zero-shot,scn,Uralic,-0.6048
+CANINE zero-shot,vec,Italian,0.0680
+CANINE zero-shot,vec,Iberian,-0.1231
+CANINE zero-shot,vec,Gallo-Romance,0.0211
+CANINE zero-shot,vec,Germanic,-0.3753
+CANINE zero-shot,vec,Slavic,-0.4622
+CANINE zero-shot,vec,Uralic,-0.5755
+CANINE-MLM,fur,Italian,0.4429
+CANINE-MLM,fur,Iberian,0.4659
+CANINE-MLM,fur,Gallo-Romance,0.5992
+CANINE-MLM,fur,Germanic,-0.2601
+CANINE-MLM,fur,Slavic,-0.2959
+CANINE-MLM,fur,Uralic,-0.6709
+CANINE-MLM,lij,Italian,0.6214
+CANINE-MLM,lij,Iberian,0.3992
+CANINE-MLM,lij,Gallo-Romance,0.2801
+CANINE-MLM,lij,Germanic,-0.3691
+CANINE-MLM,lij,Slavic,-0.3849
+CANINE-MLM,lij,Uralic,-0.6490
+CANINE-MLM,lmo,Italian,0.3149
+CANINE-MLM,lmo,Iberian,0.4367
+CANINE-MLM,lmo,Gallo-Romance,0.5944
+CANINE-MLM,lmo,Germanic,-0.4148
+CANINE-MLM,lmo,Slavic,-0.5387
+CANINE-MLM,lmo,Uralic,-0.6479
+CANINE-MLM,sc,Italian,0.3481
+CANINE-MLM,sc,Iberian,0.5414
+CANINE-MLM,sc,Gallo-Romance,0.4446
+CANINE-MLM,sc,Germanic,-0.3721
+CANINE-MLM,sc,Slavic,-0.5290
+CANINE-MLM,sc,Uralic,-0.7121
+CANINE-MLM,scn,Italian,0.1510
+CANINE-MLM,scn,Iberian,0.0358
+CANINE-MLM,scn,Gallo-Romance,0.0529
+CANINE-MLM,scn,Germanic,-0.4817
+CANINE-MLM,scn,Slavic,-0.5018
+CANINE-MLM,scn,Uralic,-0.6689
+CANINE-MLM,vec,Italian,0.7622
+CANINE-MLM,vec,Iberian,0.6112
+CANINE-MLM,vec,Gallo-Romance,0.4256
+CANINE-MLM,vec,Germanic,-0.3819
+CANINE-MLM,vec,Slavic,-0.3996
+CANINE-MLM,vec,Uralic,-0.6805
+XLM-R zero-shot,fur,Italian,-0.9206
+XLM-R zero-shot,fur,Iberian,-0.9369
+XLM-R zero-shot,fur,Gallo-Romance,-0.8928
+XLM-R zero-shot,fur,Germanic,-0.9316
+XLM-R zero-shot,fur,Slavic,-0.9329
+XLM-R zero-shot,fur,Uralic,-0.9402
+XLM-R zero-shot,lij,Italian,-0.9203
+XLM-R zero-shot,lij,Iberian,-0.9377
+XLM-R zero-shot,lij,Gallo-Romance,-0.8939
+XLM-R zero-shot,lij,Germanic,-0.9337
+XLM-R zero-shot,lij,Slavic,-0.9354
+XLM-R zero-shot,lij,Uralic,-0.9417
+XLM-R zero-shot,lmo,Italian,-0.9076
+XLM-R zero-shot,lmo,Iberian,-0.9180
+XLM-R zero-shot,lmo,Gallo-Romance,-0.8617
+XLM-R zero-shot,lmo,Germanic,-0.9175
+XLM-R zero-shot,lmo,Slavic,-0.9200
+XLM-R zero-shot,lmo,Uralic,-0.9275
+XLM-R zero-shot,sc,Italian,-0.8952
+XLM-R zero-shot,sc,Iberian,-0.9031
+XLM-R zero-shot,sc,Gallo-Romance,-0.8425
+XLM-R zero-shot,sc,Germanic,-0.8990
+XLM-R zero-shot,sc,Slavic,-0.9008
+XLM-R zero-shot,sc,Uralic,-0.9118
+XLM-R zero-shot,scn,Italian,-0.8647
+XLM-R zero-shot,scn,Iberian,-0.9057
+XLM-R zero-shot,scn,Gallo-Romance,-0.8531
+XLM-R zero-shot,scn,Germanic,-0.8993
+XLM-R zero-shot,scn,Slavic,-0.8983
+XLM-R zero-shot,scn,Uralic,-0.9090
+XLM-R zero-shot,vec,Italian,-0.8872
+XLM-R zero-shot,vec,Iberian,-0.9143
+XLM-R zero-shot,vec,Gallo-Romance,-0.8602
+XLM-R zero-shot,vec,Germanic,-0.9052
+XLM-R zero-shot,vec,Slavic,-0.9064
+XLM-R zero-shot,vec,Uralic,-0.9174
+XLM-R MLM,fur,Italian,0.2461
+XLM-R MLM,fur,Iberian,0.2182
+XLM-R MLM,fur,Gallo-Romance,0.5307
+XLM-R MLM,fur,Germanic,-0.0625
+XLM-R MLM,fur,Slavic,0.2124
+XLM-R MLM,fur,Uralic,0.1759
+XLM-R MLM,lij,Italian,0.4982
+XLM-R MLM,lij,Iberian,0.3619
+XLM-R MLM,lij,Gallo-Romance,0.1248
+XLM-R MLM,lij,Germanic,-0.0914
+XLM-R MLM,lij,Slavic,0.0673
+XLM-R MLM,lij,Uralic,0.1656
+XLM-R MLM,lmo,Italian,0.1571
+XLM-R MLM,lmo,Iberian,0.3145
+XLM-R MLM,lmo,Gallo-Romance,0.4272
+XLM-R MLM,lmo,Germanic,-0.1619
+XLM-R MLM,lmo,Slavic,0.0143
+XLM-R MLM,lmo,Uralic,0.2892
+XLM-R MLM,sc,Italian,0.2831
+XLM-R MLM,sc,Iberian,0.3859
+XLM-R MLM,sc,Gallo-Romance,0.2016
+XLM-R MLM,sc,Germanic,-0.1514
+XLM-R MLM,sc,Slavic,0.0040
+XLM-R MLM,sc,Uralic,0.1384
+XLM-R MLM,scn,Italian,0.3731
+XLM-R MLM,scn,Iberian,-0.0878
+XLM-R MLM,scn,Gallo-Romance,-0.0571
+XLM-R MLM,scn,Germanic,-0.2886
+XLM-R MLM,scn,Slavic,-0.1486
+XLM-R MLM,scn,Uralic,-0.0460
+XLM-R MLM,vec,Italian,0.6310
+XLM-R MLM,vec,Iberian,0.6282
+XLM-R MLM,vec,Gallo-Romance,0.4144
+XLM-R MLM,vec,Germanic,0.0315
+XLM-R MLM,vec,Slavic,0.5537
+XLM-R MLM,vec,Uralic,0.5005
+LaBSE zero-shot,fur,Italian,-0.5872
+LaBSE zero-shot,fur,Iberian,-0.6329
+LaBSE zero-shot,fur,Gallo-Romance,-0.5431
+LaBSE zero-shot,fur,Germanic,-0.5712
+LaBSE zero-shot,fur,Slavic,-0.6553
+LaBSE zero-shot,fur,Uralic,-0.6579
+LaBSE zero-shot,lij,Italian,-0.5679
+LaBSE zero-shot,lij,Iberian,-0.6225
+LaBSE zero-shot,lij,Gallo-Romance,-0.5269
+LaBSE zero-shot,lij,Germanic,-0.5746
+LaBSE zero-shot,lij,Slavic,-0.6527
+LaBSE zero-shot,lij,Uralic,-0.6485
+LaBSE zero-shot,lmo,Italian,-0.6371
+LaBSE zero-shot,lmo,Iberian,-0.6679
+LaBSE zero-shot,lmo,Gallo-Romance,-0.6033
+LaBSE zero-shot,lmo,Germanic,-0.6226
+LaBSE zero-shot,lmo,Slavic,-0.6838
+LaBSE zero-shot,lmo,Uralic,-0.6799
+LaBSE zero-shot,sc,Italian,-0.4003
+LaBSE zero-shot,sc,Iberian,-0.4582
+LaBSE zero-shot,sc,Gallo-Romance,-0.3651
+LaBSE zero-shot,sc,Germanic,-0.4227
+LaBSE zero-shot,sc,Slavic,-0.4939
+LaBSE zero-shot,sc,Uralic,-0.4805
+LaBSE zero-shot,scn,Italian,-0.3551
+LaBSE zero-shot,scn,Iberian,-0.4226
+LaBSE zero-shot,scn,Gallo-Romance,-0.2935
+LaBSE zero-shot,scn,Germanic,-0.3145
+LaBSE zero-shot,scn,Slavic,-0.4389
+LaBSE zero-shot,scn,Uralic,-0.4495
+LaBSE zero-shot,vec,Italian,0.0119
+LaBSE zero-shot,vec,Iberian,-0.1326
+LaBSE zero-shot,vec,Gallo-Romance,0.1377
+LaBSE zero-shot,vec,Germanic,-0.1308
+LaBSE zero-shot,vec,Slavic,-0.1995
+LaBSE zero-shot,vec,Uralic,-0.1979
+LaBSE MNRL,fur,Italian,-0.7362
+LaBSE MNRL,fur,Iberian,-0.4479
+LaBSE MNRL,fur,Gallo-Romance,-0.3780
+LaBSE MNRL,fur,Germanic,-0.6451
+LaBSE MNRL,fur,Slavic,-0.4609
+LaBSE MNRL,fur,Uralic,-0.5124
+LaBSE MNRL,lij,Italian,-0.8079
+LaBSE MNRL,lij,Iberian,-0.5852
+LaBSE MNRL,lij,Gallo-Romance,-0.5032
+LaBSE MNRL,lij,Germanic,-0.7357
+LaBSE MNRL,lij,Slavic,-0.6027
+LaBSE MNRL,lij,Uralic,-0.6289
+LaBSE MNRL,lmo,Italian,-0.7411
+LaBSE MNRL,lmo,Iberian,-0.5004
+LaBSE MNRL,lmo,Gallo-Romance,-0.4710
+LaBSE MNRL,lmo,Germanic,-0.6606
+LaBSE MNRL,lmo,Slavic,-0.4551
+LaBSE MNRL,lmo,Uralic,-0.4705
+LaBSE MNRL,sc,Italian,-0.7936
+LaBSE MNRL,sc,Iberian,-0.5714
+LaBSE MNRL,sc,Gallo-Romance,-0.4933
+LaBSE MNRL,sc,Germanic,-0.7246
+LaBSE MNRL,sc,Slavic,-0.5957
+LaBSE MNRL,sc,Uralic,-0.6243
+LaBSE MNRL,scn,Italian,-0.7451
+LaBSE MNRL,scn,Iberian,-0.4460
+LaBSE MNRL,scn,Gallo-Romance,-0.3948
+LaBSE MNRL,scn,Germanic,-0.6244
+LaBSE MNRL,scn,Slavic,-0.3991
+LaBSE MNRL,scn,Uralic,-0.4447
+LaBSE MNRL,vec,Italian,-0.8069
+LaBSE MNRL,vec,Iberian,-0.5614
+LaBSE MNRL,vec,Gallo-Romance,-0.3964
+LaBSE MNRL,vec,Germanic,-0.7110
+LaBSE MNRL,vec,Slavic,-0.5438
+LaBSE MNRL,vec,Uralic,-0.6005
+FastText (norm),fur,Italian,0.2950
+FastText (norm),fur,Iberian,0.1679
+FastText (norm),fur,Gallo-Romance,0.3477
+FastText (norm),fur,Germanic,-0.5069
+FastText (norm),fur,Slavic,-0.6972
+FastText (norm),fur,Uralic,-0.7693
+FastText (norm),lij,Italian,0.5272
+FastText (norm),lij,Iberian,0.0114
+FastText (norm),lij,Gallo-Romance,-0.2243
+FastText (norm),lij,Germanic,-0.6066
+FastText (norm),lij,Slavic,-0.6662
+FastText (norm),lij,Uralic,-0.7723
+FastText (norm),lmo,Italian,0.2315
+FastText (norm),lmo,Iberian,0.3587
+FastText (norm),lmo,Gallo-Romance,0.3376
+FastText (norm),lmo,Germanic,-0.5792
+FastText (norm),lmo,Slavic,-0.6781
+FastText (norm),lmo,Uralic,-0.7967
+FastText (norm),sc,Italian,0.1967
+FastText (norm),sc,Iberian,0.2247
+FastText (norm),sc,Gallo-Romance,-0.0948
+FastText (norm),sc,Germanic,-0.5425
+FastText (norm),sc,Slavic,-0.5743
+FastText (norm),sc,Uralic,-0.7238
+FastText (norm),scn,Italian,0.2555
+FastText (norm),scn,Iberian,-0.2524
+FastText (norm),scn,Gallo-Romance,-0.3431
+FastText (norm),scn,Germanic,-0.5672
+FastText (norm),scn,Slavic,-0.5033
+FastText (norm),scn,Uralic,-0.7029
+FastText (norm),vec,Italian,0.5952
+FastText (norm),vec,Iberian,0.1488
+FastText (norm),vec,Gallo-Romance,-0.2442
+FastText (norm),vec,Germanic,-0.6723
+FastText (norm),vec,Slavic,-0.6593
+FastText (norm),vec,Uralic,-0.8286
+FastText (native),fur,Italian,0.2389
+FastText (native),fur,Iberian,0.0442
+FastText (native),fur,Gallo-Romance,0.2088
+FastText (native),fur,Germanic,-0.3988
+FastText (native),fur,Slavic,-0.5965
+FastText (native),fur,Uralic,-0.6259
+FastText (native),lij,Italian,0.3616
+FastText (native),lij,Iberian,-0.1199
+FastText (native),lij,Gallo-Romance,-0.2172
+FastText (native),lij,Germanic,-0.4773
+FastText (native),lij,Slavic,-0.5337
+FastText (native),lij,Uralic,-0.6223
+FastText (native),lmo,Italian,0.0688
+FastText (native),lmo,Iberian,0.0916
+FastText (native),lmo,Gallo-Romance,0.1676
+FastText (native),lmo,Germanic,-0.4496
+FastText (native),lmo,Slavic,-0.5748
+FastText (native),lmo,Uralic,-0.6512
+FastText (native),sc,Italian,0.2717
+FastText (native),sc,Iberian,0.3334
+FastText (native),sc,Gallo-Romance,0.0885
+FastText (native),sc,Germanic,-0.3549
+FastText (native),sc,Slavic,-0.4280
+FastText (native),sc,Uralic,-0.5771
+FastText (native),scn,Italian,0.2044
+FastText (native),scn,Iberian,-0.2640
+FastText (native),scn,Gallo-Romance,-0.3141
+FastText (native),scn,Germanic,-0.4690
+FastText (native),scn,Slavic,-0.4119
+FastText (native),scn,Uralic,-0.5713
+FastText (native),vec,Italian,0.4751
+FastText (native),vec,Iberian,0.0063
+FastText (native),vec,Gallo-Romance,-0.2641
+FastText (native),vec,Germanic,-0.5405
+FastText (native),vec,Slavic,-0.5428
+FastText (native),vec,Uralic,-0.7199
+Word2Vec (norm),fur,Italian,-0.0050
+Word2Vec (norm),fur,Iberian,-0.2387
+Word2Vec (norm),fur,Gallo-Romance,-0.1677
+Word2Vec (norm),fur,Germanic,-0.5138
+Word2Vec (norm),fur,Slavic,-0.5420
+Word2Vec (norm),fur,Uralic,-0.5105
+Word2Vec (norm),lij,Italian,0.1492
+Word2Vec (norm),lij,Iberian,-0.2127
+Word2Vec (norm),lij,Gallo-Romance,-0.3156
+Word2Vec (norm),lij,Germanic,-0.5643
+Word2Vec (norm),lij,Slavic,-0.5315
+Word2Vec (norm),lij,Uralic,-0.5336
+Word2Vec (norm),lmo,Italian,-0.1658
+Word2Vec (norm),lmo,Iberian,-0.1029
+Word2Vec (norm),lmo,Gallo-Romance,-0.0649
+Word2Vec (norm),lmo,Germanic,-0.5916
+Word2Vec (norm),lmo,Slavic,-0.5885
+Word2Vec (norm),lmo,Uralic,-0.5926
+Word2Vec (norm),sc,Italian,-0.1105
+Word2Vec (norm),sc,Iberian,-0.0478
+Word2Vec (norm),sc,Gallo-Romance,-0.1792
+Word2Vec (norm),sc,Germanic,-0.4441
+Word2Vec (norm),sc,Slavic,-0.4012
+Word2Vec (norm),sc,Uralic,-0.4495
+Word2Vec (norm),scn,Italian,0.1823
+Word2Vec (norm),scn,Iberian,-0.2747
+Word2Vec (norm),scn,Gallo-Romance,-0.3231
+Word2Vec (norm),scn,Germanic,-0.4793
+Word2Vec (norm),scn,Slavic,-0.4625
+Word2Vec (norm),scn,Uralic,-0.5058
+Word2Vec (norm),vec,Italian,0.4189
+Word2Vec (norm),vec,Iberian,-0.2533
+Word2Vec (norm),vec,Gallo-Romance,-0.3955
+Word2Vec (norm),vec,Germanic,-0.5933
+Word2Vec (norm),vec,Slavic,-0.5424
+Word2Vec (norm),vec,Uralic,-0.6235
+Word2Vec (native),fur,Italian,0.0834
+Word2Vec (native),fur,Iberian,-0.2408
+Word2Vec (native),fur,Gallo-Romance,-0.1589
+Word2Vec (native),fur,Germanic,-0.4244
+Word2Vec (native),fur,Slavic,-0.4555
+Word2Vec (native),fur,Uralic,-0.4405
+Word2Vec (native),lij,Italian,0.1751
+Word2Vec (native),lij,Iberian,-0.2028
+Word2Vec (native),lij,Gallo-Romance,-0.2968
+Word2Vec (native),lij,Germanic,-0.4582
+Word2Vec (native),lij,Slavic,-0.4101
+Word2Vec (native),lij,Uralic,-0.4748
+Word2Vec (native),lmo,Italian,-0.0661
+Word2Vec (native),lmo,Iberian,-0.1193
+Word2Vec (native),lmo,Gallo-Romance,-0.1160
+Word2Vec (native),lmo,Germanic,-0.5032
+Word2Vec (native),lmo,Slavic,-0.4839
+Word2Vec (native),lmo,Uralic,-0.5172
+Word2Vec (native),sc,Italian,-0.0638
+Word2Vec (native),sc,Iberian,0.0096
+Word2Vec (native),sc,Gallo-Romance,-0.1147
+Word2Vec (native),sc,Germanic,-0.3423
+Word2Vec (native),sc,Slavic,-0.3057
+Word2Vec (native),sc,Uralic,-0.3643
+Word2Vec (native),scn,Italian,0.2173
+Word2Vec (native),scn,Iberian,-0.2414
+Word2Vec (native),scn,Gallo-Romance,-0.3013
+Word2Vec (native),scn,Germanic,-0.3826
+Word2Vec (native),scn,Slavic,-0.3794
+Word2Vec (native),scn,Uralic,-0.4129
+Word2Vec (native),vec,Italian,0.3958
+Word2Vec (native),vec,Iberian,-0.2186
+Word2Vec (native),vec,Gallo-Romance,-0.3565
+Word2Vec (native),vec,Germanic,-0.4751
+Word2Vec (native),vec,Slavic,-0.4156
+Word2Vec (native),vec,Uralic,-0.5317
+TF-IDF char (norm),fur,Italian,0.1570
+TF-IDF char (norm),fur,Iberian,-0.0809
+TF-IDF char (norm),fur,Gallo-Romance,-0.0179
+TF-IDF char (norm),fur,Germanic,-0.2208
+TF-IDF char (norm),fur,Slavic,-0.2429
+TF-IDF char (norm),fur,Uralic,-0.2860
+TF-IDF char (norm),lij,Italian,0.2150
+TF-IDF char (norm),lij,Iberian,-0.0393
+TF-IDF char (norm),lij,Gallo-Romance,-0.1014
+TF-IDF char (norm),lij,Germanic,-0.2732
+TF-IDF char (norm),lij,Slavic,-0.2663
+TF-IDF char (norm),lij,Uralic,-0.3106
+TF-IDF char (norm),lmo,Italian,0.1111
+TF-IDF char (norm),lmo,Iberian,-0.0273
+TF-IDF char (norm),lmo,Gallo-Romance,-0.0577
+TF-IDF char (norm),lmo,Germanic,-0.2761
+TF-IDF char (norm),lmo,Slavic,-0.3020
+TF-IDF char (norm),lmo,Uralic,-0.3287
+TF-IDF char (norm),sc,Italian,0.0601
+TF-IDF char (norm),sc,Iberian,0.0707
+TF-IDF char (norm),sc,Gallo-Romance,-0.0067
+TF-IDF char (norm),sc,Germanic,-0.1870
+TF-IDF char (norm),sc,Slavic,-0.2074
+TF-IDF char (norm),sc,Uralic,-0.2256
+TF-IDF char (norm),scn,Italian,0.1564
+TF-IDF char (norm),scn,Iberian,-0.1506
+TF-IDF char (norm),scn,Gallo-Romance,-0.1682
+TF-IDF char (norm),scn,Germanic,-0.2583
+TF-IDF char (norm),scn,Slavic,-0.1888
+TF-IDF char (norm),scn,Uralic,-0.2680
+TF-IDF char (norm),vec,Italian,0.3058
+TF-IDF char (norm),vec,Iberian,-0.0169
+TF-IDF char (norm),vec,Gallo-Romance,-0.1380
+TF-IDF char (norm),vec,Germanic,-0.3231
+TF-IDF char (norm),vec,Slavic,-0.2773
+TF-IDF char (norm),vec,Uralic,-0.3573
+TF-IDF char (native),fur,Italian,0.1914
+TF-IDF char (native),fur,Iberian,-0.0494
+TF-IDF char (native),fur,Gallo-Romance,0.0003
+TF-IDF char (native),fur,Germanic,-0.1521
+TF-IDF char (native),fur,Slavic,-0.1771
+TF-IDF char (native),fur,Uralic,-0.2426
+TF-IDF char (native),lij,Italian,0.2116
+TF-IDF char (native),lij,Iberian,-0.0218
+TF-IDF char (native),lij,Gallo-Romance,-0.0549
+TF-IDF char (native),lij,Germanic,-0.1916
+TF-IDF char (native),lij,Slavic,-0.1992
+TF-IDF char (native),lij,Uralic,-0.2592
+TF-IDF char (native),lmo,Italian,0.0848
+TF-IDF char (native),lmo,Iberian,-0.0075
+TF-IDF char (native),lmo,Gallo-Romance,-0.0201
+TF-IDF char (native),lmo,Germanic,-0.1745
+TF-IDF char (native),lmo,Slavic,-0.1984
+TF-IDF char (native),lmo,Uralic,-0.2325
+TF-IDF char (native),sc,Italian,0.1011
+TF-IDF char (native),sc,Iberian,0.1061
+TF-IDF char (native),sc,Gallo-Romance,0.0331
+TF-IDF char (native),sc,Germanic,-0.1328
+TF-IDF char (native),sc,Slavic,-0.1546
+TF-IDF char (native),sc,Uralic,-0.2087
+TF-IDF char (native),scn,Italian,0.1788
+TF-IDF char (native),scn,Iberian,-0.1113
+TF-IDF char (native),scn,Gallo-Romance,-0.1166
+TF-IDF char (native),scn,Germanic,-0.2026
+TF-IDF char (native),scn,Slavic,-0.1347
+TF-IDF char (native),scn,Uralic,-0.2274
+TF-IDF char (native),vec,Italian,0.2722
+TF-IDF char (native),vec,Iberian,0.0169
+TF-IDF char (native),vec,Gallo-Romance,-0.1000
+TF-IDF char (native),vec,Germanic,-0.2304
+TF-IDF char (native),vec,Slavic,-0.1997
+TF-IDF char (native),vec,Uralic,-0.3025
+TF-IDF word (norm),fur,Italian,0.2709
+TF-IDF word (norm),fur,Iberian,-0.1106
+TF-IDF word (norm),fur,Gallo-Romance,-0.0610
+TF-IDF word (norm),fur,Germanic,-0.1847
+TF-IDF word (norm),fur,Slavic,-0.1469
+TF-IDF word (norm),fur,Uralic,-0.2002
+TF-IDF word (norm),lij,Italian,0.0532
+TF-IDF word (norm),lij,Iberian,-0.0279
+TF-IDF word (norm),lij,Gallo-Romance,-0.0643
+TF-IDF word (norm),lij,Germanic,-0.1834
+TF-IDF word (norm),lij,Slavic,-0.1218
+TF-IDF word (norm),lij,Uralic,-0.1997
+TF-IDF word (norm),lmo,Italian,0.0784
+TF-IDF word (norm),lmo,Iberian,0.0230
+TF-IDF word (norm),lmo,Gallo-Romance,0.0013
+TF-IDF word (norm),lmo,Germanic,-0.2072
+TF-IDF word (norm),lmo,Slavic,-0.1744
+TF-IDF word (norm),lmo,Uralic,-0.2140
+TF-IDF word (norm),sc,Italian,-0.0229
+TF-IDF word (norm),sc,Iberian,0.0073
+TF-IDF word (norm),sc,Gallo-Romance,0.0157
+TF-IDF word (norm),sc,Germanic,-0.0900
+TF-IDF word (norm),sc,Slavic,-0.0545
+TF-IDF word (norm),sc,Uralic,-0.1131
+TF-IDF word (norm),scn,Italian,0.1423
+TF-IDF word (norm),scn,Iberian,-0.0845
+TF-IDF word (norm),scn,Gallo-Romance,-0.0825
+TF-IDF word (norm),scn,Germanic,-0.1259
+TF-IDF word (norm),scn,Slavic,-0.0723
+TF-IDF word (norm),scn,Uralic,-0.1287
+TF-IDF word (norm),vec,Italian,0.0749
+TF-IDF word (norm),vec,Iberian,-0.0180
+TF-IDF word (norm),vec,Gallo-Romance,-0.0648
+TF-IDF word (norm),vec,Germanic,-0.2009
+TF-IDF word (norm),vec,Slavic,-0.1078
+TF-IDF word (norm),vec,Uralic,-0.2063
+TF-IDF word (native),fur,Italian,0.2835
+TF-IDF word (native),fur,Iberian,-0.1001
+TF-IDF word (native),fur,Gallo-Romance,-0.0495
+TF-IDF word (native),fur,Germanic,-0.1713
+TF-IDF word (native),fur,Slavic,-0.1336
+TF-IDF word (native),fur,Uralic,-0.1844
+TF-IDF word (native),lij,Italian,0.0621
+TF-IDF word (native),lij,Iberian,-0.0067
+TF-IDF word (native),lij,Gallo-Romance,-0.0426
+TF-IDF word (native),lij,Germanic,-0.1633
+TF-IDF word (native),lij,Slavic,-0.1049
+TF-IDF word (native),lij,Uralic,-0.1796
+TF-IDF word (native),lmo,Italian,0.0926
+TF-IDF word (native),lmo,Iberian,0.0527
+TF-IDF word (native),lmo,Gallo-Romance,0.0355
+TF-IDF word (native),lmo,Germanic,-0.1764
+TF-IDF word (native),lmo,Slavic,-0.1530
+TF-IDF word (native),lmo,Uralic,-0.1819
+TF-IDF word (native),sc,Italian,-0.0245
+TF-IDF word (native),sc,Iberian,0.0212
+TF-IDF word (native),sc,Gallo-Romance,0.0287
+TF-IDF word (native),sc,Germanic,-0.0829
+TF-IDF word (native),sc,Slavic,-0.0470
+TF-IDF word (native),sc,Uralic,-0.1076
+TF-IDF word (native),scn,Italian,0.1552
+TF-IDF word (native),scn,Iberian,-0.0627
+TF-IDF word (native),scn,Gallo-Romance,-0.0619
+TF-IDF word (native),scn,Germanic,-0.0932
+TF-IDF word (native),scn,Slavic,-0.0544
+TF-IDF word (native),scn,Uralic,-0.0967
+TF-IDF word (native),vec,Italian,0.0534
+TF-IDF word (native),vec,Iberian,-0.0083
+TF-IDF word (native),vec,Gallo-Romance,-0.0718
+TF-IDF word (native),vec,Germanic,-0.1622
+TF-IDF word (native),vec,Slavic,-0.0699
+TF-IDF word (native),vec,Uralic,-0.1694

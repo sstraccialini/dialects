@@ -12,8 +12,6 @@ from analysis._shared.varieties import (  # noqa: F401
     WIKI_DIR,
     WIKI_NATIVE_GROUP_A_DIR    as WIKI_GROUP_A_DIR,    # not_normalized for pretrained
     WIKI_NATIVE_LANGUAGES_DIR  as WIKI_LANGUAGES_DIR,  # idem
-    FLORES_NATIVE_DIR          as FLORES_DIR,          # idem
-    OLDI_NATIVE_DIR            as OLDI_DIR,            # idem
     WIKI_VARIETY_DIR_NATIVE    as WIKI_VARIETY_DIR,    # idem
     VARIETIES, VARIETY_CODES, VARIETY_GROUP,
     DIALECT_CODES, MODERN_LANGUAGE_CODES,

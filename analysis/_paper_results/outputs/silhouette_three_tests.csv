@@ -1,0 +1,15 @@
+method,rom_vs_rest,macro4,within_rom_dial_vs_std
+LaBSE zero-shot,0.0157,-0.2635,0.6735
+XLM-R zero-shot,0.2449,0.1426,0.5980
+CANINE zero-shot,0.2905,0.3240,0.4077
+LaBSE MNRL,0.1253,-0.2101,0.3014
+CANINE-MLM,0.5674,0.5677,0.1191
+FastText (native),0.3628,0.4089,0.1116
+Word2Vec (norm),0.3069,0.3894,0.1017
+Word2Vec (native),0.2467,0.3191,0.0977
+TF-IDF char (norm),0.1921,0.2444,0.0931
+XLM-R MLM,0.1204,-0.0144,0.0890
+TF-IDF char (native),0.1606,0.2071,0.0888
+TF-IDF word (norm),0.1243,0.1466,0.0616
+TF-IDF word (native),0.1178,0.1427,0.0588
+FastText (norm),0.4408,0.4968,0.0569

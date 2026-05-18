@@ -1037,41 +1037,6 @@ def run_evaluation(
         warnings.warn(f"gold-correlation write skipped: {exc}", stacklevel=2)
         gold_corr_path = None
 
-    # ---- historical-influence Mean P@3 (set-based gold) -------------------
-    # Per-experiment counterpart of evaluation/check_historical_influence.py:
-    # for each dialect, take the model's top-3 closest non-Italian externals
-    # and check overlap with the curated influences in
-    # gold/historical_influence/influences.csv.
-    hist_path: Optional[Path] = None
-    try:
-        from evaluation.check_historical_influence import evaluate_model, _load_gold
-        from gold.lexicostatistical.varieties import DIALECT_CODES, EXTERNAL_CODES
-        repo_root = Path(__file__).resolve().parents[1]
-        gold_csv = repo_root / "gold" / "historical_influence" / "influences.csv"
-        if gold_csv.exists():
-            gold = _load_gold(gold_csv)
-            if gold:
-                mean_p3, rows = evaluate_model(
-                    dist, list(codes), gold,
-                    list(DIALECT_CODES), list(EXTERNAL_CODES),
-                )
-                if rows:
-                    rows_with_mean = list(rows) + [{
-                        "dialect": "MEAN",
-                        "gold_top3": "",
-                        "model_top3": "",
-                        "overlap_count": "",
-                        "precision_at_3": mean_p3,
-                    }]
-                    hist_path = out_dir / "historical_influence.csv"
-                    pd.DataFrame(rows_with_mean).to_csv(
-                        hist_path, index=False, float_format="%.4f")
-                    print(f"  historical_influence Mean P@3 = {mean_p3:.4f}  "
-                          f"→ {hist_path.name}")
-    except Exception as exc:
-        warnings.warn(f"historical-influence write skipped: {exc}", stacklevel=2)
-        hist_path = None
-
     return {
         "distances_path": str(dist_path),
         "similarity_path": str(sim_path),
@@ -1087,7 +1052,6 @@ def run_evaluation(
         "clustering_metrics_path": str(cluster_path) if cluster_path else None,
         "silhouette_path": str(sil_path),
         "gold_correlations_path": str(gold_corr_path) if gold_corr_path else None,
-        "historical_influence_path": str(hist_path) if hist_path else None,
         "silhouette_family": sil_family,
         "silhouette_romance_vs_rest": sil_romance,
         "silhouette_romance_no_dialects": sil_romance_no_dial,
