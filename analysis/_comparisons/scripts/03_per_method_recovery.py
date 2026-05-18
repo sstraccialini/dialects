@@ -8,7 +8,7 @@ Italian is excluded from the Direction-1 candidate set. Direction-2's candidate
 set is the six dialects so Italian never enters there.
 
 Run:
-    python -m analysis._paper_results.scripts.03_per_method_recovery
+    python -m analysis._comparisons.scripts.03_per_method_recovery
 """
 from pathlib import Path
 

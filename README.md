@@ -61,7 +61,7 @@ Language-Technology-Project/
 │
 ├── analysis/                      One folder per method family
 │   ├── _shared/                     Variety registry + canonical dataset loaders
-│   ├── _paper_results/              Scripts that recompute the headline numbers
+│   ├── _comparisons/                Scripts that recompute the headline numbers
 │   ├── tfidf/                       Surface — sentence-level TF-IDF (word + char)
 │   ├── fasttext/                    Surface — gensim FastText (subword skip-gram)
 │   ├── word2vec/                    Surface — gensim Word2Vec
@@ -267,17 +267,17 @@ See `gold/lexicostatistical/README.md` for the underlying methodology
 The "What embeddings recover" subsection cites cross-method statistics that
 are not stored anywhere as a single artifact. They are recomputed on demand
 from the saved per-method `distances.csv` files by four scripts under
-`analysis/_paper_results/scripts/`:
+`analysis/_comparisons/scripts/`:
 
 ```bash
-python -m analysis._paper_results.scripts.01_trustworthy_consensus
-python -m analysis._paper_results.scripts.02_bidirectional_gold
-python -m analysis._paper_results.scripts.03_per_method_recovery
-python -m analysis._paper_results.scripts.04_comprehensive_analysis
+python -m analysis._comparisons.scripts.01_trustworthy_consensus
+python -m analysis._comparisons.scripts.02_bidirectional_gold
+python -m analysis._comparisons.scripts.03_per_method_recovery
+python -m analysis._comparisons.scripts.04_comprehensive_analysis
 ```
 
 Each script prints to stdout the agreement count, the diverging methods, and
-the underlying numbers. See `analysis/_paper_results/README.md` for what each
+the underlying numbers. See `analysis/_comparisons/README.md` for what each
 script answers.
 
 ---

@@ -11,7 +11,7 @@ sociolinguistic roof variety and would otherwise dominate the rankings for
 every dialect. See the paper's "What embeddings recover" subsection.
 
 Run:
-    python -m analysis._paper_results.scripts.02_bidirectional_gold
+    python -m analysis._comparisons.scripts.02_bidirectional_gold
 """
 from pathlib import Path
 

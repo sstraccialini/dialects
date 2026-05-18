@@ -1,4 +1,4 @@
-# Paper results — verification scripts
+# Cross-method comparisons — verification scripts for paper findings
 
 Scripts that recompute the headline numbers cited in the "What embeddings
 recover" subsection of the paper from the per-method distance matrices stored
@@ -19,10 +19,10 @@ they do not retrain anything. Re-running them is fast (seconds).
 Run from the repo root, e.g.:
 
 ```bash
-python -m analysis._paper_results.scripts.01_trustworthy_consensus
-python -m analysis._paper_results.scripts.02_bidirectional_gold
-python -m analysis._paper_results.scripts.03_per_method_recovery
-python -m analysis._paper_results.scripts.04_comprehensive_analysis
+python -m analysis._comparisons.scripts.01_trustworthy_consensus
+python -m analysis._comparisons.scripts.02_bidirectional_gold
+python -m analysis._comparisons.scripts.03_per_method_recovery
+python -m analysis._comparisons.scripts.04_comprehensive_analysis
 ```
 
 ## Reference matrix used by 02-04

@@ -13,7 +13,7 @@ Claims tested:
   3b. Croatian's nearest dialect = Venetian.
 
 Run:
-    python -m analysis._paper_results.scripts.01_trustworthy_consensus
+    python -m analysis._comparisons.scripts.01_trustworthy_consensus
 """
 from pathlib import Path
 

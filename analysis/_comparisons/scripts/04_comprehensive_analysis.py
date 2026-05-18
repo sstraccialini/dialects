@@ -14,7 +14,7 @@ For every (dialect, external) pair we report:
           standards (Italian included), averaged across the 9 methods.
 
 Run:
-    python -m analysis._paper_results.scripts.04_comprehensive_analysis
+    python -m analysis._comparisons.scripts.04_comprehensive_analysis
 """
 from collections import Counter
 from pathlib import Path
