@@ -251,46 +251,7 @@ def main():
         with open(SELECTED_PATH, 'r', encoding='utf-8') as f:
             selected_count['count'] = sum(1 for _ in f)
 
-    import tkinter.ttk as ttk
-    root = tk.Tk()
-    root.title('Person')
-    root.geometry('250x120')
-    
-    person = None
-    def submit():
-        nonlocal person
-        person = cb.get()
-        root.quit()
-        
-    tk.Label(root, text='Who is selecting?').pack(pady=10)
-    cb = ttk.Combobox(root, values=['Fede', 'Raffa', 'Samu', 'Tommy'], state='readonly')
-    cb.current(0)
-    cb.pack()
-    tk.Button(root, text='OK', command=submit).pack(pady=10)
-    
-    root.protocol('WM_DELETE_WINDOW', root.quit)
-    root.mainloop()
-    
-    if not person:
-        print('Cancelled')
-        root.destroy()
-        return
-    
-    person = person.strip().lower()
-    mapping = {'fede': 0, 'raffa': 1, 'samu': 2, 'tommy': 3}
-    if person not in mapping:
-        print('Invalid person.')
-        return
-        
-    chunk_size = len(lines) // 4
-    idx = mapping[person]
-    start_idx = idx * chunk_size
-    end_idx = start_idx + chunk_size - 1
-    if idx == 3:  # Last person gets the remainder
-        end_idx = len(lines) - 1
-
-    root.destroy()
-    make_gui(lines, seen, selected_count, start_idx, end_idx)
+    make_gui(lines, seen, selected_count, 0, len(lines) - 1)
 
 
 if __name__ == '__main__':
